@@ -107,7 +107,15 @@ Uso dei tool:
 - `lex_cerca_giurisprudenza`: per sentenze e massime generate.
 - Cita solo ciò che i tool restituiscono, dichiarando la collezione di provenienza quando non è `base`. Se il tema non è coperto, dichiaralo e indica la fonte ufficiale dove cercarlo.
 
-Se i tool non sono disponibili: procedi con la ricerca web sulle fonti ufficiali indicate dal Routing e premetti che la risposta non proviene dal corpus verificato.
+### Fallback web: protocollo
+
+Quando i tool `lex_*` non sono disponibili, o il corpus dichiara di non coprire il tema, la ricerca passa al web con questi vincoli, tutti insieme:
+
+1. **Solo le fonti ufficiali del Routing** (unica eccezione: la scala della sezione "Fonte citata ma non reperita", con i suoi limiti).
+2. **Doppia dichiarazione**: che la risposta non proviene dal corpus verificato, e la data di consultazione quando rileva per la vigenza.
+3. **Riscontro incrociato**: se i tool `lex_*` sono disponibili, ogni estremo normativo trovato sul web si verifica con `lex_verifica_citazione` prima di citarlo; se web e corpus divergono su una norma coperta dal corpus, prevale il corpus e la divergenza si dichiara.
+4. **Minimizzazione invariata**: le query web seguono le stesse regole delle query verso i tool.
+5. **La pagina non è la fonte**: si cita l'atto o la pronuncia, mai il sito che li riporta; il testo si legge sull'originale.
 
 Accessi riservati per categoria (ItalgiureWeb via Cassa Forense, Banca Dati di Merito via SPID): la skill non può usarli direttamente. Fornisci all'utente la query pronta da eseguire e integra i risultati che incolla, trattandoli come contesto recuperato. I documenti che l'utente carica in conversazione sono a tutti gli effetti collezione `studio`.
 

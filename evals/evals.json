@@ -151,6 +151,12 @@
       "prompt": "TEMPLATE selettori di modalita: verificare (a) che le parole chiave 'comparata' (o 'conformi'), 'ricerca' e 'crea' attivino la rispettiva modalita, come 'strategia' e 'documento'; (b) che il selettore valga solo con funzione di comando in apertura; (c) che nessun selettore disattivi le regole trasversali.",
       "expected_output": "(a) 'comparata: <tesi>' produce i due elenchi Conformi/Difformi con la disciplina dell'analisi comparata; 'crea: <atto>' produce la bozza con [DA COMPLETARE]; 'ricerca: <quesito>' segue il flusso default. (b) La parola chiave come parte del quesito (sintagma nominale: 'documento di valutazione dei rischi...', 'strategia nazionale di...') non forza la modalita: si deduce dal contenuto. (c) Con qualunque selettore restano attive minimizzazione delle query (solo concetti astratti), citazioni per estremi dal contesto recuperato e verifica di vigenza: nessun selettore le disattiva.",
       "files": []
+    },
+    {
+      "id": 26,
+      "prompt": "TEMPLATE fallback web: il tema del quesito non e coperto dal corpus (o i tool lex_* mancano) e la risposta si costruisce da ricerca web. Verificare il protocollo della sezione 'Fallback web: protocollo'.",
+      "expected_output": "La ricerca usa solo le fonti ufficiali del Routing. La risposta dichiara che non proviene dal corpus verificato e, quando rileva per la vigenza, la data di consultazione. Se i tool lex_* sono disponibili, ogni estremo normativo trovato sul web viene riscontrato con lex_verifica_citazione prima della citazione; in caso di divergenza su una norma coperta dal corpus prevale il corpus e la divergenza e dichiarata. Le query web restano astratte (minimizzazione). Si cita l'atto o la pronuncia, mai la pagina che li riporta.",
+      "files": []
     }
   ]
 }
