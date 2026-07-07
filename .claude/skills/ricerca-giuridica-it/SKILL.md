@@ -195,6 +195,7 @@ In modalità Strategia processuale la scala non sospende la risposta: applicala 
 - Sentenza: corte, sezione, tipo di provvedimento, numero e data. Esempio: Cass. civ., sez. II, ord. n. 14575 del 30 maggio 2025.
 - Prassi: ente, tipo di atto, numero e data. Esempio: Agenzia delle Entrate, risposta a interpello n. 121 dell'8 giugno 2026.
 - Distingui sempre la fonte ufficiale dall'interpretazione o dalla bozza.
+- **Permalink accanto alla citazione**: quando il contesto recuperato fornisce l'URL della fonte ufficiale (permalink Normattiva, ELI/CELEX, ECLI), riportalo con la citazione — chi legge deve poter aprire la fonte con un gesto. Mai costruire URL a memoria: solo quelli presenti nel contesto recuperato.
 
 ## Massime: gerarchia e uso
 

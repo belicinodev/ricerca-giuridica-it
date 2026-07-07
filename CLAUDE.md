@@ -64,6 +64,12 @@ Check that all catalogued source endpoints still respond:
 scripts/verifica_fonti.sh
 ```
 
+Run the evals headless with an automated judge (from a normal terminal, NOT inside a Claude Code session; TEMPLATE evals are skipped and need interactive testing):
+```bash
+scripts/esegui_evals.sh          # all evals
+scripts/esegui_evals.sh 1 4 5    # a subset by id
+```
+
 There is no build/lint/test toolchain beyond this — "tests" are the evals, run by having Claude answer each `prompt` and comparing against `expected_output`.
 
 ## Language

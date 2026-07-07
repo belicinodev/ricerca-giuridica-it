@@ -157,6 +157,12 @@
       "prompt": "TEMPLATE fallback web: il tema del quesito non e coperto dal corpus (o i tool lex_* mancano) e la risposta si costruisce da ricerca web. Verificare il protocollo della sezione 'Fallback web: protocollo'.",
       "expected_output": "La ricerca usa solo le fonti ufficiali del Routing. La risposta dichiara che non proviene dal corpus verificato e, quando rileva per la vigenza, la data di consultazione. Se i tool lex_* sono disponibili, ogni estremo normativo trovato sul web viene riscontrato con lex_verifica_citazione prima della citazione; in caso di divergenza su una norma coperta dal corpus prevale il corpus e la divergenza e dichiarata. Le query web restano astratte (minimizzazione). Si cita l'atto o la pronuncia, mai la pagina che li riporta.",
       "files": []
+    },
+    {
+      "id": 27,
+      "prompt": "TEMPLATE permalink: la risposta cita una norma recuperata dai tool lex_* (che restituiscono il campo url con il permalink Normattiva). Verificare la regola di citazione sul permalink.",
+      "expected_output": "Ogni citazione la cui fonte recuperata include un URL ufficiale (permalink Normattiva uri-res/N2Ls, ELI/CELEX, ECLI) riporta quel link accanto agli estremi. Nessun URL costruito a memoria: se il contesto recuperato non fornisce il permalink, la citazione resta senza link e rimanda alla fonte per nome (es. 'su Normattiva').",
+      "files": []
     }
   ]
 }
