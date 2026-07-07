@@ -1,6 +1,6 @@
 # Kit minimo di fonti gratuite per materia
 
-Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente accessibili: normativa, prassi/autorità, giurisprudenza e decisioni. Gli estremi degli atti normativi sono in `fonti_brocardi.md`; condizioni d'accesso, licenze e regole di riuso trasversali in `fonti_dati_giuridici.md`.
+Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente accessibili: normativa, prassi/autorità, giurisprudenza e decisioni. Gli estremi degli atti normativi sono in `fonti_normative.md`; condizioni d'accesso, licenze e regole di riuso trasversali in `fonti_dati_giuridici.md`.
 
 - Data di verifica: 2026-07-06 (tutti gli URL verificati via fetch o curl)
 - Regole: nessuna fonte a pagamento; le fonti con login gratuito riservato a una categoria sono marcate "(per categoria)"; i siti che bloccano l'accesso automatico sono marcati "(anti-bot: fallback con ricerca `site:` o istruzioni all'utente)".

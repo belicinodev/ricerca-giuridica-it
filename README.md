@@ -68,7 +68,7 @@ scarica lo ZIP della skill dall'ultima release e caricalo da Personalizza > Skil
   references/       cataloghi delle fonti, caricati a richiesta
     fonti_per_materia.md       kit minimo per 16 materie
     fonti_dati_giuridici.md    endpoint, licenze, massime, ADR/CCNL
-    fonti_brocardi.md          estremi di codici, leggi e testi unici
+    fonti_normative.md         estremi di codici, leggi e testi unici
 GUIDA.md            miniguida d'uso delle modalità
 evals/evals.json    domande di regressione con risposte attese verificate
 scripts/            build dello ZIP installabile

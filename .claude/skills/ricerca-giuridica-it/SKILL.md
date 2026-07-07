@@ -151,7 +151,7 @@ Regole operative:
 - Immigrazione: T.U. 286/1998; circolari del Ministero dell'Interno; EUAA e portale COI; CEDU.
 - Diritto scolastico: normativa e circolari MIM; CCNL Istruzione (ARAN/CNEL); contenzioso su giustizia-amministrativa.it.
 
-Per il kit minimo di fonti per ciascuna materia leggi `references/fonti_per_materia.md`. Per il catalogo completo di endpoint e licenze leggi `references/fonti_dati_giuridici.md`. Per gli estremi di codici, leggi e testi unici per materia leggi `references/fonti_brocardi.md`.
+Per il kit minimo di fonti per ciascuna materia leggi `references/fonti_per_materia.md`. Per il catalogo completo di endpoint e licenze leggi `references/fonti_dati_giuridici.md`. Per gli estremi di codici, leggi e testi unici per materia leggi `references/fonti_normative.md`.
 
 ## Verifica di vigenza
 
@@ -170,7 +170,7 @@ Quando una pronuncia o un atto citato (dall'utente o da un documento) non si tro
 1. **Per estremi**, sulle fonti ufficiali del routing.
 2. **Per contenuto del principio di diritto**: cerca le locuzioni giuridiche caratterizzanti del principio enunciato — tra virgolette le sole locuzioni tecniche brevi, mai frasi intere del documento — e la minimizzazione vale anche qui: prima di cercare, elimina ogni elemento del caso concreto (nomi, luoghi, importi, date del fatto); se dal frammento non si ricava una formulazione puramente astratta, non cercarlo e resta sugli estremi e sul tema. Una citazione non riscontrata ma dal contenuto plausibile è spesso una pronuncia reale a cui sono stati attribuiti estremi errati: la ricerca per contenuto la ritrova, quella per estremi no.
 3. **Sui portali che indicizzano la giurisprudenza di quel foro o di quella materia** (es. ilcaso.it per la crisi d'impresa e il bancario): usali come **localizzatori**, alla stregua della collezione `puntatori` — servono a ritrovare gli estremi corretti e il testo integrale del provvedimento (atto pubblico), che va poi aperto e letto prima di citare, anche quando è ospitato dal portale stesso. Mai riprendere le massime redazionali del portale (v. Confini di ingestione); la citazione resta al provvedimento, non al portale.
-4. **Aggirando i blocchi di accesso**: se una pagina indicata dall'utente è inaccessibile (robots, paywall), cerca lo stesso contenuto altrove per titolo della pagina o per estremi della pronuncia — con lo stesso vincolo di astrattezza del passo 2. Il blocco di un sito non chiude la ricerca.
+4. **Fonti alternative per pagine inaccessibili**: se una pagina indicata dall'utente è inaccessibile (robots, paywall), il blocco tecnico si rispetta — non si tenta di eluderlo — ma non chiude la ricerca: cerca lo stesso contenuto altrove per titolo della pagina o per estremi della pronuncia, con lo stesso vincolo di astrattezza del passo 2.
 
 Chiedi all'utente il testo solo dopo aver esaurito la scala, elencando dove hai cercato. E mai concludere che una pronuncia "non esiste": dichiara che "non risulta nelle fonti consultate", elencandole — è l'unica affermazione che i tentativi svolti giustificano.
 
@@ -199,7 +199,7 @@ Quando serve una massima, rispetta questa gerarchia di fonti gratuite (dettagli 
 5. Massime CED con numero Rv: non liberamente accessibili. Cita un numero Rv solo se presente nel contesto recuperato (corpus dello studio, o risultati che l'utente incolla da ItalgiureWeb, gratuito per gli avvocati iscritti a Cassa Forense). Mai ricostruire un Rv a memoria.
 6. Massime generate automaticamente dal full-text: bozze di lavoro, non autorità. Non citarle in quanto tali: cita sempre la sentenza sottostante e segnala che la massima è generata e va confrontata con il testo integrale.
 
-Le massime redazionali altrui (riviste, editori, brocardi) sono protette: mai riprodurle (v. Confini di ingestione).
+Le massime redazionali altrui (riviste, editori, siti divulgativi) sono protette: mai riprodurle (v. Confini di ingestione).
 
 ## Formato di risposta e sintesi
 
@@ -214,7 +214,7 @@ Le massime redazionali altrui (riviste, editori, brocardi) sono protette: mai ri
 
 - `references/fonti_per_materia.md`: kit minimo di fonti gratuite per ciascuna materia di pratica (16 aree), con lacune dichiarate. Leggilo quando un quesito cade in una materia specialistica.
 - `references/fonti_dati_giuridici.md`: mappa delle fonti con endpoint, licenze e regole di acquisizione, incluse la gerarchia delle massime e le fonti ADR/CCNL. Leggila quando serve indicare dove reperire una fonte o valutarne il riuso.
-- `references/fonti_brocardi.md`: catalogo per materia di codici, leggi e testi unici con estremi normativi. Leggilo per trovare gli estremi di un atto o per orientarti in una materia.
+- `references/fonti_normative.md`: catalogo per materia di codici, leggi e testi unici con estremi normativi e permalink alla fonte ufficiale. Leggilo per trovare gli estremi di un atto o per orientarti in una materia.
 
 ## Disclaimer operativo
 

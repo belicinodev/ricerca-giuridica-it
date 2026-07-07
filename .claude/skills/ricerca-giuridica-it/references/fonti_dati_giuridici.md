@@ -1,6 +1,6 @@
 # Fonti dati giuridici - Mappa di accesso e riuso
 
-Companion tecnico del catalogo brocardi: per ogni fonte ufficiale, come accedervi (anche in modo automatico), con quale licenza e con quali regole di riuso. Serve alla skill per instradare le ricerche e per valutare cosa è lecito acquisire in un corpus documentale.
+Companion tecnico del catalogo degli estremi normativi (`fonti_normative.md`): per ogni fonte ufficiale, come accedervi (anche in modo automatico), con quale licenza e con quali regole di riuso. Serve alla skill per instradare le ricerche e per valutare cosa è lecito acquisire in un corpus documentale.
 
 - Data: 2026-07-04
 - Regola generale: il testo degli atti è libero, il valore aggiunto editoriale no. Verificare sempre licenza e termini d'uso prima di qualsiasi acquisizione.
@@ -29,7 +29,7 @@ Conseguenza pratica: un corpus normativo ampio e aggiornato è costruibile legit
 | Lavori preparatori | senato.it e camera.it (iter dei disegni di legge, dossier) | Consultazione web | Atti pubblici | Media |
 | Pubblicazione ufficiale | gazzettaufficiale.it | Consultazione web | Atto pubblico | Media |
 
-Le fonti di base — Costituzione, codice civile (R.D. 16 marzo 1942, n. 262), codice penale (R.D. 19 ottobre 1930, n. 1398), codici di procedura, testi unici — sono catalogate con estremi e stato di vigenza in `fonti_brocardi.md`. Il testo autorevole e aggiornato è sempre Normattiva.
+Le fonti di base — Costituzione, codice civile (R.D. 16 marzo 1942, n. 262), codice penale (R.D. 19 ottobre 1930, n. 1398), codici di procedura, testi unici — sono catalogate con estremi e stato di vigenza in `fonti_normative.md`. Il testo autorevole e aggiornato è sempre Normattiva.
 
 ---
 
@@ -147,5 +147,5 @@ Nota: questi coprono normativa e Corte Costituzionale. Per la Cassazione restano
 - Multivigenza: gestire la versione della norma applicabile a una certa data è il rischio tecnico più serio. Normattiva la espone via API, ma l'open data multivigente pieno copre per ora gli ultimi 5 anni.
 - Citazioni: citare solo ciò che è nel contesto recuperato, con estremi verificabili.
 - Citator assente: nessuna fonte gratuita dice se una sentenza è ancora buon diritto. Limite non colmabile senza banca dati a pagamento.
-- Encoding: molti PDF e pagine non sono UTF-8 (brocardi è Windows-1252). Prevedere normalizzazione.
+- Encoding: molti PDF e pagine di siti terzi non sono UTF-8 (frequente il Windows-1252). Prevedere normalizzazione.
 - Verifica finale: per uso con conseguenze (PA, gare, atti) l'output va sempre confrontato con la fonte ufficiale.
