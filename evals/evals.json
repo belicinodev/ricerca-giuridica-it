@@ -1,0 +1,126 @@
+{
+  "skill_name": "ricerca-giuridica-it",
+  "note": "Regola: una risposta attesa entra nel file solo dopo verifica sulla fonte ufficiale (Normattiva, EUR-Lex, sito istituzionale dell'ente). Ogni modifica alla skill ripassa tutte le eval prima del merge. Ultima verifica completa: 2026-07-07 — estremi normativi ricontrollati sulle fonti ufficiali via web, endpoint verificati con scripts/verifica_fonti.sh. Le eval marcate TEMPLATE sono comportamentali: si valutano sulla condotta della skill, non su un estremo.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Qual e il codice dei contratti pubblici attualmente vigente? Dammi gli estremi esatti e dimmi che fine hanno fatto i codici precedenti.",
+      "expected_output": "D.lgs. 31 marzo 2023, n. 36 indicato come vigente; D.lgs. 50/2016 e D.lgs. 163/2006 indicati come abrogati, rilevanti solo ratione temporis. Nessun estremo inventato.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "La disciplina delle locazioni abitative: e una legge o un decreto legislativo? Dammi gli estremi esatti.",
+      "expected_output": "Legge 9 dicembre 1998, n. 431 (legge ordinaria, non un decreto legislativo).",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "TEMPLATE: domanda fuori copertura del corpus, per verificare che la skill dichiari il limite invece di inventare estremi",
+      "expected_output": "La skill dichiara che il tema non e coperto e indica la fonte ufficiale, senza produrre estremi.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Che estremi ha il codice civile italiano? E il testo aggiornato dove lo verifico?",
+      "expected_output": "R.D. 16 marzo 1942, n. 262 (Approvazione del testo del Codice civile). Verifica del testo vigente su Normattiva. Nessun rinvio a fonti editoriali come autorita.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Che estremi ha il codice penale? E di che tipo di atto si tratta?",
+      "expected_output": "R.D. 19 ottobre 1930, n. 1398 (regio decreto, c.d. codice Rocco). Testo vigente su Normattiva.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Dove trovo il testo integrale delle sentenze del Consiglio di Stato e dei TAR?",
+      "expected_output": "giustizia-amministrativa.it, sezione Decisioni e pareri (full-text liberi). Nessun rinvio a banche dati commerciali.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "Chi adotta i provvedimenti in materia di protezione dei dati personali in Italia e dove si consultano? E il testo del GDPR dove lo verifico?",
+      "expected_output": "Garante per la protezione dei dati personali, provvedimenti su gpdp.it (banca dati DocWeb, citazione con numero doc web); GDPR = Reg. (UE) 2016/679, testo su EUR-Lex; linee guida EDPB su edpb.europa.eu.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Per un dubbio applicativo su una norma in materia di lavoro, dove trovo la prassi ufficiale (circolari e interpelli)?",
+      "expected_output": "Interpelli del Ministero del Lavoro ex art. 9 D.lgs. 124/2004 su lavoro.gov.it (sezione Interpelli); circolari e note dell'INL su ispettorato.gov.it; per la previdenza, circolari e messaggi INPS. Distinzione tra prassi (interpretazione) e fonte normativa.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "Devo citare una sentenza della Corte di giustizia dell'Unione europea: dove la cerco e con quali identificatori la cito?",
+      "expected_output": "Ricerca su curia.europa.eu (InfoCuria) o su EUR-Lex; citazione con identificatori ECLI e/o CELEX.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "Dove trovo le pronunce della Corte costituzionale e quelle della Corte dei conti in materia di responsabilita erariale?",
+      "expected_output": "Corte costituzionale: cortecostituzionale.it, sezione Ricerca pronunce (con ECLI). Corte dei conti: banchedati.corteconti.it. Nessun estremo di pronunce inventato.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "Ho una controversia con la mia banca su un addebito. Prima di fare causa, esistono decisioni di organismi ADR consultabili gratis? Dove?",
+      "expected_output": "ABF - Arbitro Bancario Finanziario (arbitrobancariofinanziario.it): decisioni dal 2010 con ricerca avanzata libera. Per i servizi di investimento: ACF presso Consob (acf.consob.it), decisioni dal 2017. Chiarito che sono decisioni ADR, orientamenti e non giurisprudenza. Nessun rinvio a banche dati a pagamento.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "Dove trovo il testo vigente di un contratto collettivo nazionale di lavoro del settore privato? E di un CCNL del pubblico impiego?",
+      "expected_output": "Settore privato: archivio nazionale dei contratti collettivi del CNEL (cnel.it/Archivio-Contratti), fonte ufficiale ex art. 17 L. 936/1986, con dataset open data in licenza IODL 2.0. Pubblico impiego: ARAN (aranagenzia.it) per comparto, oltre al deposito CNEL.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "TEMPLATE analisi comparata: data una tesi giuridica, verificare che la skill cerchi precedenti su entrambi i fronti e non faccia cherry-picking",
+      "expected_output": "Due elenchi distinti (conformi / difformi) con estremi completi per ogni pronuncia; orientamento prevalente dichiarato solo se emerge dal materiale recuperato, con il criterio esplicitato; dichiarazione che non esiste un citator gratuito e che l'assenza di difformi non prova che non esistano; nessun estremo inventato.",
+      "files": []
+    },
+    {
+      "id": 14,
+      "prompt": "TEMPLATE crea documento: chiesta una bozza di atto o clausola, verificare la disciplina della modalita",
+      "expected_output": "Bozza strutturata (fatto/diritto/conclusioni o clausola con nota di contesto); ogni citazione con estremi completi e proveniente dal contesto recuperato; dati di fatto mancanti resi come [DA COMPLETARE: ...] e mai inventati; output dichiarato come bozza da verificare prima del deposito o dell'invio.",
+      "files": []
+    },
+    {
+      "id": 15,
+      "prompt": "Mi serve la massima ufficiale CED (numero Rv) di una sentenza della Cassazione civile. Dove la trovo gratis?",
+      "expected_output": "Dichiarato che le massime CED con numero Rv non sono liberamente accessibili al pubblico. Alternative indicate: rassegne e relazioni dell'Ufficio del Massimario (cortedicassazione.it) e Portale del Massimario IPZS, che citano i numeri Rv; ItalgiureWeb gratuito per gli avvocati iscritti a Cassa Forense; full-text su SentenzeWeb con eventuale massima generata dichiarata come bozza. Nessun numero Rv inventato.",
+      "files": []
+    },
+    {
+      "id": 16,
+      "prompt": "Per una pratica commerciale scorretta di un venditore online: dove trovo i provvedimenti dell'autorita competente? E la piattaforma ODR europea e ancora attiva?",
+      "expected_output": "AGCM, ricerca provvedimenti su agcm.it (pratiche commerciali scorrette ex codice del consumo). La piattaforma ODR europea e dismessa dal 20 luglio 2025 (Reg. UE 2024/3228): indicare gli elenchi degli organismi ADR (MIMIT e Commissione UE) come alternativa.",
+      "files": []
+    },
+    {
+      "id": 17,
+      "prompt": "TEMPLATE strategia processuale: descritto un caso concreto e chiesta una strategia, verificare la disciplina della modalita",
+      "expected_output": "Raccomandazione in apertura (2-3 frasi); opzioni a confronto con fondamento, punti di forza/debolezza e rischi; questioni controverse trattate con il metodo dell'analisi comparata (conformi/difformi); fonti con estremi completi; passi operativi con termini marcati 'da verificare' e mai calcolati a memoria; dichiarazione che si tratta di orientamento e non di parere; nessun dato del caso concreto nelle query verso corpus o web.",
+      "files": []
+    },
+    {
+      "id": 18,
+      "prompt": "TEMPLATE sintesi dell'output: posto un quesito puntuale, verificare la disciplina del formato di risposta",
+      "expected_output": "Risposta che apre con la conclusione operativa; nessuna ripetizione del quesito, nessuna premessa di metodo, nessuna cronistoria della ricerca; una sola avvertenza in chiusura e solo se la questione ha effetti pratici; espansione solo se richiesta ('approfondisci'), compressione con 'in breve'.",
+      "files": []
+    },
+    {
+      "id": 19,
+      "prompt": "TEMPLATE collezioni del corpus: risultato proveniente dalla collezione 'studio' o 'puntatori', verificare la disciplina di citazione",
+      "expected_output": "Risultato da 'studio' citato esplicitamente come fonte dello studio, distinto dalle fonti ufficiali; risultato da 'puntatori' usato solo come rinvio alla fonte originale, senza citare testo non recuperato; collezione di provenienza dichiarata quando non e 'base'.",
+      "files": []
+    },
+    {
+      "id": 20,
+      "prompt": "Una legge regionale sembra in contrasto con una legge statale successiva: quale prevale? E dove trovo il testo vigente delle leggi regionali?",
+      "expected_output": "Il conflitto non si risolve per semplice gerarchia ma per competenza: riparto ex art. 117 Cost. (materie esclusive statali, concorrenti, residuali regionali); il contrasto si fa valere con il giudizio di legittimita costituzionale, e la skill non ne anticipa l'esito. Testo delle leggi regionali: Normattiva, sezione Legislazione regionale (motore federato sulle banche dati dei Consigli regionali), oppure la banca dati del singolo Consiglio regionale/BUR.",
+      "files": []
+    }
+  ]
+}
