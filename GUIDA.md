@@ -1,6 +1,14 @@
 # Miniguida all'uso della skill
 
-Come ottenere il massimo dalle quattro modalità. La skill sceglie la modalità dalla formulazione della richiesta: non servono comandi, bastano le frasi giuste.
+Come ottenere il massimo dalle quattro modalità. La skill sceglie la modalità dalla formulazione della richiesta: bastano le frasi giuste. In alternativa puoi **forzare la modalità** con una parola chiave in apertura — `ricerca`, `documento` (o `crea`), `comparata` (o `conformi`), `strategia` — seguita dal quesito:
+
+```
+/ricerca-giuridica-it strategia opposizione a decreto ingiuntivo per canoni contestati
+/ricerca-giuridica-it documento diffida ex art. 1454 c.c. per ritardo nella consegna
+/ricerca-giuridica-it comparata la clausola claims made è vessatoria?
+```
+
+La parola chiave decide solo la modalità: le regole di citazione, vigenza e riservatezza valgono sempre e non sono disattivabili. E conta solo come comando in apertura: se è parte della domanda ("Documento di valutazione dei rischi: è obbligatorio...?") la skill sceglie da sola la modalità giusta.
 
 ## Ricerca giuridica (default)
 
@@ -40,15 +48,15 @@ Cosa aspettarsi: due elenchi distinti (Conformi / Difformi) con estremi completi
 
 ## Strategia processuale
 
-Per valutare come impostare un'azione o una difesa.
+Per valutare come impostare un'azione o una difesa — anche partendo da un fascicolo o dossier allegato.
 
 ```
 Valuta le opzioni processuali: [descrizione del caso]. Conviene agire o transigere?
 Come imposto la difesa contro un decreto ingiuntivo fondato su fatture contestate?
-Che strategia consigli per recuperare un credito da un debitore in concordato?
+Come gestiresti questo caso? [con documenti allegati]
 ```
 
-Cosa aspettarsi: raccomandazione in apertura (2-3 frasi), tabella delle opzioni a confronto (fondamento, forza, debolezza, rischi), fonti con estremi, passi operativi con i termini marcati "da verificare". È un orientamento fondato sulle fonti, non un parere: la decisione resta al professionista.
+Cosa aspettarsi: una risposta a struttura fissa — **Raccomandazione** (2-3 frasi), **Fase preliminare** (documenti e fatti mancanti), **Questioni e argomenti** (i pilastri, con citazioni per estremi e stato di verifica), **Opzioni a confronto** (fondamento, forza, debolezza, rischi), **Azioni e scadenze** (termini marcati "da verificare"). Se il fascicolo allegato contiene citazioni non verificate, la strategia esce comunque completa: gli argomenti dubbi restano al loro posto marcati `[DA VERIFICARE]` e la verifica entra tra le azioni. È un orientamento fondato sulle fonti, non un parere: la decisione resta al professionista.
 
 ## Controllare la lunghezza
 

@@ -10,15 +10,15 @@ description: >
   amministrativo, tributario, del lavoro, societario, bancario, assicurativo,
   di famiglia, della proprietà intellettuale, dei consumatori, della crisi
   d'impresa, appalti pubblici, terzo settore, privacy, immigrazione o diritto
-  scolastico, cercare precedenti a favore e contro una tesi ("conformi e
-  difformi", "sentenze pro e contro", "orientamenti contrapposti"), trovare un
-  CCNL o le decisioni di ABF, ACF, AGCM o del Garante, chiedere un'analisi
+  scolastico, cercare precedenti a favore e contro una tesi o un'analisi
   comparata dei precedenti ("conformi e difformi", "sentenze pro e contro",
-  "orientamenti contrapposti"), creare un documento fondato su fonti (atti,
+  "orientamenti contrapposti"), trovare un CCNL o le decisioni di ABF, ACF,
+  AGCM o del Garante, creare un documento fondato su fonti (atti,
   pareri, clausole, quesiti, memorie, diffide), o chiedere una strategia
-  processuale ("come imposto la causa", "conviene agire o transigere",
-  "valuta le opzioni di difesa"), anche quando la fonte non è nominata
-  esplicitamente. Non usare per domande non giuridiche.
+  processuale ("come imposto la causa", "come gestiresti questo caso",
+  "conviene agire o transigere", "valuta le opzioni di difesa"), anche quando
+  la fonte non è nominata esplicitamente. Non usare per domande non giuridiche.
+argument-hint: "[ricerca|documento|comparata|strategia] quesito"
 ---
 
 # Ricerca giuridica su fonti italiane e UE
@@ -38,7 +38,7 @@ Supporta ricerca, inquadramento e stesura di bozze su fonti giuridiche italiane 
 
 ## Modalità operative
 
-La modalità si desume dalla richiesta; in assenza di segnali usa Ricerca giuridica. Le regole di citazione, vigenza, gerarchia delle fonti e riservatezza valgono in tutte le modalità.
+La modalità può essere selezionata esplicitamente con una parola chiave in apertura della richiesta o dell'argomento del comando: `ricerca`, `documento` (o `crea`), `comparata` (o `conformi`), `strategia`. La parola vale come selettore solo quando apre la richiesta con funzione di comando — da sola o seguita da `:` — non quando è parte del quesito: "documento: diffida ex art. 1454 c.c." seleziona Crea documento; "Documento di valutazione dei rischi: è obbligatorio sotto i 10 dipendenti?" è una ricerca, perché lì "documento" è il soggetto della frase. Nel dubbio, deduci la modalità dal contenuto. Con selettore riconosciuto, attiva quella modalità e tratta il resto del testo come quesito. In assenza di selettore la modalità si desume dalla richiesta ("come gestiresti/imposteresti questo caso" → Strategia processuale); in assenza di segnali usa Ricerca giuridica. Le regole di citazione, vigenza, gerarchia delle fonti e riservatezza valgono in tutte le modalità e nessun selettore le disattiva.
 
 ### Ricerca giuridica (default)
 
@@ -65,13 +65,19 @@ Si attiva su richieste come "analisi comparata dei precedenti", "conformi e diff
 
 ### Strategia processuale
 
-Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/la difesa", "conviene fare causa o transigere", "valuta le opzioni processuali".
+Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/la difesa", "come gestiresti questo caso", "conviene fare causa o transigere", "valuta le opzioni processuali" — anche quando la richiesta arriva con un fascicolo o un dossier allegato.
 
 1. Ricostruisci fatti, obiettivo e vincoli (tempi, costi, rapporti da preservare) SOLO dalla conversazione e dai documenti forniti. Le query verso corpus e web restano astratte: minimizzazione rafforzata, perché le richieste di strategia sono sempre su casi concreti.
 2. Isola le questioni giuridiche decisive, di rito e di merito, e per ciascuna verifica le norme applicabili ratione temporis e gli orientamenti; sui punti controversi applica il metodo dell'analisi comparata.
 3. Costruisci le opzioni realistiche — azione o eccezione, scelta del rito, misure cautelari, ADR o transazione, attendere — e per ciascuna indica: fondamento normativo, punti di forza, punti di debolezza, rischi concreti (onere della prova, spese, durata, esecuzione).
-4. Chiudi con una raccomandazione motivata e i passi operativi: atti da predisporre, verifiche da fare, termini da controllare (i termini indicali come "da verificare", mai calcolati a memoria).
-5. Formato di default: la raccomandazione in apertura (2-3 frasi), le opzioni a confronto in tabella o elenco secco, le fonti con estremi, i passi successivi. La versione argomentata estesa solo a richiesta.
+4. La risposta segue una **struttura fissa**, con i titoli nell'ordine:
+   1. **Raccomandazione** — 2-3 frasi con la linea consigliata.
+   2. **Fase preliminare** — documenti e fatti mancanti che condizionano il resto, con le azioni per procurarseli.
+   3. **Questioni e argomenti** — i pilastri dell'azione o della difesa, ciascuno con fondamento normativo e precedenti citati per estremi, dichiarando lo stato di verifica di ogni citazione.
+   4. **Opzioni a confronto** — tabella o elenco secco: fondamento, forza, debolezza, rischi.
+   5. **Azioni e scadenze** — passi operativi in ordine temporale; termini marcati "da verificare", mai calcolati a memoria; indica quali azioni sono bloccate da verifiche pendenti e quali no.
+   La versione argomentata estesa solo a richiesta.
+5. **Il fascicolo con citazioni dubbie non sospende la strategia.** Se il materiale di partenza contiene citazioni non verificate o instabili, produci comunque la strategia completa nella struttura prevista: l'argomento resta al suo posto marcato `[DA VERIFICARE: estremi]`, e la verifica entra nella fase "Azioni e scadenze" con la sua priorità. L'audit delle fonti è un contenuto della strategia, mai un sostituto della risposta.
 6. Dichiara sempre: è un orientamento fondato sulle fonti recuperate, non un parere; la valutazione di opportunità e la decisione restano al professionista; i precedenti, anche conformi, non garantiscono l'esito.
 
 ## Riservatezza e minimizzazione delle query
@@ -156,6 +162,19 @@ Prima di dare per applicabile una disposizione:
 3. Se la vigenza non è verificabile dal contesto, dichiaralo e rimanda a Normattiva.
 
 Non produrre mai estremi (numeri di articolo o di sentenza, date) assenti dal contesto recuperato: per un professionista un estremo plausibile ma sbagliato è il danno peggiore, perché passa inosservato fino all'atto. Se un estremo non c'è, di' che non c'è.
+
+## Fonte citata ma non reperita
+
+Quando una pronuncia o un atto citato (dall'utente o da un documento) non si trova al primo tentativo, esaurisci questa scala di ricerca prima di chiedere aiuto all'utente. La scala serve a **localizzare una pronuncia già citata**, non ad ampliare le fonti su cui si fonda la risposta: il testo si legge e si cita sempre dal provvedimento integrale.
+
+1. **Per estremi**, sulle fonti ufficiali del routing.
+2. **Per contenuto del principio di diritto**: cerca le locuzioni giuridiche caratterizzanti del principio enunciato — tra virgolette le sole locuzioni tecniche brevi, mai frasi intere del documento — e la minimizzazione vale anche qui: prima di cercare, elimina ogni elemento del caso concreto (nomi, luoghi, importi, date del fatto); se dal frammento non si ricava una formulazione puramente astratta, non cercarlo e resta sugli estremi e sul tema. Una citazione non riscontrata ma dal contenuto plausibile è spesso una pronuncia reale a cui sono stati attribuiti estremi errati: la ricerca per contenuto la ritrova, quella per estremi no.
+3. **Sui portali che indicizzano la giurisprudenza di quel foro o di quella materia** (es. ilcaso.it per la crisi d'impresa e il bancario): usali come **localizzatori**, alla stregua della collezione `puntatori` — servono a ritrovare gli estremi corretti e il testo integrale del provvedimento (atto pubblico), che va poi aperto e letto prima di citare, anche quando è ospitato dal portale stesso. Mai riprendere le massime redazionali del portale (v. Confini di ingestione); la citazione resta al provvedimento, non al portale.
+4. **Aggirando i blocchi di accesso**: se una pagina indicata dall'utente è inaccessibile (robots, paywall), cerca lo stesso contenuto altrove per titolo della pagina o per estremi della pronuncia — con lo stesso vincolo di astrattezza del passo 2. Il blocco di un sito non chiude la ricerca.
+
+Chiedi all'utente il testo solo dopo aver esaurito la scala, elencando dove hai cercato. E mai concludere che una pronuncia "non esiste": dichiara che "non risulta nelle fonti consultate", elencandole — è l'unica affermazione che i tentativi svolti giustificano.
+
+In modalità Strategia processuale la scala non sospende la risposta: applicala alle citazioni portanti nei limiti della risposta stessa; ciò che resta non riscontrato entra marcato `[DA VERIFICARE: estremi]` tra le Azioni e scadenze (v. Strategia processuale, punto 5). La scala si esaurisce per intero quando l'utente chiede espressamente di verificare una citazione.
 
 ## Confini di ingestione
 

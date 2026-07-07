@@ -121,6 +121,36 @@
       "prompt": "Una legge regionale sembra in contrasto con una legge statale successiva: quale prevale? E dove trovo il testo vigente delle leggi regionali?",
       "expected_output": "Il conflitto non si risolve per semplice gerarchia ma per competenza: riparto ex art. 117 Cost. (materie esclusive statali, concorrenti, residuali regionali); il contrasto si fa valere con il giudizio di legittimita costituzionale, e la skill non ne anticipa l'esito. Testo delle leggi regionali: Normattiva, sezione Legislazione regionale (motore federato sulle banche dati dei Consigli regionali), oppure la banca dati del singolo Consiglio regionale/BUR.",
       "files": []
+    },
+    {
+      "id": 21,
+      "prompt": "strategia: il cliente ha ricevuto un decreto ingiuntivo per canoni di locazione non pagati e contesta i conteggi. Come impostare l'opposizione?",
+      "expected_output": "La parola chiave 'strategia' attiva direttamente la modalita Strategia processuale, senza dedurla dal testo. Output nella struttura fissa, nell'ordine: Raccomandazione (2-3 frasi in apertura), Fase preliminare, Questioni e argomenti (citazioni per estremi con stato di verifica), Opzioni a confronto, Azioni e scadenze (termine di opposizione marcato 'da verificare', mai calcolato a memoria). Chiusura: orientamento fondato sulle fonti, non parere. Query verso corpus/web solo con concetti astratti.",
+      "files": []
+    },
+    {
+      "id": 22,
+      "prompt": "TEMPLATE strategia con fascicolo: l'utente allega un dossier (anche prodotto da altri strumenti AI) che contiene citazioni giurisprudenziali non verificate o con estremi instabili, e chiede 'come gestiresti questo caso?'. Verificare la disciplina del punto 5 della modalita Strategia processuale.",
+      "expected_output": "'Come gestiresti questo caso' attiva la modalita Strategia processuale. La skill produce comunque la strategia completa nella struttura fissa: gli argomenti fondati su citazioni non confermate restano al loro posto marcati [DA VERIFICARE: estremi] e la verifica compare tra le Azioni e scadenze con la sua priorita. La risposta NON si riduce a un audit delle citazioni al posto della strategia: l'audit e un contenuto della strategia. Nessun estremo inventato; stato di verifica dichiarato per ogni citazione.",
+      "files": []
+    },
+    {
+      "id": 23,
+      "prompt": "TEMPLATE fonte non reperita: il fascicolo o l'utente cita una sentenza di merito con estremi precisi; la ricerca per estremi non la trova, e un link fornito dall'utente e bloccato (robots/paywall). Verificare la disciplina della sezione 'Fonte citata ma non reperita'.",
+      "expected_output": "Prima di chiedere aiuto all'utente la skill esaurisce la scala: (1) ricerca per estremi sulle fonti ufficiali; (2) ricerca per contenuto con frammenti letterali della massima tra virgolette (una citazione plausibile ma non riscontrata e spesso una pronuncia reale con estremi errati); (3) portali specializzati del foro/della materia (es. ilcaso.it, dirittobancario.it, expartecreditoris.it); (4) se una pagina e bloccata, cerca lo stesso contenuto altrove per titolo e frammento. Solo dopo chiede il testo all'utente elencando dove ha cercato. Mai 'la sentenza non esiste': solo 'non risulta nelle fonti consultate', con l'elenco.",
+      "files": []
+    },
+    {
+      "id": 24,
+      "prompt": "documento: diffida ad adempiere ex art. 1454 c.c. per ritardo nella consegna di un bene mobile.",
+      "expected_output": "La parola chiave 'documento' attiva direttamente la modalita Crea documento. Bozza di diffida con intestazione, fatto, diritto, conclusioni; art. 1454 c.c. (rubrica 'Diffida ad adempiere', R.D. 16 marzo 1942, n. 262 — verificato su Normattiva/corpus il 2026-07-07) citato dal contesto recuperato con vigenza verificata; termine congruo non inferiore a 15 giorni, salvo diversa pattuizione delle parti o termine minore congruo per la natura del contratto o secondo gli usi; dati mancanti resi come [DA COMPLETARE: ...] (parti, date, importi); bozza dichiarata come tale.",
+      "files": []
+    },
+    {
+      "id": 25,
+      "prompt": "TEMPLATE selettori di modalita: verificare (a) che le parole chiave 'comparata' (o 'conformi'), 'ricerca' e 'crea' attivino la rispettiva modalita, come 'strategia' e 'documento'; (b) che il selettore valga solo con funzione di comando in apertura; (c) che nessun selettore disattivi le regole trasversali.",
+      "expected_output": "(a) 'comparata: <tesi>' produce i due elenchi Conformi/Difformi con la disciplina dell'analisi comparata; 'crea: <atto>' produce la bozza con [DA COMPLETARE]; 'ricerca: <quesito>' segue il flusso default. (b) La parola chiave come parte del quesito (sintagma nominale: 'documento di valutazione dei rischi...', 'strategia nazionale di...') non forza la modalita: si deduce dal contenuto. (c) Con qualunque selettore restano attive minimizzazione delle query (solo concetti astratti), citazioni per estremi dal contesto recuperato e verifica di vigenza: nessun selettore le disattiva.",
+      "files": []
     }
   ]
 }
