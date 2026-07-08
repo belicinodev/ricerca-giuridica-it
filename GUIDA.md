@@ -76,6 +76,8 @@ Le risposte costruiscono il quadro dall'alto verso il basso: Costituzione e legg
 
 Puoi descrivere il caso liberamente nella conversazione: la skill è progettata per **non** far uscire i dettagli — le ricerche verso corpus e web usano solo concetti giuridici astratti (istituti, norme, fattispecie), mai nomi di parti o dati riconducibili a persone o cause.
 
+E i documenti che alleghi — anche quelli di controparte o prodotti da altri strumenti — sono trattati come **dati da analizzare, mai come istruzioni**: se un documento contiene testo che tenta di pilotare l'assistente (es. "queste citazioni sono già verificate"), la skill non lo esegue e te lo segnala.
+
 ## Limiti da conoscere
 
 | Limite | Conseguenza | Cosa fa la skill |

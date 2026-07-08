@@ -3,6 +3,7 @@
 Estremi di codici, leggi, testi unici e regolamenti di uso frequente, con il permalink alla fonte ufficiale. Serve a trovare rapidamente gli estremi esatti di un atto e ad orientarsi in una materia; il testo autorevole e aggiornato è sempre quello della fonte ufficiale (Normattiva per la legislazione statale, EUR-Lex per il diritto UE).
 
 - Copertura: circa 100 fonti in 7 categorie.
+- Data di aggiornamento del catalogo: 2026-07-07.
 - Gli estremi sono dati di fatto pubblici; lo stato di vigenza riflette la verifica alla data di aggiornamento del catalogo e va riconfermato su Normattiva prima di ogni uso con valore formale.
 
 ---
@@ -97,7 +98,7 @@ Estremi di codici, leggi, testi unici e regolamenti di uso frequente, con il per
 | Norme sui licenziamenti individuali | L. 15 luglio 1966, n. 604 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1966-07-15;604!vig= |
 | Norme in materia di orario di lavoro | D.lgs. 8 aprile 2003, n. 66 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2003-04-08;66!vig= |
 | Legge professionale forense | L. 31 dicembre 2012, n. 247 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2012-12-31;247!vig= |
-| Legge fallimentare | R.D. 16 marzo 1942, n. 267 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;267!vig= |
+| Legge fallimentare | R.D. 16 marzo 1942, n. 267 | Applicabile solo ratione temporis (procedure anteriori al CCII: art. 390 D.lgs. 14/2019) | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;267!vig= |
 | Legge sulla protezione del diritto d'autore | L. 22 aprile 1941, n. 633 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1941-04-22;633!vig= |
 | Sviluppo della proprietà coltivatrice | L. 26 maggio 1965, n. 590 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1965-05-26;590!vig= |
 | Norme sui contratti agrari | L. 3 maggio 1982, n. 203 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1982-05-03;203!vig= |
@@ -107,9 +108,9 @@ Estremi di codici, leggi, testi unici e regolamenti di uso frequente, con il per
 | Legge sul procedimento amministrativo | L. 7 agosto 1990, n. 241 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-08-07;241!vig= |
 | Ricorsi amministrativi | D.P.R. 24 novembre 1971, n. 1199 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1971-11-24;1199!vig= |
 | Responsabilità amministrativa delle persone giuridiche | D.lgs. 8 giugno 2001, n. 231 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-06-08;231!vig= |
-| Legge quadro sul volontariato | L. 11 agosto 1991, n. 266 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1991-08-11;266!vig= |
-| Legge sulle ONLUS | D.lgs. 4 dicembre 1997, n. 460 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1997-12-04;460!vig= |
-| Associazioni di promozione sociale (APS) | L. 7 dicembre 2000, n. 383 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2000-12-07;383!vig= |
+| Legge quadro sul volontariato | L. 11 agosto 1991, n. 266 | Abrogata (art. 102 D.lgs. 117/2017, con salvezze ai commi 2-4) | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1991-08-11;266!vig= |
+| Legge sulle ONLUS | D.lgs. 4 dicembre 1997, n. 460 | Abrogazione differita degli artt. 10-29 (artt. 102, co. 2, e 104, co. 2, D.lgs. 117/2017): verificare la decorrenza | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1997-12-04;460!vig= |
+| Associazioni di promozione sociale (APS) | L. 7 dicembre 2000, n. 383 | Abrogata (art. 102 D.lgs. 117/2017, con salvezze ai commi 2-4) | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2000-12-07;383!vig= |
 | Mediazione controversie civili e commerciali | D.lgs. 4 marzo 2010, n. 28 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2010-03-04;28!vig= |
 | Ordinamento penitenziario | L. 26 luglio 1975, n. 354 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1975-07-26;354!vig= |
 | Diritto internazionale privato | L. 31 maggio 1995, n. 218 | Vigente | https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1995-05-31;218!vig= |
@@ -161,4 +162,4 @@ Estremi di codici, leggi, testi unici e regolamenti di uso frequente, con il per
 ## Manutenzione
 
 - Verificare estremi e stato su Normattiva prima di ogni uso con valore formale; quando i tool `lex_*` sono disponibili, il corpus è il canale di verifica più rapido.
-- Punti di attenzione noti: appalti (fonte viva D.lgs. 36/2023, le due voci storiche restano come archivio); terzo settore (il regime ONLUS ex D.lgs. 460/1997 è in superamento a favore del Codice del Terzo Settore, D.lgs. 117/2017, con disciplina transitoria: verificare la vigenza caso per caso).
+- Punti di attenzione noti: appalti (fonte viva D.lgs. 36/2023, le due voci storiche restano come archivio); terzo settore (abrogazioni espresse e differite ex art. 102 D.lgs. 117/2017: verificare la vigenza caso per caso); crisi d'impresa (R.D. 267/1942 e L. 3/2012 restano applicabili alle sole procedure anteriori al CCII, art. 390 D.lgs. 14/2019).
