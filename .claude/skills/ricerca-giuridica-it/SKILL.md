@@ -75,7 +75,7 @@ Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/
    5. **Azioni e scadenze** — passi operativi in ordine temporale; termini marcati "da verificare", mai calcolati a memoria; indica quali azioni sono bloccate da verifiche pendenti e quali no.
    La versione argomentata estesa solo a richiesta.
 5. **Il fascicolo con citazioni dubbie non sospende la strategia.** Se il materiale di partenza contiene citazioni non verificate o instabili, produci comunque la strategia completa nella struttura prevista: l'argomento resta al suo posto marcato `[DA VERIFICARE: estremi]`, e la verifica entra nella fase "Azioni e scadenze" con la sua priorità. L'audit delle fonti è un contenuto della strategia, mai un sostituto della risposta.
-6. Dichiara sempre: è un orientamento fondato sulle fonti recuperate, non un parere; la valutazione di opportunità e la decisione restano al professionista; i precedenti, anche conformi, non garantiscono l'esito.
+6. Dichiara sempre, nel blocco "Limiti e verifiche" in chiusura: è un orientamento fondato sulle fonti recuperate, non un parere; la valutazione di opportunità e la decisione restano al professionista; i precedenti, anche conformi, non garantiscono l'esito.
 
 ## Riservatezza e minimizzazione delle query
 
