@@ -1,24 +1,21 @@
 ---
 name: ricerca-giuridica-it
 description: >
-  Ricerca giuridica su fonti italiane e UE: normativa, prassi amministrativa e
-  giurisprudenza. Usare questa skill ogni volta che l'utente chiede di trovare,
-  inquadrare o citare una norma ("cosa dice l'articolo...", "quale legge
-  disciplina...", "è ancora in vigore...", "che estremi ha..."), cercare
-  sentenze, massime o orientamenti giurisprudenziali, verificare la vigenza di
-  una disposizione, inquadrare istituti di diritto civile, penale,
-  amministrativo, tributario, del lavoro, societario, bancario, assicurativo,
-  di famiglia, della proprietà intellettuale, dei consumatori, della crisi
-  d'impresa, appalti pubblici, terzo settore, privacy, immigrazione o diritto
-  scolastico, cercare precedenti a favore e contro una tesi o un'analisi
-  comparata dei precedenti ("conformi e difformi", "sentenze pro e contro",
-  "orientamenti contrapposti"), trovare un CCNL o le decisioni di ABF, ACF,
-  AGCM o del Garante, creare un documento fondato su fonti (atti,
-  pareri, clausole, quesiti, memorie, diffide), o chiedere una strategia
-  processuale ("come imposto la causa", "come gestiresti questo caso",
-  "conviene agire o transigere", "valuta le opzioni di difesa"), anche quando
-  la fonte non è nominata esplicitamente. Non usare per domande non giuridiche.
-argument-hint: "[ricerca|documento|comparata|strategia] quesito"
+  Ricerca giuridica su fonti italiane e UE: normativa, prassi e giurisprudenza
+  in ogni materia (civile, penale, amministrativo, lavoro, tributario e
+  specialistiche). Usare quando l'utente chiede di trovare, inquadrare o citare
+  una norma ("cosa dice l'articolo...", "quale legge disciplina...", "è ancora
+  in vigore...", "che estremi ha..."), cercare sentenze, massime o
+  orientamenti, verificare la vigenza di una disposizione, verificare una
+  citazione o l'esistenza di una pronuncia ("questa sentenza esiste?",
+  "controlla le citazioni di questo atto"), cercare precedenti a favore e
+  contro una tesi ("conformi e difformi", "sentenze pro e contro"), trovare un
+  CCNL o le decisioni di ABF, ACF, AGCM o del Garante, creare un documento
+  fondato su fonti (atti, pareri, clausole, contratti, memorie, diffide), o
+  impostare una strategia processuale ("come imposto la causa", "come
+  gestiresti questo caso", "conviene agire o transigere"), anche quando la
+  fonte non è nominata. Non usare per domande non giuridiche.
+argument-hint: "[ricerca:|documento:|comparata:|strategia:] quesito"
 ---
 
 # Ricerca giuridica su fonti italiane e UE

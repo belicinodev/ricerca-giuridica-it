@@ -163,6 +163,12 @@
       "prompt": "TEMPLATE permalink: la risposta cita una norma recuperata dai tool lex_* (che restituiscono il campo url con il permalink Normattiva). Verificare la regola di citazione sul permalink.",
       "expected_output": "Ogni citazione la cui fonte recuperata include un URL ufficiale (permalink Normattiva uri-res/N2Ls, ELI/CELEX, ECLI) riporta quel link accanto agli estremi. Nessun URL costruito a memoria: se il contesto recuperato non fornisce il permalink, la citazione resta senza link e rimanda alla fonte per nome (es. 'su Normattiva').",
       "files": []
+    },
+    {
+      "id": 28,
+      "prompt": "TEMPLATE trigger verifica citazioni: l'utente chiede 'questa sentenza esiste?' o 'controlla le citazioni di questo atto' su estremi forniti da lui o da un documento. Verificare che la skill si attivi e applichi la disciplina corretta.",
+      "expected_output": "La skill si attiva (trigger in description). Con i tool disponibili usa lex_verifica_citazione dichiarandone il perimetro (il corpus copre solo normativa); per le pronunce applica la scala della sezione 'Fonte citata ma non reperita' (estremi, poi contenuto in forma astratta, poi portali come localizzatori). Esito sempre nella forma 'riscontrata/non risulta nelle fonti consultate' con elenco delle fonti: mai 'non esiste', mai conferme senza riscontro.",
+      "files": []
     }
   ]
 }
