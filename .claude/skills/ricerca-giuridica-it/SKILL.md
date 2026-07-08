@@ -48,6 +48,7 @@ Si attiva su richieste come "crea/redigi/prepara" un atto, un parere, una memori
 - Struttura: per gli atti, intestazione, fatto, diritto, conclusioni; per i pareri, quesito, inquadramento normativo, orientamenti, conclusione operativa; per le clausole, testo della clausola più nota di contesto normativo. Registro forense italiano, sintetico.
 - Ogni riferimento normativo o giurisprudenziale segue le regole di citazione e proviene dal contesto recuperato; prima di fondare la bozza su una norma, verifica la vigenza.
 - Per i dati di fatto mancanti inserisci segnaposto espliciti nel formato `[DA COMPLETARE: ...]`: mai inventare fatti, date, importi o generalità.
+- Le citazioni fornite dall'utente (o dai documenti) e non riscontrate seguono la sezione "Fonte citata ma non reperita": nella bozza entrano solo marcate `[DA VERIFICARE: estremi]` e non fondano da sole un passaggio in diritto.
 - La bozza è dichiarata come tale: l'output è una base di lavoro che il professionista rivede; per il deposito o l'invio la responsabilità della verifica resta all'utente.
 
 ### Analisi comparata
@@ -65,7 +66,7 @@ Si attiva su richieste come "analisi comparata dei precedenti", "conformi e diff
 Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/la difesa", "come gestiresti questo caso", "conviene fare causa o transigere", "valuta le opzioni processuali" — anche quando la richiesta arriva con un fascicolo o un dossier allegato.
 
 1. Ricostruisci fatti, obiettivo e vincoli (tempi, costi, rapporti da preservare) SOLO dalla conversazione e dai documenti forniti. Le query verso corpus e web restano astratte: minimizzazione rafforzata, perché le richieste di strategia sono sempre su casi concreti.
-2. Isola le questioni giuridiche decisive, di rito e di merito, e per ciascuna verifica le norme applicabili ratione temporis e gli orientamenti; sui punti controversi applica il metodo dell'analisi comparata.
+2. Isola le questioni giuridiche decisive, di rito e di merito, e per ciascuna verifica le norme applicabili ratione temporis e gli orientamenti; sui punti controversi applica il metodo dell'analisi comparata (entrambi i fronti con pari impegno, prevalenza dichiarata solo se emerge dal materiale), riassumendone l'esito dentro "Questioni e argomenti" senza i due elenchi separati; il limite del citator si dichiara una volta sola, nel blocco "Limiti e verifiche".
 3. Costruisci le opzioni realistiche — azione o eccezione, scelta del rito, misure cautelari, ADR o transazione, attendere — e per ciascuna indica: fondamento normativo, punti di forza, punti di debolezza, rischi concreti (onere della prova, spese, durata, esecuzione).
 4. La risposta segue una **struttura fissa**, con i titoli nell'ordine:
    1. **Raccomandazione** — 2-3 frasi con la linea consigliata.
@@ -73,7 +74,7 @@ Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/
    3. **Questioni e argomenti** — i pilastri dell'azione o della difesa, ciascuno con fondamento normativo e precedenti citati per estremi, dichiarando lo stato di verifica di ogni citazione.
    4. **Opzioni a confronto** — tabella o elenco secco: fondamento, forza, debolezza, rischi.
    5. **Azioni e scadenze** — passi operativi in ordine temporale; termini marcati "da verificare", mai calcolati a memoria; indica quali azioni sono bloccate da verifiche pendenti e quali no.
-   La versione argomentata estesa solo a richiesta.
+   La versione argomentata estesa solo a richiesta. La struttura fissa prevale sulle regole generali di formato: su richiesta di sintesi ("in breve") ogni sezione si comprime al minimo, ma i cinque titoli restano — l'assenza di una sezione è essa stessa informazione.
 5. **Il fascicolo con citazioni dubbie non sospende la strategia.** Se il materiale di partenza contiene citazioni non verificate o instabili, produci comunque la strategia completa nella struttura prevista: l'argomento resta al suo posto marcato `[DA VERIFICARE: estremi]`, e la verifica entra nella fase "Azioni e scadenze" con la sua priorità. L'audit delle fonti è un contenuto della strategia, mai un sostituto della risposta.
 6. Dichiara sempre, nel blocco "Limiti e verifiche" in chiusura: è un orientamento fondato sulle fonti recuperate, non un parere; la valutazione di opportunità e la decisione restano al professionista; i precedenti, anche conformi, non garantiscono l'esito.
 

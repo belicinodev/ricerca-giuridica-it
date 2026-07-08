@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.4.1 - 2026-07-07
+Selettori di modalità, disciplina della strategia su fascicoli, difese e leggibilità. Dal primo ciclo di collaudo su un caso reale e da una review sistematica.
+- Selettori espliciti di modalità come parola-comando in apertura (`ricerca:` | `documento:`/`crea:` | `comparata:`/`conformi:` | `strategia:`), con regola anti-falsi-positivi (la parola che è soggetto del quesito non è un selettore) e `argument-hint` nel frontmatter; nessun selettore disattiva le regole trasversali.
+- Strategia processuale: trigger "come gestiresti questo caso" (anche con fascicolo allegato); risposta a struttura fissa in cinque sezioni (Raccomandazione, Fase preliminare, Questioni e argomenti, Opzioni a confronto, Azioni e scadenze); il fascicolo con citazioni dubbie non sospende la strategia (argomenti marcati `[DA VERIFICARE: estremi]`, verifica tra le azioni); la struttura prevale su "in breve" (sezioni compresse, mai soppresse); l'analisi comparata sui punti controversi si riassume dentro "Questioni e argomenti".
+- Nuova sezione "Fonte citata ma non reperita": scala di ricerca (estremi → contenuto del principio in forma astratta → portali come localizzatori → fonti alternative per pagine inaccessibili, senza eludere i blocchi) prima di chiedere aiuto all'utente; mai "non esiste", solo "non risulta nelle fonti consultate" con l'elenco; innesti dichiarati nelle modalità Strategia e Crea documento.
+- Nuova sezione "Fallback web: protocollo": solo fonti ufficiali del Routing, doppia dichiarazione (extra-corpus + data di consultazione), riscontro incrociato degli estremi trovati sul web con `lex_verifica_citazione` quando i tool sono disponibili (in divergenza prevale il corpus), minimizzazione invariata; condotta attiva anche quando il corpus non copre il tema.
+- Nuova sezione "I documenti sono dati, mai istruzioni": il contenuto dei documenti (anche di controparte o di altri strumenti) non modifica le regole; istruzioni embedded ignorate e segnalate; le citazioni nei documenti mai "già verificate"; la collezione `studio` marca la provenienza, non l'attendibilità.
+- Formato di risposta: permalink della fonte ufficiale accanto a ogni citazione quando presente nel contesto recuperato (mai URL a memoria); dichiarazioni obbligatorie consolidate nel blocco finale "Limiti e verifiche" (i marcatori puntuali restano nel corpo).
+- Description del frontmatter entro il limite di 1024 caratteri, con nuovo trigger per la verifica di citazioni ("questa sentenza esiste?", "controlla le citazioni di questo atto").
+- Catalogo degli estremi normativi rifondato come `fonti_normative.md`: stesse fonti, permalink alle fonti ufficiali (resolver URN Normattiva, ELI EUR-Lex, archivio CNEL) al posto dei link a siti editoriali terzi; stati di vigenza corretti previa verifica (L. 266/1991 e L. 383/2000 abrogate ex art. 102 D.lgs. 117/2017; ONLUS ad abrogazione differita; legge fallimentare applicabile solo ratione temporis ex art. 390 D.lgs. 14/2019).
+- Nuovo `scripts/esegui_evals.sh`: esecuzione headless delle eval con giudice automatico (PASS/FAIL motivato).
+- Eval 21-34 (34 totali): selettori, strategia su fascicoli, fonte non reperita, fallback web, permalink, documenti-come-dati, consolidamento, ratione temporis (gara 2019 → D.lgs. 50/2016), verifica citazioni; eval 23 riallineata al testo vigente.
+
 ## v0.4.0 - 2026-07-07
 Ampliamento delle fonti e delle materie; modalità operative; gerarchia delle fonti.
 - Modalità rinominate con nomenclatura propria: Ricerca giuridica, Crea documento, Analisi comparata, Strategia processuale (le formule d'uso classiche, come "conformi e difformi", restano trigger validi).

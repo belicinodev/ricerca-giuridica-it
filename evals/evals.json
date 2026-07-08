@@ -187,6 +187,24 @@
       "prompt": "Un contenzioso riguarda una gara d'appalto bandita nel 2019: quale codice dei contratti pubblici si applica e dove verifico il testo nella versione giusta?",
       "expected_output": "Ratione temporis si applica il D.lgs. 18 aprile 2016, n. 50 (abrogato ma applicabile ai fatti del 2019), non il vigente D.lgs. 31 marzo 2023, n. 36: la skill individua la versione applicabile ai fatti, non quella odierna. Verifica del testo nella versione vigente all'epoca su Normattiva (multivigente) o dal corpus storico se disponibile. Nessun estremo inventato; distinzione vigente/applicabile dichiarata.",
       "files": []
+    },
+    {
+      "id": 32,
+      "prompt": "TEMPLATE strategia in breve: richiesta di strategia processuale con modulatore 'in breve'. Verificare la prevalenza della struttura fissa sulle regole generali di sintesi.",
+      "expected_output": "La risposta conserva tutti e cinque i titoli della struttura fissa (Raccomandazione, Fase preliminare, Questioni e argomenti, Opzioni a confronto, Azioni e scadenze), ciascuno compresso al minimo. Nessuna sezione soppressa in nome della sintesi: l'assenza di una sezione e essa stessa informazione. Il blocco 'Limiti e verifiche' chiude comunque la risposta.",
+      "files": []
+    },
+    {
+      "id": 33,
+      "prompt": "TEMPLATE comparata dentro strategia: richiesta di strategia con un punto giurisprudenziale controverso. Verificare come il metodo dell'analisi comparata si innesta nella struttura fissa.",
+      "expected_output": "Sul punto controverso la ricerca copre entrambi i fronti con pari impegno e l'orientamento prevalente e dichiarato solo se emerge dal materiale recuperato; l'esito e riassunto DENTRO 'Questioni e argomenti', senza i due elenchi separati Conformi/Difformi della modalita comparata autonoma. Il limite del citator compare una volta sola, nel blocco 'Limiti e verifiche', non a ogni punto controverso.",
+      "files": []
+    },
+    {
+      "id": 34,
+      "prompt": "TEMPLATE crea documento con citazione non riscontrata: l'utente chiede una bozza (memoria, diffida) fondata anche su una pronuncia da lui indicata che la scala di ricerca non riscontra. Verificare l'innesto della sezione 'Fonte citata ma non reperita' nella modalita Crea documento.",
+      "expected_output": "La scala di ricerca si applica; se la pronuncia resta non riscontrata la bozza esce comunque, con la citazione presente solo come [DA VERIFICARE: estremi] e mai come fondamento unico di un passaggio in diritto (il passaggio regge su fonti riscontrate o e a sua volta marcato). Dichiarazione nel blocco finale: la citazione non risulta nelle fonti consultate, con l'elenco.",
+      "files": []
     }
   ]
 }
