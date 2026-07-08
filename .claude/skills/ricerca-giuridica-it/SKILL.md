@@ -73,7 +73,7 @@ Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/
    2. **Fase preliminare** — documenti e fatti mancanti che condizionano il resto, con le azioni per procurarseli.
    3. **Questioni e argomenti** — i pilastri dell'azione o della difesa, ciascuno con fondamento normativo e precedenti citati per estremi, dichiarando lo stato di verifica di ogni citazione.
    4. **Opzioni a confronto** — tabella o elenco secco: fondamento, forza, debolezza, rischi.
-   5. **Azioni e scadenze** — passi operativi in ordine temporale; termini marcati "da verificare", mai calcolati a memoria; indica quali azioni sono bloccate da verifiche pendenti e quali no.
+   5. **Azioni e scadenze** — passi operativi in ordine temporale; termini marcati "da verificare", mai calcolati a memoria: cita la regola di computo e la durata per estremi (v. Computo dei termini) e lascia il conto sulle date reali all'utente; indica quali azioni sono bloccate da verifiche pendenti e quali no.
    La versione argomentata estesa solo a richiesta. La struttura fissa prevale sulle regole generali di formato: su richiesta di sintesi ("in breve") ogni sezione si comprime al minimo, ma i cinque titoli restano — l'assenza di una sezione è essa stessa informazione.
 5. **Il fascicolo con citazioni dubbie non sospende la strategia.** Se il materiale di partenza contiene citazioni non verificate o instabili, produci comunque la strategia completa nella struttura prevista: l'argomento resta al suo posto marcato `[DA VERIFICARE: estremi]`, e la verifica entra nella fase "Azioni e scadenze" con la sua priorità. L'audit delle fonti è un contenuto della strategia, mai un sostituto della risposta.
 6. Dichiara sempre, nel blocco "Limiti e verifiche" in chiusura: è un orientamento fondato sulle fonti recuperate, non un parere; la valutazione di opportunità e la decisione restano al professionista; i precedenti, anche conformi, non garantiscono l'esito.
@@ -112,6 +112,7 @@ Uso dei tool:
 - `lex_stato_corpus`: chiamalo per primo sui temi non ovvi — dichiara collezioni coperte, conteggi e data dell'ultimo aggiornamento. Usa la risposta per dichiarare i limiti invece di improvvisare.
 - `lex_cerca_norma` e `lex_leggi_articolo`: per il normativo.
 - `lex_cerca_giurisprudenza`: per sentenze e massime generate.
+- `lex_verifica_citazione`: per confermare o smentire un estremo (norma o pronuncia) contro il corpus, dichiarandone il perimetro; usalo per la verifica delle citazioni e nel riscontro incrociato del Fallback web.
 - Cita solo ciò che i tool restituiscono, dichiarando la collezione di provenienza quando non è `base`. Se il tema non è coperto, dichiaralo e prosegui con il Fallback web (v. protocollo), indicando la fonte ufficiale su cui stai cercando.
 
 ### Fallback web: protocollo
@@ -178,6 +179,10 @@ Prima di dare per applicabile una disposizione:
 
 Non produrre mai estremi (numeri di articolo o di sentenza, date) assenti dal contesto recuperato: per un professionista un estremo plausibile ma sbagliato è il danno peggiore, perché passa inosservato fino all'atto. Se un estremo non c'è, di' che non c'è.
 
+### Computo dei termini
+
+I termini non si calcolano mai a memoria. Quando la richiesta implica una scadenza: individua e cita per estremi la **regola di computo** applicabile (processuale civile art. 155 c.p.c., penale art. 172 c.p.p., prescrizione sostanziale art. 2963 c.c.) e la **durata** del termine dalla disposizione che lo prevede; distingui perentorio da ordinatorio; elenca i dati che servono per il conteggio (dies a quo e sua natura, sospensione feriale, festività della scadenza, notifiche). Non presentare la data calcolata come definitiva: è un conteggio da verificare sul calendario e sulle date reali. Le regole e gli estremi verificati sono in `references/computo_termini.md`.
+
 ## Fonte citata ma non reperita
 
 Quando una pronuncia o un atto citato (dall'utente o da un documento) non si trova al primo tentativo, esaurisci questa scala di ricerca prima di chiedere aiuto all'utente. La scala serve a **localizzare una pronuncia già citata**, non ad ampliare le fonti su cui si fonda la risposta: il testo si legge e si cita sempre dal provvedimento integrale.
@@ -232,6 +237,7 @@ Le massime redazionali altrui (riviste, editori, siti divulgativi) sono protette
 - `references/fonti_per_materia.md`: kit minimo di fonti gratuite per ciascuna materia di pratica (16 aree), con lacune dichiarate. Leggilo quando un quesito cade in una materia specialistica.
 - `references/fonti_dati_giuridici.md`: mappa delle fonti con endpoint, licenze e regole di acquisizione, incluse la gerarchia delle massime e le fonti ADR/CCNL. Leggila quando serve indicare dove reperire una fonte o valutarne il riuso.
 - `references/fonti_normative.md`: catalogo per materia di codici, leggi e testi unici con estremi normativi e permalink alla fonte ufficiale. Leggilo per trovare gli estremi di un atto o per orientarti in una materia.
+- `references/computo_termini.md`: regole di computo dei termini processuali e sostanziali (dies a quo, festività, sospensione feriale, perentorio/ordinatorio, rimessione in termini) con estremi verificati. Leggilo quando la richiesta tocca una scadenza o una decadenza.
 
 ## Disclaimer operativo
 

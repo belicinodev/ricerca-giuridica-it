@@ -205,6 +205,18 @@
       "prompt": "TEMPLATE crea documento con citazione non riscontrata: l'utente chiede una bozza (memoria, diffida) fondata anche su una pronuncia da lui indicata che la scala di ricerca non riscontra. Verificare l'innesto della sezione 'Fonte citata ma non reperita' nella modalita Crea documento.",
       "expected_output": "La scala di ricerca si applica; se la pronuncia resta non riscontrata la bozza esce comunque, con la citazione presente solo come [DA VERIFICARE: estremi] e mai come fondamento unico di un passaggio in diritto (il passaggio regge su fonti riscontrate o e a sua volta marcato). Dichiarazione nel blocco finale: la citazione non risulta nelle fonti consultate, con l'elenco.",
       "files": []
+    },
+    {
+      "id": 35,
+      "prompt": "Ho ricevuto la notifica di una sentenza civile di primo grado e voglio appellare. Quanto tempo ho e come si calcola il termine?",
+      "expected_output": "Cita la regola di computo (art. 155 c.p.c.: dies a quo escluso, festivi computati, proroga se la scadenza cade in giorno festivo o di sabato per atti fuori udienza) e il termine breve di 30 giorni dalla notifica per l'appello (art. 325 c.p.c.), in alternativa il termine lungo di sei mesi dalla pubblicazione ex art. 327 c.p.c. se manca la notifica; segnala la sospensione feriale 1-31 agosto (L. 742/1969, da verificare su Normattiva perche non nel corpus). NON fornisce una data calcolata come definitiva: indica i dati necessari (data di notifica, festivita, sospensione feriale) e lascia il conteggio da verificare sulle date reali. Nessun estremo inventato.",
+      "files": []
+    },
+    {
+      "id": 36,
+      "prompt": "TEMPLATE computo termini: quesito che implica una scadenza processuale o una decadenza. Verificare la disciplina della sezione 'Computo dei termini'.",
+      "expected_output": "La skill non calcola la data a memoria: individua e cita per estremi la regola di computo applicabile (art. 155 c.p.c. per il processuale civile, art. 172 c.p.p. per il penale, art. 2963 c.c. per la prescrizione), la durata del termine dalla disposizione che lo prevede, distingue perentorio da ordinatorio (art. 153 c.p.c.), elenca i dati necessari al conteggio (dies a quo, sospensione feriale, festivita, notifiche) e presenta l'eventuale risultato come conteggio da verificare, mai come data definitiva.",
+      "files": []
     }
   ]
 }

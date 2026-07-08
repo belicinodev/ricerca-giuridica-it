@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.2 - 2026-07-08
+Computo dei termini e completamento del contratto dei tool.
+- Nuovo catalogo `references/computo_termini.md`: le regole per calcolare correttamente un termine, con estremi verificati e permalink — computo processuale civile (art. 155 c.p.c.) e penale (art. 172 c.p.p.), prescrizione sostanziale (art. 2963 c.c.), perentorio/ordinatorio e rimessione in termini (art. 153 c.p.c.), sospensione feriale (L. 742/1969, segnalata da verificare), decadenze ricorrenti (art. 325 e 327 c.p.c., 585 c.p.p., 29 c.p.a.). È metodo, non aritmetica: la skill non calcola mai una data a memoria.
+- SKILL.md: nuova sotto-sezione "Computo dei termini" nella Verifica; la modalità Strategia cita la regola di computo e la durata per estremi nelle Azioni e scadenze; puntatore alla reference.
+- `lex_verifica_citazione` aggiunto all'elenco d'uso dei tool in SKILL.md e al contratto dei tool in CLAUDE.md (era già usato dal protocollo di fallback ma non elencato).
+- Eval 35-36 (36 totali) sul computo dei termini.
+
 ## v0.4.1 - 2026-07-07
 Selettori di modalità, disciplina della strategia su fascicoli, difese e leggibilità. Dal primo ciclo di collaudo su un caso reale e da una review sistematica.
 - Selettori espliciti di modalità come parola-comando in apertura (`ricerca:` | `documento:`/`crea:` | `comparata:`/`conformi:` | `strategia:`), con regola anti-falsi-positivi (la parola che è soggetto del quesito non è un selettore) e `argument-hint` nel frontmatter; nessun selettore disattiva le regole trasversali.
