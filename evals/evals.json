@@ -179,7 +179,7 @@
     {
       "id": 30,
       "prompt": "TEMPLATE consolidamento dichiarazioni: risposta di strategia processuale costruita in fallback web con punti giurisprudenziali controversi (quindi con piu dichiarazioni obbligatorie: provenienza extra-corpus e data, limite del citator, natura di orientamento). Verificare la regola di consolidamento del Formato di risposta.",
-      "expected_output": "Le dichiarazioni obbligatorie compaiono tutte, ma consolidate in un unico blocco finale 'Limiti e verifiche', una frase ciascuna, senza ripetizioni nel corpo della risposta. Nessuna dichiarazione obbligatoria omessa in nome della sintesi; nessun disclaimer ripetuto a ogni paragrafo.",
+      "expected_output": "Le dichiarazioni obbligatorie compaiono tutte, consolidate in un unico blocco finale 'Limiti e verifiche', una frase ciascuna, senza ripetizioni nel corpo. Il blocco chiude la risposta DOPO l'ultima sezione della struttura fissa (dopo 'Azioni e scadenze'), come chiusura e non come sesta sezione. I marcatori puntuali restano al loro posto nel corpo ([DA VERIFICARE: estremi] accanto alla citazione, stato di verifica per citazione, [DA COMPLETARE] nei documenti): il consolidamento riguarda solo le dichiarazioni generali. Nessuna dichiarazione obbligatoria omessa in nome della sintesi.",
       "files": []
     },
     {
