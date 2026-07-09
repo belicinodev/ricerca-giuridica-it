@@ -13,9 +13,12 @@ The "source" is prose: `SKILL.md` is a behavioral specification loaded into Clau
 - `.claude/skills/ricerca-giuridica-it/SKILL.md` — the skill itself. YAML frontmatter (`name`, `description`) is the trigger contract: the `description` lists explicit Italian trigger phrases that decide when Claude auto-invokes the skill. The body defines the workflow, source routing by legal domain, citation rules, and confidentiality constraints. **This is the only file that changes behavior.**
 - `.claude/skills/ricerca-giuridica-it/references/` — catalogs loaded *on demand* (progressive disclosure), not part of the always-on prompt. `fonti_dati_giuridici.md` = access & reuse map of official sources (endpoints, licenses, acquisition rules; includes the free-sources hierarchy for massime and the ADR/CCNL tables); `fonti_per_materia.md` = minimum free-source kit per practice area (16 areas, with declared structural gaps); `fonti_normative.md` = per-domain catalog of codes/laws with citation details and official permalinks (Normattiva/EUR-Lex); `computo_termini.md` = rules for computing procedural and substantive time limits (dies a quo, festivi, sospensione feriale, perentorio/ordinatorio) with verified estremi — method, not arithmetic. SKILL.md points to these by name; keep those pointers in sync when renaming.
 - `GUIDA.md` — user-facing mini-guide with example prompts per mode; keep in sync when modes change.
-- `evals/evals.json` — regression prompts with manually-verified expected outputs. The gate for all changes (see below).
+- `evals/evals.json` — regression prompts with manually-verified expected outputs. The gate for all changes (see below). Entries may carry an optional `checks` object (`must_include`/`must_not_include`: short strings, deterministic, checked before the LLM judge runs) alongside the narrative `expected_output`; not every eval has one (behavioral evals with no falsifiable string stay narrative-only).
+- `schema/lex_tools_contract.json` — formal JSON Schema of the `lex_*` tool contract (input/output shapes only, no implementation). Public interface, kept in sync with the design invariant above; useful for external review and for any independent implementation of the corpus server.
 - `scripts/package_skill.sh` — zips the skill folder into `dist/` for manual install.
+- `scripts/verifica_skill.py` — static checks with no network calls: evals.json validity and `checks` shape, SKILL.md frontmatter and description length, references/ pointers not broken, schema/lex_tools_contract.json validity. Runs in CI on every push/PR.
 - `.github/workflows/release.yml` — on any `v*` tag, packages the ZIP and publishes a GitHub release. `CHANGELOG.md` is updated by hand.
+- `.github/workflows/quality.yml` — on push/PR to main: `verifica_skill.py` + shellcheck (blocking); source-endpoint reachability (informational, non-blocking, since it depends on external network/anti-bot behavior).
 
 The skill's optional corpus is architected as **three collections** exposed via `lex_*` MCP tools: `base` (open indexed sources, citable), `studio` (user's own documents, always cited as "fonte dello studio"), `puntatori` (metadata+URL indexes of restricted-reuse sources — route to the original, never cite unretrieved text). This is the public interface; treat it as a stable contract.
 
@@ -64,7 +67,13 @@ Check that all catalogued source endpoints still respond:
 scripts/verifica_fonti.sh
 ```
 
-Run the evals headless with an automated judge (from a normal terminal, NOT inside a Claude Code session; TEMPLATE evals are skipped and need interactive testing):
+Run the static checks that CI runs (no network, no credentials):
+```bash
+python3 scripts/verifica_skill.py
+shellcheck scripts/*.sh
+```
+
+Run the evals headless with a two-tier check — deterministic `checks` assertions first, then an LLM judge — (from a normal terminal, NOT inside a Claude Code session; TEMPLATE evals are skipped and need interactive testing, e.g. via a Workflow that instantiates each TEMPLATE with a fresh-context agent and an independent judge):
 ```bash
 scripts/esegui_evals.sh          # all evals
 scripts/esegui_evals.sh 1 4 5    # a subset by id

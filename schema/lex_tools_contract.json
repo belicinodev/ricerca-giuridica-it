@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contratto pubblico dei tool lex_*",
+  "description": "Interfaccia stabile tra la skill ricerca-giuridica-it e un server MCP di corpus documentale. Le implementazioni possono variare; questo contratto (nomi, parametri, forma delle risposte) è quello a cui SKILL.md fa riferimento e non cambia senza una modifica coordinata della skill. Non descrive alcuna implementazione: solo l'interfaccia.",
+  "tools": {
+    "lex_stato_corpus": {
+      "description": "Stato del corpus locale: collezioni coperte, conteggi, data dell'ultimo aggiornamento. Va chiamato per primo sui temi non ovvi.",
+      "input": { "type": "object", "properties": {}, "additionalProperties": false },
+      "output": {
+        "type": "object",
+        "required": ["collezioni", "ultimo_sync", "non_coperto"],
+        "properties": {
+          "collezioni": {
+            "type": "object",
+            "description": "una voce per ciascuna delle tre collezioni (base, studio, puntatori)",
+            "properties": {
+              "base": { "type": "object", "properties": {
+                "descrizione": {"type": "string"},
+                "atti": {"type": "integer"},
+                "elenco_atti": {"type": "array", "items": {"type": "string"}},
+                "vigenza_verificata": {"type": "string"},
+                "multivigenza": {"type": "object"}
+              }},
+              "studio": { "type": "object" },
+              "puntatori": { "type": "object" }
+            }
+          },
+          "ultimo_sync": {"type": "string", "format": "date"},
+          "avvertenza_freschezza": {"type": ["string", "null"], "description": "presente se il sync ha più di 14 giorni"},
+          "non_coperto": {"type": "array", "items": {"type": "string"}, "description": "limiti di copertura dichiarati, sempre presenti"}
+        }
+      }
+    },
+    "lex_cerca_norma": {
+      "description": "Ricerca full-text sul normativo indicizzato (collezione base). Query minimizzate: solo concetti giuridici astratti.",
+      "input": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": {"type": "string"},
+          "atto": {"type": ["string", "null"], "default": null, "description": "filtro opzionale sull'atto"},
+          "limite": {"type": "integer", "default": 10},
+          "pagina": {"type": "integer", "default": 1}
+        }
+      },
+      "output": {
+        "type": "object",
+        "required": ["risultati"],
+        "properties": {
+          "risultati": {"type": "array", "items": {"$ref": "#/$defs/scheda_norma"}},
+          "pagina": {"type": "integer"},
+          "altre_pagine": {"type": "boolean"},
+          "corpus_aggiornato_al": {"type": "string"},
+          "avvertenze": {"type": "array", "items": {"type": "string"}},
+          "nota": {"type": "string", "description": "presente quando un riferimento puntuale (es. \"art. N\") è riconosciuto nella query"}
+        }
+      }
+    },
+    "lex_leggi_articolo": {
+      "description": "Testo integrale di un articolo dal corpus (collezione base), con vigenza. Se `data` è indicata, restituisce la versione ratione temporis dallo storico multivigente quando disponibile.",
+      "input": {
+        "type": "object",
+        "required": ["atto", "articolo"],
+        "properties": {
+          "atto": {"type": "string", "description": "denominazione o estremi"},
+          "articolo": {"type": "string"},
+          "data": {"type": ["string", "null"], "format": "date", "default": null}
+        }
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "scheda": {"$ref": "#/$defs/scheda_norma"},
+          "versione_dal": {"type": ["string", "null"]},
+          "testo": {"type": "string"},
+          "nota_citazione": {"type": "string"},
+          "avvertenza_abrogazione": {"type": "string", "description": "presente se la disposizione risulta abrogata nel testo consolidato"},
+          "ambiguita": {"type": "array", "items": {"$ref": "#/$defs/scheda_norma"}, "description": "presente se più atti corrispondono alla denominazione"},
+          "nota_ambiguita": {"type": "string"},
+          "versione_ratione_temporis": {
+            "type": "object",
+            "description": "presente quando `data` è servita dallo storico multivigente del corpus",
+            "properties": {
+              "richiesta_per_data": {"type": "string"},
+              "valida_dal": {"type": ["string", "null"]},
+              "valida_al": {"type": "string"},
+              "testo": {"type": "string"},
+              "nota": {"type": "string"}
+            }
+          },
+          "avvertenza_ratione_temporis": {"type": "string", "description": "presente quando l'atto non è coperto dallo storico multivigente"},
+          "errore": {"type": "string"},
+          "indicazione": {"type": "string"}
+        }
+      }
+    },
+    "lex_verifica_citazione": {
+      "description": "Verifica una citazione (norma o pronuncia) contro il corpus locale. L'assenza di riscontro non prova l'inesistenza: il verdetto dichiara sempre il perimetro del controllo.",
+      "input": {
+        "type": "object",
+        "required": ["citazione"],
+        "properties": { "citazione": {"type": "string", "description": "estremi in forma libera"} }
+      },
+      "output": {
+        "type": "object",
+        "required": ["verdetto", "perimetro_controllo"],
+        "properties": {
+          "verdetto": {"type": "string", "enum": ["riscontrata_nel_corpus", "non_riscontrata_nel_corpus", "non_verificabile_dal_corpus"]},
+          "scheda": {"$ref": "#/$defs/scheda_norma"},
+          "estratto": {"type": "string"},
+          "avvertenza": {"type": ["string", "null"]},
+          "candidati_vicini": {"type": "array", "items": {"$ref": "#/$defs/scheda_norma"}},
+          "perimetro_controllo": {"type": "string", "description": "dichiara sempre cosa il corpus copre e cosa no per questo tipo di citazione"},
+          "motivo": {"type": "string"},
+          "indicazione": {"type": "string"},
+          "suggerimento": {"type": "string"}
+        }
+      }
+    },
+    "lex_cerca_prassi": {
+      "description": "Ricerca nella prassi amministrativa indicizzata (circolari, interpelli, messaggi). Se la collezione è vuota, instrada alle fonti ufficiali e lo dichiara.",
+      "input": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": {"type": "string"},
+          "ente": {"type": ["string", "null"], "default": null},
+          "limite": {"type": "integer", "default": 10}
+        }
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "risultati": {"type": "array"},
+          "errore": {"type": "string"},
+          "indicazione": {"type": "string"},
+          "avvertenza": {"type": "string"}
+        }
+      }
+    },
+    "lex_cerca_giurisprudenza": {
+      "description": "Ricerca su sentenze e massime. Se la collezione è vuota, instrada alle fonti ufficiali web e lo dichiara.",
+      "input": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": {"type": "string"},
+          "limite": {"type": "integer", "default": 10}
+        }
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "risultati": {"type": "array"},
+          "errore": {"type": "string"},
+          "indicazione": {"type": "string"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "scheda_norma": {
+      "type": "object",
+      "description": "Scheda sintetica di un chunk normativo, comune a tutti i tool.",
+      "properties": {
+        "id": {"type": "string"},
+        "collezione": {"type": "string", "enum": ["base", "studio", "puntatori"]},
+        "estremi": {"type": "string"},
+        "atto": {"type": "string"},
+        "articolo": {"type": ["string", "null"]},
+        "rubrica": {"type": ["string", "null"]},
+        "sezione": {"type": ["string", "null"]},
+        "stato_vigenza": {"type": "string", "enum": ["vigente", "abrogato"]},
+        "vigenza_verificata_al": {"type": ["string", "null"]},
+        "url": {"type": "string", "description": "permalink alla fonte ufficiale, quando disponibile"},
+        "estratto": {"type": "string", "description": "presente solo nei risultati di ricerca full-text"}
+      }
+    }
+  }
+}

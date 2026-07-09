@@ -1,0 +1,26 @@
+name: quality
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verifica skill (frontmatter, eval, puntatori, contratto tool)
+        run: python3 scripts/verifica_skill.py
+      - name: Shellcheck sugli script
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: "./scripts"
+  # scripts/verifica_fonti.sh dipende da endpoint esterni reali: non è un
+  # gate di merge (rumore da rete/anti-bot), gira su schedule come segnale.
+  fonti-endpoint-check:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verifica reachability degli endpoint catalogati
+        run: bash scripts/verifica_fonti.sh
+        continue-on-error: true

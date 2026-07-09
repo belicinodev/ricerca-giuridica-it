@@ -72,8 +72,9 @@ scarica lo ZIP della skill dall'ultima release e caricalo da Personalizza > Skil
     computo_termini.md         regole di computo dei termini (metodo, non aritmetica)
 GUIDA.md            miniguida d'uso delle modalità
 evals/evals.json    domande di regressione con risposte attese verificate
-scripts/            build dello ZIP installabile
-.github/workflows/  release automatica dello ZIP a ogni tag v*
+schema/              contratto pubblico dei tool lex_* (JSON Schema)
+scripts/            build dello ZIP, verifiche statiche, esecuzione eval
+.github/workflows/  release dello ZIP a ogni tag v*; controlli di qualità a ogni push/PR
 ```
 
 ## Limiti, dichiarati
