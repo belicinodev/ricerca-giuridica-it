@@ -3,6 +3,16 @@
 # Esiti: OK (2xx/3xx), ANTI-BOT (401/403/429: il sito vive ma blocca i fetch automatici,
 # come documentato nei cataloghi), ERRORE (timeout, DNS, 404, 5xx).
 # Uso: scripts/verifica_fonti.sh  — exit code 1 se almeno una fonte è in ERRORE.
+#
+# Nota su curl -k: questo script scarta il corpo (-o /dev/null) e legge solo lo
+# status code HTTP per un controllo di reachability, non recupera né si fida di
+# alcun contenuto. -k è qui perché alcuni domini della PA italiana (tra cui
+# normattiva.it e italgiure.giustizia.it) usano catene di CA che il bundle
+# ca-certificates di alcuni ambienti (runner CI inclusi, e alcune postazioni
+# locali) non riconosce: senza -k la verifica del certificato fallirebbe anche
+# quando il sito è raggiungibile e legittimo. Non riusare -k per fetch che
+# leggono o citano il contenuto della risposta: qui serve solo a non confondere
+# un gap del trust store locale con un sito realmente irraggiungibile.
 set -uo pipefail
 
 URLS=(

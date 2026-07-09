@@ -73,7 +73,7 @@ python3 scripts/verifica_skill.py
 shellcheck scripts/*.sh
 ```
 
-Run the evals headless with a two-tier check — deterministic `checks` assertions first, then an LLM judge — (from a normal terminal, NOT inside a Claude Code session; TEMPLATE evals are skipped and need interactive testing, e.g. via a Workflow that instantiates each TEMPLATE with a fresh-context agent and an independent judge):
+Run the evals headless with a two-tier check — deterministic `checks` assertions first, then an LLM judge — (from a normal terminal, NOT inside a Claude Code session; TEMPLATE evals are skipped and need manual interactive testing: submit the prompt to the skill and compare the response against `expected_output`):
 ```bash
 scripts/esegui_evals.sh          # all evals
 scripts/esegui_evals.sh 1 4 5    # a subset by id

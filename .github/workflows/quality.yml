@@ -15,7 +15,8 @@ jobs:
         with:
           scandir: "./scripts"
   # scripts/verifica_fonti.sh dipende da endpoint esterni reali: non è un
-  # gate di merge (rumore da rete/anti-bot), gira su schedule come segnale.
+  # gate di merge (rumore da rete/anti-bot). Gira a ogni push su main
+  # (non su pull_request) come segnale informativo, continue-on-error.
   fonti-endpoint-check:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest

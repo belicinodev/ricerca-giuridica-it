@@ -10,7 +10,8 @@
 # Va lanciato da un terminale normale (NON dentro una sessione Claude Code:
 # la sessione annidata non ha credenziali). Le eval TEMPLATE, che descrivono
 # un comportamento senza un prompt concreto, vengono saltate e vanno
-# collaudate in sessione interattiva (v. Workflow "ripasso end-to-end").
+# collaudate manualmente in sessione interattiva: sottoponi il prompt alla
+# skill e confronta la risposta con expected_output.
 #
 # Uso:  scripts/esegui_evals.sh [id ...]     # senza argomenti: tutte
 set -euo pipefail
@@ -42,7 +43,7 @@ PYEOF
 PASS=0; FAIL=0; SKIP=0
 while IFS=$'\t' read -r ID AZIONE DATI; do
   if [ "$AZIONE" = "SKIP_TEMPLATE" ]; then
-    SKIP=$((SKIP+1)); echo "eval $ID: TEMPLATE (collaudo interattivo, v. Workflow ripasso end-to-end)"; continue
+    SKIP=$((SKIP+1)); echo "eval $ID: TEMPLATE (richiede collaudo manuale interattivo)"; continue
   fi
   PROMPT=$(printf '%s' "$DATI" | python3 -c "import json,sys; print(json.load(sys.stdin)['p'])")
   ATTESO=$(printf '%s' "$DATI" | python3 -c "import json,sys; print(json.load(sys.stdin)['a'])")

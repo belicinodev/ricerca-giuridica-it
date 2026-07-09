@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.4.3 - 2026-07-09
+Contratto dei tool formalizzato, CI di qualità, assertion strutturate su tutte le eval. Da una revisione sistematica della skill.
+- Nuovo `schema/lex_tools_contract.json`: JSON Schema formale del contratto pubblico dei tool `lex_*` (forma di input/output, nessuna implementazione) — per revisori esterni e per chi voglia realizzare un proprio server compatibile.
+- Nuovi `scripts/verifica_skill.py` e `.github/workflows/quality.yml`: controlli statici senza rete a ogni push/PR (validità di `evals.json`, frontmatter e limite di 1024 caratteri della description, puntatori `references/` non rotti, validità del contratto tool) più shellcheck sugli script; `verifica_fonti.sh` resta un controllo informativo e non bloccante a parte, eseguito a ogni push su main, perché dipende da endpoint esterni reali.
+- `evals.json`: ogni eval ha ora un campo `checks` (`must_include`/`must_not_include`) come primo livello di verifica, deterministico, prima del giudice LLM — generato e verificato per tutte le 36 eval, poi validato empiricamente contro risposte reali già giudicate corrette, correggendo alcuni falsi negativi (variazioni naturali di formato tra citazioni compatte ed estese, tra abbreviazione e forma per esteso).
+- `scripts/esegui_evals.sh`: eseguito il livello 1 deterministico prima del giudice; un fallimento sulle assertion non arriva più al giudice.
+- `fonti_dati_giuridici.md`: aggiunto un esempio concreto e verificato di legge regionale con vera API aperta (Lombardia, `dati.lombardia.it`, licenza CC0), con testo integrale collegato sulla banca dati normativa della Regione.
+
 ## v0.4.2 - 2026-07-08
 Computo dei termini e completamento del contratto dei tool.
 - Nuovo catalogo `references/computo_termini.md`: le regole per calcolare correttamente un termine, con estremi verificati e permalink — computo processuale civile (art. 155 c.p.c.) e penale (art. 172 c.p.p.), prescrizione sostanziale (art. 2963 c.c.), perentorio/ordinatorio e rimessione in termini (art. 153 c.p.c.), sospensione feriale (L. 742/1969, segnalata da verificare), decadenze ricorrenti (art. 325 e 327 c.p.c., 585 c.p.p., 29 c.p.a.). È metodo, non aritmetica: la skill non calcola mai una data a memoria.
