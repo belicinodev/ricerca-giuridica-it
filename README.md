@@ -70,6 +70,7 @@ scarica lo ZIP della skill dall'ultima release e caricalo da Personalizza > Skil
     fonti_dati_giuridici.md    endpoint, licenze, massime, ADR/CCNL
     fonti_normative.md         estremi di codici, leggi e testi unici
     computo_termini.md         regole di computo dei termini (metodo, non aritmetica)
+    percorsi_processuali.md    cancelli e riti per tipo di controversia (procedibilità, decadenze, ADR)
 GUIDA.md            miniguida d'uso delle modalità
 evals/evals.json    domande di regressione con risposte attese verificate
 schema/              contratto pubblico dei tool lex_* (JSON Schema)

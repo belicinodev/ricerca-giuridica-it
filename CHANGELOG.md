@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.4 - 2026-07-11
+Percorsi processuali: cancelli e riti per tipo di controversia.
+- Nuovo catalogo `references/percorsi_processuali.md` (prima tranche: civile, lavoro, penale, ADR di settore): condizioni di procedibilità (mediazione: art. 5, commi 1 e 2, D.lgs. 28/2010, con la sede dell'elenco cambiata dalla riforma Cartabia e nota ratione temporis; negoziazione assistita: art. 3 D.L. 132/2014, conv. L. 162/2014; responsabilità sanitaria: art. 8 L. 24/2017), percorsi tipo del civile (decreto ingiuntivo e opposizione ex artt. 633 ss., 641 e 645 c.p.c.; procedimento semplificato; convalida di licenza/sfratto; tutela d'urgenza), decadenze del lavoro (doppia decadenza ex art. 6 L. 604/1966 con gli interventi della Consulta registrati nel testo; spartiacque tutele crescenti con la data di entrata in vigore dichiarata come derivata, non testuale), riti e cancelli del penale (querela, abbreviato, patteggiamento, opposizione a decreto penale, messa alla prova, particolare tenuità, termini d'impugnazione). Ogni voce dichiara il proprio stato di verifica: estremi riscontrati sul corpus (permalink puntuali), riscontrati sulla fonte ufficiale per gli atti fuori corpus, o marcati "da verificare" (equa riparazione L. 89/2001, domanda NASpI D.lgs. 22/2015).
+- SKILL.md: la Strategia processuale parte dai cancelli processuali della materia (punto 2); puntatore alla nuova reference nei Riferimenti.
+- Eval 37-39 (39 totali): opposizione a decreto ingiuntivo, doppia decadenza del licenziamento, TEMPLATE sui cancelli di procedibilità.
+
 ## v0.4.3 - 2026-07-09
 Contratto dei tool formalizzato, CI di qualità, assertion strutturate su tutte le eval. Da una revisione sistematica della skill.
 - Nuovo `schema/lex_tools_contract.json`: JSON Schema formale del contratto pubblico dei tool `lex_*` (forma di input/output, nessuna implementazione) — per revisori esterni e per chi voglia realizzare un proprio server compatibile.

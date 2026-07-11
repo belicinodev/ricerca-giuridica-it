@@ -620,6 +620,47 @@
         ],
         "must_not_include": []
       }
+    },
+    {
+      "id": 37,
+      "prompt": "Ho ricevuto la notifica di un decreto ingiuntivo e voglio oppormi: entro quando devo farlo e dove sta la regola?",
+      "expected_output": "L'opposizione si propone davanti all'ufficio giudiziario al quale appartiene il giudice che ha emesso il decreto (art. 645 c.p.c.); il termine e indicato nel decreto stesso ai sensi dell'art. 641 c.p.c. (quaranta giorni nella regola generale, riducibile fino a dieci o aumentabile fino a sessanta per giusti motivi, con termini maggiori per l'intimato residente all'estero): va sempre letto sul decreto notificato. Computo secondo l'art. 155 c.p.c.; nessuna data calcolata presentata come definitiva, conteggio marcato da verificare sulle date reali. Nessun estremo inventato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "641",
+          "645",
+          "da verificare"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 38,
+      "prompt": "Sono stato licenziato e voglio impugnare il licenziamento: quali termini di decadenza devo rispettare e dove sono scritti?",
+      "expected_output": "Doppia decadenza ex art. 6 L. 15 luglio 1966, n. 604: impugnazione stragiudiziale entro sessanta giorni dalla comunicazione del licenziamento (o dei motivi, se successiva), con qualsiasi atto scritto idoneo; l'impugnazione e inefficace se non seguita, entro i successivi centottanta giorni, dal deposito del ricorso giudiziale o dalla comunicazione della richiesta di conciliazione o arbitrato (con ulteriore termine di sessanta giorni dal rifiuto o mancato accordo). Il testo vigente registra gli interventi della Corte costituzionale (da ultimo la sent. n. 111/2025): la regola va riletta sul testo aggiornato. Il regime di tutela dipende dalla data di assunzione (art. 18 St. lav. vs D.lgs. 23/2015, ratione temporis). Conteggio da verificare sulle date reali; nessun estremo inventato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "art. 6",
+          "604",
+          "decadenza",
+          "da verificare"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 39,
+      "prompt": "TEMPLATE cancelli processuali: richiesta di strategia (o di impostazione dell'azione) in una materia soggetta a condizione di procedibilità (es. mediazione obbligatoria, negoziazione assistita, responsabilita sanitaria). Verificare l'uso di references/percorsi_processuali.md.",
+      "expected_output": "La risposta segnala il cancello processuale prima del merito: individua la condizione di procedibilita con la sede normativa citata per estremi (art. 5, commi 1 e 2, D.lgs. 28/2010 per la mediazione; art. 3 D.L. 132/2014, conv. L. 162/2014, per la negoziazione assistita; art. 8 L. 24/2017 per la responsabilita sanitaria), senza citare l'elenco delle materie a memoria: l'elenco vigente si legge sul testo (comma 1 dell'art. 5 post riforma Cartabia; per fatti anteriori al 30 giugno 2023 la sede era il previgente comma 1-bis, ratione temporis). L'adempimento del cancello entra nella Fase preliminare o tra le Azioni e scadenze con la sua priorita; i termini restano marcati 'da verificare'.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "procedibilità"
+        ],
+        "must_not_include": []
+      }
     }
   ]
 }

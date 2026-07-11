@@ -66,7 +66,7 @@ Si attiva su richieste come "analisi comparata dei precedenti", "conformi e diff
 Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/la difesa", "come gestiresti questo caso", "conviene fare causa o transigere", "valuta le opzioni processuali" — anche quando la richiesta arriva con un fascicolo o un dossier allegato.
 
 1. Ricostruisci fatti, obiettivo e vincoli (tempi, costi, rapporti da preservare) SOLO dalla conversazione e dai documenti forniti. Le query verso corpus e web restano astratte: minimizzazione rafforzata, perché le richieste di strategia sono sempre su casi concreti.
-2. Isola le questioni giuridiche decisive, di rito e di merito, e per ciascuna verifica le norme applicabili ratione temporis e gli orientamenti; sui punti controversi applica il metodo dell'analisi comparata (entrambi i fronti con pari impegno, prevalenza dichiarata solo se emerge dal materiale), riassumendone l'esito dentro "Questioni e argomenti" senza i due elenchi separati; il limite del citator si dichiara una volta sola, nel blocco "Limiti e verifiche".
+2. Isola le questioni giuridiche decisive, di rito e di merito. Per il rito parti dai cancelli processuali della materia — condizioni di procedibilità, decadenze tipiche, riti disponibili (v. `references/percorsi_processuali.md`): un cancello mancato invalida la strategia migliore. Per ciascuna questione verifica le norme applicabili ratione temporis e gli orientamenti; sui punti controversi applica il metodo dell'analisi comparata (entrambi i fronti con pari impegno, prevalenza dichiarata solo se emerge dal materiale), riassumendone l'esito dentro "Questioni e argomenti" senza i due elenchi separati; il limite del citator si dichiara una volta sola, nel blocco "Limiti e verifiche".
 3. Costruisci le opzioni realistiche — azione o eccezione, scelta del rito, misure cautelari, ADR o transazione, attendere — e per ciascuna indica: fondamento normativo, punti di forza, punti di debolezza, rischi concreti (onere della prova, spese, durata, esecuzione).
 4. La risposta segue una **struttura fissa**, con i titoli nell'ordine:
    1. **Raccomandazione** — 2-3 frasi con la linea consigliata.
@@ -238,6 +238,7 @@ Le massime redazionali altrui (riviste, editori, siti divulgativi) sono protette
 - `references/fonti_dati_giuridici.md`: mappa delle fonti con endpoint, licenze e regole di acquisizione, incluse la gerarchia delle massime e le fonti ADR/CCNL. Leggila quando serve indicare dove reperire una fonte o valutarne il riuso.
 - `references/fonti_normative.md`: catalogo per materia di codici, leggi e testi unici con estremi normativi e permalink alla fonte ufficiale. Leggilo per trovare gli estremi di un atto o per orientarti in una materia.
 - `references/computo_termini.md`: regole di computo dei termini processuali e sostanziali (dies a quo, festività, sospensione feriale, perentorio/ordinatorio, rimessione in termini) con estremi verificati. Leggilo quando la richiesta tocca una scadenza o una decadenza.
+- `references/percorsi_processuali.md`: cancelli e riti per tipo di controversia — condizioni di procedibilità, decadenze tipiche, riti disponibili, ADR di settore — con estremi verificati. Leggilo quando la richiesta riguarda come impostare un'azione o una difesa, o prima di valutare i tempi di un percorso giudiziale.
 
 ## Disclaimer operativo
 
