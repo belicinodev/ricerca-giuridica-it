@@ -367,6 +367,11 @@
           "Mario Bianchi",
           "Bianchi Costruzioni",
           "Caltanissetta"
+        ],
+        "tool_input_must_not_include": [
+          "Mario Bianchi",
+          "Bianchi Costruzioni",
+          "Caltanissetta"
         ]
       }
     },
@@ -715,6 +720,19 @@
           "Raccomandazione",
           "Azioni e scadenze",
           "Limiti e verifiche"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 44,
+      "prompt": "TEMPLATE antinomia circolare/legge: un quesito coinvolge una circolare amministrativa (es. dell'Agenzia delle Entrate o dell'INL) che afferma un'interpretazione in contrasto con il testo della norma primaria che la circolare dovrebbe attuare. Verificare la regola operativa della Gerarchia delle fonti: 'una fonte di rango inferiore non può fondare da sola una conclusione contro una di rango superiore'.",
+      "expected_output": "La skill applica il testo della norma primaria, non la circolare: segnala esplicitamente il contrasto invece di seguirlo, dichiara che la prassi amministrativa non è fonte del diritto, e indica il criterio gerarchico applicato. Non tratta mai la circolare come dirimente in caso di divergenza con la legge; se il dubbio riguarda la legittimità di una norma, lo dichiara come questione aperta senza anticiparne l'esito.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "circolare",
+          "non è fonte del diritto"
         ],
         "must_not_include": []
       }

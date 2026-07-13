@@ -72,6 +72,7 @@ scarica lo ZIP dall'[ultima release](https://github.com/belicinodev/ricerca-giur
     computo_termini.md         regole di computo dei termini (metodo, non aritmetica)
     percorsi_processuali.md    cancelli e riti per tipo di controversia (procedibilità, decadenze, ADR)
 GUIDA.md            miniguida d'uso delle modalità
+CONTRIBUTING.md     meccanica di contribuzione (eval, comandi pre-PR)
 evals/evals.json    domande di regressione con risposte attese verificate
 schema/              contratto pubblico dei tool lex_* (JSON Schema)
 scripts/            build dello ZIP, verifiche statiche, esecuzione eval
@@ -86,7 +87,7 @@ scripts/            build dello ZIP, verifiche statiche, esecuzione eval
 
 ## Contribuire
 
-Issue e proposte sono benvenute, con una regola: ogni nuova regola di comportamento entra solo accompagnata da almeno una eval che la verifica, e le risposte attese si scrivono solo dopo verifica manuale sulla fonte ufficiale. Le eval esistenti sono in `evals/evals.json`.
+Issue e proposte sono benvenute, con una regola: ogni nuova regola di comportamento entra solo accompagnata da almeno una eval che la verifica, e le risposte attese si scrivono solo dopo verifica manuale sulla fonte ufficiale. Le eval esistenti sono in `evals/evals.json`. Meccanica e comandi in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Versioni
 

@@ -21,7 +21,7 @@ Conseguenza pratica: un corpus normativo ampio e aggiornato è costruibile legit
 |---|---|---|---|---|
 | Costituzione e leggi costituzionali | Normattiva; giurisprudenza su cortecostituzionale.it | Come normativa statale | CC BY 4.0 (Normattiva) | Alta |
 | Normativa statale | dati.normattiva.it | REST API con OpenAPI, config Postman, collezioni bulk | CC BY 4.0 | Alta |
-| Leggi regionali | normattiva.it/legislazioneRegionale (motore federato: rinvia alle banche dati dei Consigli regionali e delle Province autonome) | Ricerca web federata; il testo vive sulla banca dati regionale di origine. Esempio di banca dati regionale con vera API aperta: Lombardia, dati.lombardia.it/resource/abjw-hhay.json (Socrata, CC0), con testo integrale in HTML/XML collegato su normelombardia.consiglio.regione.lombardia.it; verificato attivo il 2026-07-09. Le altre regioni restano da verificare caso per caso: non presumere la stessa apertura | Atti pubblici; le singole banche dati regionali hanno condizioni proprie | Media (fonte distribuita, niente API unica salvo eccezioni verificate come la Lombardia) |
+| Leggi regionali | normattiva.it/legislazioneRegionale (motore federato: rinvia alle banche dati dei Consigli regionali e delle Province autonome) | Ricerca web federata; il testo vive sulla banca dati regionale di origine. Esempio di banca dati regionale con vera API aperta: Lombardia, dati.lombardia.it/resource/abjw-hhay.json (Socrata, CC0), con testo integrale in HTML/XML collegato su normelombardia.consiglio.regione.lombardia.it; verificato attivo il 2026-07-09. Verificate dal vivo (2026-07-13) e **non confermate** comparabili: Emilia-Romagna (dati.emilia-romagna.it è un vero portale CKAN, ma senza un dataset di leggi regionali — solo dati amministrativi che citano estremi di legge in altro contesto); Toscana (raccoltanormativa.consiglio.regione.toscana.it è un archivio consultabile via web, nessun segnale di API/licenza aperta); Veneto (nessuna banca dati legislativa aperta individuata nei controlli diretti). Le altre regioni restano da verificare caso per caso: non presumere la stessa apertura | Atti pubblici; le singole banche dati regionali hanno condizioni proprie | Media (fonte distribuita, niente API unica salvo eccezioni verificate come la Lombardia) |
 | Trattati internazionali | ATRIO — atrio.esteri.it (archivio trattati del MAECI, bilaterali e multilaterali) | Consultazione web per materia e cronologia | Dati istituzionali, citare la fonte | Media |
 | Diritto UE | EUR-Lex / CELLAR | SPARQL, REST API, Data Dump, webservice SOAP | Riuso da policy Publications Office | Alta |
 | Fonti secondarie (regolamenti) | gazzettaufficiale.it + siti istituzionali degli enti emananti | Consultazione web | Atto pubblico | Media |
@@ -127,7 +127,7 @@ Nota: questi coprono normativa e Corte Costituzionale. Per la Cassazione restano
 - Banca dati in sé: diritto sui generis del costitutore (art. 102-bis L. 633/1941), vietata l'estrazione di parte sostanziale, a prescindere da chi la esegue e dal fatto che non si rivenda.
 - Normattiva: CC BY 4.0, riuso con attribuzione.
 - EUR-Lex: riuso secondo la policy della Publications Office.
-- Sentenze: atti pubblici, ma nessuna licenza di riuso in blocco. La raccolta mirata sui propri temi è accettabile; la redistribuzione di un corpus ampio di sentenze no.
+- Sentenze: atti pubblici, ma nessuna licenza di riuso in blocco. La raccolta mirata sui propri temi è accettabile; la redistribuzione di un corpus ampio di sentenze no. L'accumulo nel tempo di più raccolte mirate sulla stessa banca dati (es. SentenzeWeb) resta comunque soggetto al divieto di estrazione o reimpiego ripetuti e sistematici di parti anche non sostanziali, quando contrari alla normale gestione della banca dati o di pregiudizio al costitutore (art. 102-bis L. 633/1941): la ripetizione nel tempo non è una scappatoia al divieto di estrazione massiva.
 - Italgiure area riservata: uso personale dell'avvocato iscritto, non redistribuibile.
 - Banche dati commerciali: la licenza vieta il travaso, qualunque sia la destinazione.
 
@@ -139,6 +139,7 @@ Nota: questi coprono normativa e Corte Costituzionale. Per la Cassazione restano
 - Non riprodurre massime redazionali altrui (Giuffrè, Wolters Kluwer, Ufficio del Massimario): il full-text della sentenza è libero, la massima redazionale è opera protetta. Se serve una massima, generarla dal testo integrale e trattarla come bozza.
 - Non trattare una massima generata come citabile: citare sempre la sentenza sottostante.
 - Non forzare i siti istituzionali (SentenzeWeb, def.finanze, Banca Dati di Merito) con richieste aggressive o automatizzate oltre i termini d'uso.
+- Non trattare l'accumulo nel tempo di raccolte mirate sulla stessa fonte come un modo lecito per aggirare il divieto di estrazione massiva: la ripetizione sistematica resta vietata anche a piccoli lotti (art. 102-bis L. 633/1941).
 
 ---
 

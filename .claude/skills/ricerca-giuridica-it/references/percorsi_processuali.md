@@ -78,6 +78,32 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 | Procedimento unitario: domanda | art. 40 CCII — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2019-01-12;14~art40!vig= | accesso agli strumenti di regolazione della crisi e alla liquidazione giudiziale; se pende domanda di liquidazione proposta da altri, la domanda di accesso a uno strumento va proposta a pena di decadenza entro la prima udienza (salvo l'esito della composizione negoziata, con termine proprio nel testo) |
 | Concordato preventivo | art. 84 CCII — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2019-01-12;14~art84!vig= | finalità e tipologie di piano (continuità diretta o indiretta, liquidatorio con apporto esterno e soglie nel testo); presupposto: stato di crisi o di insolvenza |
 
+## Proprietà intellettuale
+
+| Cancello / percorso | Dove sta la regola | Nota operativa |
+|---|---|---|
+| Descrizione e sequestro | art. 129 CPI (D.lgs. 10 febbraio 2005, n. 30) — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-02-10;30~art129!vig= | procedimenti cautelari disciplinati dal c.p.c. in quanto compatibili |
+| Esecuzione di descrizione e sequestro | art. 130 CPI — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-02-10;30~art130!vig= | notifica al terzo cui appartengono gli oggetti entro quindici giorni dalla conclusione delle operazioni, a pena di inefficacia |
+| Inibitoria | art. 131 CPI — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-02-10;30~art131!vig= | comprende l'ordine di ritiro dal commercio; il giudice può fissare una penale per ogni violazione o ritardo nell'esecuzione |
+| Anticipazione della tutela cautelare | art. 132 CPI — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-02-10;30~art132!vig= | se il giudice non fissa il termine, il giudizio di merito va iniziato entro venti giorni lavorativi o trentuno di calendario se più lungo (termine perentorio); per i cautelari ex art. 700 c.p.c. istanza di declaratoria di inefficacia entro trenta giorni dalla scadenza |
+| Tutela cautelare dei nomi a dominio | art. 133 CPI — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-02-10;30~art133!vig= | inibitoria e trasferimento provvisorio del nome a dominio, anche subordinato a cauzione |
+| Competenza | art. 134 CPI — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-02-10;30~art134!vig= | sezioni specializzate in materia di impresa (D.lgs. 168/2003, come modificato dal D.L. 1/2012, conv. L. 27/2012) |
+
+## Immigrazione e protezione internazionale
+
+| Cancello / percorso | Dove sta la regola | Nota operativa |
+|---|---|---|
+| Rito camerale per la protezione internazionale | art. 35-bis D.lgs. 28 gennaio 2008, n. 25 *(fuori corpus)* — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2008-01-28;25!vig= | rinvio al rito camerale ex artt. 737 ss. c.p.c.; competenza delle sezioni specializzate in materia di immigrazione, protezione internazionale e libera circolazione UE (istituite dal D.L. 13/2017, conv. L. 46/2017); il decreto non è reclamabile, unico rimedio il ricorso per cassazione |
+| Ricorso introduttivo: termine | art. 35-bis, comma 2, D.lgs. 25/2008 *(fuori corpus)* | trenta giorni dalla notificazione del provvedimento della Commissione territoriale (sessanta se il ricorrente è in un Paese terzo); termini ridotti e differenziati nei casi di procedura accelerata/di frontiera e di trattenimento (commi 2-bis e 2-ter): leggere sul testo vigente, la disciplina è stata modificata più volte (da ultimo D.L. 145/2024, conv. L. 187/2024) |
+| Impugnazione del decreto | art. 35-bis, comma 13, D.lgs. 25/2008 *(fuori corpus)* | ricorso per cassazione entro trenta giorni dalla comunicazione del decreto a cura della cancelleria; termine uniforme, non differenziato per il richiedente detenuto |
+
+## Consumatori: azione di classe
+
+| Cancello / percorso | Dove sta la regola | Nota operativa |
+|---|---|---|
+| Ambito di applicazione | art. 840-bis c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art840bis!vig= | diritti individuali omogenei; legittimazione di ciascun componente della classe o di un'organizzazione/associazione senza scopo di lucro iscritta nell'elenco pubblico del Ministero della giustizia; resta fermo il diritto all'azione individuale |
+| Forma e ammissibilità della domanda | art. 840-ter c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art840ter!vig= | ricorso alla sezione specializzata in materia di impresa del luogo ove ha sede il resistente; rito semplificato di cognizione (artt. 281-decies ss. c.p.c.); ordinanza sull'ammissibilità entro trenta giorni dalla prima udienza, reclamabile in corte d'appello entro trenta giorni |
+
 ## Penale — riti e cancelli
 
 | Cancello / rito | Dove sta la regola | Nota operativa |
@@ -101,4 +127,4 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 1. Ogni voce indica **dove** sta la regola, non **cosa** decide il caso: il testo va recuperato e letto.
 2. I termini si citano solo dal testo recuperato, con la versione applicabile ratione temporis (le decadenze del lavoro e la sede dell'elenco della mediazione sono cambiate nel tempo).
 3. Se il cancello dipende da elenchi che cambiano (materie di mediazione, limiti dei riti), non citare l'elenco a memoria: leggerlo nel testo vigente.
-4. Le lacune del catalogo si dichiarano: le materie coperte sono civile (incluse l'esecuzione forzata), lavoro, famiglia (rito), amministrativo, tributario, crisi d'impresa e penale; ciò che manca si cerca con il Routing per materia.
+4. Le lacune del catalogo si dichiarano: le materie coperte sono civile (incluse l'esecuzione forzata e l'azione di classe dei consumatori), lavoro, famiglia (rito), amministrativo, tributario, crisi d'impresa, proprietà intellettuale, immigrazione e protezione internazionale, penale; ciò che manca si cerca con il Routing per materia.
