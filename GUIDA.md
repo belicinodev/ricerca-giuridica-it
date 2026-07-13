@@ -58,6 +58,8 @@ Come gestiresti questo caso? [con documenti allegati]
 
 Cosa aspettarsi: una risposta a struttura fissa — **Raccomandazione** (2-3 frasi), **Fase preliminare** (documenti e fatti mancanti), **Questioni e argomenti** (i pilastri, con citazioni per estremi e stato di verifica), **Opzioni a confronto** (fondamento, forza, debolezza, rischi), **Azioni e scadenze** (termini marcati "da verificare"). Se il fascicolo allegato contiene citazioni non verificate, la strategia esce comunque completa: gli argomenti dubbi restano al loro posto marcati `[DA VERIFICARE]` e la verifica entra tra le azioni. È un orientamento fondato sulle fonti, non un parere: la decisione resta al professionista.
 
+Dopo la strategia puoi chiedere il **promemoria da fascicolo** ("fammi il promemoria", "memo di una pagina"): la stessa strategia compressa in una pagina, con citazioni, marcatori e limiti conservati — anche come documento, se l'ambiente lo consente.
+
 ## Controllare la lunghezza
 
 - La risposta è **sintetica di default**: conclusione prima, dettaglio minimo.

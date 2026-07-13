@@ -4,7 +4,7 @@ Indice di collocazione delle regole processuali che condizionano una strategia: 
 
 Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono stati riscontrati sul corpus; le voci *(fuori corpus)* riguardano atti non indicizzati nel corpus, con estremi riscontrati sulla fonte ufficiale alla data del catalogo — riconfermarli su Normattiva prima dell'uso; le voci *(da verificare)* sono solo segnaposti di collocazione, senza riscontro completo.
 
-- Data di aggiornamento del catalogo: 2026-07-11.
+- Data di aggiornamento del catalogo: 2026-07-12.
 
 ## Civile — prima di agire
 
@@ -33,7 +33,39 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 | Impugnazione del licenziamento: doppia decadenza | art. 6 L. 15 luglio 1966, n. 604 — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1966-07-15;604~art6!vig= | impugnazione stragiudiziale entro sessanta giorni dalla comunicazione (o dei motivi, se successiva); inefficace se non seguita entro centottanta giorni dal deposito del ricorso giudiziale o dalla richiesta di conciliazione/arbitrato, con ulteriore termine di sessanta giorni dal rifiuto o mancato accordo. Il testo vigente registra gli interventi della Consulta (da ultimo C. cost. n. 111/2025 sull'incapacità del lavoratore): rileggerlo sempre; per licenziamenti anteriori, ratione temporis |
 | Regime di tutela: art. 18 St. lav. vs tutele crescenti | art. 18 L. 20 maggio 1970, n. 300 — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1970-05-20;300~art18!vig= ; art. 1 D.lgs. 4 marzo 2015, n. 23 *(fuori corpus)* — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-03-04;23!vig= | lo spartiacque è l'assunzione a tempo indeterminato "a decorrere dalla data di entrata in vigore" del D.lgs. 23/2015 (7 marzo 2015: data non scritta nell'articolato, derivata dalla pubblicazione in G.U. e dalla clausola di vigenza — riscontrarla sull'atto); anche nel regime a tutele crescenti la reintegrazione sopravvive per i casi indicati nel testo (licenziamento nullo, discriminatorio, orale); l'art. 18 ha versioni molto diverse nel tempo: sempre ratione temporis |
 | Tentativo di conciliazione | art. 410 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art410!vig= | facoltativo in via generale ("può promuovere"); la richiesta interrompe la prescrizione e sospende le decadenze per la durata del tentativo e per i venti giorni successivi; verificare i casi speciali nel testo |
-| NASpI: domanda | art. 6 D.lgs. 4 marzo 2015, n. 22 *(da verificare)* | termine di decadenza nel testo: confermare durata e dies a quo sulla fonte prima dell'uso |
+| NASpI: domanda | art. 6 D.lgs. 4 marzo 2015, n. 22 *(fuori corpus)* — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-03-04;22!vig= | rubrica "Domanda e decorrenza della prestazione": domanda all'INPS in via telematica entro il termine di decadenza di sessantotto giorni dalla cessazione del rapporto di lavoro; decorrenza della prestazione al comma 2 |
+
+## Famiglia e minori (rito)
+
+| Cancello / percorso | Dove sta la regola | Nota operativa |
+|---|---|---|
+| Rito unificato per persone, minorenni e famiglie | artt. 473-bis ss. c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art473bis!vig= | ambito ed esclusioni nell'art. 473-bis (esclusi, tra l'altro, scioglimento della comunione legale, dichiarazione di adottabilità, adozione di minori); si applica ai procedimenti instaurati dopo il 28 febbraio 2023 — per i pendenti a quella data valgono le disposizioni anteriori: sempre ratione temporis. Il merito di famiglia resta privo di fonte giurisprudenziale gratuita (v. `fonti_per_materia.md`): dichiararlo |
+
+## Amministrativo
+
+| Cancello / percorso | Dove sta la regola | Nota operativa |
+|---|---|---|
+| Azione di annullamento | art. 29 c.p.a. (D.lgs. 2 luglio 2010, n. 104) — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2010-07-02;104~art29!vig= | termine di decadenza di sessanta giorni |
+| Notificazione del ricorso | art. 41 c.p.a. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2010-07-02;104~art41!vig= | notifica a pena di decadenza all'amministrazione e ad almeno un controinteressato; il termine è aumentato di trenta giorni per residenti in altro Stato d'Europa, novanta fuori d'Europa |
+| Azione avverso il silenzio; nullità | art. 31 c.p.a. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2010-07-02;104~art31!vig= | silenzio: finché perdura l'inadempimento e comunque non oltre un anno dalla scadenza del termine di conclusione del procedimento; declaratoria di nullità: decadenza di centottanta giorni |
+| Rito appalti | art. 120 c.p.a. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2010-07-02;104~art120!vig= | ricorso e motivi aggiunti nel termine di trenta giorni; per mancata pubblicità del bando, decorrenze e limite massimo nel testo (fino a sei mesi dalla stipulazione); rito accelerato con termini processuali propri |
+
+## Tributario
+
+| Cancello / percorso | Dove sta la regola | Nota operativa |
+|---|---|---|
+| Ricorso: termine | art. 21 D.lgs. 31 dicembre 1992, n. 546 — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1992-12-31;546~art21!vig= | sessanta giorni dalla notificazione dell'atto impugnato, a pena di inammissibilità; contro il rifiuto tacito di restituzione, dopo il novantesimo giorno dalla domanda |
+| Reclamo e mediazione tributaria | art. 17-bis D.lgs. 546/1992 — **ABROGATO** (D.lgs. 30 dicembre 2023, n. 220) — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1992-12-31;546~art17bis!vig= | non è più condizione di procedibilità per i giudizi con ricorso notificato dopo il 1° settembre 2024; rileva solo ratione temporis per i giudizi anteriori. Trappola frequente: non dare mai per vigente il reclamo/mediazione senza verificare la data del ricorso |
+| Sospensione dell'atto impugnato | art. 47 D.lgs. 546/1992 — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1992-12-31;546~art47!vig= | istanza per danno grave e irreparabile; trattazione entro trenta giorni; regime di impugnazione dell'ordinanza cautelare nel testo |
+| Conciliazione fuori udienza | art. 48 D.lgs. 546/1992 — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:1992-12-31;546~art48!vig= | istanza congiunta in pendenza di giudizio; applicabile anche in Cassazione in quanto compatibile |
+
+## Crisi d'impresa
+
+| Cancello / percorso | Dove sta la regola | Nota operativa |
+|---|---|---|
+| Composizione negoziata | art. 12 D.lgs. 12 gennaio 2019, n. 14 (CCII) — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2019-01-12;14~art12!vig= | per l'imprenditore in squilibrio patrimoniale o economico-finanziario con risanamento ragionevolmente perseguibile: nomina dell'esperto tramite la camera di commercio; percorso stragiudiziale, non una procedura concorsuale |
+| Procedimento unitario: domanda | art. 40 CCII — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2019-01-12;14~art40!vig= | accesso agli strumenti di regolazione della crisi e alla liquidazione giudiziale; se pende domanda di liquidazione proposta da altri, la domanda di accesso a uno strumento va proposta a pena di decadenza entro la prima udienza (salvo l'esito della composizione negoziata, con termine proprio nel testo) |
+| Concordato preventivo | art. 84 CCII — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2019-01-12;14~art84!vig= | finalità e tipologie di piano (continuità diretta o indiretta, liquidatorio con apporto esterno e soglie nel testo); presupposto: stato di crisi o di insolvenza |
 
 ## Penale — riti e cancelli
 
@@ -58,4 +90,4 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 1. Ogni voce indica **dove** sta la regola, non **cosa** decide il caso: il testo va recuperato e letto.
 2. I termini si citano solo dal testo recuperato, con la versione applicabile ratione temporis (le decadenze del lavoro e la sede dell'elenco della mediazione sono cambiate nel tempo).
 3. Se il cancello dipende da elenchi che cambiano (materie di mediazione, limiti dei riti), non citare l'elenco a memoria: leggerlo nel testo vigente.
-4. Le lacune del catalogo si dichiarano: qui c'è la prima tranche (civile, lavoro, penale); ciò che manca si cerca con il Routing per materia.
+4. Le lacune del catalogo si dichiarano: le materie coperte sono civile, lavoro, famiglia (rito), amministrativo, tributario, crisi d'impresa e penale; ciò che manca si cerca con il Routing per materia.

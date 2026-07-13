@@ -644,8 +644,7 @@
         "must_include": [
           "art. 6",
           "604",
-          "decadenza",
-          "da verificare"
+          "decadenza"
         ],
         "must_not_include": []
       }
@@ -658,6 +657,65 @@
       "checks": {
         "must_include": [
           "procedibilità"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 40,
+      "prompt": "Ho ricevuto oggi la notifica di un avviso di accertamento: entro quando posso fare ricorso? E il reclamo/mediazione tributaria e ancora obbligatorio?",
+      "expected_output": "Ricorso alla corte di giustizia tributaria di primo grado entro sessanta giorni dalla notificazione dell'atto, a pena di inammissibilita (art. 21 D.lgs. 546/1992). Il reclamo/mediazione ex art. 17-bis D.lgs. 546/1992 e stato ABROGATO dal D.lgs. 220/2023: per i giudizi con ricorso notificato dopo il 1° settembre 2024 non e piu una condizione, rileva solo ratione temporis per i giudizi anteriori. Conteggio da verificare sulle date reali (computo, sospensione feriale); nessun estremo inventato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "art. 21",
+          "546",
+          "17-bis",
+          "abrogat",
+          "da verificare"
+        ],
+        "must_not_include": [
+          "il reclamo è ancora obbligatorio"
+        ]
+      }
+    },
+    {
+      "id": 41,
+      "prompt": "Con quale rito si introduce oggi una causa in materia di famiglia o di minori? E per i procedimenti iniziati prima della riforma?",
+      "expected_output": "Rito unificato per le persone, i minorenni e le famiglie: artt. 473-bis ss. c.p.c., con ambito ed esclusioni nell'art. 473-bis (esclusi, tra l'altro, lo scioglimento della comunione legale e i procedimenti di adottabilita e adozione di minori). Si applica ai procedimenti instaurati dopo il 28 febbraio 2023; ai procedimenti pendenti a quella data si applicano le disposizioni anteriormente vigenti (ratione temporis). Dichiarata la lacuna del merito di famiglia (nessuna fonte giurisprudenziale gratuita). Nessun estremo inventato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "473-bis",
+          "ratione temporis"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 42,
+      "prompt": "Un'impresa cliente e in squilibrio finanziario ma il risanamento sembra ancora possibile: quali percorsi offre il Codice della crisi e dove stanno le regole?",
+      "expected_output": "Composizione negoziata della crisi: art. 12 D.lgs. 14/2019 (CCII) — nomina di un esperto tramite la camera di commercio per l'imprenditore in squilibrio patrimoniale o economico-finanziario con risanamento ragionevolmente perseguibile; percorso stragiudiziale. Se serve uno strumento di regolazione: concordato preventivo ex art. 84 CCII (continuita o liquidatorio, presupposto stato di crisi o insolvenza), con domanda nel procedimento unitario ex art. 40 CCII. Presupposti e soglie da leggere sul testo; nessun estremo inventato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "art. 12",
+          "composizione negoziata",
+          "art. 84"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 43,
+      "prompt": "TEMPLATE promemoria da fascicolo: dopo una risposta di Strategia processuale l'utente chiede 'fammi il promemoria per il fascicolo' (o 'memo di una pagina'). Verificare la regola del punto 7 della modalita Strategia processuale.",
+      "expected_output": "Il promemoria comprime la strategia gia elaborata in una pagina conservando i cinque titoli (Raccomandazione per intero, le altre sezioni per punti essenziali), le citazioni con estremi e permalink quando disponibili, i marcatori [DA VERIFICARE: estremi] e il blocco 'Limiti e verifiche' ridotto a una riga per dichiarazione senza ometterne alcuna. Nessuna conclusione o citazione nuova rispetto alla strategia di partenza. Se l'ambiente consente di produrre file, il promemoria viene offerto anche come documento con contenuto identico.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Raccomandazione",
+          "Azioni e scadenze",
+          "Limiti e verifiche"
         ],
         "must_not_include": []
       }
