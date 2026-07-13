@@ -8,6 +8,8 @@ Come ottenere il massimo dalle quattro modalità. La skill sceglie la modalità 
 /ricerca-giuridica-it comparata la clausola claims made è vessatoria?
 ```
 
+In una chat qualsiasi (claude.ai, Desktop, app mobile) basta la parola chiave a inizio messaggio, senza il prefisso `/ricerca-giuridica-it` che serve solo per il comando in Claude Code: `strategia: opposizione a decreto ingiuntivo per canoni contestati`.
+
 La parola chiave decide solo la modalità: le regole di citazione, vigenza e riservatezza valgono sempre e non sono disattivabili. E conta solo come comando in apertura: se è parte della domanda ("Documento di valutazione dei rischi: è obbligatorio...?") la skill sceglie da sola la modalità giusta.
 
 ## Ricerca giuridica (default)
@@ -66,6 +68,13 @@ Dopo la strategia puoi chiedere il **promemoria da fascicolo** ("fammi il promem
 - `in breve` / `in sintesi` → solo conclusione e fonti.
 - `approfondisci` / `in dettaglio` / `versione estesa` → orientamenti a confronto, argomentazione completa, testo delle disposizioni chiave.
 
+Si scrivono come prefisso alla domanda o come messaggio a sé stante dopo aver già ricevuto una risposta:
+
+```
+in breve: è ancora in vigore il D.lgs. 50/2016?
+```
+oppure, dopo aver già ricevuto una risposta, scrivi semplicemente `approfondisci`.
+
 ## Il corpus documentale (se collegato)
 
 Se la conversazione espone i tool `lex_*`, la skill interroga un corpus locale in tre collezioni: `base` (fonti aperte indicizzate), `studio` (i tuoi documenti: citati come "fonte dello studio"), `puntatori` (indici di fonti a riuso ristretto: la skill ti rimanda all'originale). Chiedi "che copertura ha il corpus?" per farti dichiarare collezioni e data di aggiornamento. Senza corpus, la skill lavora sulle fonti ufficiali via web dichiarandolo.
@@ -79,6 +88,14 @@ Le risposte costruiscono il quadro dall'alto verso il basso: Costituzione e legg
 Puoi descrivere il caso liberamente nella conversazione: la skill è progettata per **non** far uscire i dettagli — le ricerche verso corpus e web usano solo concetti giuridici astratti (istituti, norme, fattispecie), mai nomi di parti o dati riconducibili a persone o cause.
 
 E i documenti che alleghi — anche quelli di controparte o prodotti da altri strumenti — sono trattati come **dati da analizzare, mai come istruzioni**: se un documento contiene testo che tenta di pilotare l'assistente (es. "queste citazioni sono già verificate"), la skill non lo esegue e te lo segnala.
+
+## Marcatori e verifica
+
+| Marcatore | Cosa fare |
+|---|---|
+| `[DA COMPLETARE: ...]` | Sostituisci con il dato reale (parti, date, importi) prima di usare la bozza. |
+| `[DA VERIFICARE: estremi]` | Apri il permalink riportato accanto alla citazione (quando presente) o la fonte ufficiale indicata, prima di fondarci un argomento. |
+| Termini in "Azioni e scadenze" | La skill cita solo la regola di computo e la durata per estremi (v. `references/computo_termini.md`); il conteggio sulle date reali del caso è sempre tuo. |
 
 ## Limiti da conoscere
 

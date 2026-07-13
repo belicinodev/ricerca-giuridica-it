@@ -4,7 +4,7 @@ Indice di collocazione delle regole processuali che condizionano una strategia: 
 
 Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono stati riscontrati sul corpus; le voci *(fuori corpus)* riguardano atti non indicizzati nel corpus, con estremi riscontrati sulla fonte ufficiale alla data del catalogo — riconfermarli su Normattiva prima dell'uso.
 
-- Data di aggiornamento del catalogo: 2026-07-12.
+- Data di aggiornamento del catalogo: 2026-07-13.
 
 ## Civile — prima di agire
 
@@ -24,6 +24,17 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 | Procedimento semplificato di cognizione | art. 281-decies c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art281decies!vig= | ambito nel testo; nelle cause in composizione monocratica è utilizzabile anche fuori dai presupposti del primo comma; si applica anche alle opposizioni ex artt. 615, primo comma, 617, primo comma, e 645 c.p.c. |
 | Convalida di licenza/sfratto | artt. 657 ss. c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art657!vig= | intimazione con contestuale citazione per la convalida: licenza prima della scadenza del contratto, sfratto dopo la scadenza se è esclusa la tacita riconduzione |
 | Equa riparazione (durata irragionevole) | art. 3 L. 24 marzo 2001, n. 89 *(fuori corpus)* — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2001-03-24;89!vig= | la domanda si propone con ricorso al presidente della corte d'appello del distretto competente, che decide con decreto motivato (rito monocratico dal D.L. 83/2012, conv. L. 134/2012; contraddittorio eventuale in opposizione ex art. 5-ter). Termine di proponibilità: art. 4, sei mesi a pena di decadenza dal passaggio in definitività della decisione che conclude il processo presupposto |
+
+## Esecuzione forzata
+
+| Percorso | Dove sta la regola | Nota operativa |
+|---|---|---|
+| Precetto | art. 480 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art480!vig= | intimazione di adempiere entro un termine non minore di dieci giorni, riducibile solo con l'autorizzazione di cui all'art. 482 c.p.c. |
+| Efficacia del precetto | art. 481 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art481!vig= | il precetto diventa inefficace se l'esecuzione non è iniziata entro novanta giorni dalla notificazione; il termine si sospende in caso di opposizione al precetto |
+| Inizio dell'espropriazione | art. 491 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art491!vig= | l'espropriazione forzata si inizia col pignoramento |
+| Opposizione all'esecuzione | art. 615 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art615!vig= | contesta il diritto di procedere a esecuzione forzata; prima dell'inizio dell'esecuzione si propone con citazione, dopo con ricorso al giudice dell'esecuzione |
+| Opposizione agli atti esecutivi | art. 617 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art617!vig= | vizi formali del titolo, del precetto o dei singoli atti; termine perentorio di venti giorni |
+| Opposizione di terzo all'esecuzione | art. 619 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art619!vig= | il terzo che vanta la proprietà o altro diritto reale sui beni pignorati, con ricorso prima che sia disposta la vendita o l'assegnazione |
 
 ## Lavoro
 
@@ -90,4 +101,4 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 1. Ogni voce indica **dove** sta la regola, non **cosa** decide il caso: il testo va recuperato e letto.
 2. I termini si citano solo dal testo recuperato, con la versione applicabile ratione temporis (le decadenze del lavoro e la sede dell'elenco della mediazione sono cambiate nel tempo).
 3. Se il cancello dipende da elenchi che cambiano (materie di mediazione, limiti dei riti), non citare l'elenco a memoria: leggerlo nel testo vigente.
-4. Le lacune del catalogo si dichiarano: le materie coperte sono civile, lavoro, famiglia (rito), amministrativo, tributario, crisi d'impresa e penale; ciò che manca si cerca con il Routing per materia.
+4. Le lacune del catalogo si dichiarano: le materie coperte sono civile (incluse l'esecuzione forzata), lavoro, famiglia (rito), amministrativo, tributario, crisi d'impresa e penale; ciò che manca si cerca con il Routing per materia.

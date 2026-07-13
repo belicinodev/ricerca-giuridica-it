@@ -47,7 +47,7 @@ Solo fonti ufficiali o liberamente accessibili — mai banche dati commerciali:
 - **Prassi e autorità:** Agenzia delle Entrate e def.finanze (tributario), ANAC (appalti), INL, interpelli del Ministero del Lavoro e INPS (lavoro e previdenza), Garante privacy ed EDPB, Banca d'Italia, IVASS, CONSOB e UIF (vigilanza), AGCM (concorrenza e consumatori), MIM (scuola), Ministero dell'Interno ed EUAA (immigrazione), EBA/ESMA/EIOPA (finanza UE).
 - **ADR e contratti collettivi:** decisioni ABF e ACF, elenchi degli organismi ADR (MIMIT e Commissione UE), archivio CCNL del CNEL (open data IODL 2.0), ARAN.
 
-Endpoint, licenze e condizioni di riuso complete nei cataloghi `references/` della skill; il kit minimo per ciascuna delle 16 materie coperte è in `fonti_per_materia.md`.
+Endpoint, licenze e condizioni di riuso complete nei cataloghi `references/` della skill; il kit minimo per ciascuna delle 17 materie coperte è in `fonti_per_materia.md`.
 
 ## Corpus documentale opzionale
 
@@ -55,10 +55,10 @@ Se la conversazione espone tool MCP con prefisso `lex_`, la skill interroga un c
 
 ## Installazione
 
-**claude.ai / Claude Desktop / app mobile** (per account, richiede l'esecuzione codice attiva nelle impostazioni):
-scarica lo ZIP della skill dall'ultima release e caricalo da Personalizza > Skill.
+**claude.ai / Claude Desktop / app mobile** (per account, richiede l'esecuzione codice attiva — cerca "esecuzione codice" o "code execution" nelle impostazioni della tua versione, il percorso esatto del menu cambia tra le superfici):
+scarica lo ZIP dall'[ultima release](https://github.com/belicinodev/ricerca-giuridica-it/releases/latest) e caricalo da Personalizza > Skill. Fatto questo sei pronto: scrivi la domanda in chat, nessun comando da digitare, la skill si attiva da sola sulle frasi giuste (v. [GUIDA.md](GUIDA.md)).
 
-**Claude Code**, per il singolo progetto: clona questo repo e apri la cartella, la skill in `.claude/skills/` viene scoperta automaticamente. Per tutti i progetti: `cp -R .claude/skills/ricerca-giuridica-it ~/.claude/skills/`.
+**Claude Code** (via più tecnica: richiede git e un terminale — se non li conosci, usa il metodo ZIP sopra: la skill è identica), per il singolo progetto: clona questo repo e apri la cartella, la skill in `.claude/skills/` viene scoperta automaticamente. Per tutti i progetti: `cp -R .claude/skills/ricerca-giuridica-it ~/.claude/skills/`.
 
 ## Struttura
 
@@ -66,7 +66,7 @@ scarica lo ZIP della skill dall'ultima release e caricalo da Personalizza > Skil
 .claude/skills/ricerca-giuridica-it/
   SKILL.md          metodo, regole, modalità, flusso di lavoro
   references/       cataloghi delle fonti, caricati a richiesta
-    fonti_per_materia.md       kit minimo per 16 materie
+    fonti_per_materia.md       kit minimo per 17 materie
     fonti_dati_giuridici.md    endpoint, licenze, massime, ADR/CCNL
     fonti_normative.md         estremi di codici, leggi e testi unici
     computo_termini.md         regole di computo dei termini (metodo, non aritmetica)

@@ -120,6 +120,13 @@ Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente a
 - Giurisprudenza: Cassazione su SentenzeWeb; rassegne del Massimario sulla protezione internazionale; CEDU via HUDOC; CGUE via InfoCuria.
 - Raccolta di settore: banca dati ASGI (asgi.it/banca-dati, licenza CC BY-NC-SA 4.0: riuso solo non commerciale con attribuzione; i provvedimenti in sé restano atti pubblici).
 
+## 17. Appalti
+
+- Normativa: Codice dei contratti pubblici (D.lgs. 31 marzo 2023, n. 36) — Normattiva; i previgenti D.lgs. 50/2016 e D.lgs. 163/2006 sono abrogati e rilevano solo ratione temporis (v. `fonti_normative.md`).
+- Prassi: ANAC (anticorruzione.it) — delibere, pareri, linee guida, bandi-tipo; dati di gara aperti su dati.anticorruzione.it/opendata (BDNCP, formati CSV/JSON/OCDS, API via PDND).
+- Giurisprudenza: contenzioso su giustizia-amministrativa.it; open data su OpenGA (CC BY 4.0).
+- Rito: termini processuali speciali (rito appalti, art. 120 c.p.a.) in `percorsi_processuali.md`.
+
 ---
 
 ## Lacune trasversali (da dichiarare quando rilevano)

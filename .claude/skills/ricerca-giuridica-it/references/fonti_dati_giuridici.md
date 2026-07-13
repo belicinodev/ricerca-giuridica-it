@@ -2,7 +2,7 @@
 
 Companion tecnico del catalogo degli estremi normativi (`fonti_normative.md`): per ogni fonte ufficiale, come accedervi (anche in modo automatico), con quale licenza e con quali regole di riuso. Serve alla skill per instradare le ricerche e per valutare cosa è lecito acquisire in un corpus documentale.
 
-- Data: 2026-07-04
+- Data di aggiornamento del catalogo: 2026-07-13
 - Regola generale: il testo degli atti è libero, il valore aggiunto editoriale no. Verificare sempre licenza e termini d'uso prima di qualsiasi acquisizione.
 
 ---
@@ -96,7 +96,7 @@ Cosa resta impossibile gratis: il massimario CED completo interrogabile; un cita
 | Fonte | Endpoint | Accesso | Riuso |
 |---|---|---|---|
 | ABF — Arbitro Bancario Finanziario | arbitrobancariofinanziario.it/decisioni/ricerca-avanzata | Ricerca libera senza login: decisioni dal 2010, per oggetto/anno/testo | Decisioni citabili con fonte; sito © Banca d'Italia restrittivo, no dump |
-| ACF — Arbitro Controversie Finanziarie | acf.consob.it/decisioni-del-collegio | Consultazione libera: decisioni dal 2017 | Decisioni citabili con fonte |
+| ACF — Arbitro Controversie Finanziarie | acf.consob.it/decisioni-del-collegio | Consultazione libera: decisioni dal 2017 | Decisioni citabili con fonte; verificare se le note legali restrittive di consob.it (§4, "tutti i diritti riservati") si estendono al sottodominio acf.consob.it o se questo ha condizioni proprie (da verificare) |
 | ADR consumatori | Elenco MIMIT (organismi ADR nazionali); elenco UE su consumer-redress.ec.europa.eu; ConciliaWeb AGCOM (tlc, SPID); Servizio Conciliazione ARERA (energia/acqua/rifiuti) | Consultazione libera; procedure via identità digitale | Dati istituzionali, citare la fonte |
 | Piattaforma ODR europea | **DISMESSA dal 20 luglio 2025** (Reg. UE 2024/3228) | — | Non instradare più verso ec.europa.eu/consumers/odr |
 | CCNL, archivio nazionale | CNEL cnel.it/Archivio-Contratti | Ricerca libera per settore; testi autentici depositati ex art. 17 L. 936/1986 | Riproduzione consentita citando la fonte (dichiarazione in pagina) |

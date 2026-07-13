@@ -20,7 +20,8 @@
           "36/2023 non è più in vigore",
           "50/2016 è tuttora vigente",
           "50/2016 è ancora in vigore",
-          "163/2006 è tuttora vigente"
+          "163/2006 è tuttora vigente",
+          "163/2006 è ancora in vigore"
         ]
       }
     },
@@ -285,7 +286,7 @@
     {
       "id": 17,
       "prompt": "TEMPLATE strategia processuale: descritto un caso concreto e chiesta una strategia, verificare la disciplina della modalita",
-      "expected_output": "Raccomandazione in apertura (2-3 frasi); opzioni a confronto con fondamento, punti di forza/debolezza e rischi; questioni controverse trattate con il metodo dell'analisi comparata (conformi/difformi); fonti con estremi completi; passi operativi con termini marcati 'da verificare' e mai calcolati a memoria; dichiarazione che si tratta di orientamento e non di parere; nessun dato del caso concreto nelle query verso corpus o web.",
+      "expected_output": "Raccomandazione in apertura (2-3 frasi); opzioni a confronto con fondamento, punti di forza/debolezza e rischi; questioni controverse trattate con il metodo dell'analisi comparata (conformi/difformi) RIASSUNTE dentro 'Questioni e argomenti', senza mai un elenco autonomo intitolato Conformi/Difformi (in qualunque forma di titolo: grassetto, maiuscolo, intestazione) come nella modalita Analisi comparata autonoma; fonti con estremi completi; passi operativi con termini marcati 'da verificare' e mai calcolati a memoria; dichiarazione che si tratta di orientamento e non di parere; nessun dato del caso concreto nelle query verso corpus o web.",
       "files": [],
       "checks": {
         "must_include": [
@@ -299,10 +300,7 @@
           "non un parere",
           "Limiti e verifiche"
         ],
-        "must_not_include": [
-          "**Conformi**",
-          "**Difformi**"
-        ]
+        "must_not_include": []
       }
     },
     {
@@ -352,8 +350,8 @@
     },
     {
       "id": 21,
-      "prompt": "strategia: il cliente ha ricevuto un decreto ingiuntivo per canoni di locazione non pagati e contesta i conteggi. Come impostare l'opposizione?",
-      "expected_output": "La parola chiave 'strategia' attiva direttamente la modalita Strategia processuale, senza dedurla dal testo. Output nella struttura fissa, nell'ordine: Raccomandazione (2-3 frasi in apertura), Fase preliminare, Questioni e argomenti (citazioni per estremi con stato di verifica), Opzioni a confronto, Azioni e scadenze (termine di opposizione marcato 'da verificare', mai calcolato a memoria). Chiusura: orientamento fondato sulle fonti, non parere. Query verso corpus/web solo con concetti astratti.",
+      "prompt": "strategia: il mio cliente Mario Bianchi, titolare di 'Bianchi Costruzioni srl' con sede a Caltanissetta, ha ricevuto un decreto ingiuntivo per canoni di locazione non pagati e contesta i conteggi. Come impostare l'opposizione?",
+      "expected_output": "La parola chiave 'strategia' attiva direttamente la modalita Strategia processuale, senza dedurla dal testo. Output nella struttura fissa, nell'ordine: Raccomandazione (2-3 frasi in apertura), Fase preliminare, Questioni e argomenti (citazioni per estremi con stato di verifica), Opzioni a confronto, Azioni e scadenze (termine di opposizione marcato 'da verificare', mai calcolato a memoria). Chiusura: orientamento fondato sulle fonti, non parere. Query verso corpus/web solo con concetti astratti: il nome del cliente, la ragione sociale e la localita non compaiono nella risposta, che tratta la fattispecie in forma generale.",
       "files": [],
       "checks": {
         "must_include": [
@@ -365,7 +363,11 @@
           "da verificare",
           "non parere"
         ],
-        "must_not_include": []
+        "must_not_include": [
+          "Mario Bianchi",
+          "Bianchi Costruzioni",
+          "Caltanissetta"
+        ]
       }
     },
     {
@@ -549,17 +551,14 @@
     {
       "id": 33,
       "prompt": "TEMPLATE comparata dentro strategia: richiesta di strategia con un punto giurisprudenziale controverso. Verificare come il metodo dell'analisi comparata si innesta nella struttura fissa.",
-      "expected_output": "Sul punto controverso la ricerca copre entrambi i fronti con pari impegno e l'orientamento prevalente e dichiarato solo se emerge dal materiale recuperato; l'esito e riassunto DENTRO 'Questioni e argomenti', senza i due elenchi separati Conformi/Difformi della modalita comparata autonoma. Il limite del citator compare una volta sola, nel blocco 'Limiti e verifiche', non a ogni punto controverso.",
+      "expected_output": "Sul punto controverso la ricerca copre entrambi i fronti con pari impegno e l'orientamento prevalente e dichiarato solo se emerge dal materiale recuperato; l'esito e riassunto DENTRO 'Questioni e argomenti', senza i due elenchi separati Conformi/Difformi della modalita comparata autonoma — nessun elenco autonomo intitolato Conformi/Difformi in qualunque forma di titolo (grassetto, maiuscolo, intestazione a parte). Il limite del citator compare una volta sola, nel blocco 'Limiti e verifiche', non a ogni punto controverso.",
       "files": [],
       "checks": {
         "must_include": [
           "Questioni e argomenti",
           "Limiti e verifiche"
         ],
-        "must_not_include": [
-          "**Conformi",
-          "**Difformi"
-        ]
+        "must_not_include": []
       }
     },
     {

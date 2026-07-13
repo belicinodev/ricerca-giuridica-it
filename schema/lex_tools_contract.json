@@ -99,7 +99,7 @@
       "input": {
         "type": "object",
         "required": ["citazione"],
-        "properties": { "citazione": {"type": "string", "description": "estremi in forma libera"} }
+        "properties": { "citazione": {"type": "string", "description": "solo gli estremi (corte/atto, numero, data) in forma libera: query minimizzate, mai il testo circostante o dati identificativi del caso"} }
       },
       "output": {
         "type": "object",
@@ -118,7 +118,7 @@
       }
     },
     "lex_cerca_prassi": {
-      "description": "Ricerca nella prassi amministrativa indicizzata (circolari, interpelli, messaggi). Se la collezione è vuota, instrada alle fonti ufficiali e lo dichiara.",
+      "description": "Ricerca nella prassi amministrativa indicizzata (circolari, interpelli, messaggi). Query minimizzate: solo concetti astratti. Se la collezione è vuota, instrada alle fonti ufficiali e lo dichiara.",
       "input": {
         "type": "object",
         "required": ["query"],
@@ -139,7 +139,7 @@
       }
     },
     "lex_cerca_giurisprudenza": {
-      "description": "Ricerca su sentenze e massime. Se la collezione è vuota, instrada alle fonti ufficiali web e lo dichiara.",
+      "description": "Ricerca su sentenze e massime. Query minimizzate: solo concetti giuridici astratti, mai nomi di parti o dettagli del caso. Se la collezione è vuota, instrada alle fonti ufficiali web e lo dichiara.",
       "input": {
         "type": "object",
         "required": ["query"],

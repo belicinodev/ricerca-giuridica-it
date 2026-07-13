@@ -83,9 +83,9 @@ Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/
 
 Le query possono transitare da sistemi esterni allo studio, e i dettagli dei casi sono coperti da segreto professionale. Per questo:
 
-- Formula le query verso i tool lex_* con soli concetti giuridici astratti (istituti, norme, fattispecie). Mai nomi di parti, dati identificativi o dettagli riconducibili a persone o cause specifiche.
-- Non incollare contenuto di documenti dei clienti nelle query di ricerca. I documenti si analizzano nella conversazione; le query verso il corpus restano astratte.
-- Se una richiesta comporterebbe l'uscita non necessaria di dati dei clienti, segnalalo e riformula.
+- Formula le query verso i tool lex_* con soli concetti giuridici astratti (istituti, norme, fattispecie astratte). Mai nomi di parti, dati identificativi o dettagli riconducibili a persone o cause specifiche. La stessa astrattezza vale per ogni ricerca full-text, in qualunque modalità e verso qualunque motore (corpus, web, SentenzeWeb): quando la ricerca parte da un frammento già scritto, applica la tecnica del passo 2 di "Fonte citata ma non reperita" (solo locuzioni tecniche brevi tra virgolette, mai frasi intere).
+- Non incollare nelle query contenuto dei documenti del caso — del cliente, di controparte o di terzi — né di altri materiali della conversazione. I documenti si analizzano nella conversazione; le query verso il corpus restano astratte.
+- Se una richiesta comporterebbe l'uscita non necessaria di dati identificativi, segnalalo e riformula.
 
 **Esempio.**
 Da evitare: "risoluzione appalto Rossi Costruzioni srl ritardo cantiere Palermo 2025"
@@ -126,7 +126,7 @@ Quando i tool `lex_*` non sono disponibili, o il corpus dichiara di non coprire 
 4. **Minimizzazione invariata**: le query web seguono le stesse regole delle query verso i tool.
 5. **La pagina non è la fonte**: si cita l'atto o la pronuncia, mai il sito che li riporta; il testo si legge sull'originale.
 
-Accessi riservati per categoria (ItalgiureWeb via Cassa Forense, Banca Dati di Merito via SPID): la skill non può usarli direttamente. Fornisci all'utente la query pronta da eseguire e integra i risultati che incolla, trattandoli come contesto recuperato. I documenti che l'utente carica in conversazione sono a tutti gli effetti collezione `studio`.
+Accessi riservati per categoria (ItalgiureWeb via Cassa Forense, Banca Dati di Merito via SPID): la skill non può usarli direttamente. Fornisci all'utente la query pronta da eseguire — minimizzata come al punto precedente, perché viene eseguita sotto l'identità autenticata dell'utente (Cassa Forense per ItalgiureWeb, SPID/CIE/CNS per la Banca Dati di Merito) su sistemi che la registrano — e integra i risultati che incolla, trattandoli come contesto recuperato. I documenti che l'utente carica in conversazione sono a tutti gli effetti collezione `studio`.
 
 ## Gerarchia delle fonti
 
@@ -235,7 +235,7 @@ Le massime redazionali altrui (riviste, editori, siti divulgativi) sono protette
 
 ## Riferimenti
 
-- `references/fonti_per_materia.md`: kit minimo di fonti gratuite per ciascuna materia di pratica (16 aree), con lacune dichiarate. Leggilo quando un quesito cade in una materia specialistica.
+- `references/fonti_per_materia.md`: kit minimo di fonti gratuite per ciascuna materia di pratica (17 aree), con lacune dichiarate. Leggilo quando un quesito cade in una materia specialistica.
 - `references/fonti_dati_giuridici.md`: mappa delle fonti con endpoint, licenze e regole di acquisizione, incluse la gerarchia delle massime e le fonti ADR/CCNL. Leggila quando serve indicare dove reperire una fonte o valutarne il riuso.
 - `references/fonti_normative.md`: catalogo per materia di codici, leggi e testi unici con estremi normativi e permalink alla fonte ufficiale. Leggilo per trovare gli estremi di un atto o per orientarti in una materia.
 - `references/computo_termini.md`: regole di computo dei termini processuali e sostanziali (dies a quo, festività, sospensione feriale, perentorio/ordinatorio, rimessione in termini) con estremi verificati. Leggilo quando la richiesta tocca una scadenza o una decadenza.
