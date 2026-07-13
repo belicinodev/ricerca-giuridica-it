@@ -26,7 +26,7 @@ Conseguenza pratica: un corpus normativo ampio e aggiornato è costruibile legit
 | Diritto UE | EUR-Lex / CELLAR | SPARQL, REST API, Data Dump, webservice SOAP | Riuso da policy Publications Office | Alta |
 | Fonti secondarie (regolamenti) | gazzettaufficiale.it + siti istituzionali degli enti emananti | Consultazione web | Atto pubblico | Media |
 | Consuetudini e usi | Raccolte provinciali degli usi delle Camere di commercio (ex R.D. 2011/1934), sui siti delle singole CCIAA | Consultazione web/PDF per provincia | Documenti camerali pubblici, citare la fonte | Bassa (fonte frammentata per provincia) |
-| Lavori preparatori | senato.it e camera.it (iter dei disegni di legge, dossier) | Consultazione web | Atti pubblici | Media |
+| Lavori preparatori | senato.it e camera.it (iter dei disegni di legge, dossier); open data su dati.camera.it (CC BY 4.0, verificato: licenza cambiata da CC BY-SA 3.0 per coprire il diritto sui generis sulle banche dati) e dati.senato.it (CC BY 3.0, verificato in pagina) | Consultazione web; entrambi i portali open data richiedono uno User-Agent da browser (rispondono 403 senza alcun header, non è un sito irraggiungibile) | Atti pubblici | Media |
 | Pubblicazione ufficiale | gazzettaufficiale.it | Consultazione web | Atto pubblico | Media |
 
 Le fonti di base — Costituzione, codice civile (R.D. 16 marzo 1942, n. 262), codice penale (R.D. 19 ottobre 1930, n. 1398), codici di procedura, testi unici — sono catalogate con estremi e stato di vigenza in `fonti_normative.md`. Il testo autorevole e aggiornato è sempre Normattiva.
@@ -67,25 +67,27 @@ Cosa resta impossibile gratis: il massimario CED completo interrogabile; un cita
 
 ## 4. Prassi amministrativa
 
+Colonna Riuso a tre stati: **verificato permissivo (esplicito)** = la nota legale/legal notice del sito è stata controllata e dichiara espressamente citazione o riproduzione autorizzata; **presunto permissivo (atto pubblico)** = nessuna nota legale specifica controllata, ci si appoggia al principio generale del §6 (il testo dell'atto pubblico è libero, art. 5 L. 633/1941); **verificato restrittivo** = il sito dichiara esplicitamente un limite oltre la citazione (no dump, no ripubblicazione, tutti i diritti riservati).
+
 | Materia | Fonte / endpoint | Accesso | Riuso |
 |---|---|---|---|
-| Fiscale | Agenzia delle Entrate "Normativa e prassi" + def.finanze.it | Documenti PDF/HTML pubblicati | Atto pubblico, citare fonte |
-| Appalti, atti interpretativi | ANAC anticorruzione.it (delibere, pareri, linee guida, bandi-tipo) | Documenti pubblicati | Atto pubblico |
-| Appalti, dati gare | dati.anticorruzione.it/opendata (BDNCP) | CSV/JSON/OCDS bulk, API via PDND | Open data (dato transazionale, non testo giuridico) |
-| Lavoro, vigilanza | INL ispettorato.gov.it (circolari, note, pareri) | Documenti pubblicati | Atto pubblico |
-| Lavoro, interpelli | lavoro.gov.it, sezione "Interpelli" (art. 9 D.lgs. 124/2004) | Documenti pubblicati | Atto pubblico |
-| Previdenza | INPS, sezione "Circolari, Messaggi e Normativa" | Documenti pubblicati | Atto pubblico |
-| Privacy | Garante gpdp.it (provvedimenti, banca dati DocWeb) | Ricerca web | Atto pubblico, citare il numero doc web |
-| Privacy, livello UE | EDPB edpb.europa.eu (linee guida, opinioni) | Documenti pubblicati | Riuso con attribuzione |
-| Vigilanza bancaria | Banca d'Italia (normativa e orientamenti di vigilanza, sanzioni) | Archivi web + PDF, ricerca per keyword/anno | Testo degli atti citabile; nota copyright del sito restrittiva: no ripubblicazione massiva |
-| Assicurativo | IVASS (regolamenti, lettere al mercato) | Archivio per anno + ricerca keyword | Come Banca d'Italia: testo degli atti con citazione, no dump |
-| Finanziario | CONSOB (bollettino, regolamentazione) | Ricerca full-text nel bollettino | Atti ufficiali citabili; "tutti i diritti riservati" su sito e banca dati |
-| Antiriciclaggio | UIF uif.bancaditalia.it (indicatori di anomalia, schemi, Quaderni) | Documenti pubblicati | Atti citabili con fonte |
-| Autorità UE finanza | EBA (Interactive Single Rulebook, Q&A), ESMA (Document Library), EIOPA (Solvency II Rulebook) | Ricerca web + PDF, nessun login | Riproduzione autorizzata con citazione (legal notice verificate); per derivati dichiarare le modifiche |
-| Concorrenza e consumo | AGCM (ricerca avanzata provvedimenti) | Libera via browser; **tutto il dominio risponde 403 ai fetch**: fallback `site:agcm.it` o Bollettino PDF | Provvedimenti citabili con fonte |
-| Istruzione | MIM mim.gov.it/web/guest/normativa (circolari, decreti, ordinanze) | Filtri tipologia/tematica/data, niente full-text: fallback `site:` | Atti citabili con fonte |
-| Immigrazione | Ministero dell'Interno, Dipartimento Libertà Civili (circolari); Commissione nazionale asilo | Consultazione libera, solo filtro data: fallback `site:` | Atti citabili con fonte |
-| Protezione internazionale UE | EUAA euaa.europa.eu + portale COI coi.euaa.europa.eu | Pubblico, ricerca avanzata per paese | Riproduzione autorizzata con citazione (legal notice) |
+| Fiscale | Agenzia delle Entrate "Normativa e prassi" + def.finanze.it | Documenti PDF/HTML pubblicati | Presunto permissivo (atto pubblico), citare fonte |
+| Appalti, atti interpretativi | ANAC anticorruzione.it (delibere, pareri, linee guida, bandi-tipo) | Documenti pubblicati | Presunto permissivo (atto pubblico) |
+| Appalti, dati gare | dati.anticorruzione.it/opendata (BDNCP) | CSV/JSON/OCDS bulk, API via PDND | Verificato permissivo (esplicito): open data (dato transazionale, non testo giuridico) |
+| Lavoro, vigilanza | INL ispettorato.gov.it (circolari, note, pareri) | Documenti pubblicati | Presunto permissivo (atto pubblico) |
+| Lavoro, interpelli | lavoro.gov.it, sezione "Interpelli" (art. 9 D.lgs. 124/2004) | Documenti pubblicati | Presunto permissivo (atto pubblico) |
+| Previdenza | INPS, sezione "Circolari, Messaggi e Normativa" | Documenti pubblicati | Presunto permissivo (atto pubblico) |
+| Privacy | Garante gpdp.it (provvedimenti, banca dati DocWeb) | Ricerca web | Presunto permissivo (atto pubblico), citare il numero doc web |
+| Privacy, livello UE | EDPB edpb.europa.eu (linee guida, opinioni) | Documenti pubblicati | Verificato permissivo (esplicito): riuso con attribuzione |
+| Vigilanza bancaria | Banca d'Italia (normativa e orientamenti di vigilanza, sanzioni) | Archivi web + PDF, ricerca per keyword/anno | **Verificato restrittivo**: testo degli atti citabile, ma nota copyright del sito esplicita: no ripubblicazione massiva |
+| Assicurativo | IVASS (regolamenti, lettere al mercato) | Archivio per anno + ricerca keyword | **Verificato restrittivo**: come Banca d'Italia, testo degli atti con citazione, no dump |
+| Finanziario | CONSOB (bollettino, regolamentazione) | Ricerca full-text nel bollettino | **Verificato restrittivo**: atti ufficiali citabili, ma "tutti i diritti riservati" dichiarato su sito e banca dati |
+| Antiriciclaggio | UIF uif.bancaditalia.it (indicatori di anomalia, schemi, Quaderni) | Documenti pubblicati | Presunto permissivo (atto pubblico) |
+| Autorità UE finanza | EBA (Interactive Single Rulebook, Q&A), ESMA (Document Library), EIOPA (Solvency II Rulebook) | Ricerca web + PDF, nessun login | Verificato permissivo (esplicito): riproduzione autorizzata con citazione (legal notice verificate); per derivati dichiarare le modifiche |
+| Concorrenza e consumo | AGCM (ricerca avanzata provvedimenti) | Libera via browser; **tutto il dominio risponde 403 ai fetch**: fallback `site:agcm.it` o Bollettino PDF | Presunto permissivo (atto pubblico) |
+| Istruzione | MIM mim.gov.it/web/guest/normativa (circolari, decreti, ordinanze) | Filtri tipologia/tematica/data, niente full-text: fallback `site:` | Presunto permissivo (atto pubblico) |
+| Immigrazione | Ministero dell'Interno, Dipartimento Libertà Civili (circolari); Commissione nazionale asilo | Consultazione libera, solo filtro data: fallback `site:` | Presunto permissivo (atto pubblico) |
+| Protezione internazionale UE | EUAA euaa.europa.eu + portale COI coi.euaa.europa.eu | Pubblico, ricerca avanzata per paese | Verificato permissivo (esplicito): riproduzione autorizzata con citazione (legal notice) |
 
 **Banche dati commerciali** (DeJure, Pluris, OneLegale): accesso su abbonamento; la licenza vieta estrazione e travaso dei contenuti. Non sono una fonte di acquisizione ammessa, in nessun caso.
 
@@ -107,14 +109,14 @@ Cosa resta impossibile gratis: il massimario CED completo interrogabile; un cita
 
 ## 5. Dataset aperti e di ricerca (da valutare, non ufficiali)
 
-Da usare come seme di ricerca, con audit obbligatorio di copertura, aggiornamento e provenienza. Non sono fonti autorevoli.
+Da usare come seme di ricerca, con audit obbligatorio di copertura, aggiornamento, provenienza e **licenza** dichiarata dalla fonte primaria del dataset (mai un'etichetta generica come "Aperto"). Non sono fonti autorevoli.
 
 | Dataset | Contenuto | Licenza dichiarata | Uso |
 |---|---|---|---|
 | italian-legal-corpus (Hugging Face) | Legge IT, diritto UE, decisioni giudiziarie; testi di pubblico dominio | CC BY 4.0 sulla compilazione | Seme ampio; verificare quali decisioni e quanto recenti |
-| LAWSUIT | 14.000 sentenze Corte Costituzionale 1956-2022 con massime scritte da esperti | Rilascio aperto per ricerca | Ottimo per la Consulta e come esempio di massimazione; non è Cassazione |
-| Italia Corpus | Legislazione italiana in Markdown, aggiornata | Aperto | Alternativa pronta all'ingestione da Normattiva; verificare completezza |
-| Italian Civil Code (A. Simeri, HF) | Codice civile strutturato con riferimenti incrociati | Aperto | Utile per la struttura articolo e rinvii |
+| LAWSUIT | 14.000 sentenze Corte Costituzionale 1956-2022 con massime scritte da esperti | **CC BY-SA 3.0 IT** (verificato: stessa licenza della fonte, l'open data della Corte costituzionale) | Ottimo per la Consulta e come esempio di massimazione; non è Cassazione |
+| Italia Corpus (github.com/ahmeabd/italia-corpus) | Legislazione italiana in Markdown, aggiornata quotidianamente da Normattiva | **MIT** sul codice di generazione (verificato via GitHub API); i testi legislativi sono comunque pubblico dominio ex art. 5 L. 633/1941 | Alternativa pronta all'ingestione da Normattiva; verificare completezza |
+| Italian Civil Code (A. Simeri, HF) | Codice civile strutturato con riferimenti incrociati | **Apache 2.0** (verificato via API Hugging Face) | Utile per la struttura articolo e rinvii |
 
 Nota: questi coprono normativa e Corte Costituzionale. Per la Cassazione restano parziali o assenti: la Cassazione ampia e aggiornata si costruisce solo per raccolta mirata da SentenzeWeb.
 

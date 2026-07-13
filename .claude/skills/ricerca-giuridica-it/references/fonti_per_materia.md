@@ -120,7 +120,13 @@ Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente a
 - Giurisprudenza: Cassazione su SentenzeWeb; rassegne del Massimario sulla protezione internazionale; CEDU via HUDOC; CGUE via InfoCuria.
 - Raccolta di settore: banca dati ASGI (asgi.it/banca-dati, licenza CC BY-NC-SA 4.0: riuso solo non commerciale con attribuzione; i provvedimenti in sé restano atti pubblici).
 
-## 17. Appalti
+## 17. Deontologia forense
+
+- Normativa: legge professionale forense (L. 31 dicembre 2012, n. 247) — Normattiva (v. `fonti_normative.md`); Codice Deontologico Forense adottato dal CNF, testo consolidato pubblicato in PDF su consiglionazionaleforense.it/codice-deontologico-forense (non è fonte legislativa su Normattiva: autoregolamentazione dell'Ordine, verificare sempre l'ultima modifica sul sito, es. l'art. 25-bis sull'equo compenso).
+- Organo competente: Consigli Distrettuali di Disciplina (CDD, istituiti dalla L. 247/2012, artt. 50 ss.) in primo grado; Consiglio Nazionale Forense in sede di impugnazione.
+- **Lacuna strutturale:** nessuna banca dati pubblica gratuita e ricercabile di giurisprudenza disciplinare risulta verificata (solo comunicati e circolari sparsi sul sito CNF); non presumerne l'esistenza.
+
+## 18. Appalti
 
 - Normativa: Codice dei contratti pubblici (D.lgs. 31 marzo 2023, n. 36) — Normattiva; i previgenti D.lgs. 50/2016 e D.lgs. 163/2006 sono abrogati e rilevano solo ratione temporis (v. `fonti_normative.md`).
 - Prassi: ANAC (anticorruzione.it) — delibere, pareri, linee guida, bandi-tipo; dati di gara aperti su dati.anticorruzione.it/opendata (BDNCP, formati CSV/JSON/OCDS, API via PDND).

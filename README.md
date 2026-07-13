@@ -47,7 +47,7 @@ Solo fonti ufficiali o liberamente accessibili — mai banche dati commerciali:
 - **Prassi e autorità:** Agenzia delle Entrate e def.finanze (tributario), ANAC (appalti), INL, interpelli del Ministero del Lavoro e INPS (lavoro e previdenza), Garante privacy ed EDPB, Banca d'Italia, IVASS, CONSOB e UIF (vigilanza), AGCM (concorrenza e consumatori), MIM (scuola), Ministero dell'Interno ed EUAA (immigrazione), EBA/ESMA/EIOPA (finanza UE).
 - **ADR e contratti collettivi:** decisioni ABF e ACF, elenchi degli organismi ADR (MIMIT e Commissione UE), archivio CCNL del CNEL (open data IODL 2.0), ARAN.
 
-Endpoint, licenze e condizioni di riuso complete nei cataloghi `references/` della skill; il kit minimo per ciascuna delle 17 materie coperte è in `fonti_per_materia.md`.
+Endpoint, licenze e condizioni di riuso complete nei cataloghi `references/` della skill; il kit minimo per ciascuna delle 18 materie coperte è in `fonti_per_materia.md`.
 
 ## Corpus documentale opzionale
 
@@ -66,7 +66,7 @@ scarica lo ZIP dall'[ultima release](https://github.com/belicinodev/ricerca-giur
 .claude/skills/ricerca-giuridica-it/
   SKILL.md          metodo, regole, modalità, flusso di lavoro
   references/       cataloghi delle fonti, caricati a richiesta
-    fonti_per_materia.md       kit minimo per 17 materie
+    fonti_per_materia.md       kit minimo per 18 materie
     fonti_dati_giuridici.md    endpoint, licenze, massime, ADR/CCNL
     fonti_normative.md         estremi di codici, leggi e testi unici
     computo_termini.md         regole di computo dei termini (metodo, non aritmetica)

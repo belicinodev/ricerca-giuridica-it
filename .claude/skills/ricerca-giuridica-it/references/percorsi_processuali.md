@@ -45,6 +45,7 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 | Regime di tutela: art. 18 St. lav. vs tutele crescenti | art. 18 L. 20 maggio 1970, n. 300 — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1970-05-20;300~art18!vig= ; art. 1 D.lgs. 4 marzo 2015, n. 23 *(fuori corpus)* — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-03-04;23!vig= | lo spartiacque è l'assunzione a tempo indeterminato "a decorrere dalla data di entrata in vigore" del D.lgs. 23/2015 (7 marzo 2015: data non scritta nell'articolato, derivata dalla pubblicazione in G.U. e dalla clausola di vigenza — riscontrarla sull'atto); anche nel regime a tutele crescenti la reintegrazione sopravvive per i casi indicati nel testo (licenziamento nullo, discriminatorio, orale); l'art. 18 ha versioni molto diverse nel tempo: sempre ratione temporis |
 | Tentativo di conciliazione | art. 410 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art410!vig= | facoltativo in via generale ("può promuovere"); la richiesta interrompe la prescrizione e sospende le decadenze per la durata del tentativo e per i venti giorni successivi; verificare i casi speciali nel testo |
 | NASpI: domanda | art. 6 D.lgs. 4 marzo 2015, n. 22 *(fuori corpus)* — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-03-04;22!vig= | rubrica "Domanda e decorrenza della prestazione": domanda all'INPS in via telematica entro il termine di decadenza di sessantotto giorni dalla cessazione del rapporto di lavoro; decorrenza della prestazione al comma 2 |
+| Previdenziale: accertamento tecnico preventivo obbligatorio | art. 445-bis c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art445bis!vig= | nelle controversie di invalidità civile, cecità, sordità, handicap e disabilità, pensione di inabilità e assegno di invalidità (L. 222/1984): l'ATP (art. 696-bis c.p.c.) è condizione di procedibilità della domanda; improcedibilità eccepibile dal convenuto o rilevabile d'ufficio non oltre la prima udienza; termine perentorio di trenta giorni dalla comunicazione della CTU per contestarne le conclusioni |
 
 ## Famiglia e minori (rito)
 
@@ -97,6 +98,13 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 | Ricorso introduttivo: termine | art. 35-bis, comma 2, D.lgs. 25/2008 *(fuori corpus)* | trenta giorni dalla notificazione del provvedimento della Commissione territoriale (sessanta se il ricorrente è in un Paese terzo); termini ridotti e differenziati nei casi di procedura accelerata/di frontiera e di trattenimento (commi 2-bis e 2-ter): leggere sul testo vigente, la disciplina è stata modificata più volte (da ultimo D.L. 145/2024, conv. L. 187/2024) |
 | Impugnazione del decreto | art. 35-bis, comma 13, D.lgs. 25/2008 *(fuori corpus)* | ricorso per cassazione entro trenta giorni dalla comunicazione del decreto a cura della cancelleria; termine uniforme, non differenziato per il richiedente detenuto |
 
+## Condominio
+
+| Cancello / percorso | Dove sta la regola | Nota operativa |
+|---|---|---|
+| Impugnazione delle delibere assembleari | art. 1137 c.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-16;262~art1137!vig= | annullamento di delibere contrarie a legge o regolamento condominiale: termine perentorio di trenta giorni, dalla delibera per dissenzienti/astenuti, dalla comunicazione per gli assenti; l'azione non sospende l'esecuzione salvo sospensione giudiziale |
+| Mediazione obbligatoria | art. 71-quater disp. att. c.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1942-03-30;318~art71quater!vig= | definisce "controversie in materia di condominio" ai fini della mediazione obbligatoria ex art. 5, comma 1, D.lgs. 28/2010 (violazione o errata applicazione degli artt. del libro III, titolo VII, capo II, c.c. e degli artt. 61-72 disp. att. c.c.); legittimazione dell'amministratore a partecipare al procedimento |
+
 ## Consumatori: azione di classe
 
 | Cancello / percorso | Dove sta la regola | Nota operativa |
@@ -127,4 +135,4 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 1. Ogni voce indica **dove** sta la regola, non **cosa** decide il caso: il testo va recuperato e letto.
 2. I termini si citano solo dal testo recuperato, con la versione applicabile ratione temporis (le decadenze del lavoro e la sede dell'elenco della mediazione sono cambiate nel tempo).
 3. Se il cancello dipende da elenchi che cambiano (materie di mediazione, limiti dei riti), non citare l'elenco a memoria: leggerlo nel testo vigente.
-4. Le lacune del catalogo si dichiarano: le materie coperte sono civile (incluse l'esecuzione forzata e l'azione di classe dei consumatori), lavoro, famiglia (rito), amministrativo, tributario, crisi d'impresa, proprietà intellettuale, immigrazione e protezione internazionale, penale; ciò che manca si cerca con il Routing per materia.
+4. Le lacune del catalogo si dichiarano: le materie coperte sono civile (incluse l'esecuzione forzata e l'azione di classe dei consumatori), condominio, lavoro e previdenza, famiglia (rito), amministrativo, tributario, crisi d'impresa, proprietà intellettuale, immigrazione e protezione internazionale, penale; ciò che manca si cerca con il Routing per materia.

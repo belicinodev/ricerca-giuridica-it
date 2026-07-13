@@ -235,7 +235,7 @@ Le massime redazionali altrui (riviste, editori, siti divulgativi) sono protette
 
 ## Riferimenti
 
-- `references/fonti_per_materia.md`: kit minimo di fonti gratuite per ciascuna materia di pratica (17 aree), con lacune dichiarate. Leggilo quando un quesito cade in una materia specialistica.
+- `references/fonti_per_materia.md`: kit minimo di fonti gratuite per ciascuna materia di pratica (18 aree), con lacune dichiarate. Leggilo quando un quesito cade in una materia specialistica.
 - `references/fonti_dati_giuridici.md`: mappa delle fonti con endpoint, licenze e regole di acquisizione, incluse la gerarchia delle massime e le fonti ADR/CCNL. Leggila quando serve indicare dove reperire una fonte o valutarne il riuso.
 - `references/fonti_normative.md`: catalogo per materia di codici, leggi e testi unici con estremi normativi e permalink alla fonte ufficiale. Leggilo per trovare gli estremi di un atto o per orientarti in una materia.
 - `references/computo_termini.md`: regole di computo dei termini processuali e sostanziali (dies a quo, festività, sospensione feriale, perentorio/ordinatorio, rimessione in termini) con estremi verificati. Leggilo quando la richiesta tocca una scadenza o una decadenza.
