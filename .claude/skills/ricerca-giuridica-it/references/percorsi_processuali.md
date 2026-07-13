@@ -2,7 +2,7 @@
 
 Indice di collocazione delle regole processuali che condizionano una strategia: condizioni di procedibilità, decadenze tipiche, riti disponibili, ADR di settore. **Non è un parere e non sostituisce la lettura della norma**: ogni voce indica dove sta la regola, con estremi verificati; termini e presupposti vanno sempre riletti sul testo vigente (o nella versione ratione temporis) prima dell'uso. Le voci si citano solo dopo il recupero del testo (tool lex_* o Normattiva).
 
-Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono stati riscontrati sul corpus; le voci *(fuori corpus)* riguardano atti non indicizzati nel corpus, con estremi riscontrati sulla fonte ufficiale alla data del catalogo — riconfermarli su Normattiva prima dell'uso; le voci *(da verificare)* sono solo segnaposti di collocazione, senza riscontro completo.
+Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono stati riscontrati sul corpus; le voci *(fuori corpus)* riguardano atti non indicizzati nel corpus, con estremi riscontrati sulla fonte ufficiale alla data del catalogo — riconfermarli su Normattiva prima dell'uso.
 
 - Data di aggiornamento del catalogo: 2026-07-12.
 
@@ -23,7 +23,7 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 | Ricorso per decreto ingiuntivo → opposizione | artt. 633 ss., 641, 645 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art641!vig= e https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art645!vig= | il termine per l'opposizione è fissato nel decreto ai sensi dell'art. 641 (quaranta giorni nella regola generale, riducibile fino a dieci o aumentabile fino a sessanta per giusti motivi, termini maggiori per l'intimato residente all'estero): leggerlo sempre sul decreto notificato; l'opposizione si propone davanti all'ufficio giudiziario del giudice che ha emesso il decreto (art. 645) |
 | Procedimento semplificato di cognizione | art. 281-decies c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art281decies!vig= | ambito nel testo; nelle cause in composizione monocratica è utilizzabile anche fuori dai presupposti del primo comma; si applica anche alle opposizioni ex artt. 615, primo comma, 617, primo comma, e 645 c.p.c. |
 | Convalida di licenza/sfratto | artt. 657 ss. c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art657!vig= | intimazione con contestuale citazione per la convalida: licenza prima della scadenza del contratto, sfratto dopo la scadenza se è esclusa la tacita riconduzione |
-| Equa riparazione (durata irragionevole) | art. 3 L. 24 marzo 2001, n. 89 *(da verificare)* | ricorso alla corte d'appello; presupposti e termini nel testo (per il termine di decadenza della domanda v. anche l'art. 4): confermare sulla fonte prima dell'uso |
+| Equa riparazione (durata irragionevole) | art. 3 L. 24 marzo 2001, n. 89 *(fuori corpus)* — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2001-03-24;89!vig= | la domanda si propone con ricorso al presidente della corte d'appello del distretto competente, che decide con decreto motivato (rito monocratico dal D.L. 83/2012, conv. L. 134/2012; contraddittorio eventuale in opposizione ex art. 5-ter). Termine di proponibilità: art. 4, sei mesi a pena di decadenza dal passaggio in definitività della decisione che conclude il processo presupposto |
 
 ## Lavoro
 
