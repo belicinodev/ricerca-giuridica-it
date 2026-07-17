@@ -1,16 +1,16 @@
 # Miniguida all'uso della skill
 
-Come ottenere il massimo dalle quattro modalità. La skill sceglie la modalità dalla formulazione della richiesta: bastano le frasi giuste. In alternativa puoi **forzare la modalità** con una parola chiave in apertura — `ricerca`, `documento` (o `crea`), `comparata` (o `conformi`), `strategia` — seguita dal quesito:
+Come ottenere il massimo dalle quattro modalità. La skill sceglie la modalità dalla formulazione della richiesta: bastano le frasi giuste. In alternativa puoi **forzare la modalità** con un hashtag in apertura — `#ricerca`, `#documento` (o `#crea`), `#comparata` (o `#conformi`), `#strategia` — seguito dal quesito:
 
 ```
-/ricerca-giuridica-it strategia opposizione a decreto ingiuntivo per canoni contestati
-/ricerca-giuridica-it documento diffida ex art. 1454 c.c. per ritardo nella consegna
-/ricerca-giuridica-it comparata la clausola claims made è vessatoria?
+/ricerca-giuridica-it #strategia opposizione a decreto ingiuntivo per canoni contestati
+/ricerca-giuridica-it #documento diffida ex art. 1454 c.c. per ritardo nella consegna
+/ricerca-giuridica-it #comparata la clausola claims made è vessatoria?
 ```
 
-In una chat qualsiasi (claude.ai, Desktop, app mobile) basta la parola chiave a inizio messaggio, senza il prefisso `/ricerca-giuridica-it` che serve solo per il comando in Claude Code: `strategia: opposizione a decreto ingiuntivo per canoni contestati`.
+In una chat qualsiasi (claude.ai, Desktop, app mobile) basta l'hashtag a inizio messaggio, senza il prefisso `/ricerca-giuridica-it` che serve solo per il comando in Claude Code: `#strategia opposizione a decreto ingiuntivo per canoni contestati`. Funziona anche la forma equivalente `strategia:` (con i due punti), mantenuta per compatibilità: le due sintassi attivano la stessa modalità — l'hashtag è consigliato perché è più immediato da usare e da spiegare a un collega o a un cliente.
 
-La parola chiave decide solo la modalità: le regole di citazione, vigenza e riservatezza valgono sempre e non sono disattivabili. E conta solo come comando in apertura: se è parte della domanda ("Documento di valutazione dei rischi: è obbligatorio...?") la skill sceglie da sola la modalità giusta.
+L'hashtag di modalità decide solo *cosa* fare: le regole di citazione, vigenza e riservatezza valgono sempre e non sono disattivabili. Conta solo come comando in apertura del messaggio: nella prosa comune un hashtag non compare mai per caso, quindi — a differenza della forma con i due punti — non c'è ambiguità con un quesito che contenga per caso quella parola (es. "Documento di valutazione dei rischi: è obbligatorio...?" resta sempre una ricerca).
 
 ## Ricerca giuridica (default)
 
@@ -62,18 +62,38 @@ Cosa aspettarsi: una risposta a struttura fissa — **Raccomandazione** (2-3 fra
 
 Dopo la strategia puoi chiedere il **promemoria da fascicolo** ("fammi il promemoria", "memo di una pagina"): la stessa strategia compressa in una pagina, con citazioni, marcatori e limiti conservati — anche come documento, se l'ambiente lo consente.
 
-## Controllare la lunghezza
+## Velocità e ampiezza: `#fast` e `#approfondito`
+
+Un secondo hashtag, indipendente dalla modalità e combinabile con qualunque modalità, regola quanto la skill cerca e quanto scrive — utile per bilanciare tempo/costo in token contro esaustività:
+
+```
+#fast è ancora in vigore il D.lgs. 50/2016?
+#strategia #fast opposizione a decreto ingiuntivo per canoni contestati
+#comparata #approfondito la clausola claims made è vessatoria?
+```
+
+| Hashtag | Effetto | Quando usarlo |
+|---|---|---|
+| *(nessuno)* | Comportamento bilanciato di oggi | Uso quotidiano |
+| `#fast` (alias `#veloce`) | Ricerca essenziale (si ferma al primo riscontro solido per fonte), risposta compatta: meno tempo, meno token | Orientamento rapido, prima valutazione, quesiti dove il tempo/costo conta |
+| `#approfondito` | Ricerca ampia (più fonti incrociate, più precedenti per lato, orientamenti minoritari), risposta estesa | Questioni delicate, prima di un atto o un parere formale, quando serve motivare a fondo |
+
+`#fast` non riduce **mai** la verifica di vigenza, la verifica delle citazioni usate, la riservatezza delle query, i marcatori `[DA VERIFICARE]`/`[DA COMPLETARE]`, né il carattere bilaterale dell'Analisi comparata (conformi e difformi restano sempre entrambi cercati, solo con meno precedenti riportati per lato): la velocità riguarda l'ampiezza dell'esplorazione, mai l'affidabilità di quello che viene poi scritto.
+
+Se servono entrambi i selettori con effetto opposto nello stesso messaggio, per prudenza vince sempre `#approfondito`.
+
+## Controllare la lunghezza della sola risposta
 
 - La risposta è **sintetica di default**: conclusione prima, dettaglio minimo.
-- `in breve` / `in sintesi` → solo conclusione e fonti.
-- `approfondisci` / `in dettaglio` / `versione estesa` → orientamenti a confronto, argomentazione completa, testo delle disposizioni chiave.
+- `in breve` / `in sintesi` / **`#breve`** → solo conclusione e fonti.
+- `approfondisci` / `in dettaglio` / `versione estesa` / **`#approfondito`** → orientamenti a confronto, argomentazione completa, testo delle disposizioni chiave.
 
-Si scrivono come prefisso alla domanda o come messaggio a sé stante dopo aver già ricevuto una risposta:
+`#breve` cambia solo la forma della risposta finale, senza ridurre la ricerca sottostante come fa `#fast`. Si scrivono come prefisso alla domanda o come messaggio a sé stante dopo aver già ricevuto una risposta:
 
 ```
-in breve: è ancora in vigore il D.lgs. 50/2016?
+#breve è ancora in vigore il D.lgs. 50/2016?
 ```
-oppure, dopo aver già ricevuto una risposta, scrivi semplicemente `approfondisci`.
+oppure, dopo aver già ricevuto una risposta, scrivi semplicemente `approfondisci` o `#approfondito`.
 
 ## Il corpus documentale (se collegato)
 

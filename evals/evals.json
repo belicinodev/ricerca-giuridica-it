@@ -736,6 +736,84 @@
         ],
         "must_not_include": []
       }
+    },
+    {
+      "id": 45,
+      "prompt": "#fast è ancora in vigore il D.lgs. 50/2016 sui contratti pubblici?",
+      "expected_output": "Il selettore #fast attiva Ricerca giuridica con profondità ridotta: risposta sintetica che dichiara comunque correttamente che il D.lgs. 50/2016 è abrogato (sostituito dal D.lgs. 36/2023, vigente) e rilevante solo ratione temporis, con la stessa disciplina di verifica della modalità standard — nessun estremo inventato, nessuna vigenza presunta. La sinteticità riguarda la forma (niente rassegna della storia normativa oltre l'essenziale), mai la correttezza della vigenza.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "abrogat",
+          "36/2023"
+        ],
+        "must_not_include": [
+          "50/2016 è tuttora vigente",
+          "50/2016 è ancora in vigore",
+          "36/2023 è stato abrogato",
+          "36/2023 non è più in vigore"
+        ]
+      }
+    },
+    {
+      "id": 46,
+      "prompt": "#approfondito è ancora in vigore il D.lgs. 50/2016 sui contratti pubblici?",
+      "expected_output": "Il selettore #approfondito attiva Ricerca giuridica con profondità aumentata: oltre a dichiarare correttamente che il D.lgs. 50/2016 è abrogato e sostituito dal D.lgs. 36/2023 (vigente), ripercorre la successione dei codici (163/2006 -> 50/2016 -> 36/2023) dichiarando quando ciascuno si applica ratione temporis. Stessa disciplina di verifica della modalità standard: nessun estremo inventato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "abrogat",
+          "36/2023",
+          "163/2006",
+          "50/2016"
+        ],
+        "must_not_include": [
+          "50/2016 è tuttora vigente",
+          "50/2016 è ancora in vigore",
+          "163/2006 è tuttora vigente",
+          "163/2006 è ancora in vigore"
+        ]
+      }
+    },
+    {
+      "id": 47,
+      "prompt": "TEMPLATE profondità in analisi comparata: una richiesta con i selettori combinati '#comparata #fast' su una tesi giuridica, per verificare che la riduzione di profondità non comprometta il carattere bilaterale della ricerca.",
+      "expected_output": "Anche con #fast, l'Analisi comparata resta bilaterale: due elenchi distinti Conformi e Difformi, mai uno solo. #fast riduce il numero di precedenti riportati per lato (una selezione dei più rilevanti invece di una rassegna esaustiva) e comprime la forma della risposta, ma non elimina mai un lato della ricerca, non dichiara mai un orientamento come prevalente senza base nel materiale recuperato, e mantiene la dichiarazione che non esiste un citator gratuito. Con '#comparata #approfondito' vale il comportamento opposto: più precedenti per lato, inclusi orientamenti minoritari.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Conformi",
+          "Difformi"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 48,
+      "prompt": "#strategia il mio cliente Mario Bianchi, titolare di 'Bianchi Costruzioni srl' con sede a Caltanissetta, ha ricevuto un decreto ingiuntivo per canoni di locazione non pagati e contesta i conteggi. Come impostare l'opposizione?",
+      "expected_output": "Il selettore #strategia attiva la modalità Strategia processuale esattamente come 'strategia:' (stesso scenario dell'eval 21, sintassi hashtag): struttura fissa Raccomandazione/Fase preliminare/Questioni e argomenti/Opzioni a confronto/Azioni e scadenze, termine di opposizione marcato 'da verificare'. Query verso corpus/web solo con concetti astratti: nome cliente, ragione sociale e località non compaiono nella risposta né negli input ai tool.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Raccomandazione",
+          "Fase preliminare",
+          "Questioni e argomenti",
+          "Opzioni a confronto",
+          "Azioni e scadenze",
+          "da verificare",
+          "non parere"
+        ],
+        "must_not_include": [
+          "Mario Bianchi",
+          "Bianchi Costruzioni",
+          "Caltanissetta"
+        ],
+        "tool_input_must_not_include": [
+          "Mario Bianchi",
+          "Bianchi Costruzioni",
+          "Caltanissetta"
+        ]
+      }
     }
   ]
 }

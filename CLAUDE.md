@@ -44,6 +44,7 @@ Every new behavioral rule added to `SKILL.md` must arrive with at least one eval
 - **User-provided sources stay separate.** Documents supplied by the user (including purchased dottrina) belong to the `studio` collection, are cited as "fonte dello studio", distinct from official sources, and never reproduced beyond short quotation.
 - **Strategy mode is orientation, not advice.** The "Strategia processuale" mode opens with the recommendation, compares options with explicit risks, marks deadlines as "da verificare" (never computed from memory), applies reinforced query minimization (strategy cases are always concrete), and always declares itself orientation — the decision stays with the professional.
 - **Synthetic by default.** Answers open with the conclusion, no restating the question, no method preambles, one closing caveat at most; expand only on explicit request ("approfondisci"), compress on "in breve".
+- **Depth selectors narrow breadth, never verification.** `#fast`/`#veloce` may shrink how much gets searched (fewer cross-checked sources, fewer precedents per side in Analisi comparata) and how much prose comes back — but it must never skip citation verification, vigenza checks, query minimization, the `[DA VERIFICARE]`/`[DA COMPLETARE]` markers, or the two-sided requirement in Analisi comparata. `#approfondito` only ever adds breadth. On conflicting depth selectors in one message, the more thorough one wins — never resolve ambiguity toward less verification.
 
 ## Commands
 
