@@ -2,7 +2,7 @@
 
 Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente accessibili: normativa, prassi/autorità, giurisprudenza e decisioni. Gli estremi degli atti normativi sono in `fonti_normative.md`; condizioni d'accesso, licenze e regole di riuso trasversali in `fonti_dati_giuridici.md`.
 
-- Data di verifica: 2026-07-06 (tutti gli URL verificati via fetch o curl)
+- Data di verifica: 2026-07-06 (tutti gli URL verificati via fetch o curl); voci aggiunte il 2026-07-17 (§§19-21) verificate separatamente alla stessa data.
 - Regole: nessuna fonte a pagamento; le fonti con login gratuito riservato a una categoria sono marcate "(per categoria)"; i siti che bloccano l'accesso automatico sono marcati "(anti-bot: fallback con ricerca `site:` o istruzioni all'utente)".
 
 ---
@@ -38,7 +38,7 @@ Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente a
 ## 5. Lavoro e previdenza
 
 - Normativa: Statuto dei lavoratori, Jobs Act, D.lgs. 81/2015, T.U. sicurezza 81/2008 — Normattiva.
-- Prassi: INL (circolari e note, ispettorato.gov.it); interpelli Ministero del Lavoro ex art. 9 D.lgs. 124/2004; INPS "Circolari, Messaggi e Normativa".
+- Prassi: INL (circolari e note, ispettorato.gov.it); interpelli Ministero del Lavoro ex art. 9 D.lgs. 124/2004; INPS "Circolari, Messaggi e Normativa"; INAIL (inail.it, sezione normativa e circolari) per infortuni e malattie professionali — verificato liberamente consultabile, nessuna licenza di riuso dichiarata esplicitamente (presunto permissivo, atto pubblico).
 - **CCNL:** archivio nazionale CNEL (cnel.it/Archivio-Contratti) — fonte ufficiale ex art. 17 L. 936/1986, testi depositati dalle parti; dataset **open data IODL 2.0** (riuso anche commerciale con attribuzione) su cnel.it/Archivio-Contratti-Collettivi/Contratti-Open-Data.
 - Pubblico impiego: ARAN (aranagenzia.it) — CCNL per comparto e orientamenti applicativi (anti-bot: fallback `site:aranagenzia.it`).
 - Giurisprudenza: Cassazione lavoro su SentenzeWeb; merito su BDP (SPID).
@@ -131,7 +131,37 @@ Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente a
 - Normativa: Codice dei contratti pubblici (D.lgs. 31 marzo 2023, n. 36) — Normattiva; i previgenti D.lgs. 50/2016 e D.lgs. 163/2006 sono abrogati e rilevano solo ratione temporis (v. `fonti_normative.md`).
 - Prassi: ANAC (anticorruzione.it) — delibere, pareri, linee guida, bandi-tipo; dati di gara aperti su dati.anticorruzione.it/opendata (BDNCP, formati CSV/JSON/OCDS, API via PDND).
 - Giurisprudenza: contenzioso su giustizia-amministrativa.it; open data su OpenGA (CC BY 4.0).
+- Arbitrati: Camera Arbitrale per i Contratti Pubblici presso ANAC (anticorruzione.it/en/arbitrati, ex art. 214 D.lgs. 36/2023) — lodi arbitrali scaricabili in PDF, dati delle persone fisiche senza ruolo funzionale già anonimizzati dalla fonte; verificato liberamente accessibile.
 - Rito: termini processuali speciali (rito appalti, art. 120 c.p.a.) in `percorsi_processuali.md`.
+
+## 19. Successioni e regimi patrimoniali della famiglia
+
+- Normativa: codice civile, libro II (successioni) e libro I, titolo VI (regime patrimoniale della famiglia) — Normattiva; T.U. imposta sulle successioni e donazioni (D.lgs. 31 ottobre 1990, n. 346) — estremi verificati in `fonti_normative.md`.
+- Prassi: Agenzia delle Entrate — circolari e risposte a interpello sulla dichiarazione di successione; Studi del Consiglio Nazionale del Notariato (notariato.it/ufficio-studi): consultazione libera ma **riproduzione vietata** — solo link e breve citazione con fonte (stesso regime di riuso di § 12).
+- Giurisprudenza: Cassazione su SentenzeWeb; merito su BDP (SPID) quando non rientra nell'esclusione famiglia/stato della persona (v. § 1, § 9).
+- **Lacuna dichiarata:** nessun cancello procedurale specifico (termini per accettazione con beneficio d'inventario, rinuncia, azione di riduzione) è ancora verificato in `percorsi_processuali.md`: verificare gli articoli puntuali prima di citarli.
+
+## 20. Ambiente ed energia
+
+- Normativa: Codice dell'ambiente (D.lgs. 3 aprile 2006, n. 152) — Normattiva, estremi già verificati in `fonti_normative.md`.
+- Autorizzazioni: portale nazionale VIA-VAS-AIA del MASE (va.mite.gov.it) — provvedimenti conclusivi e procedimenti in corso; **al 2026-07-17 il servizio interattivo risulta temporaneamente disabilitato per verifica dei requisiti di sicurezza informatica** (banner esplicito sul sito), ma i contenuti restano consultabili in sola lettura: verificare lo stato all'uso.
+- Dati tecnici: ISPRA (isprambiente.gov.it) — relazioni e dati ambientali.
+- Energia: ARERA (arera.it) — delibere di regolazione, distinte dallo sportello ADR già censito in § 11; GSE (gse.it) per gli incentivi FER — **licenza di riuso non verificata**: trattare come atto pubblico citabile, non presumere riuso massivo.
+- Giurisprudenza: contenzioso su giustizia-amministrativa.it (v. § 3).
+
+## 21. Diritto sportivo
+
+- Normativa: riparto di giurisdizione sportiva, L. 17 ottobre 2003, n. 280 (conversione del D.L. 220/2003) — **estremi da verificare su Normattiva prima di citarli puntualmente**, non ancora in `fonti_normative.md`.
+- Prassi/autoregolamentazione: Codice della Giustizia Sportiva del CONI (coni.it) — atto di autoregolamentazione, non fonte legislativa statale: verificare sempre la versione corrente sul sito.
+- Decisioni: Collegio di Garanzia dello Sport del CONI (coni.it/it/attivita-istituzionali/collegio-di-garanzia-dello-sport/giudizi.html) — archivio dei giudizi; il fetch diretto ha dato errore nei test (pattern anti-bot noto per i portali istituzionali già censiti nel repo): verificare accessibilità e continuità dell'archivio all'uso.
+- **Lacuna dichiarata:** nessuna giurisprudenza federale di settore (es. giustizia sportiva FIGC) è stata verificata: non presumerne la reperibilità gratuita.
+
+## 22. Diritto dei trasporti
+
+- Normativa: disciplina di settore (ferroviario, portuale, aeroportuale) frammentata su Normattiva per atto; **estremi da verificare puntualmente prima di citarli**, non ancora in `fonti_normative.md`.
+- Autorità: Autorità di Regolazione dei Trasporti — ART (autorita-trasporti.it/ricerca-avanzata) per delibere, pareri, consultazioni e segnalazioni su accesso alle infrastrutture, oneri di servizio pubblico, tariffe; verificato liberamente consultabile senza login, filtri per anno/tipo atto/modalità di trasporto; nessuna licenza di riuso esplicita oltre il copyright generico di sito (presunto permissivo, atto pubblico).
+- Giurisprudenza: contenzioso su giustizia-amministrativa.it (v. § 3) quando incide su provvedimenti autorizzatori.
+- **Lacuna dichiarata:** diritto della navigazione/marittimo (codice della navigazione, Guardia Costiera, Autorità di Sistema Portuale) è stato esplorato ma non ancora inserito in questo catalogo: le fonti delle 16 Autorità di Sistema Portuale sono frammentate su portali distinti senza un indice unico, verificarle singolarmente prima di instradare un utente.
 
 ---
 
