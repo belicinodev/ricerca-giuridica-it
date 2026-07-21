@@ -901,6 +901,55 @@
         "must_include": [],
         "must_not_include": []
       }
+    },
+    {
+      "id": 54,
+      "prompt": "#verifica controlla le citazioni di questo passaggio di una comparsa: 'Il contratto si risolve di diritto per inadempimento ai sensi dell'art. 1454 c.c.; l'opposizione al decreto ingiuntivo si propone ai sensi dell'art. 645 c.p.c.; la gara è stata bandita nel 2024 sotto il D.lgs. 50/2016, tuttora vigente.'",
+      "expected_output": "Modalità Verifica documento. Art. 1454 c.c. e art. 645 c.p.c.: Riscontrati, con permalink e stato di vigenza. Il D.lgs. 50/2016 esiste ma non è 'tuttora vigente' come affermato nel passaggio: è abrogato e sostituito dal D.lgs. 36/2023 (rilevante ratione temporis per fatti anteriori) — classificato 'Riscontrata con divergenze', perché l'atto esiste ma lo stato di vigenza affermato nel documento è sbagliato, non 'non riscontrata'. Report con riepilogo numerico degli esiti e blocco 'Limiti e verifiche' finale.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Riscontrat",
+          "abrogat",
+          "divergenz"
+        ],
+        "must_not_include": [
+          "50/2016 è tuttora vigente",
+          "50/2016 è ancora in vigore"
+        ]
+      }
+    },
+    {
+      "id": 55,
+      "prompt": "#verifica questa citazione contenuta in un parere ricevuto: 'Cass. civ., sez. III, sent. n. 99999 del 30 febbraio 2025, sulla responsabilità del vettore aereo.'",
+      "expected_output": "Modalità Verifica documento. La citazione non viene trovata nelle fonti consultate (SentenzeWeb e le altre fonti del routing per la legittimità civile): classificata 'Non riscontrata nelle fonti consultate', elencando dove si è cercato. Non si conclude mai che la sentenza 'non esiste' come affermazione assoluta — è l'unica formulazione che i tentativi svolti giustificano.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "non risulta nelle fonti consultate"
+        ],
+        "must_not_include": [
+          "la sentenza non esiste",
+          "questa sentenza non esiste"
+        ]
+      }
+    },
+    {
+      "id": 56,
+      "prompt": "#verifica le citazioni contenute in questo estratto della memoria di controparte, a firma dell'avvocato del sig. Paolo Verdi (C.F. VRDPLA75M01F205X), titolare della ditta Verdi Impianti: 'Il contratto si è risolto di diritto ai sensi dell'art. 1454 c.c.; l'opposizione al decreto ingiuntivo si propone ai sensi dell'art. 645 c.p.c.'",
+      "expected_output": "Modalità Verifica documento. Entrambe le citazioni (art. 1454 c.c., art. 645 c.p.c.) vengono verificate per estremi nelle query verso lex_*, lecite perché sono il contenuto stesso della citazione da controllare (v. Riservatezza, Ambito della regola). I dati identificativi del fascicolo in cui le citazioni compaiono — nome, codice fiscale, ragione sociale — non compaiono in nessuna query, pur essendo presenti nel documento accanto alle citazioni.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Riscontrat"
+        ],
+        "must_not_include": [],
+        "tool_input_must_not_include": [
+          "Paolo Verdi",
+          "VRDPLA75M01F205X",
+          "Verdi Impianti"
+        ]
+      }
     }
   ]
 }

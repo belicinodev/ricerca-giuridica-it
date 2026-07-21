@@ -1,6 +1,6 @@
 # Miniguida all'uso della skill
 
-Come ottenere il massimo dalle quattro modalità. La skill sceglie la modalità dalla formulazione della richiesta: bastano le frasi giuste. In alternativa puoi **forzare la modalità** con un hashtag in apertura — `#ricerca`, `#documento` (o `#crea`), `#comparata` (o `#conformi`), `#strategia` — seguito dal quesito:
+Come ottenere il massimo dalle cinque modalità. La skill sceglie la modalità dalla formulazione della richiesta: bastano le frasi giuste. In alternativa puoi **forzare la modalità** con un hashtag in apertura — `#ricerca`, `#documento` (o `#crea`), `#comparata` (o `#conformi`), `#strategia`, `#verifica` — seguito dal quesito:
 
 ```
 /ricerca-giuridica-it #strategia opposizione a decreto ingiuntivo per canoni contestati
@@ -62,6 +62,17 @@ Come gestiresti questo caso? [con documenti allegati]
 Cosa aspettarsi: una risposta a struttura fissa — **Raccomandazione** (2-3 frasi), **Fase preliminare** (documenti e fatti mancanti), **Questioni e argomenti** (i pilastri, con citazioni per estremi e stato di verifica), **Opzioni a confronto** (fondamento, forza, debolezza, rischi), **Azioni e scadenze** (termini marcati "da verificare"). Se il fascicolo allegato contiene citazioni non verificate, la strategia esce comunque completa: gli argomenti dubbi restano al loro posto marcati `[DA VERIFICARE]` e la verifica entra tra le azioni. È un orientamento fondato sulle fonti, non un parere: la decisione resta al professionista.
 
 Dopo la strategia puoi chiedere il **promemoria da fascicolo** ("fammi il promemoria", "memo di una pagina"): la stessa strategia compressa in una pagina, con citazioni, marcatori e limiti conservati — anche come documento, se l'ambiente lo consente.
+
+## Verifica documento
+
+Per controllare in blocco tutte le citazioni di un atto — utile prima di un'udienza, per una memoria di controparte o un parere ricevuto.
+
+```
+#verifica controlla le citazioni di questo atto [documento allegato]
+Verifica le fonti di questa memoria di controparte.
+```
+
+Cosa aspettarsi: un report con tre soli esiti possibili per ciascuna citazione — **Riscontrata** (con permalink e stato di vigenza), **Riscontrata con divergenze** (l'atto esiste ma con uno scarto, es. una data diversa da quella citata), **Non riscontrata nelle fonti consultate** (mai "non esiste"). Chiude con un riepilogo numerico e il perimetro esatto del controllo. Con `#fast` la ricerca per citazione è ridotta ma gli esiti restano tre; con `#approfondito` la scala di ricerca è esaustiva.
 
 ## Velocità e ampiezza: `#fast` e `#approfondito`
 

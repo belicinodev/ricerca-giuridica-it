@@ -28,12 +28,13 @@ flowchart TD
 
 Le query verso corpus e web contengono solo concetti giuridici astratti: i dettagli del caso non escono mai dalla conversazione. La ricerca e l'esposizione seguono la **gerarchia delle fonti** — Costituzione e leggi costituzionali, diritto UE, fonti primarie statali e regionali e trattati, fonti secondarie, usi — con i criteri di risoluzione delle antinomie dichiarati (gerarchico, di competenza, cronologico, di specialità).
 
-## Le quattro modalità
+## Le cinque modalità
 
 - **Ricerca giuridica** (default): quesito → risposta fondata su fonti citate per estremi, conclusione in apertura.
 - **Crea documento**: bozze di atti, pareri e clausole con citazioni ancorate e segnaposto espliciti `[DA COMPLETARE: ...]` per i dati mancanti.
 - **Analisi comparata**: data una tesi, precedenti a favore e contro su due elenchi distinti, senza cherry-picking; orientamento prevalente dichiarato solo se emerge dal materiale recuperato.
 - **Strategia processuale**: dato un caso, opzioni a confronto (fondamento, forza, debolezza, rischi), raccomandazione motivata e passi operativi. Orientamento, non parere.
+- **Verifica documento**: dato un atto, audit di tutte le citazioni con tre soli esiti possibili — riscontrata, riscontrata con divergenze, non riscontrata — mai un giudizio binario.
 
 L'output è sintetico per default; `in breve` lo comprime, `approfondisci` lo espande. Esempi d'uso per ogni modalità in [GUIDA.md](GUIDA.md).
 
