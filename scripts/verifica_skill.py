@@ -3,12 +3,17 @@
 esterna. Pensato per girare in CI a ogni push/PR.
 
 Verifica:
-- evals.json è JSON valido, id univoci, coppie prompt/expected_output presenti
+- evals.json è JSON valido, id univoci, coppie prompt/expected_output presenti;
+  riporta anche (informativo) quante eval hanno tool_input_must_not_include e
+  quante sono TEMPLATE (manuali, mai eseguite in automatico)
 - SKILL.md ha frontmatter YAML valido con i campi richiesti e la description
   entro il limite di 1024 caratteri
 - ogni file in references/ nominato da SKILL.md esiste davvero (puntatori non rotti)
 - fonti_normative.md: ogni voce di catalogo ha 4 colonne, uno Stato che inizia
-  con un valore riconosciuto e un permalink verso una fonte ufficiale nota
+  con un valore riconosciuto e un permalink verso una fonte ufficiale nota, e se
+  il permalink è su normattiva.it contiene il pattern uri-res/N2Ls
+- tutte le tabelle markdown di references/*.md hanno un numero di colonne
+  coerente riga per riga (errore strutturale, non semantico)
 - schema/lex_tools_contract.json è JSON Schema valido (parsing strutturale)
 """
 
@@ -58,7 +63,10 @@ def check_evals() -> None:
                     errori.append(f"evals.json: eval {e.get('id')} — checks.{campo} mancante o non è una lista")
             if "tool_input_must_not_include" in c and not isinstance(c["tool_input_must_not_include"], list):
                 errori.append(f"evals.json: eval {e.get('id')} — checks.tool_input_must_not_include non è una lista")
+    template = sum(1 for e in items if str(e.get("prompt", "")).startswith("TEMPLATE"))
+    minimizzazione = sum(1 for e in items if "tool_input_must_not_include" in e.get("checks", {}))
     print(f"evals.json: {len(items)} eval, {sum(1 for e in items if 'checks' in e)} con assertion strutturate")
+    print(f"evals.json: {minimizzazione}/{len(items)} eval con tool_input_must_not_include (copertura minimizzazione); {template}/{len(items)} TEMPLATE (solo collaudo manuale)")
 
 
 def check_frontmatter() -> None:
@@ -129,11 +137,50 @@ def check_catalogo_normativo() -> None:
                 problemi.append(f"riga {i}: colonna Testo ufficiale vuota")
             elif not url.startswith(URL_PREFISSI):
                 problemi.append(f"riga {i}: URL non punta a una fonte ufficiale riconosciuta: {url[:60]}")
+            elif url.startswith("https://www.normattiva.it") and "uri-res/N2Ls" not in url:
+                problemi.append(f"riga {i}: URL Normattiva senza il formato permalink atteso (uri-res/N2Ls): {url[:80]}")
         else:
             in_tabella = False
     if problemi:
         errori.extend(f"fonti_normative.md: {p}" for p in problemi)
     print(f"fonti_normative.md: {voci} voci di catalogo verificate, {len(problemi)} problemi")
+
+
+def check_tabelle_generiche() -> None:
+    """Verifica strutturale (non semantica) delle tabelle markdown in tutti i
+    file references/*.md: ogni riga dati di una tabella deve avere lo stesso
+    numero di colonne della riga di intestazione che la apre. Non valida il
+    contenuto (a differenza di check_catalogo_normativo, dedicata a
+    fonti_normative.md): serve a evitare errori di battitura come una colonna
+    in più o in meno, che altrimenti passerebbero inosservati fino a lettura.
+    """
+    problemi: list[str] = []
+    tabelle = 0
+    for path in sorted(REFS_DIR.glob("*.md")):
+        if path == FONTI_NORMATIVE:
+            continue  # già validata nel dettaglio da check_catalogo_normativo
+        colonne_attese: int | None = None
+        header_riga = 0
+        for i, riga in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            r = riga.strip()
+            if not r.startswith("|"):
+                colonne_attese = None
+                continue
+            if set(r.replace("|", "").replace("-", "").replace(":", "").strip()) == set():
+                continue  # riga separatrice |---|---|
+            n = len(r.strip("|").split("|"))
+            if colonne_attese is None:
+                colonne_attese = n
+                header_riga = i
+                tabelle += 1
+                continue
+            if n != colonne_attese:
+                problemi.append(
+                    f"{path.name} riga {i}: {n} colonne, ne attendevo {colonne_attese} come l'intestazione a riga {header_riga}"
+                )
+    if problemi:
+        errori.extend(f"tabelle references/: {p}" for p in problemi)
+    print(f"tabelle references/*.md: {tabelle} tabelle esaminate, {len(problemi)} problemi di colonne")
 
 
 def check_contract_schema() -> None:
@@ -153,6 +200,7 @@ def main() -> int:
     check_frontmatter()
     check_reference_pointers()
     check_catalogo_normativo()
+    check_tabelle_generiche()
     check_contract_schema()
     if errori:
         print("\nERRORI:")

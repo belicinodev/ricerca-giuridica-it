@@ -32,6 +32,7 @@ Per bozze di atti, pareri, clausole, memorie, diffide.
 Redigi una diffida per inadempimento contrattuale ex art. 1454 c.c.
 Prepara una bozza di clausola compromissoria per un appalto privato.
 Imposta un parere sul recesso del socio in una s.r.l.
+Prepara un contratto di locazione commerciale a uso non abitativo.
 ```
 
 Cosa aspettarsi: bozza strutturata (fatto/diritto/conclusioni, o clausola con nota di contesto), citazioni ancorate alle fonti recuperate, segnaposto espliciti `[DA COMPLETARE: ...]` per i dati mancanti. La bozza va sempre rivista prima dell'uso.

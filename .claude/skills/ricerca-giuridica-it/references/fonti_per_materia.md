@@ -65,6 +65,7 @@ Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente a
 - Normativa: Codice della crisi d'impresa e dell'insolvenza (D.lgs. 14/2019), legge fallimentare per il ratione temporis — Normattiva.
 - Giurisprudenza e materiali: Diritto della Crisi (dirittodellacrisi.it, rivista ANVUR, provvedimenti full-text liberi); IL CASO.it (merito per tribunale, dal 1996, livello gratuito); Unijuris (osservatorio fallimentare, Univ. Udine); Cassazione su SentenzeWeb.
 - Nota riuso: i provvedimenti pubblicati da queste riviste sono atti pubblici citabili; massime redazionali e note sono protette.
+- Sovraindebitamento (consumatore, piccolo imprenditore): registro pubblico degli Organismi di Composizione della Crisi (L. 3/2012, D.M. 202/2014) su crisisovraindebitamento.giustizia.it (landing page su giustizia.it verificata raggiungibile) — **il sotto-dominio del registro blocca ogni fetch automatico** (testato con WebFetch, curl con User-Agent da browser, navigazione reale: tutti falliti, pattern coerente con altri domini `*.giustizia.it` già noti nel repo, es. SentenzeWeb): fonte reale ma verificabile solo da browser umano dell'utente finale, non instradabile per ricerca automatica.
 
 ## 9. Famiglia e minori
 
@@ -156,7 +157,14 @@ Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente a
 - Decisioni: Collegio di Garanzia dello Sport del CONI (coni.it/it/attivita-istituzionali/collegio-di-garanzia-dello-sport/giudizi.html) — archivio dei giudizi; il fetch diretto ha dato errore nei test (pattern anti-bot noto per i portali istituzionali già censiti nel repo): verificare accessibilità e continuità dell'archivio all'uso.
 - **Lacuna dichiarata:** nessuna giurisprudenza federale di settore (es. giustizia sportiva FIGC) è stata verificata: non presumerne la reperibilità gratuita.
 
-## 22. Diritto dei trasporti
+## 22. Terzo settore
+
+- Normativa: Codice del Terzo Settore (D.lgs. 3 luglio 2017, n. 117) — Normattiva, estremi già verificati in `fonti_normative.md`; abrogazioni espresse e differite ex art. 102: verificare sempre la vigenza puntuale della singola disposizione.
+- Registro: RUNTS — Registro Unico Nazionale del Terzo Settore (servizi.lavoro.gov.it/runts, Ministero del Lavoro) — ricerca enti iscritti, pubblica e gratuita; verificato consultabile senza login. Nota legale sul riuso non esplicita in home page: trattare come atto pubblico citabile, non come dataset da acquisire in blocco.
+- Prassi: circolari del Ministero del Lavoro in materia di terzo settore (lavoro.gov.it, stessa fonte già citata in § 5).
+- **Lacuna dichiarata:** nessuna giurisprudenza specifica di settore risulta verificata; il contenzioso ricade nel civile o amministrativo generale a seconda della materia (v. § 1, § 3), da instradare di conseguenza.
+
+## 23. Diritto dei trasporti
 
 - Normativa: disciplina di settore (ferroviario, portuale, aeroportuale) frammentata su Normattiva per atto; **estremi da verificare puntualmente prima di citarli**, non ancora in `fonti_normative.md`.
 - Autorità: Autorità di Regolazione dei Trasporti — ART (autorita-trasporti.it/ricerca-avanzata) per delibere, pareri, consultazioni e segnalazioni su accesso alle infrastrutture, oneri di servizio pubblico, tariffe; verificato liberamente consultabile senza login, filtri per anno/tipo atto/modalità di trasporto; nessuna licenza di riuso esplicita oltre il copyright generico di sito (presunto permissivo, atto pubblico).

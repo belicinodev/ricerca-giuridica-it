@@ -43,7 +43,7 @@ Indipendentemente dalla modalità, un secondo hashtag opzionale regola l'ampiezz
 
 - **`#fast`** (alias `#veloce`) — riduce tempo e token. Si ferma al primo riscontro solido per ciascuna fonte necessaria invece di moltiplicare le fonti di corroborazione oltre il minimo richiesto dalla sezione Verifica di vigenza; in Analisi comparata riporta i precedenti più rilevanti per lato (indicativamente 2-3) invece di una rassegna esaustiva, restando comunque bilaterale; la risposta è sintetica per costruzione, conclusione ed estremi essenziali. Non riduce **mai**: la verifica di vigenza, la verifica di ogni citazione effettivamente usata, la minimizzazione delle query, i marcatori `[DA VERIFICARE: estremi]`/`[DA COMPLETARE: ...]`, il carattere bilaterale dell'Analisi comparata, la struttura fissa della Strategia processuale. Per una versione compressa di una strategia già elaborata resta il punto 7 (Promemoria da fascicolo): `#fast` cambia come si arriva alla risposta, il promemoria comprime una risposta già data — sono complementari, non equivalenti.
 - **`#approfondito`** — aumenta l'ampiezza: incrocia più fonti e collezioni, riporta più precedenti per lato includendo gli orientamenti minoritari, espone passaggi argomentativi e il testo delle disposizioni chiave. Estende a tutto il processo di ricerca quanto la richiesta libera "approfondisci" fa oggi sulla sola forma della risposta finale (v. Formato di risposta e sintesi).
-- Senza selettore di profondità, il comportamento è quello bilanciato descritto nelle singole modalità: nessuna delle due estensioni cambia la modalità di default.
+- Senza selettore di profondità, il comportamento è quello bilanciato descritto nelle singole modalità: nessuna delle due estensioni cambia la modalità di default. Bilanciato non significa esaustivo per abitudine: anche senza `#fast`, fermati quando la fonte necessaria è stata riscontrata con sufficiente certezza — corrobora oltre il primo riscontro solo quando la questione è dubbia o controversa, non come prassi automatica; è `#approfondito` a chiedere esplicitamente la corroborazione estesa.
 - Selettori di profondità contrastanti nello stesso messaggio non sospendono la prudenza: vince sempre quello che aumenta il rigore (`#approfondito` su `#fast` o su `#breve`, v. Formato di risposta e sintesi) — mai l'opzione meno verificata per ambiguità del comando.
 
 ### Ricerca giuridica (default)
@@ -54,7 +54,7 @@ Il flusso di lavoro numerato qui sopra: inquadra, instrada, recupera, verifica, 
 
 Si attiva su richieste come "crea/redigi/prepara" un atto, un parere, una memoria, una clausola, una diffida, un quesito.
 
-- Struttura: per gli atti, intestazione, fatto, diritto, conclusioni; per i pareri, quesito, inquadramento normativo, orientamenti, conclusione operativa; per le clausole, testo della clausola più nota di contesto normativo. Registro forense italiano, sintetico.
+- Struttura: per gli atti, intestazione, fatto, diritto, conclusioni; per i pareri, quesito, inquadramento normativo, orientamenti, conclusione operativa; per le clausole, testo della clausola più nota di contesto normativo; per i contratti, intestazione delle parti, premesse, clausole numerate, condizioni economiche, allegati. Registro forense italiano, sintetico.
 - Ogni riferimento normativo o giurisprudenziale segue le regole di citazione e proviene dal contesto recuperato; prima di fondare la bozza su una norma, verifica la vigenza.
 - Per i dati di fatto mancanti inserisci segnaposto espliciti nel formato `[DA COMPLETARE: ...]`: mai inventare fatti, date, importi o generalità. I dati che l'utente ha effettivamente fornito (nome, controparte, importi, indirizzi) si scrivono per esteso nella bozza: la minimizzazione della sezione Riservatezza vale per le query verso i tool, non per il testo dell'atto.
 - Le citazioni fornite dall'utente (o dai documenti) e non riscontrate seguono la sezione "Fonte citata ma non reperita": nella bozza entrano solo marcate `[DA VERIFICARE: estremi]` e non fondano da sole un passaggio in diritto.
@@ -122,8 +122,8 @@ Quando nella conversazione sono disponibili i tool `lex_*`, la skill lavora su u
 
 Uso dei tool:
 
-- `lex_stato_corpus`: chiamalo per primo sui temi non ovvi — dichiara collezioni coperte, conteggi e data dell'ultimo aggiornamento. Usa la risposta per dichiarare i limiti invece di improvvisare.
-- `lex_cerca_norma` e `lex_leggi_articolo`: per il normativo.
+- `lex_stato_corpus`: chiamalo per primo sui temi non ovvi (es. una materia specialistica o poco frequente) — dichiara collezioni coperte, conteggi e data dell'ultimo aggiornamento. Usa la risposta per dichiarare i limiti invece di improvvisare. Non serve richiamarlo per temi di base evidentemente coperti (codice civile, codice penale, procedura), né una seconda volta nella stessa conversazione se già chiamato e il tema non è cambiato: la sua risposta resta valida per l'intera conversazione.
+- `lex_cerca_norma` e `lex_leggi_articolo`: per il normativo. Quando servono più articoli dello stesso atto, valuta se recuperarli in chiamate indipendenti eseguibili in parallelo invece che una dopo l'altra in sequenza, quando l'ambiente lo consente: il risultato non cambia, il tempo di risposta sì.
 - `lex_cerca_giurisprudenza`: per sentenze e massime generate.
 - `lex_verifica_citazione`: per confermare o smentire un estremo (norma o pronuncia) contro il corpus, dichiarandone il perimetro; usalo per la verifica delle citazioni e nel riscontro incrociato del Fallback web.
 - Cita solo ciò che i tool restituiscono, dichiarando la collezione di provenienza quando non è `base`. Se il tema non è coperto, dichiaralo e prosegui con il Fallback web (v. protocollo), indicando la fonte ufficiale su cui stai cercando.
@@ -247,11 +247,12 @@ Le massime redazionali altrui (riviste, editori, siti divulgativi) sono protette
 
 ## Riferimenti
 
-- `references/fonti_per_materia.md`: kit minimo di fonti gratuite per ciascuna materia di pratica (22 aree), con lacune dichiarate. Leggilo quando un quesito cade in una materia specialistica.
+- `references/fonti_per_materia.md`: kit minimo di fonti gratuite per ciascuna materia di pratica (23 aree), con lacune dichiarate. Leggilo quando un quesito cade in una materia specialistica.
 - `references/fonti_dati_giuridici.md`: mappa delle fonti con endpoint, licenze e regole di acquisizione, incluse la gerarchia delle massime e le fonti ADR/CCNL. Leggila quando serve indicare dove reperire una fonte o valutarne il riuso.
 - `references/fonti_normative.md`: catalogo per materia di codici, leggi e testi unici con estremi normativi e permalink alla fonte ufficiale. Leggilo per trovare gli estremi di un atto o per orientarti in una materia.
 - `references/computo_termini.md`: regole di computo dei termini processuali e sostanziali (dies a quo, festività, sospensione feriale, perentorio/ordinatorio, rimessione in termini) con estremi verificati. Leggilo quando la richiesta tocca una scadenza o una decadenza.
 - `references/percorsi_processuali.md`: cancelli e riti per tipo di controversia — condizioni di procedibilità, decadenze tipiche, riti disponibili, ADR di settore — con estremi verificati. Leggilo quando la richiesta riguarda come impostare un'azione o una difesa, o prima di valutare i tempi di un percorso giudiziale.
+- `references/lacune.md`: registro unico delle lacune strutturali già dichiarate negli altri cataloghi. Leggilo per avere un quadro d'insieme di cosa non è coperto, non introduce dichiarazioni nuove.
 
 ## Disclaimer operativo
 

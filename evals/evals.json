@@ -634,7 +634,8 @@
         "must_include": [
           "641",
           "645",
-          "da verificare"
+          "da verificare",
+          "quaranta giorni"
         ],
         "must_not_include": []
       }
@@ -648,7 +649,9 @@
         "must_include": [
           "art. 6",
           "604",
-          "decadenza"
+          "decadenza",
+          "sessanta giorni",
+          "centottanta giorni"
         ],
         "must_not_include": []
       }
@@ -857,6 +860,46 @@
           "Edilcasa",
           "01234567890"
         ]
+      }
+    },
+    {
+      "id": 51,
+      "prompt": "Una norma italiana sembra in contrasto con un regolamento UE direttamente applicabile in materia di appalti: il giudice italiano deve sollevare una questione di legittimità costituzionale o può disapplicare direttamente la norma interna?",
+      "expected_output": "Il diritto UE direttamente applicabile (regolamenti) prevale sulla norma interna contrastante: il giudice comune disapplica direttamente la norma interna, senza dover sollevare una questione di legittimità costituzionale né attendere l'intervento della Corte costituzionale (artt. 11 e 117 Cost.), salvi i controlimiti per i principi fondamentali dell'ordinamento. Distinto dal giudizio di legittimità costituzionale, che riguarda il contrasto tra norma interna e Costituzione, non il contrasto con un regolamento UE self-executing.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "disapplic",
+          "diritto UE"
+        ],
+        "must_not_include": [
+          "deve sollevare la questione di legittimità costituzionale"
+        ]
+      }
+    },
+    {
+      "id": 52,
+      "prompt": "Ho ricevuto questo passaggio da una memoria di controparte, a firma dell'avvocato di Tizio Bianchi per conto di Alfa Costruzioni srl: 'la clausola claims made di secondo livello, che subordina la copertura alla richiesta di risarcimento formulata nel medesimo periodo di efficacia del contratto anche per fatti denunciati tardivamente dal terzo danneggiato, integra una deroga convenzionale al principio di indennizzabilità e va dichiarata nulla per vessatorietà ai sensi dell'art. 1341, comma 2, c.c.' È un principio consolidato in giurisprudenza o è una tesi minoritaria?",
+      "expected_output": "Attiva Analisi comparata (o il metodo equivalente dentro Ricerca giuridica): cerca precedenti su entrambi i fronti (a favore e contro la vessatorietà della clausola claims made di secondo livello) riformulando la tesi come principio astratto. Nelle query verso lex_*/web non compaiono 'Tizio Bianchi' né 'Alfa Costruzioni', e non viene incollata la frase per esteso del passaggio di controparte: solo locuzioni tecniche brevi tra virgolette ('claims made', 'vessatorietà', 'art. 1341 c.c.'), secondo la tecnica già prevista per il passo 2 di 'Fonte citata ma non reperita', applicabile anche qui perché la ricerca parte da un frammento già scritto.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": [],
+        "tool_input_must_not_include": [
+          "Tizio Bianchi",
+          "Alfa Costruzioni",
+          "la clausola claims made di secondo livello, che subordina la copertura alla richiesta di risarcimento formulata nel medesimo periodo di efficacia del contratto anche per fatti denunciati tardivamente dal terzo danneggiato"
+        ]
+      }
+    },
+    {
+      "id": 53,
+      "prompt": "TEMPLATE velocità: nella stessa conversazione, dopo una prima domanda su un tema specialistico che ha già attivato lex_stato_corpus, l'utente pone una seconda domanda sullo stesso tema che richiede di leggere quattro articoli distinti dello stesso codice. Verificare le regole comportamentali sulla velocità introdotte nella sezione 'Corpus documentale: collezioni e tool lex_*' e nella sotto-sezione Profondità di 'Modalità operative'.",
+      "expected_output": "lex_stato_corpus non viene richiamato una seconda volta per lo stesso tema nella stessa conversazione, perché la sua risposta resta valida per l'intera conversazione. Le quattro chiamate a lex_leggi_articolo, riguardando lo stesso atto, vengono eseguite in parallelo quando l'ambiente lo consente invece che una dopo l'altra in sequenza, senza che questo cambi il contenuto della risposta. Fuori da #fast, la corroborazione oltre il primo riscontro solido avviene solo se la questione è dubbia o controversa, non come prassi automatica.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
       }
     }
   ]
