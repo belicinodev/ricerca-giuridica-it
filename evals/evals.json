@@ -950,6 +950,67 @@
           "Verdi Impianti"
         ]
       }
+    },
+    {
+      "id": 57,
+      "prompt": "TEMPLATE maturità: un quesito cade in un'area etichettata 'solo instradamento' in fonti_per_materia.md (es. Diritto sportivo o Diritto dei trasporti). Verificare che il blocco 'Limiti e verifiche' dichiari il livello di copertura, non solo se l'utente incontra di persona la lacuna.",
+      "expected_output": "La risposta dichiara nel blocco 'Limiti e verifiche' che l'area è coperta solo da instradamento (puntatori verificati, senza profondità di prassi o giurisprudenza dedicata), anticipando il limite invece di farlo emergere solo se l'utente nota una lacuna specifica. Nessun estremo normativo prodotto senza la cautela 'da verificare' già presente per queste aree in fonti_per_materia.md.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "instradamento"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 58,
+      "prompt": "Cerco la giurisprudenza di merito penale su un caso di lesioni colpose: dove la trovo?",
+      "expected_output": "Dichiara che la giurisprudenza penale di merito non ha alcuna fonte gratuita strutturata (la Banca Dati di Merito è solo civile): l'area Penale è a 'copertura parziale' per questa lacuna, dichiarata nel blocco Limiti e verifiche. Instrada su legittimità (SentenzeWeb, Cassazione penale) e sulle rassegne penali dell'Ufficio del Massimario come surrogato, senza presentarli come equivalenti a una fonte di merito.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "copertura parziale"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 59,
+      "prompt": "Un'azienda italiana vende beni a un cliente tedesco tramite un contratto di compravendita internazionale, senza alcuna clausola di scelta della legge applicabile. Quale legge disciplina il contratto?",
+      "expected_output": "Si applica il Regolamento Roma I (Reg. (CE) n. 593/2008), a condizione che il contratto sia stato concluso dopo il 17 dicembre 2009 (art. 28). In mancanza di scelta delle parti (art. 3), l'art. 4 § 1, lett. a) individua per la vendita di beni la legge del paese del venditore — quindi la legge italiana — salva la clausola di collegamento manifestamente più stretto (art. 4 § 3) se dal complesso delle circostanze emerge un collegamento più forte con un altro paese.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Roma I",
+          "art. 4"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 60,
+      "prompt": "Il mio cliente italiano vuole citare in giudizio una società con sede in Francia per inadempimento contrattuale: quale giudice è competente?",
+      "expected_output": "Si applica il Regolamento Bruxelles I-bis (Reg. (UE) n. 1215/2012, in vigore dal 10 gennaio 2015). Foro generale (art. 4): i giudici francesi, Stato membro di domicilio del convenuto, a prescindere dalla cittadinanza. Foro speciale alternativo per la materia contrattuale (art. 7, punto 1, lett. a): il giudice del luogo di esecuzione dell'obbligazione dedotta in giudizio, a scelta dell'attore.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Bruxelles I-bis",
+          "art. 4",
+          "art. 7"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 61,
+      "prompt": "TEMPLATE elemento di estraneità in Strategia processuale: un caso con parte straniera arriva in modalità Strategia processuale. Verificare che legge applicabile e foro competente siano trattati come cancello preliminare, non omessi né relegati a dettaglio accessorio.",
+      "expected_output": "La Strategia processuale individua l'elemento di estraneità e determina legge applicabile e foro competente (v. references/elemento_estraneita.md) prima di elaborare le opzioni di merito, trattandoli come un cancello preliminare alla stregua dei cancelli processuali di percorsi_processuali.md — non come dettaglio accessorio né omesso. Se l'articolo pertinente non è stato letto per intero, il punto è marcato da verificare, non assunto.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
     }
   ]
 }

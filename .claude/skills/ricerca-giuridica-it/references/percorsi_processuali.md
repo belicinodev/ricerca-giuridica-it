@@ -4,7 +4,11 @@ Indice di collocazione delle regole processuali che condizionano una strategia: 
 
 Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono stati riscontrati sul corpus; le voci *(fuori corpus)* riguardano atti non indicizzati nel corpus, con estremi riscontrati sulla fonte ufficiale alla data del catalogo — riconfermarli su Normattiva prima dell'uso.
 
-- Data di aggiornamento del catalogo: 2026-07-13.
+- Data di aggiornamento del catalogo: 2026-07-13; nota sull'elemento di estraneità aggiunta il 2026-07-21.
+
+## Elemento di estraneità — prima di ogni altro cancello
+
+Se il caso ha una parte, un fatto o un bene con collegamenti fuori Italia, legge applicabile e giurisdizione sono un cancello a sé, da determinare prima dei cancelli di rito elencati sotto: v. `references/elemento_estraneita.md` per il router (Roma I/II, Bruxelles I-bis/II-ter, regolamento successioni, sistema residuale L. 218/1995).
 
 ## Civile — prima di agire
 

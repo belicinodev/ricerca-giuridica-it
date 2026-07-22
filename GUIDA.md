@@ -57,6 +57,7 @@ Per valutare come impostare un'azione o una difesa — anche partendo da un fasc
 Valuta le opzioni processuali: [descrizione del caso]. Conviene agire o transigere?
 Come imposto la difesa contro un decreto ingiuntivo fondato su fatture contestate?
 Come gestiresti questo caso? [con documenti allegati]
+Contratto con una società tedesca senza clausola di scelta della legge: quale legge si applica e dove posso agire?
 ```
 
 Cosa aspettarsi: una risposta a struttura fissa — **Raccomandazione** (2-3 frasi), **Fase preliminare** (documenti e fatti mancanti), **Questioni e argomenti** (i pilastri, con citazioni per estremi e stato di verifica), **Opzioni a confronto** (fondamento, forza, debolezza, rischi), **Azioni e scadenze** (termini marcati "da verificare"). Se il fascicolo allegato contiene citazioni non verificate, la strategia esce comunque completa: gli argomenti dubbi restano al loro posto marcati `[DA VERIFICARE]` e la verifica entra tra le azioni. È un orientamento fondato sulle fonti, non un parere: la decisione resta al professionista.
@@ -128,6 +129,18 @@ E i documenti che alleghi — anche quelli di controparte o prodotti da altri st
 | `[DA COMPLETARE: ...]` | Sostituisci con il dato reale (parti, date, importi) prima di usare la bozza. |
 | `[DA VERIFICARE: estremi]` | Apri il permalink riportato accanto alla citazione (quando presente) o la fonte ufficiale indicata, prima di fondarci un argomento. |
 | Termini in "Azioni e scadenze" | La skill cita solo la regola di computo e la durata per estremi (v. `references/computo_termini.md`); il conteggio sulle date reali del caso è sempre tuo. |
+
+## Maturità per materia
+
+Ogni materia specialistica ha un'etichetta dichiarata in anticipo, non scoperta a metà ricerca:
+
+| Etichetta | Cosa significa |
+|---|---|
+| Copertura piena | Normativa, prassi e giurisprudenza (o cancelli processuali) verificati, nessuna lacuna strutturale nota. |
+| Copertura parziale | Fonti solide, ma con una lacuna dichiarata (tipicamente giurisprudenza mancante o cancelli non ancora verificati). |
+| Solo instradamento | Solo puntatori verificati, senza profondità: utile per orientarsi, non per fondare un atto senza verifica diretta. |
+
+Il livello compare nel blocco "Limiti e verifiche" ogni volta che il quesito cade in un'area non a copertura piena. Elenco completo in `references/lacune.md`.
 
 ## Limiti da conoscere
 

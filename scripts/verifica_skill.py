@@ -14,6 +14,9 @@ Verifica:
   il permalink è su normattiva.it contiene il pattern uri-res/N2Ls
 - tutte le tabelle markdown di references/*.md hanno un numero di colonne
   coerente riga per riga (errore strutturale, non semantico)
+- ogni sezione numerata di fonti_per_materia.md porta un'etichetta di
+  maturità riconosciuta ([copertura piena] / [copertura parziale] /
+  [solo instradamento])
 - schema/lex_tools_contract.json è JSON Schema valido (parsing strutturale)
 """
 
@@ -31,8 +34,10 @@ REFS_DIR = SKILL_DIR / "references"
 EVALS = ROOT / "evals" / "evals.json"
 CONTRACT = ROOT / "schema" / "lex_tools_contract.json"
 FONTI_NORMATIVE = REFS_DIR / "fonti_normative.md"
+FONTI_PER_MATERIA = REFS_DIR / "fonti_per_materia.md"
 
 STATO_PREFISSI = ("Vigente", "Abrogato", "Abrogata", "Applicabile", "Abrogazione differita")
+MATURITA_RICONOSCIUTE = ("copertura piena", "copertura parziale", "solo instradamento")
 URL_PREFISSI = ("https://www.normattiva.it", "https://eur-lex.europa.eu", "https://www.cnel.it")
 
 errori: list[str] = []
@@ -183,6 +188,35 @@ def check_tabelle_generiche() -> None:
     print(f"tabelle references/*.md: {tabelle} tabelle esaminate, {len(problemi)} problemi di colonne")
 
 
+def check_maturita_aree() -> None:
+    """Ogni sezione numerata di fonti_per_materia.md deve portare, nel titolo,
+    un'etichetta di maturità riconosciuta — rende la dichiarazione di
+    copertura machine-checkable: un'area nuova senza etichetta rompe la CI
+    invece di passare inosservata.
+    """
+    if not FONTI_PER_MATERIA.exists():
+        errori.append("references/fonti_per_materia.md non trovato")
+        return
+    sezioni = 0
+    problemi: list[str] = []
+    conteggi: dict[str, int] = {m: 0 for m in MATURITA_RICONOSCIUTE}
+    for i, riga in enumerate(FONTI_PER_MATERIA.read_text(encoding="utf-8").splitlines(), start=1):
+        m = re.match(r"^## \d+\. (.+)$", riga)
+        if not m:
+            continue
+        sezioni += 1
+        titolo = m.group(1)
+        etichetta = next((e for e in MATURITA_RICONOSCIUTE if f"[{e}]" in titolo), None)
+        if etichetta is None:
+            problemi.append(f"riga {i}: '{titolo[:60]}' priva di un'etichetta di maturità riconosciuta {MATURITA_RICONOSCIUTE}")
+        else:
+            conteggi[etichetta] += 1
+    if problemi:
+        errori.extend(f"fonti_per_materia.md: {p}" for p in problemi)
+    riepilogo = ", ".join(f"{k}: {v}" for k, v in conteggi.items())
+    print(f"fonti_per_materia.md: {sezioni} sezioni, maturità — {riepilogo}")
+
+
 def check_contract_schema() -> None:
     try:
         d = json.loads(CONTRACT.read_text(encoding="utf-8"))
@@ -201,6 +235,7 @@ def main() -> int:
     check_reference_pointers()
     check_catalogo_normativo()
     check_tabelle_generiche()
+    check_maturita_aree()
     check_contract_schema()
     if errori:
         print("\nERRORI:")

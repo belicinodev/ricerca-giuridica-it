@@ -26,7 +26,7 @@ Supporta ricerca, inquadramento e stesura di bozze su fonti giuridiche italiane 
 
 ## Flusso di lavoro
 
-1. Inquadra la domanda: materia, istituto, e se serve norma, prassi o giurisprudenza.
+1. Inquadra la domanda: materia, istituto, e se serve norma, prassi o giurisprudenza. Se il caso presenta un elemento di estraneità — parte, fatto o bene con collegamenti fuori Italia — determina prima legge applicabile e giurisdizione (v. `references/elemento_estraneita.md`) prima di entrare nel merito.
 2. Instrada alla fonte corretta (sezione Routing).
 3. Recupera: usa i tool lex_* se disponibili; altrimenti ricerca web sulle sole fonti ufficiali del routing, dichiarando che la risposta non proviene dal corpus verificato.
 4. Verifica la vigenza prima di dare per applicabile una disposizione (sezione Verifica).
@@ -75,7 +75,7 @@ Si attiva su richieste come "analisi comparata dei precedenti", "conformi e diff
 Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/la difesa", "come gestiresti questo caso", "conviene fare causa o transigere", "valuta le opzioni processuali" — anche quando la richiesta arriva con un fascicolo o un dossier allegato.
 
 1. Ricostruisci fatti, obiettivo e vincoli (tempi, costi, rapporti da preservare) SOLO dalla conversazione e dai documenti forniti. Le query verso corpus e web restano astratte: minimizzazione rafforzata, perché le richieste di strategia sono sempre su casi concreti.
-2. Isola le questioni giuridiche decisive, di rito e di merito. Per il rito parti dai cancelli processuali della materia — condizioni di procedibilità, decadenze tipiche, riti disponibili (v. `references/percorsi_processuali.md`): un cancello mancato invalida la strategia migliore. Per ciascuna questione verifica le norme applicabili ratione temporis e gli orientamenti; sui punti controversi applica il metodo dell'analisi comparata (entrambi i fronti con pari impegno, prevalenza dichiarata solo se emerge dal materiale), riassumendone l'esito dentro "Questioni e argomenti" senza i due elenchi separati; il limite del citator si dichiara una volta sola, nel blocco "Limiti e verifiche".
+2. Isola le questioni giuridiche decisive, di rito e di merito. Se il caso ha un elemento di estraneità, la legge applicabile e il foro competente sono un cancello a tutti gli effetti, da determinare prima degli altri (v. `references/elemento_estraneita.md`). Per il rito parti dai cancelli processuali della materia — condizioni di procedibilità, decadenze tipiche, riti disponibili (v. `references/percorsi_processuali.md`): un cancello mancato invalida la strategia migliore. Per ciascuna questione verifica le norme applicabili ratione temporis e gli orientamenti; sui punti controversi applica il metodo dell'analisi comparata (entrambi i fronti con pari impegno, prevalenza dichiarata solo se emerge dal materiale), riassumendone l'esito dentro "Questioni e argomenti" senza i due elenchi separati; il limite del citator si dichiara una volta sola, nel blocco "Limiti e verifiche".
 3. Costruisci le opzioni realistiche — azione o eccezione, scelta del rito, misure cautelari, ADR o transazione, attendere — e per ciascuna indica: fondamento normativo, punti di forza, punti di debolezza, rischi concreti (onere della prova, spese, durata, esecuzione).
 4. La risposta segue una **struttura fissa**, con i titoli nell'ordine:
    1. **Raccomandazione** — 2-3 frasi con la linea consigliata.
@@ -197,6 +197,8 @@ Regole operative:
 
 Per il kit minimo di fonti per ciascuna materia leggi `references/fonti_per_materia.md`. Per il catalogo completo di endpoint e licenze leggi `references/fonti_dati_giuridici.md`. Per gli estremi di codici, leggi e testi unici per materia leggi `references/fonti_normative.md`.
 
+Ogni materia in `references/fonti_per_materia.md` porta un'etichetta di maturità — **[copertura piena]**, **[copertura parziale]**, **[solo instradamento]** — accanto al titolo della sezione. Quando il quesito cade in un'area `[copertura parziale]` o `[solo instradamento]`, dichiara il livello nel blocco "Limiti e verifiche" in chiusura, sempre, non solo se l'utente incontra di persona la lacuna: la maturità va anticipata, non scoperta a valle.
+
 ## Verifica di vigenza
 
 Prima di dare per applicabile una disposizione:
@@ -268,6 +270,7 @@ Le massime redazionali altrui (riviste, editori, siti divulgativi) sono protette
 - `references/computo_termini.md`: regole di computo dei termini processuali e sostanziali (dies a quo, festività, sospensione feriale, perentorio/ordinatorio, rimessione in termini) con estremi verificati. Leggilo quando la richiesta tocca una scadenza o una decadenza.
 - `references/percorsi_processuali.md`: cancelli e riti per tipo di controversia — condizioni di procedibilità, decadenze tipiche, riti disponibili, ADR di settore — con estremi verificati. Leggilo quando la richiesta riguarda come impostare un'azione o una difesa, o prima di valutare i tempi di un percorso giudiziale.
 - `references/lacune.md`: registro unico delle lacune strutturali già dichiarate negli altri cataloghi. Leggilo per avere un quadro d'insieme di cosa non è coperto, non introduce dichiarazioni nuove.
+- `references/elemento_estraneita.md`: router di diritto internazionale privato — quale regolamento UE (o il sistema residuale italiano) governa legge applicabile e giurisdizione quando il caso ha un elemento straniero, con estremi verificati. Leggilo prima di entrare nel merito di un caso con collegamenti fuori Italia.
 
 ## Disclaimer operativo
 
