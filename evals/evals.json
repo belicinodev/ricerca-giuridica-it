@@ -1011,6 +1011,53 @@
         "must_include": [],
         "must_not_include": []
       }
+    },
+    {
+      "id": 62,
+      "prompt": "Redigi un ricorso per decreto ingiuntivo per il recupero di un credito da fornitura di merci tra due società (transazione commerciale B2B), comprensivo degli interessi di mora dal giorno successivo alla scadenza della fattura.",
+      "expected_output": "Modalità Crea documento. La regola anti-ridondanza (una norma per punto) non porta a omettere il D.lgs. 231/2002 sugli interessi di mora nelle transazioni commerciali: è un regime cumulativo/alternativo rispetto all'art. 1284 c.c. (tasso maggiorato, decorrenza automatica senza costituzione in mora), non un doppione dello stesso punto, quindi va citato accanto o al posto della regola generale. La parte in diritto non ripete i fatti già esposti in narrativa.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "231/2002"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 63,
+      "prompt": "TEMPLATE prove senza invenzione di fatti: Crea documento — 'prepara un ricorso per impugnare il mio licenziamento. Il datore di lavoro ha detto che ero spesso in ritardo, ma io non sono d'accordo', con fatti minimi (nessun testimone, documento o dettaglio ulteriore menzionato dall'utente).",
+      "expected_output": "La bozza segnala tra i mezzi di prova plausibili la prova testimoniale (nei limiti di forma/valore) e documentale (es. cartellini di presenza), collegati al fatto da provare (assenza di giusta causa/giustificato motivo, onere a carico del datore ex art. 5 L. 604/1966), ma resta sul piano della TIPOLOGIA astratta: non afferma che testimoni specifici esistano, non presume che documenti siano disponibili, non anticipa cosa un interrogatorio formale rivelerebbe. La segnalazione compare in una nota distinta dal testo dell'atto, non come se le prove fossero già acquisite od offerte.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 64,
+      "prompt": "Come gestiresti questo caso? Il mio cliente ha un credito di 3.000 euro verso un fornitore abituale con cui collabora da anni, mai stato inadempiente prima, in un momento di temporanea difficoltà di cassa dichiarata.",
+      "expected_output": "Modalità Strategia processuale. Il criterio stragiudiziale/giudiziale (rapporto da preservare, controparte storicamente collaborativa, nessuna urgenza dichiarata) entra come fattore nella Raccomandazione, non come conclusione autonoma e categorica del punto 3: la struttura fissa a cinque titoli resta intera, e il blocco 'Limiti e verifiche' dichiara sempre che è un orientamento, non un parere.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Raccomandazione",
+          "non parere"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 65,
+      "prompt": "Come gestiresti questo caso? Il mio cliente, condomino, ha un contenzioso con l'amministratore di condominio per una delibera contestata; la controparte è stata finora poco collaborativa e non risponde alle comunicazioni.",
+      "expected_output": "Modalità Strategia processuale. La materia condominiale è soggetta a mediazione obbligatoria come condizione di procedibilità (art. 5 D.lgs. 28/2010, v. references/percorsi_processuali.md): la scarsa collaborazione della controparte non esime dal tentativo, che resta un cancello da esperire (l'eventuale rifiuto della controparte in sede di mediazione soddisfa comunque la condizione di procedibilità, non la elude a monte). Il criterio discrezionale di Strategia processuale (punto 3) si applica solo quando la via stragiudiziale NON è già un cancello obbligatorio per legge.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "mediazione"
+        ],
+        "must_not_include": []
+      }
     }
   ]
 }
