@@ -37,6 +37,8 @@ Prepara un contratto di locazione commerciale a uso non abitativo.
 
 Cosa aspettarsi: bozza strutturata (fatto/diritto/conclusioni, o clausola con nota di contesto), citazioni ancorate alle fonti recuperate, segnaposto espliciti `[DA COMPLETARE: ...]` per i dati mancanti. La bozza va sempre rivista prima dell'uso.
 
+Per un tipo di atto senza una struttura già consolidata nella skill, aggiungi `#verifica-formulari`: consulta 1-2 formulari da fonti giuridiche riconosciute solo per la struttura convenzionale (intestazione, sezioni, ordine), dichiarando la fonte — mai per gli estremi normativi, che restano verificati come sempre.
+
 ## Analisi comparata
 
 Per mappare la giurisprudenza a favore e contro una tesi (funzionano anche le formule classiche: "conformi e difformi", "pro e contro").

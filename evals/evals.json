@@ -1058,6 +1058,16 @@
         ],
         "must_not_include": []
       }
+    },
+    {
+      "id": 66,
+      "prompt": "TEMPLATE #verifica-formulari: richiesta di redigere un tipo di atto non coperto da una struttura già stabilita nella skill (es. un atto di precetto), con il selettore esplicito #verifica-formulari. Verificare che la skill consulti 1-2 formulari da fonti riconosciute solo per la struttura, dichiari la fonte nel blocco Limiti e verifiche, e che il fondamento normativo resti verificato tramite i tool lex_*/fonti ufficiali, mai preso dal formulario.",
+      "expected_output": "La skill consulta 1-2 formulari (es. Altalex, portali di formulari, siti di ordini forensi) per la sola struttura convenzionale dell'atto (intestazione, sezioni, ordine), dichiarando la fonte strutturale nel blocco 'Limiti e verifiche'. Nessun estremo normativo o citazione proviene dal formulario: il fondamento giuridico resta soggetto alla disciplina di verifica ordinaria (corpus lex_* o fonti ufficiali), esattamente come in ogni altra bozza. Fuori da questo scenario (atto con struttura già stabilita nella skill, selettore non usato), non consulta formulari online di default.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
     }
   ]
 }

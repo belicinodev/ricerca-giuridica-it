@@ -18,12 +18,16 @@ Verifica:
   maturità riconosciuta ([copertura piena] / [copertura parziale] /
   [solo instradamento])
 - schema/lex_tools_contract.json è JSON Schema valido (parsing strutturale)
+- (informativo, non bloccante) crescita in byte di SKILL.md rispetto
+  all'ultimo tag: un avviso oltre il 10% ricorda di valutare una
+  compattazione prima del prossimo rilascio, senza bloccare la CI
 """
 
 from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -217,6 +221,42 @@ def check_maturita_aree() -> None:
     print(f"fonti_per_materia.md: {sezioni} sezioni, maturità — {riepilogo}")
 
 
+def check_crescita_skill() -> None:
+    """Confronta la dimensione in byte di SKILL.md con quella all'ultimo tag
+    git: solo informativo, non aggiunge mai a `errori` (non deve bloccare la
+    CI). Serve a rendere visibile una crescita rapida prima che diventi un
+    problema di consumo di token, dato che la cronologia del progetto mostra
+    che senza un promemoria esplicito la compattazione non emerge da sola.
+    """
+    try:
+        tag = subprocess.run(
+            ["git", "-C", str(ROOT), "describe", "--tags", "--abbrev=0"],
+            capture_output=True, text=True, timeout=5,
+        )
+        if tag.returncode != 0 or not tag.stdout.strip():
+            print("crescita SKILL.md: nessun tag trovato, controllo saltato")
+            return
+        ultimo_tag = tag.stdout.strip()
+        rel_path = str(SKILL_MD.relative_to(ROOT))
+        precedente = subprocess.run(
+            ["git", "-C", str(ROOT), "show", f"{ultimo_tag}:{rel_path}"],
+            capture_output=True, timeout=5,
+        )
+        if precedente.returncode != 0:
+            print(f"crescita SKILL.md: SKILL.md non trovato al tag {ultimo_tag}, controllo saltato")
+            return
+        dim_precedente = len(precedente.stdout)
+        dim_attuale = SKILL_MD.stat().st_size
+        if dim_precedente == 0:
+            return
+        crescita = (dim_attuale - dim_precedente) / dim_precedente * 100
+        print(f"SKILL.md: {dim_attuale} byte (era {dim_precedente} byte a {ultimo_tag}, {crescita:+.1f}%)")
+        if crescita > 10:
+            print(f"AVVISO (non bloccante): SKILL.md cresciuto di oltre il 10% dall'ultimo tag ({ultimo_tag}) — valuta una compattazione prima del prossimo rilascio.")
+    except (subprocess.SubprocessError, OSError, ValueError) as e:
+        print(f"crescita SKILL.md: controllo saltato ({e})")
+
+
 def check_contract_schema() -> None:
     try:
         d = json.loads(CONTRACT.read_text(encoding="utf-8"))
@@ -236,6 +276,7 @@ def main() -> int:
     check_catalogo_normativo()
     check_tabelle_generiche()
     check_maturita_aree()
+    check_crescita_skill()
     check_contract_schema()
     if errori:
         print("\nERRORI:")
