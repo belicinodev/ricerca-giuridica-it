@@ -32,6 +32,11 @@ Ogni sezione porta l'etichetta nel titolo; qui solo l'indice, verificato statica
 - **Diritto della navigazione e marittimo**: esplorato ma non catalogato — le fonti delle 16 Autorità di Sistema Portuale sono frammentate su portali distinti senza indice unico (`fonti_per_materia.md` § 23).
 - **Registro OCC (sovraindebitamento)**: fonte reale ma il sotto-dominio blocca ogni fetch automatico testato — verificabile solo da browser umano dell'utente finale (`fonti_per_materia.md` § 8).
 
+## Copertura degli schemi ripetibili (Crea documento)
+
+- **`schemi_atti.md`**: copre 7 aree su 10 pianificate (18 tipi di atto). Mancano procedimenti monitori ed esecutivi (decreto ingiuntivo, precetto, opposizione all'esecuzione), amministrativo/tributario (TAR, Corte di giustizia tributaria) e successioni — ricerca interrotta per limite di sessione, non per assenza di fonti gratuite. Per questi tre gruppi, Crea documento ricade su `#verifica-formulari` come per qualunque tipo non catalogato.
+- **Fonti strutturali confermate**: solo 1 su 18 tipi di atto ha una fonte gratuita verificata con doppio riscontro indipendente (ricorso ex art. 414 c.p.c.); gli altri 17 hanno solo lo schema di convenzione processuale generale, senza un sito specifico confermato in questo giro di ricerca.
+
 ## Limiti strutturali trasversali
 
 - **Ricerca unificata trasversale**: non esiste gratis; si instrada su più motori distinti secondo il Routing (`fonti_per_materia.md` § Lacune trasversali).

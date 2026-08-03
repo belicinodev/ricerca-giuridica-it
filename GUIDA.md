@@ -8,7 +8,7 @@ Come ottenere il massimo dalle cinque modalità. La skill sceglie la modalità d
 /ricerca-giuridica-it #comparata la clausola claims made è vessatoria?
 ```
 
-In una chat qualsiasi (claude.ai, Desktop, app mobile) basta l'hashtag a inizio messaggio, senza il prefisso `/ricerca-giuridica-it` che serve solo per il comando in Claude Code: `#strategia opposizione a decreto ingiuntivo per canoni contestati`. Funziona anche la forma equivalente `strategia:` (con i due punti), mantenuta per compatibilità: le due sintassi attivano la stessa modalità — l'hashtag è consigliato perché è più immediato da usare e da spiegare a un collega o a un cliente.
+In una chat qualsiasi (claude.ai, Desktop, app mobile, o ChatGPT se la skill è caricata lì — v. README, sezione Compatibilità) basta l'hashtag a inizio messaggio, senza il prefisso `/ricerca-giuridica-it` che serve solo per il comando in Claude Code: `#strategia opposizione a decreto ingiuntivo per canoni contestati`. Funziona anche la forma equivalente `strategia:` (con i due punti), mantenuta per compatibilità: le due sintassi attivano la stessa modalità — l'hashtag è consigliato perché è più immediato da usare e da spiegare a un collega o a un cliente.
 
 L'hashtag di modalità decide solo *cosa* fare: le regole di citazione, vigenza e riservatezza valgono sempre e non sono disattivabili. Conta solo come comando in apertura del messaggio: nella prosa comune un hashtag non compare mai per caso, quindi — a differenza della forma con i due punti — non c'è ambiguità con un quesito che contenga per caso quella parola (es. "Documento di valutazione dei rischi: è obbligatorio...?" resta sempre una ricerca).
 
@@ -38,6 +38,8 @@ Prepara un contratto di locazione commerciale a uso non abitativo.
 Cosa aspettarsi: bozza strutturata (fatto/diritto/conclusioni, o clausola con nota di contesto), citazioni ancorate alle fonti recuperate, segnaposto espliciti `[DA COMPLETARE: ...]` per i dati mancanti. La bozza va sempre rivista prima dell'uso.
 
 Per un tipo di atto senza una struttura già consolidata nella skill, aggiungi `#verifica-formulari`: consulta 1-2 formulari da fonti giuridiche riconosciute solo per la struttura convenzionale (intestazione, sezioni, ordine), dichiarando la fonte — mai per gli estremi normativi, che restano verificati come sempre.
+
+**Cartella di lavoro dello studio.** In un progetto con accesso al filesystem (es. Claude Cowork, Claude Code) puoi mantenere una cartella locale e stabile con i tuoi modelli — schemi di contratto già usati, atti pregressi, carta intestata — così la skill riprende intestazione, formato e clausole di stile già validati invece di ricostruirli da zero. Nome consigliato `riferimenti-studio/` alla radice del progetto (v. `references/cartella_di_lavoro.md` per la convenzione completa); chiedi alla skill di impostarla la prima volta, se non l'hai già fatto. Anche qui: mai fonte di un estremo normativo, e i dati di un cliente diverso presenti in un atto pregresso non entrano mai nella nuova bozza — solo la struttura viene riusata.
 
 ## Analisi comparata
 

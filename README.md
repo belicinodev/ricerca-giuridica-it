@@ -1,8 +1,12 @@
 # ricerca-giuridica-it
 
-Skill per Claude (formato Agent Skills) per la ricerca giuridica su fonti italiane e UE: normativa, prassi amministrativa e giurisprudenza. Codifica un metodo di lavoro, non un parere: routing verso le fonti ufficiali, citazioni con estremi verificabili, verifica di vigenza anche ratione temporis, minimizzazione delle query per contesti coperti da segreto professionale, output sintetico per default.
+Skill in formato Agent Skills per la ricerca giuridica su fonti italiane e UE: normativa, prassi amministrativa e giurisprudenza. Codifica un metodo di lavoro, non un parere: routing verso le fonti ufficiali, citazioni con estremi verificabili, verifica di vigenza anche ratione temporis, minimizzazione delle query per contesti coperti da segreto professionale, output sintetico per default.
 
-Il formato Agent Skills è uno standard aperto: la skill nasce per Claude (claude.ai, Desktop, Cowork, Claude Code) ed è riutilizzabile negli strumenti che adottano lo stesso formato.
+## Compatibilità
+
+Agent Skills è uno standard aperto pubblicato da Anthropic il 18 dicembre 2025 (specifica su [agentskills.io](https://agentskills.io)): un file `SKILL.md` con frontmatter `name`/`description` più una cartella `references/` caricata a richiesta, senza dipendenze proprietarie nel formato stesso. La skill nasce ed è sviluppata per **Claude** (claude.ai, Desktop, Cowork, Claude Code) — è l'unico ambiente su cui viene testata e su cui girano le eval di questo repo.
+
+Lo stesso formato è adottato anche da **ChatGPT/Codex** (OpenAI), che lo dichiara costruito sullo stesso standard aperto: in ChatGPT le skill si caricano da *Plugins → Skills → Create → Upload from your computer*, usando lo ZIP di [Installazione](#installazione) qui sotto. Funziona per compatibilità di formato, non perché sia stata verificata da questo progetto: le regole comportamentali e le eval restano scritte e collaudate per Claude, e il corpus opzionale (tool `lex_*`, v. sotto) è un server MCP privato dell'autore — su ChatGPT la skill funziona comunque, ma solo con il fallback alle fonti ufficiali via web dichiarato in ogni risposta, come accade anche su Claude senza corpus collegato.
 
 ## Come funziona
 
@@ -61,6 +65,8 @@ scarica lo ZIP dall'[ultima release](https://github.com/belicinodev/ricerca-giur
 
 **Claude Code** (via più tecnica: richiede git e un terminale — se non li conosci, usa il metodo ZIP sopra: la skill è identica), per il singolo progetto: clona questo repo e apri la cartella, la skill in `.claude/skills/` viene scoperta automaticamente. Per tutti i progetti: `cp -R .claude/skills/ricerca-giuridica-it ~/.claude/skills/`.
 
+**ChatGPT** (app desktop, richiede l'accesso alla scheda Skills — su workspace Enterprise/Edu un amministratore deve abilitarla in Permissions & roles): *Plugins → Skills → Create → Upload from your computer*, caricando lo stesso ZIP dell'ultima release. Le skill personali non si sincronizzano automaticamente tra desktop e web/mobile: vanno caricate separatamente su ogni superficie in cui servono. Non testata da questo progetto (v. Compatibilità sopra): se qualcosa non funziona come su Claude, apri una issue.
+
 ## Struttura
 
 ```
@@ -72,6 +78,10 @@ scarica lo ZIP dall'[ultima release](https://github.com/belicinodev/ricerca-giur
     fonti_normative.md         estremi di codici, leggi e testi unici
     computo_termini.md         regole di computo dei termini (metodo, non aritmetica)
     percorsi_processuali.md    cancelli e riti per tipo di controversia (procedibilità, decadenze, ADR)
+    elemento_estraneita.md     router di diritto internazionale privato (legge applicabile, giurisdizione)
+    lacune.md                  registro unico delle lacune già dichiarate negli altri cataloghi
+    schemi_atti.md             schemi strutturali ripetibili per tipo di atto, fonti gratuite verificate
+    cartella_di_lavoro.md      convenzione per la cartella di riferimento locale dello studio
 GUIDA.md            miniguida d'uso delle modalità
 CONTRIBUTING.md     meccanica di contribuzione (eval, comandi pre-PR)
 evals/evals.json    domande di regressione con risposte attese verificate
