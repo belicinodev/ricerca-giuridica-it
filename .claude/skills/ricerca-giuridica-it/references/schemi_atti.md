@@ -6,7 +6,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 
 - Questi schemi servono **solo per la struttura** — intestazione, sequenza delle sezioni, elementi tipici. **Mai** per gli estremi normativi: ogni citazione di legge nella bozza resta soggetta alla disciplina di verifica ordinaria di questa skill (corpus `lex_*` o fonti ufficiali), esattamente come per `#verifica-formulari`. Un formulario, anche gratuito e verificato, non è mai fonte di un estremo.
 - La colonna "Fonte" riporta un sito solo quando la dichiarazione di gratuità è stata verificata con **doppio riscontro indipendente** (due tentativi separati di conferma sulla pagina reale). Dove non compare una fonte, lo schema è comunque utilizzabile — è una convenzione processuale generale, non dipende dalla fonte — ma nessun sito specifico è stato confermato gratuito per quel tipo di atto in questo giro di ricerca: se serve consultare un formulario per quel tipo, usa `#verifica-formulari`.
-- **Copertura non ancora completa**: procedimenti monitori ed esecutivi (decreto ingiuntivo, precetto, opposizione all'esecuzione), amministrativo/tributario (TAR, Corte di giustizia tributaria) e successioni (accettazione con beneficio d'inventario, rinuncia) non sono ancora catalogati qui — la ricerca su questi tipi si è interrotta per limite di sessione, non per assenza di fonti. Fino ad allora, per questi tipi usa `#verifica-formulari` come per qualunque atto non catalogato.
+- **Copertura**: tutte le 10 aree pianificate sono ora catalogate (25 tipi di atto). Un secondo giro di ricerca ha confermato con doppio riscontro una fonte gratuita per gli atti stragiudiziali e i contratti (7 tipi) e per il ricorso ex art. 414 c.p.c.; per gli altri tipi nessuna fonte ha superato la doppia verifica in questo giro — lo schema resta comunque utilizzabile come convenzione processuale generale (v. sopra).
 
 ## Atti di cognizione civile ordinaria
 
@@ -216,7 +216,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Riserva di diritti | Riserva di agire per il risarcimento del danno e per ogni altra tutela spettante. |
 | Sottoscrizione | Luogo, data e firma del mittente o del suo procuratore/difensore. |
 
-**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+**Fonte strutturale verificata**: Studio Cataldi — <https://www.studiocataldi.it/guide_legali/pillole/diffida-ad-adempiere.asp> ("scaricabile gratuitamente anche in pdf e in word", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Messa in mora
 
@@ -230,7 +230,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Avvertenza sulle conseguenze | Indicazione delle conseguenze del mancato adempimento (decorrenza interessi moratori, azioni giudiziali, addebito spese). |
 | Sottoscrizione | Luogo, data e firma del mittente o del suo procuratore/difensore. |
 
-**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+**Fonte strutturale verificata**: Avvocato Claudia Lantieri — <https://www.avvocatolantieri.it/modello-gratuito-di-lettera-di-messa-in-mora-pec> ("modello gratuito di lettera di messa in mora via PEC", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Disdetta di contratto di locazione
 
@@ -245,7 +245,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Restituzione del deposito cauzionale | Riferimento alle modalità e tempistiche di restituzione della cauzione dopo la verifica dell'immobile. |
 | Sottoscrizione | Luogo, data e firma del mittente. |
 
-**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+**Fonte strutturale verificata**: TusciaFisco — <https://www.tusciafisco.it/fac-simile-lettera-disdetta-contratto-affitto/> ("scaricare gratuitamente un modello di lettera di disdetta contratto di affitto", dichiarazione confermata con doppio riscontro indipendente).
 
 ## Contratti
 
@@ -267,7 +267,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Clausole finali | Foro competente, rinvio alla normativa vigente sulle locazioni abitative — estremi da verificare sulla fonte ufficiale, non dal formulario |
 | Sottoscrizione e allegati | Firme delle parti ed eventuali allegati (es. verbali di consegna/riconsegna, APE) |
 
-**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+**Fonte strutturale verificata**: ContrattiDiLocazione.net — <https://contrattidilocazione.net/contratto-di-locazione-a-uso-abitativo-modello-e-guida-online> ("Modelli da Scaricare Gratis", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Contratto di locazione ad uso commerciale
 
@@ -287,7 +287,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Clausole finali | Foro competente, allegati (es. APE) e rinvio alla normativa vigente sulle locazioni commerciali — estremi da verificare sulla fonte ufficiale, non dal formulario |
 | Sottoscrizione e registrazione | Firme delle parti e obbligo di registrazione del contratto |
 
-**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+**Fonte strutturale verificata**: Primavera Forense — <https://www.primaveraforense.it/contratto-locazione-commerciale/> ("Scarica gratuitamente il modello di contratto di locazione commerciale", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Contratto di compravendita immobiliare
 
@@ -307,7 +307,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Foro competente | Individuazione del foro per le controversie |
 | Sottoscrizione | Firme delle parti e approvazione specifica delle clausole ex artt. 1341-1342 c.c. |
 
-**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+**Fonte strutturale verificata**: Moduli.it — <https://www.moduli.it/modelli-di-compravendita-immobiliare-gratis> ("Modelli di compravendita immobiliare gratis", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Contratto di appalto privato
 
@@ -327,4 +327,114 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Foro competente | Individuazione del foro per le controversie |
 | Sottoscrizione e registrazione | Firme delle parti ed eventuale registrazione del contratto |
 
+**Fonte strutturale verificata**: CM-Data — <https://www.cmdataweb.it/contratto-appalto-lavori-privati.html> ("documento scaricabile e modificabile gratis", dichiarazione confermata con doppio riscontro indipendente).
+
+## Monitorio ed esecutivo
+
+### Ricorso per decreto ingiuntivo
+
+| Sezione | Contenuto |
+|---|---|
+| Intestazione | Organo giudiziario adito, dati identificativi del ricorrente (persona fisica o società) e del difensore. |
+| Parte introduttiva | Individuazione della controparte (debitore ingiunto). |
+| Esposizione dei fatti | Narrazione della genesi del credito e dei fatti a suo fondamento. |
+| Istanza di provvisoria esecuzione | Richiesta di clausola di provvisoria esecutorietà, con relativa motivazione. |
+| Conclusioni | Richiesta al giudice, con indicazione della somma pretesa. |
+| Produzione documentale | Elenco dei documenti allegati a sostegno della domanda. |
+| Dichiarazione di valore | Ai fini del calcolo del contributo unificato. |
+| Sottoscrizione | Firma del difensore. |
+| Procura alle liti | Mandato del cliente, con le informative di rito (mediazione, trattamento dati, compensi). |
+
 **Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+
+### Atto di precetto
+
+| Sezione | Contenuto |
+|---|---|
+| Intestazione | Dati del precettante e del precettato. |
+| Premesse | Richiamo del titolo esecutivo posto a fondamento del precetto. |
+| Intimazione di pagamento | Indicazione della somma dovuta e del termine per l'adempimento spontaneo. |
+| Avvertimento | Avviso delle conseguenze in caso di mancato adempimento. |
+| Procura alle liti | Se atto sottoscritto da difensore, con informative di rito. |
+| Relata di notifica | Sezione per la certificazione dell'avvenuta notificazione (PEC, ufficiale giudiziario, o dichiarazione equipollente). |
+
+**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+
+### Opposizione all'esecuzione (opposizione ex art. 615 c.p.c.)
+
+| Sezione | Contenuto |
+|---|---|
+| Intestazione | Organo giudiziario adito e titolo dell'atto (citazione o ricorso in opposizione, a seconda della fase). |
+| Parti | Identificazione dell'opponente/debitore e dell'opposto/creditore, con elezione di domicilio. |
+| Esposizione dei fatti | Richiamo del rapporto sottostante, del titolo esecutivo e dell'atto di precetto/pignoramento impugnato. |
+| Motivi di opposizione | Esposizione delle ragioni di contestazione del diritto a procedere esecutivamente. |
+| Istanza cautelare | Eventuale richiesta di sospensione dell'efficacia esecutiva del titolo, con relative argomentazioni. |
+| Conclusioni | Richieste al giudice, in via preliminare/cautelare e nel merito. |
+| Istruttoria | Eventuali richieste di mezzi di prova (documenti, testimoni, interrogatorio). |
+| Dichiarazione di valore | Ai fini del contributo unificato. |
+| Procura alle liti | Con informative di rito. |
+| Relata di notifica | Sezione per la certificazione della notificazione dell'atto. |
+
+**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+
+## Amministrativo e tributario
+
+### Ricorso al TAR
+
+| Sezione | Contenuto |
+|---|---|
+| Intestazione | Organo giurisdizionale adito (TAR competente per territorio) e qualificazione dell'atto come "ricorso". |
+| Parti | Generalità del ricorrente (con eventuale difensore e procura), amministrazione resistente ed eventuali controinteressati. |
+| Atto impugnato | Identificazione del provvedimento amministrativo contestato e data di conoscenza/notifica, rilevante per il termine di decadenza. |
+| Esposizione dei fatti | Ricostruzione cronologica della vicenda amministrativa che ha condotto all'atto impugnato. |
+| Motivi di ricorso | Vizi di legittimità dedotti, articolati in singoli motivi numerati. |
+| Istanze accessorie | Eventuale richiesta di misure cautelari, verificazione o consulenza tecnica, acquisizione documentale. |
+| Conclusioni | Richiesta finale (annullamento dell'atto, eventuale risarcimento del danno). |
+| Elementi formali di chiusura | Valore della controversia, dichiarazione ai fini del contributo unificato, luogo, data e sottoscrizione. |
+
+**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+
+### Ricorso alla Corte di giustizia tributaria
+
+| Sezione | Contenuto |
+|---|---|
+| Intestazione | Organo adito (Corte di giustizia tributaria di primo grado territorialmente competente) e qualificazione come "ricorso". |
+| Parti | Generalità del ricorrente (contribuente), ente impositore/agente della riscossione resistente, eventuale rappresentanza tecnica. |
+| Atto impugnato | Individuazione dell'atto tributario contestato (avviso di accertamento, cartella, intimazione) e data di notifica. |
+| Esposizione dei fatti | Ricostruzione della vicenda tributaria (origine della pretesa, eventuale fase amministrativa precedente). |
+| Motivi di ricorso | Vizi dedotti, formali/procedurali e di merito, articolati per punti. |
+| Istanze accessorie | Eventuale richiesta di sospensione dell'atto impugnato, ammissione di prove, rimborso di somme. |
+| Conclusioni | Richiesta finale (annullamento totale o parziale, condanna alle spese). |
+| Elementi formali di chiusura | Valore della controversia, indicazione di eventuale reclamo/mediazione già esperita, luogo, data e sottoscrizione. |
+
+**Fonte strutturale**: nessun sito confermato gratuito per questo tipo in questo giro di ricerca — schema di convenzione processuale generale.
+
+## Successioni
+
+### Dichiarazione di accettazione di eredità con beneficio d'inventario
+
+| Sezione | Contenuto |
+|---|---|
+| Intestazione | Destinatario (cancelliere del tribunale competente) e titolo dell'atto. |
+| Dati personali del richiedente | Nome, data di nascita, residenza, recapiti. |
+| Dati del defunto | Nome, data di nascita, data e luogo del decesso. |
+| Dichiarazione di intenti | Richiesta di fissazione data per la presentazione dell'atto. |
+| Dichiarazioni sulla situazione patrimoniale | Indicazione generica di possesso o meno di beni ereditari. |
+| Dichiarazione sullo stato dell'inventario | Se già redatto o da redigere. |
+| Elenco documenti allegati | Elenco generico di allegati richiesti. |
+| Chiusura | Luogo, data, firma del dichiarante. |
+
+**Fonte strutturale verificata**: Moduli.it — <https://www.moduli.it/modello-accettazione-eredita-con-beneficio-d-inventario-5406> (gratuità dichiarata sull'hub "Moduli per eredità e successione editabili gratis", dichiarazione confermata con doppio riscontro indipendente — fonte commerciale, non istituzionale: i portali dei Tribunali offrono modulistica ufficiale ma senza dichiarazione esplicita di gratuità testuale).
+
+### Rinuncia all'eredità
+
+| Sezione | Contenuto |
+|---|---|
+| Intestazione amministrativa | Identificazione del tribunale e titolo dell'atto. |
+| Dati identificativi del rinunciante | Nome, residenza, codice fiscale. |
+| Dichiarazione di rinuncia | Formula di rinuncia senza condizioni al patrimonio ereditario. |
+| Dati del defunto | Nascita, morte, ultimo domicilio. |
+| Dichiarazione di non possesso di beni ereditari | Dichiarazione generica sulla mancata immissione nel possesso dei beni. |
+| Sottoscrizioni | Firma del comparente e sottoscrizione del cancelliere/pubblico ufficiale ricevente. |
+
+**Fonte strutturale verificata**: Moduli.it — <https://www.moduli.it/modello-rinuncia-eredita-word-12025> (gratuità dichiarata sull'hub "Moduli per eredità e successione editabili gratis", dichiarazione confermata con doppio riscontro indipendente — fonte commerciale, non istituzionale).

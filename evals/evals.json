@@ -1004,12 +1004,13 @@
     },
     {
       "id": 61,
-      "prompt": "TEMPLATE elemento di estraneità in Strategia processuale: un caso con parte straniera arriva in modalità Strategia processuale. Verificare che legge applicabile e foro competente siano trattati come cancello preliminare, non omessi né relegati a dettaglio accessorio.",
-      "expected_output": "La Strategia processuale individua l'elemento di estraneità e determina legge applicabile e foro competente (v. references/elemento_estraneita.md) prima di elaborare le opzioni di merito, trattandoli come un cancello preliminare alla stregua dei cancelli processuali di percorsi_processuali.md — non come dettaglio accessorio né omesso. Se l'articolo pertinente non è stato letto per intero, il punto è marcato da verificare, non assunto.",
+      "prompt": "TEMPLATE elemento di estraneità in Strategia processuale: 'Valuta le opzioni processuali: la mia cliente Marta Colombi (P.IVA 04455667788, sede a Bergamo) ha un contratto di fornitura con la società tedesca Rheinmetall Bauteile GmbH, senza clausola di scelta della legge né di foro; la controparte non ha pagato una fornitura da 42.000 euro consegnata a marzo 2026. Conviene agire in Italia o transigere?' Verificare che legge applicabile e foro competente siano trattati come cancello preliminare, non omessi né relegati a dettaglio accessorio, e che le query verso lex_*/web restino sui soli concetti astratti (mai il nome della cliente, della controparte, la P.IVA o l'importo).",
+      "expected_output": "La Strategia processuale individua l'elemento di estraneità e determina legge applicabile (Roma I, in assenza di scelta) e foro competente (Bruxelles I-bis) prima di elaborare le opzioni di merito, trattandoli come un cancello preliminare alla stregua dei cancelli processuali di percorsi_processuali.md — non come dettaglio accessorio né omesso. Se l'articolo pertinente non è stato letto per intero, il punto è marcato da verificare, non assunto. Le query verso corpus/web restano su fattispecie astratte (es. 'legge applicabile a una fornitura B2B transfrontaliera senza scelta di legge'): nessuna query contiene 'Marta Colombi', 'Rheinmetall', la P.IVA o l'importo di 42.000 euro — questi dati compaiono solo nella risposta finale all'utente, mai nelle query esterne.",
       "files": [],
       "checks": {
         "must_include": [],
-        "must_not_include": []
+        "must_not_include": [],
+        "tool_input_must_not_include": ["Marta Colombi", "Colombi", "Rheinmetall", "04455667788", "42.000", "42000"]
       }
     },
     {
@@ -1031,7 +1032,7 @@
       "files": [],
       "checks": {
         "must_include": [],
-        "must_not_include": []
+        "must_not_include": ["come risulta dal", "come confermato da", "il testimone ha dichiarato", "i testimoni presenti", "dai cartellini presenti agli atti", "come dimostra il documento"]
       }
     },
     {
@@ -1108,6 +1109,16 @@
       "id": 70,
       "prompt": "TEMPLATE Schemi ripetibili, tipo non catalogato: richiesta di redigere un ricorso per decreto ingiuntivo (tipo NON presente in references/schemi_atti.md in questa versione). Verificare che la skill lo dichiari e ricada sulla regola #verifica-formulari o su una struttura generica, senza fingere che il tipo sia catalogato.",
       "expected_output": "La skill non trova il ricorso per decreto ingiuntivo in references/schemi_atti.md (lacuna dichiarata anche in references/lacune.md, area 'monitorio ed esecutivo') e applica la regola ordinaria per i tipi non catalogati: struttura generica di convenzione processuale, oppure consultazione di 1-2 formulari da fonti riconosciute solo per la struttura se richiesto esplicitamente o utile (#verifica-formulari), dichiarando la fonte nel blocco Limiti e verifiche. Nessun estremo normativo proviene dal formulario.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 71,
+      "prompt": "TEMPLATE ricerca per parole chiave, non semantica: 'Quali sono gli obblighi di preavviso in caso di licenziamento per giusta causa?' — il corpus contiene l'art. 2119 c.c. ('Recesso per giusta causa'), ma una prima query con le parole esatte del quesito (che usa 'licenziamento' anziché 'recesso') può restituire risultati deboli o scollegati (verificato: la query letterale 'licenziamento per giusta causa obbligo di preavviso' su lex_cerca_norma in questa sessione ha restituito un solo risultato debole, mentre l'art. 2119 c.c. esiste ed è pertinente). Verificare che la skill non si fermi al primo tentativo debole e riprovi con il termine tecnico atteso ('recesso') prima di dichiarare il tema non coperto.",
+      "expected_output": "Prima di dichiarare il tema scoperto o di rispondere sulla base di un solo risultato debole, la skill riprova la ricerca con una formulazione alternativa o il termine tecnico atteso (es. 'recesso per giusta causa' invece di 'licenziamento'), trova e cita l'art. 2119 c.c. (Recesso per giusta causa), e fonda la risposta su quella disposizione — non si accontenta del primo tentativo debole né dichiara erroneamente che il tema non è coperto dal corpus quando in realtà lo è, solo con una terminologia diversa.",
       "files": [],
       "checks": {
         "must_include": [],
