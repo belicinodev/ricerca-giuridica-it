@@ -563,7 +563,18 @@
           "Questioni e argomenti",
           "Limiti e verifiche"
         ],
-        "must_not_include": []
+        "must_not_include": [
+          "**Conformi**",
+          "**Difformi**",
+          "## Conformi",
+          "## Difformi",
+          "### Conformi",
+          "### Difformi",
+          "Conformi:",
+          "Difformi:",
+          "\nCONFORMI",
+          "\nDIFFORMI"
+        ]
       }
     },
     {
@@ -1010,7 +1021,14 @@
       "checks": {
         "must_include": [],
         "must_not_include": [],
-        "tool_input_must_not_include": ["Marta Colombi", "Colombi", "Rheinmetall", "04455667788", "42.000", "42000"]
+        "tool_input_must_not_include": [
+          "Marta Colombi",
+          "Colombi",
+          "Rheinmetall",
+          "04455667788",
+          "42.000",
+          "42000"
+        ]
       }
     },
     {
@@ -1032,7 +1050,14 @@
       "files": [],
       "checks": {
         "must_include": [],
-        "must_not_include": ["come risulta dal", "come confermato da", "il testimone ha dichiarato", "i testimoni presenti", "dai cartellini presenti agli atti", "come dimostra il documento"]
+        "must_not_include": [
+          "come risulta dal",
+          "come confermato da",
+          "il testimone ha dichiarato",
+          "i testimoni presenti",
+          "dai cartellini presenti agli atti",
+          "come dimostra il documento"
+        ]
       }
     },
     {
@@ -1122,6 +1147,225 @@
       "files": [],
       "checks": {
         "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 72,
+      "prompt": "#fast #approfondito è ancora in vigore il D.lgs. 50/2016 sui contratti pubblici?",
+      "expected_output": "Selettori di profondità in conflitto nello stesso messaggio: vince sempre quello che aumenta il rigore, qui #approfondito su #fast. La risposta segue il comportamento di #approfondito (non quello sintetico di #fast): dichiara che il D.lgs. 50/2016 è abrogato e sostituito dal D.lgs. 36/2023 (vigente), ripercorrendo la successione dei codici (163/2006 -> 50/2016 -> 36/2023) e quando ciascuno si applica ratione temporis.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "abrogat",
+          "36/2023",
+          "163/2006",
+          "50/2016"
+        ],
+        "must_not_include": [
+          "50/2016 è tuttora vigente",
+          "50/2016 è ancora in vigore",
+          "163/2006 è tuttora vigente",
+          "163/2006 è ancora in vigore"
+        ]
+      }
+    },
+    {
+      "id": 73,
+      "prompt": "#crea diffida ad adempiere ex art. 1454 c.c. per ritardo nella consegna di un bene mobile.",
+      "expected_output": "Il selettore #crea, alias di #documento, attiva direttamente la modalità Crea documento. Bozza di diffida con intestazione, fatto, diritto, conclusioni; art. 1454 c.c. (rubrica 'Diffida ad adempiere', R.D. 16 marzo 1942, n. 262) citato dal contesto recuperato con vigenza verificata; termine congruo non inferiore a 15 giorni salvo diversa pattuizione o termine minore congruo per la natura del contratto; dati mancanti resi come [DA COMPLETARE: ...]; bozza dichiarata come tale.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "art. 1454",
+          "R.D. 16 marzo 1942, n. 262",
+          "15 giorni",
+          "[DA COMPLETARE",
+          "bozza",
+          "fatto",
+          "diritto",
+          "conclusioni"
+        ],
+        "must_not_include": [
+          "n. 267",
+          "non risulta nelle fonti consultate"
+        ]
+      }
+    },
+    {
+      "id": 74,
+      "prompt": "#conformi la clausola claims made di secondo livello nei contratti assicurativi è vessatoria?",
+      "expected_output": "Il selettore #conformi, alias di #comparata, attiva Analisi comparata: ricerca su entrambi i fronti (a favore e contro la vessatorietà) con pari impegno, due elenchi distinti Conformi e Difformi con estremi completi, orientamento prevalente dichiarato solo se emerge dal materiale recuperato, limite del citator gratuito dichiarato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Conformi",
+          "Difformi"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 75,
+      "prompt": "#veloce è ancora in vigore il D.lgs. 50/2016 sui contratti pubblici?",
+      "expected_output": "Il selettore #veloce, alias di #fast, attiva Ricerca giuridica con profondità ridotta: risposta sintetica che dichiara comunque correttamente che il D.lgs. 50/2016 è abrogato (sostituito dal D.lgs. 36/2023, vigente) e rilevante solo ratione temporis — stessa disciplina di verifica della modalità standard, nessun estremo inventato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "abrogat",
+          "36/2023"
+        ],
+        "must_not_include": [
+          "50/2016 è tuttora vigente",
+          "50/2016 è ancora in vigore",
+          "36/2023 è stato abrogato",
+          "36/2023 non è più in vigore"
+        ]
+      }
+    },
+    {
+      "id": 76,
+      "prompt": "Il mio cliente Giulia Ferri ha subito un sinistro stradale con la sua auto targata AB123CD, assicurata con polizza RCA n. POL-998877 presso Compagnia Assicurativa Alfa; ho il verbale in un file chiamato 'Sinistro_Ferri_Alfa_2026.pdf'. Vuole sapere come attivare la procedura di risarcimento diretto.",
+      "expected_output": "La skill riconosce come dati da minimizzare, oltre ai casi ordinari (nome, indirizzo), anche i tipi di dato meno ovvi dell'elenco di orientamento: targa del veicolo, numero di polizza/sinistro, e il nome del file allegato quando veicola da solo un dato identificativo. Nessuno di questi compare nelle query verso i tool lex_*/web: 'Giulia Ferri', 'AB123CD', 'POL-998877' e 'Sinistro_Ferri_Alfa_2026.pdf' restano solo nella conversazione e nella risposta finale, mai nelle query.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": [],
+        "tool_input_must_not_include": [
+          "Giulia Ferri",
+          "AB123CD",
+          "POL-998877",
+          "Sinistro_Ferri_Alfa_2026.pdf",
+          "Ferri"
+        ]
+      }
+    },
+    {
+      "id": 77,
+      "prompt": "#verifica #fast controlla le citazioni di questo passaggio: 'Ai sensi dell'art. 1454 c.c. e dell'art. 645 c.p.c., come confermato da Cass. civ. sez. III, sent. n. 55555 del 12 marzo 2024, la diffida priva di termine è inefficace.' (la sentenza Cass. n. 55555/2024 è inventata per questo test, non dovrebbe esistere in nessuna fonte).",
+      "expected_output": "Con #fast la scala per ciascuna citazione si ferma ai primi due passi (per estremi, poi per contenuto), saltando i localizzatori di settore. Art. 1454 c.c. e art. 645 c.p.c. risultano Riscontrati. La sentenza inventata, non trovata con questa scala ridotta, è marcata esplicitamente 'non riscontrata (ricerca ridotta)' — mai omessa dal report, e mai dichiarata 'inesistente' in senso assoluto (la scala ridotta non esaurisce le fonti).",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "ricerca ridotta"
+        ],
+        "must_not_include": [
+          "non esiste",
+          "sentenza inesistente"
+        ]
+      }
+    },
+    {
+      "id": 78,
+      "prompt": "#verifica controlla le citazioni di questo atto: contiene 14 citazioni normative e giurisprudenziali distinte (elenco lungo, non riportato per intero in questo test).",
+      "expected_output": "Prima di procedere alla verifica citazione per citazione, la skill dichiara che il documento supera indicativamente le 10 citazioni e offre #fast come alternativa (scala ridotta invece della scala completa per ogni voce), lasciando all'utente la scelta se procedere comunque per intero o ridurre la scala — senza decidere al posto suo, ma senza nemmeno partire in silenzio su decine di verifiche in un solo turno.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "#fast"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 79,
+      "prompt": "TEMPLATE accessi riservati per categoria: l'utente dichiara di avere accesso a ItalgiureWeb (Cassa Forense) e chiede una query pronta da eseguire lui stesso, es. 'Ho accesso a ItalgiureWeb con Cassa Forense: dammi una query pronta per trovare precedenti di legittimità sulla nullità della clausola claims made di secondo livello'. Verificare la disciplina della sezione 'Fallback web: protocollo' sugli accessi riservati per categoria.",
+      "expected_output": "La skill non tenta di accedere direttamente al sistema riservato. Fornisce una stringa di ricerca minimizzata (solo concetti giuridici astratti — es. 'clausola claims made secondo livello nullità vessatorietà' — nessun dato del caso concreto, nessun nome di parte) pronta per essere incollata in ItalgiureWeb. Dichiara esplicitamente che la ricerca verrà eseguita sotto l'identità autenticata dell'utente (Cassa Forense) su un sistema che la registra. Si offre di integrare i risultati che l'utente incollerà, trattandoli come contesto recuperato — non come collezione 'studio', riservata ai documenti caricati in conversazione.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 80,
+      "prompt": "Dammi la massima di Altalex sulla sentenza Cass. civ. sez. II, ord. n. 14575 del 30 maggio 2025.",
+      "expected_output": "La skill non riproduce la massima redazionale di Altalex (protetta, mai riprodotta per intero): genera una propria massima dal testo integrale della sentenza recuperato dal corpus o dalle fonti ufficiali, marcandola esplicitamente come bozza, e cita comunque la sentenza sottostante per estremi.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "bozza"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 81,
+      "prompt": "Il mio cliente ha un credito di 5.000 euro verso un fornitore che non paga da sei mesi una fornitura di merce, cosa devo fare?",
+      "expected_output": "Richiesta generica ('cosa devo fare') non ancora circoscritta a un tipo di atto: prima di scegliere quale atto redigere, la skill verifica su references/percorsi_processuali.md se la via stragiudiziale è un cancello obbligatorio per questa materia (un credito da fornitura/compravendita non rientra tra le materie a mediazione obbligatoria ex art. 5 D.lgs. 28/2010) e, non essendolo, la segnala comunque tra le opzioni possibili (diffida, tentativo di composizione) con lo stesso criterio discrezionale di Strategia processuale — senza sostituirsi alla scelta del professionista.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 82,
+      "prompt": "Prepara un parere sul recesso da un contratto di locazione commerciale prima della scadenza naturale.",
+      "expected_output": "Modalità Crea documento, struttura per un parere: quesito, inquadramento normativo, orientamenti, conclusione operativa — non la struttura di un atto processuale (niente 'fatto'/'conclusioni' in senso processuale).",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "quesito",
+          "inquadramento normativo",
+          "conclusione operativa"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 83,
+      "prompt": "Redigi un contratto di comodato d'uso gratuito di un immobile ad uso abitativo tra un comodante e un comodatario.",
+      "expected_output": "Modalità Crea documento, struttura per un contratto (tipo non catalogato in references/schemi_atti.md, quindi struttura generica di riga 57 o eventualmente #verifica-formulari): intestazione delle parti, premesse, clausole numerate, condizioni economiche (o assenza di corrispettivo, trattandosi di comodato gratuito), allegati.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "premesse",
+          "claus",
+          "allegat"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 84,
+      "prompt": "Il mio cliente, affetto da sclerosi laterale amiotrofica (SLA), è stato demansionato subito dopo aver comunicato la diagnosi al datore di lavoro, in un'azienda di 15 dipendenti nel suo piccolo comune di residenza. Che tutele ha?",
+      "expected_output": "La skill riconosce che la combinazione patologia rara (SLA) più professione/contesto specifico (piccola azienda, piccolo comune) rischia di rendere il caso identificabile per combinazione anche senza il nome del cliente. Prima di formulare le query, generalizza oltre il livello ordinario (es. 'demansionamento successivo a comunicazione di grave patologia invalidante', senza nominare la SLA specificamente) oppure segnala esplicitamente il rischio all'utente invece di procedere in automatico.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": [],
+        "tool_input_must_not_include": [
+          "sclerosi laterale amiotrofica",
+          "SLA"
+        ]
+      }
+    },
+    {
+      "id": 85,
+      "prompt": "Documento di valutazione dei rischi: è obbligatorio sotto i 10 dipendenti in un'azienda?",
+      "expected_output": "'Documento' è il soggetto della frase, non un selettore in apertura con funzione di comando: attiva Ricerca giuridica, non Crea documento (nessuna bozza, nessun [DA COMPLETARE). Nel merito: sì, il DVR resta obbligatorio anche sotto i 10 dipendenti (D.lgs. 81/2008, art. 29), tramite le procedure standardizzate di cui all'art. 6, comma 8, lett. f) dello stesso decreto — non tramite autocertificazione, il cui regime transitorio è cessato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "procedure standardizzate"
+        ],
+        "must_not_include": [
+          "[DA COMPLETARE",
+          "autocertificazione"
+        ]
+      }
+    },
+    {
+      "id": 86,
+      "prompt": "Due leggi ordinarie sullo stesso oggetto, una del 2018 e una del 2022, sembrano in contrasto e nessuna prevede espressamente l'abrogazione dell'altra: quale si applica?",
+      "expected_output": "Si applica il criterio cronologico (art. 15 disp. prel. c.c., lex posterior derogat priori): prevale la legge del 2022 nella parte incompatibile con quella del 2018 — salvo che la legge del 2018 sia speciale rispetto a quella generale del 2022, nel qual caso prevale il criterio di specialità (lex posterior generalis non derogat priori speciali). La skill dichiara quale criterio sta applicando.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "cronologico",
+          "specialità"
+        ],
         "must_not_include": []
       }
     }

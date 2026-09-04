@@ -89,7 +89,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Istanza di sospensione dell'efficacia esecutiva (eventuale) | Richiesta di sospendere il provvedimento reclamato in pendenza del giudizio di reclamo. |
 | Conclusioni | Richiesta al collegio di confermare, modificare o revocare l'ordinanza cautelare impugnata. |
 | Istanza istruttoria (eventuale) | Eventuale richiesta di nuovi mezzi di prova ammissibili in sede di reclamo. |
-| Rispetto del termine perentorio | Indicazione della tempestività del reclamo entro 15 giorni dalla pronuncia in udienza o dalla comunicazione/notificazione dell'ordinanza. |
+| Rispetto del termine perentorio | Indicazione della tempestività del reclamo nel termine perentorio applicabile — durata e decorrenza da verificare sulla fonte ufficiale prima di ogni scadenza, mai assunte dal formulario. |
 | Elenco documenti allegati | Indice della documentazione prodotta, compreso il provvedimento reclamato. |
 | Procura alle liti | Mandato al difensore per il grado di reclamo. |
 | Data e sottoscrizione | Luogo, data e firma del difensore. |
@@ -151,7 +151,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Procura alle liti | Mandato conferito al difensore, generalmente in calce o a margine dell'atto. |
 | Luogo, data e sottoscrizione | Sottoscrizione del difensore con indicazione di luogo e data di redazione. |
 
-**Fonte strutturale verificata**: Formulario Online — <http://formulario-online.blogspot.com/2011/12/ricorso-ex-art-414-cpc-differenze.html> (dichiarazione di gratuità confermata con doppio riscontro indipendente).
+**Fonte strutturale verificata**: Formulario Online — <https://formulario-online.blogspot.com/2011/12/ricorso-ex-art-414-cpc-differenze.html> (dichiarazione di gratuità confermata con doppio riscontro indipendente).
 
 ### Impugnazione stragiudiziale del licenziamento
 
@@ -276,7 +276,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Intestazione | Luogo e data; identificazione di locatore e conduttore (persona fisica o società) |
 | Oggetto e descrizione immobile | Identificazione catastale dei locali e delle relative pertinenze |
 | Destinazione d'uso | Attività commerciale/professionale consentita nei locali |
-| Durata | Durata minima di legge (6+6 o 9+9 anni) e regime di rinnovo tacito |
+| Durata | Durata (es. 6+6 o 9+9 anni per l'uso commerciale, secondo la disciplina applicabile) e regime di rinnovo tacito — verificare i minimi di legge sulla fonte ufficiale |
 | Canone e aggiornamento | Importo del canone, periodicità di pagamento e adeguamento ISTAT |
 | Deposito cauzionale | Garanzia a tutela del locatore e condizioni di restituzione |
 | Oneri accessori | Ripartizione delle spese di gestione e condominiali |
@@ -305,7 +305,7 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 | Clausola risolutiva e penali | Conseguenze dell'inadempimento e disciplina della caparra |
 | Trattamento dati personali | Informativa privacy relativa alle parti |
 | Foro competente | Individuazione del foro per le controversie |
-| Sottoscrizione | Firme delle parti e approvazione specifica delle clausole ex artt. 1341-1342 c.c. |
+| Sottoscrizione | Firme delle parti ed eventuale approvazione specifica delle clausole vessatorie che la richiedono — quali, da verificare sulla fonte ufficiale, mai assunta a memoria da un formulario. |
 
 **Fonte strutturale verificata**: Moduli.it — <https://www.moduli.it/modelli-di-compravendita-immobiliare-gratis> ("Modelli di compravendita immobiliare gratis", dichiarazione confermata con doppio riscontro indipendente).
 

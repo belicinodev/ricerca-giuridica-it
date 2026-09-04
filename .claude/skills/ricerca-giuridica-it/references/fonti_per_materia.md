@@ -11,7 +11,7 @@ Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente a
 
 - Normativa: codice civile, codici di procedura, preleggi — Normattiva.
 - Legittimità: SentenzeWeb (full-text civile, booleani AND/OR/NOT, filtri sezione/anno/riferimenti normativi).
-- Merito: Banca Dati di Merito / BDP (bdp.giustizia.it) — civile dal 2016 con abstract, **richiede SPID/CIE/CNS** (per categoria: istruzioni all'utente); esclusi famiglia, minori e stato della persona.
+- Merito: Banca Dati di Merito / BDP (bdp.giustizia.it) — civile dal 2016, full-text e abstract, **richiede SPID/CIE/CNS** (per categoria: istruzioni all'utente); esclusi famiglia, minori e stato della persona.
 - Liquidazione del danno: Tabelle milanesi (tribunale-milano.giustizia.it, PDF liberi).
 - Orientamenti: rassegne civili dell'Ufficio del Massimario (§ Massime in `fonti_dati_giuridici.md`).
 

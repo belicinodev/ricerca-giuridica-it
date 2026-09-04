@@ -1,6 +1,6 @@
-# Catalogo degli estremi normativi per materia
+# Catalogo degli estremi normativi
 
-Estremi di codici, leggi, testi unici e regolamenti di uso frequente, con il permalink alla fonte ufficiale. Serve a trovare rapidamente gli estremi esatti di un atto e ad orientarsi in una materia; il testo autorevole e aggiornato è sempre quello della fonte ufficiale (Normattiva per la legislazione statale, EUR-Lex per il diritto UE).
+Estremi di codici, leggi, testi unici e regolamenti di uso frequente, organizzato per tipo di atto (non per materia — per il kit di fonti per materia v. `fonti_per_materia.md`), con il permalink alla fonte ufficiale. Serve a trovare rapidamente gli estremi esatti di un atto; il testo autorevole e aggiornato è sempre quello della fonte ufficiale (Normattiva per la legislazione statale, EUR-Lex per il diritto UE).
 
 - Copertura: circa 100 fonti in 7 categorie.
 - Data di aggiornamento del catalogo: 2026-07-07.

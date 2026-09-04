@@ -8,7 +8,12 @@ Verifica:
   quante sono TEMPLATE (manuali, mai eseguite in automatico)
 - SKILL.md ha frontmatter YAML valido con i campi richiesti e la description
   entro il limite di 1024 caratteri
-- ogni file in references/ nominato da SKILL.md esiste davvero (puntatori non rotti)
+- ogni file in references/ nominato da SKILL.md esiste davvero (puntatori non
+  rotti), e viceversa ogni file in references/ è nominato da SKILL.md (nessun
+  orfano mai caricato), salvo allowlist esplicita
+- ogni URL in references/*.md usa https (non solo fonti_normative.md)
+- ogni tool lex_* citato per nome in SKILL.md esiste nel contratto
+  schema/lex_tools_contract.json
 - fonti_normative.md: ogni voce di catalogo ha 4 colonne, uno Stato che inizia
   con un valore riconosciuto e un permalink verso una fonte ufficiale nota, e se
   il permalink è su normattiva.it contiene il pattern uri-res/N2Ls
@@ -43,6 +48,11 @@ FONTI_PER_MATERIA = REFS_DIR / "fonti_per_materia.md"
 STATO_PREFISSI = ("Vigente", "Abrogato", "Abrogata", "Applicabile", "Abrogazione differita")
 MATURITA_RICONOSCIUTE = ("copertura piena", "copertura parziale", "solo instradamento")
 URL_PREFISSI = ("https://www.normattiva.it", "https://eur-lex.europa.eu", "https://www.cnel.it")
+# file di lavoro temporanei ammessi in references/ senza puntatore in SKILL.md
+ORFANI_AMMESSI: set[str] = set()
+# nomi di tool lex_* citati in SKILL.md ma volutamente non per nome esplicito
+# (coperti solo dal riferimento generico "lex_*"), da non segnalare come errore
+TOOL_LEX_CITAZIONE_NON_RICHIESTA: set[str] = set()
 
 errori: list[str] = []
 
@@ -61,6 +71,11 @@ def check_evals() -> None:
     if len(ids) != len(set(ids)):
         dup = [i for i in ids if ids.count(i) > 1]
         errori.append(f"evals.json: id duplicati: {sorted(set(dup))}")
+    elif not all(isinstance(i, int) for i in ids):
+        errori.append("evals.json: uno o più id non sono interi, impossibile verificare la sequenzialità 1..N")
+    elif sorted(ids) != list(range(1, len(ids) + 1)):
+        mancanti = sorted(set(range(1, len(ids) + 1)) - set(ids))
+        errori.append(f"evals.json: id non sequenziali 1..N (mancanti: {mancanti})")
     for e in items:
         for campo in ("id", "prompt", "expected_output"):
             if campo not in e:
@@ -106,10 +121,10 @@ def check_reference_pointers() -> None:
     mancanti = nominati - esistenti
     if mancanti:
         errori.append(f"SKILL.md nomina file in references/ inesistenti: {sorted(mancanti)}")
-    orfani = esistenti - nominati
+    orfani = esistenti - nominati - ORFANI_AMMESSI
     if orfani:
-        print(f"AVVISO (non bloccante): reference presenti ma non nominate in SKILL.md: {sorted(orfani)}")
-    print(f"references/: {len(esistenti)} file, {len(nominati)} puntatori in SKILL.md, {len(mancanti)} rotti")
+        errori.append(f"references/ presenti ma non citate in SKILL.md (mai caricate): {sorted(orfani)}")
+    print(f"references/: {len(esistenti)} file, {len(nominati)} puntatori in SKILL.md, {len(mancanti)} rotti, {len(orfani)} orfani")
 
 
 def check_catalogo_normativo() -> None:
@@ -202,23 +217,74 @@ def check_maturita_aree() -> None:
         errori.append("references/fonti_per_materia.md non trovato")
         return
     sezioni = 0
+    numeri: list[int] = []
     problemi: list[str] = []
     conteggi: dict[str, int] = {m: 0 for m in MATURITA_RICONOSCIUTE}
     for i, riga in enumerate(FONTI_PER_MATERIA.read_text(encoding="utf-8").splitlines(), start=1):
-        m = re.match(r"^## \d+\. (.+)$", riga)
+        m = re.match(r"^## (\d+)\. (.+)$", riga)
         if not m:
             continue
         sezioni += 1
-        titolo = m.group(1)
+        numero = int(m.group(1))
+        numeri.append(numero)
+        titolo = m.group(2)
         etichetta = next((e for e in MATURITA_RICONOSCIUTE if f"[{e}]" in titolo), None)
         if etichetta is None:
             problemi.append(f"riga {i}: '{titolo[:60]}' priva di un'etichetta di maturità riconosciuta {MATURITA_RICONOSCIUTE}")
         else:
             conteggi[etichetta] += 1
+    attesi = set(range(1, sezioni + 1))
+    trovati = set(numeri)
+    if trovati != attesi:
+        mancanti = sorted(attesi - trovati)
+        duplicati = sorted({n for n in numeri if numeri.count(n) > 1})
+        problemi.append(f"numerazione sezioni non 1..{sezioni}: mancanti {mancanti}, duplicati {duplicati}")
     if problemi:
         errori.extend(f"fonti_per_materia.md: {p}" for p in problemi)
     riepilogo = ", ".join(f"{k}: {v}" for k, v in conteggi.items())
     print(f"fonti_per_materia.md: {sezioni} sezioni, maturità — {riepilogo}")
+
+
+def check_url_references() -> None:
+    """Ogni URL http(s) in references/*.md deve usare https — un check leggero
+    (solo il protocollo, non il dominio) su tutti i file, a differenza di
+    check_catalogo_normativo che valida anche il dominio ma solo per
+    fonti_normative.md. Trovato un caso reale in schemi_atti.md durante
+    l'audit del 2026-08-21 (link http:// a una fonte strutturale verificata),
+    corretto insieme all'aggiunta di questo controllo.
+    """
+    problemi: list[str] = []
+    for path in sorted(REFS_DIR.glob("*.md")):
+        for i, riga in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            for url in re.findall(r"https?://[^\s)>\]]+", riga):
+                if not url.startswith("https://"):
+                    problemi.append(f"{path.name} riga {i}: URL non-https: {url}")
+    if problemi:
+        errori.extend(f"references/: {p}" for p in problemi)
+    print(f"references/*.md: URL non-https trovati: {len(problemi)}")
+
+
+def check_coerenza_tool_lex() -> None:
+    """Ogni nome di tool lex_* citato esplicitamente in SKILL.md deve esistere
+    come chiave in schema/lex_tools_contract.json — stesso principio di
+    check_reference_pointers applicato ai tool invece che ai file references/.
+    """
+    if not CONTRACT.exists():
+        return
+    try:
+        contratto = json.loads(CONTRACT.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return  # già segnalato da check_contract_schema
+    tool_contratto = set(contratto.get("tools", {}).keys())
+    src = SKILL_MD.read_text(encoding="utf-8")
+    citati = set(re.findall(r"lex_[a-z_]+", src))
+    orfani = citati - tool_contratto - TOOL_LEX_CITAZIONE_NON_RICHIESTA
+    if orfani:
+        errori.append(f"SKILL.md cita tool lex_* assenti dal contratto: {sorted(orfani)}")
+    non_citati = tool_contratto - citati
+    if non_citati:
+        print(f"AVVISO (non bloccante): tool nel contratto mai citati per nome esplicito in SKILL.md: {sorted(non_citati)}")
+    print(f"coerenza tool lex_*: {len(citati)} nomi citati in SKILL.md, {len(tool_contratto)} nel contratto, {len(orfani)} orfani")
 
 
 def check_crescita_skill() -> None:
@@ -276,6 +342,8 @@ def main() -> int:
     check_catalogo_normativo()
     check_tabelle_generiche()
     check_maturita_aree()
+    check_url_references()
+    check_coerenza_tool_lex()
     check_crescita_skill()
     check_contract_schema()
     if errori:
