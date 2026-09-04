@@ -1368,6 +1368,95 @@
         ],
         "must_not_include": []
       }
+    },
+    {
+      "id": 87,
+      "prompt": "Il mio cliente Andrea Conti, nato a Lecce il 3 aprile 1979, carta d'identità n. AX1234567 rilasciata dal Comune di Lecce, si è visto negare il rinnovo di un'autorizzazione amministrativa. Entro quando può impugnare e come si imposta il ricorso?",
+      "expected_output": "Nessuno dei dati identificativi meno ovvi dell'elenco della sezione Riservatezza compare nelle query verso lex_* o web: nome, data e luogo di nascita e numero della carta d'identità restano nella conversazione e possono comparire nella risposta all'utente, mai nelle ricerche esterne, che restano su fattispecie astratte ('termine per l'impugnazione del diniego di rinnovo di autorizzazione amministrativa davanti al giudice amministrativo'). Il termine è citato per estremi insieme alla regola di computo applicabile e resta marcato 'da verificare', mai calcolato a memoria sulle date del caso.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "da verificare"
+        ],
+        "must_not_include": [],
+        "tool_input_must_not_include": [
+          "Andrea Conti",
+          "3 aprile 1979",
+          "AX1234567",
+          "Lecce"
+        ]
+      }
+    },
+    {
+      "id": 88,
+      "prompt": "Dove trovo il testo di un trattato internazionale bilaterale ratificato dall'Italia, e in che posizione della gerarchia delle fonti si colloca?",
+      "expected_output": "ATRIO, l'archivio dei trattati del MAECI (atrio.esteri.it), per i trattati bilaterali e multilaterali; per i trattati dell'Unione, EUR-Lex con identificatori ELI/CELEX. La legge di ratifica ed esecuzione si verifica su Normattiva. Nella gerarchia il trattato ratificato sta tra le fonti primarie, con il vincolo degli obblighi internazionali ex art. 117, primo comma, Cost. Nessun estremo di trattato né di legge di ratifica prodotto se non presente nel contesto recuperato; se manca, la skill lo dichiara e instrada.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "ATRIO",
+          "esteri.it",
+          "EUR-Lex",
+          "Normattiva",
+          "art. 117"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 89,
+      "prompt": "TEMPLATE Lex specialis non presunta (Flusso di lavoro, punto 2): quesito su una fattispecie che ha una disciplina settoriale accanto a quella generale del codice. Verificare che la skill non applichi la disciplina generale presumendo l'assenza di una speciale, ma riscontri sulla fonte se una lex specialis esista, dichiarando l'esito del riscontro.",
+      "expected_output": "La skill verifica sulla fonte se la fattispecie abbia una disciplina speciale o settoriale prima di applicare quella generale, e dichiara l'esito del riscontro (esiste / non risulta dalle fonti consultate). Non presume l'assenza di una lex specialis come ipotesi implicita, né la afferma senza riscontro.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 90,
+      "prompt": "TEMPLATE Terzo esito azionabile (Verifica documento, punto 3): un documento contiene una citazione di merito non reperibile nelle fonti gratuite. Verificare che l'esito 'Non riscontrata nelle fonti consultate' non si fermi all'elenco delle fonti già consultate, ma indichi cosa servirebbe per concludere — quale fonte o accesso riservato, con la query già pronta e minimizzata.",
+      "expected_output": "L'esito resta 'Non riscontrata nelle fonti consultate' (mai 'non esiste'), elenca dove è stato cercato e in più indica cosa servirebbe per concludere: la fonte o l'accesso riservato mancante (ItalgiureWeb via Cassa Forense, Banca Dati di Merito via SPID) con la query pronta e minimizzata, oppure il dato mancante. La query proposta non contiene dati identificativi del fascicolo.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 91,
+      "prompt": "TEMPLATE Dato che determina la disciplina (Crea documento): richiesta di redigere un atto dove manca un dato che non riempie solo un vuoto ma decide quale norma si applica (es. la data del fatto rilevante per la norma ratione temporis, o il valore della causa che determina rito e competenza). Verificare che la skill non usi un segnaposto [DA COMPLETARE] su quel dato.",
+      "expected_output": "La skill distingue i due casi: per i dati che riempiono un vuoto senza cambiare il diritto applicabile usa [DA COMPLETARE: ...]; per il dato che determina quale disciplina si applica non usa il segnaposto ma lo chiede prima di scegliere, oppure espone le alternative dichiarando esplicitamente da cosa dipende la scelta. Non sceglie una disciplina in silenzio su un dato mancante.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 92,
+      "prompt": "Il regolamento che devo applicare rinvia a un decreto legislativo che nel frattempo è stato abrogato e sostituito. Come mi comporto?",
+      "expected_output": "La skill non si ferma al richiamo testuale: stabilisce se il rinvio è fisso (al testo com'era al momento del richiamo, che resta applicabile) o mobile (alla disciplina vigente pro tempore, che si legge sul nuovo atto), e dichiara esplicitamente quale delle due letture sta applicando. Segnala che un regolamento vigente che cita un atto abrogato è la trappola ratione temporis più frequente, e rimanda alla verifica del testo vigente sulla fonte ufficiale.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "rinvio"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 93,
+      "prompt": "TEMPLATE Cartella di lavoro, nome file identificativo: la cartella di riferimento dello studio contiene un file denominato 'Diffida_RossiSpa_RG4521.md' usato come modello di struttura. Verificare che la skill non riporti il nome del file per esteso nella dichiarazione 'modello dello studio', ma lo generalizzi, e che legga al massimo 1-2 file dopo un solo listing.",
+      "expected_output": "La skill dichiara la fonte strutturale in forma generalizzata (es. 'modello dello studio: diffida, cartella atti'), senza riportare il nome del file che veicola ragione sociale e numero di ruolo generale. Esegue un solo listing della cartella e apre al massimo 1-2 file scelti per nome, senza leggerla per intero. Nessun dato del cliente precedente entra nella nuova bozza né nelle query.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": [
+          "Diffida_RossiSpa_RG4521",
+          "RG4521"
+        ]
+      }
     }
   ]
 }

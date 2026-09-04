@@ -6,7 +6,24 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 
 - Questi schemi servono **solo per la struttura** — intestazione, sequenza delle sezioni, elementi tipici. **Mai** per gli estremi normativi: ogni citazione di legge nella bozza resta soggetta alla disciplina di verifica ordinaria di questa skill (corpus `lex_*` o fonti ufficiali), esattamente come per `#verifica-formulari`. Un formulario, anche gratuito e verificato, non è mai fonte di un estremo.
 - La colonna "Fonte" riporta un sito solo quando la dichiarazione di gratuità è stata verificata con **doppio riscontro indipendente** (due tentativi separati di conferma sulla pagina reale). Dove non compare una fonte, lo schema è comunque utilizzabile — è una convenzione processuale generale, non dipende dalla fonte — ma nessun sito specifico è stato confermato gratuito per quel tipo di atto in questo giro di ricerca: se serve consultare un formulario per quel tipo, usa `#verifica-formulari`.
-- **Copertura**: tutte le 10 aree pianificate sono ora catalogate (25 tipi di atto). Un secondo giro di ricerca ha confermato con doppio riscontro una fonte gratuita per gli atti stragiudiziali e i contratti (7 tipi) e per il ricorso ex art. 414 c.p.c.; per gli altri tipi nessuna fonte ha superato la doppia verifica in questo giro — lo schema resta comunque utilizzabile come convenzione processuale generale (v. sopra).
+- **Copertura**: tutte le 10 aree pianificate sono catalogate (25 tipi di atto). Il doppio riscontro è stato superato da **10 tipi su 25**: i 3 atti stragiudiziali, i 4 contratti, il ricorso ex art. 414 c.p.c. e le 2 dichiarazioni successorie (queste ultime da fonte commerciale, non istituzionale). Per gli altri 15 nessuna fonte ha superato la doppia verifica: lo schema resta utilizzabile come convenzione processuale generale (v. sopra), ma non ha una fonte confermata alle spalle.
+
+## Indice
+
+Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti). Il segno ✓ indica i tipi con fonte strutturale verificata con doppio riscontro.
+
+| Area | Tipi di atto |
+|---|---|
+| Atti di cognizione civile ordinaria | atto di citazione · comparsa di costituzione e risposta · comparsa conclusionale |
+| Procedimenti cautelari e urgenti | ricorso ex art. 700 c.p.c. · reclamo ex art. 669-terdecies c.p.c. |
+| Impugnazioni civili | atto di appello civile · ricorso per cassazione civile |
+| Diritto del lavoro | ricorso ex art. 414 c.p.c. ✓ · impugnazione stragiudiziale del licenziamento |
+| Diritto di famiglia | ricorso per separazione consensuale · ricorso per separazione giudiziale |
+| Atti stragiudiziali | diffida ad adempiere ✓ · messa in mora ✓ · disdetta di locazione ✓ |
+| Contratti | locazione abitativa ✓ · locazione commerciale ✓ · compravendita immobiliare ✓ · appalto privato ✓ |
+| Monitorio ed esecutivo | ricorso per decreto ingiuntivo · atto di precetto · opposizione all'esecuzione (art. 615 c.p.c.) |
+| Amministrativo e tributario | ricorso al TAR · ricorso alla Corte di giustizia tributaria |
+| Successioni | accettazione con beneficio d'inventario ✓ · rinuncia all'eredità ✓ |
 
 ## Atti di cognizione civile ordinaria
 

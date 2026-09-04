@@ -6,6 +6,27 @@ Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono 
 
 - Data di aggiornamento del catalogo: 2026-07-13; nota sull'elemento di estraneità aggiunta il 2026-07-21.
 
+## Indice
+
+Leggi l'intestazione qui sopra (stato di verifica delle voci) e la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
+
+| Materia | Sezione |
+|---|---|
+| Qualsiasi caso con elemento straniero | Elemento di estraneità — prima di ogni altro cancello |
+| Civile (procedibilità, mediazione, negoziazione) | Civile — prima di agire · Civile — percorsi tipo |
+| Esecuzione e opposizioni | Esecuzione forzata |
+| Lavoro | Lavoro |
+| Famiglia e minori | Famiglia e minori (rito) |
+| Amministrativo | Amministrativo |
+| Tributario | Tributario |
+| Crisi d'impresa e sovraindebitamento | Crisi d'impresa |
+| Proprietà intellettuale | Proprietà intellettuale |
+| Immigrazione e protezione internazionale | Immigrazione e protezione internazionale |
+| Condominio | Condominio |
+| Consumatori | Consumatori: azione di classe |
+| Penale | Penale — riti e cancelli |
+| ABF, ACF e altri organismi di settore | ADR di settore (orientamenti, non giurisprudenza) |
+
 ## Elemento di estraneità — prima di ogni altro cancello
 
 Se il caso ha una parte, un fatto o un bene con collegamenti fuori Italia, legge applicabile e giurisdizione sono un cancello a sé, da determinare prima dei cancelli di rito elencati sotto: v. `references/elemento_estraneita.md` per il router (Roma I/II, Bruxelles I-bis/II-ter, regolamento successioni, sistema residuale L. 218/1995).
@@ -45,7 +66,7 @@ Se il caso ha una parte, un fatto o un bene con collegamenti fuori Italia, legge
 | Cancello / percorso | Dove sta la regola | Nota operativa |
 |---|---|---|
 | Rito lavoro | artt. 409 e 414 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art409!vig= e https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art414!vig= | ambito (rapporti dell'art. 409, incluse le collaborazioni coordinate e continuative) e forma del ricorso |
-| Impugnazione del licenziamento: doppia decadenza | art. 6 L. 15 luglio 1966, n. 604 — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1966-07-15;604~art6!vig= | impugnazione stragiudiziale entro sessanta giorni dalla comunicazione (o dei motivi, se successiva); inefficace se non seguita entro centottanta giorni dal deposito del ricorso giudiziale o dalla richiesta di conciliazione/arbitrato, con ulteriore termine di sessanta giorni dal rifiuto o mancato accordo. Il testo vigente registra gli interventi della Consulta (da ultimo C. cost. n. 111/2025 sull'incapacità del lavoratore): rileggerlo sempre; per licenziamenti anteriori, ratione temporis |
+| Impugnazione del licenziamento: doppia decadenza | art. 6 L. 15 luglio 1966, n. 604 — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1966-07-15;604~art6!vig= | impugnazione stragiudiziale entro sessanta giorni dalla comunicazione (o dei motivi, se successiva); inefficace se non seguita entro centottanta giorni dal deposito del ricorso giudiziale o dalla richiesta di conciliazione/arbitrato, con ulteriore termine di sessanta giorni dal rifiuto o mancato accordo. Il testo vigente registra interventi della Consulta: rileggerlo sempre sulla fonte ufficiale prima dell'uso *(gli estremi delle pronunce non sono riscontrati sul corpus: verificarli su cortecostituzionale.it prima di citarle)*; per licenziamenti anteriori, ratione temporis |
 | Regime di tutela: art. 18 St. lav. vs tutele crescenti | art. 18 L. 20 maggio 1970, n. 300 — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1970-05-20;300~art18!vig= ; art. 1 D.lgs. 4 marzo 2015, n. 23 *(fuori corpus)* — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-03-04;23!vig= | lo spartiacque è l'assunzione a tempo indeterminato "a decorrere dalla data di entrata in vigore" del D.lgs. 23/2015 (7 marzo 2015: data non scritta nell'articolato, derivata dalla pubblicazione in G.U. e dalla clausola di vigenza — riscontrarla sull'atto); anche nel regime a tutele crescenti la reintegrazione sopravvive per i casi indicati nel testo (licenziamento nullo, discriminatorio, orale); l'art. 18 ha versioni molto diverse nel tempo: sempre ratione temporis |
 | Tentativo di conciliazione | art. 410 c.p.c. — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art410!vig= | facoltativo in via generale ("può promuovere"); la richiesta interrompe la prescrizione e sospende le decadenze per la durata del tentativo e per i venti giorni successivi; verificare i casi speciali nel testo |
 | NASpI: domanda | art. 6 D.lgs. 4 marzo 2015, n. 22 *(fuori corpus)* — https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-03-04;22!vig= | rubrica "Domanda e decorrenza della prestazione": domanda all'INPS in via telematica entro il termine di decadenza di sessantotto giorni dalla cessazione del rapporto di lavoro; decorrenza della prestazione al comma 2 |

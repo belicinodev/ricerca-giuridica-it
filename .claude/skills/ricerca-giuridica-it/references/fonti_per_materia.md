@@ -5,6 +5,27 @@ Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente a
 - Data di verifica: 2026-07-06 (tutti gli URL verificati via fetch o curl); voci aggiunte il 2026-07-17 (§§19-21) verificate separatamente alla stessa data.
 - Regole: nessuna fonte a pagamento; le fonti con login gratuito riservato a una categoria sono marcate "(per categoria)"; i siti che bloccano l'accesso automatico sono marcati "(anti-bot: fallback con ricerca `site:` o istruzioni all'utente)".
 
+## Indice
+
+Leggi questa intestazione e la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti). L'etichetta di maturità è nel titolo di ogni sezione e va dichiarata quando non è [copertura piena].
+
+| § | Materia | § | Materia |
+|---|---|---|---|
+| 1 | Civile (base comune) | 13 | Privacy e data protection |
+| 2 | Penale *(parziale)* | 14 | Compliance e 231 |
+| 3 | Amministrativo — **include contabile-erariale** (Corte dei conti) | 15 | Diritto scolastico |
+| 4 | Tributario | 16 | Immigrazione |
+| 5 | Lavoro e previdenza — **include contratti collettivi** (CNEL, ARAN) | 17 | Deontologia forense *(parziale)* |
+| 6 | Bancario, assicurativo e finanziario | 18 | Appalti |
+| 7 | Societario | 19 | Successioni e regimi patrimoniali *(parziale)* |
+| 8 | Crisi d'impresa | 20 | Ambiente ed energia *(parziale)* |
+| 9 | Famiglia e minori *(parziale)* | 21 | Diritto sportivo *(solo instradamento)* |
+| 10 | Proprietà intellettuale | 22 | Terzo settore *(parziale)* |
+| 11 | Consumatori e concorrenza | 23 | Diritto dei trasporti *(solo instradamento)* |
+| 12 | Real estate ed edilizia | — | Lacune trasversali (in coda al file) |
+
+Due materie non hanno una sezione propria: **contabile-erariale** sta in § 3 (una riga: banchedati.corteconti.it) e **contratti collettivi** in § 5. Per la sotto-area contabile-erariale l'etichetta [copertura piena] di § 3 è sovradichiarata: trattala come copertura parziale e dichiaralo.
+
 ---
 
 ## 1. Civile (base comune) [copertura piena]
