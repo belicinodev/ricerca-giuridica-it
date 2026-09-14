@@ -19,9 +19,10 @@ The "source" is prose: `SKILL.md` is a behavioral specification loaded into Clau
 - `evals/evals.json` — regression prompts with manually-verified expected outputs. The gate for all changes (see below). Entries may carry an optional `checks` object (`must_include`/`must_not_include`: short strings, deterministic, checked before the LLM judge runs; optional `tool_input_must_not_include` checked against tool_use inputs captured via stream-json, for query-minimization regressions) alongside the narrative `expected_output`; not every eval has one (behavioral evals with no falsifiable string stay narrative-only).
 - `schema/lex_tools_contract.json` — formal JSON Schema of the `lex_*` tool contract (input/output shapes only, no implementation). Public interface, kept in sync with the design invariant above; useful for external review and for any independent implementation of the corpus server.
 - `scripts/package_skill.sh` — zips the skill folder into `dist/` for manual install.
-- `scripts/verifica_skill.py` — static checks with no network calls: evals.json validity and `checks` shape (including `tool_input_must_not_include`), SKILL.md frontmatter and description length, references/ pointers not broken, `fonti_normative.md` table schema (4 columns, recognized Stato prefix, permalink to a known official domain), schema/lex_tools_contract.json validity. Runs in CI on every push/PR.
-- `.github/workflows/release.yml` — on any `v*` tag, packages the ZIP and publishes a GitHub release. `CHANGELOG.md` is updated by hand.
-- `.github/workflows/quality.yml` — on push/PR to main: `verifica_skill.py` + shellcheck (blocking); source-endpoint reachability (informational, non-blocking, since it depends on external network/anti-bot behavior).
+- `scripts/verifica_skill.py` — static checks with no network calls and no dependencies. Each check is a pure function `check_*(Percorsi) -> Esito` (blocking `errori` + informational `note`); `main()` composes them, so every check is unit-testable on a fixture repo. Checks: evals.json validity, id sequentiality and `checks` shape (including `tool_input_must_not_include`, non-empty strings); SKILL.md frontmatter (`name` per the Agent Skills spec and equal to the folder, `description` ≤ 1024 chars, `metadata.version` present); CHANGELOG headings well-formed, unique, descending, and top version == `metadata.version`; references/ pointers not broken and no orphans; https-only URLs in references; `lex_*` names cited in SKILL.md exist in the contract; `fonti_normative.md` table schema (4 columns, recognized Stato prefix, permalink to a known official domain); consistent column counts in every references table; maturity labels and 1..N numbering in `fonti_per_materia.md`; contract JSON validity; SKILL.md growth vs. last tag (informational). `--versione` prints the declared version (used by the release workflow). Runs in CI on every push/PR.
+- `tests/test_verifica_skill.py` — unit tests for every static check (stdlib `unittest`, no dependencies): valid fixture passes, then one element broken at a time. Run with `python3 -m unittest discover -s tests -v`; runs in CI.
+- `.github/workflows/release.yml` — on any `v*` tag: runs the static checks, refuses the release if the tag differs from `metadata.version` in SKILL.md, then packages the ZIP and publishes a GitHub release. `CHANGELOG.md` is updated by hand and its top entry must carry the same version.
+- `.github/workflows/quality.yml` — on push/PR to main (read-only token): `verifica_skill.py` + unit tests + shellcheck (blocking); source-endpoint reachability (informational, non-blocking, since it depends on external network/anti-bot behavior).
 
 The skill's optional corpus is architected as **three collections** exposed via `lex_*` MCP tools: `base` (open indexed sources, citable), `studio` (user's own documents, always cited as "fonte dello studio"), `puntatori` (metadata+URL indexes of restricted-reuse sources — route to the original, never cite unretrieved text). This is the public interface; treat it as a stable contract.
 
@@ -57,7 +58,7 @@ scripts/package_skill.sh            # version defaults to date (YYYYMMDD)
 scripts/package_skill.sh v0.3.1     # explicit version → dist/ricerca-giuridica-it_v0.3.1.zip
 ```
 
-Cut a release (triggers the workflow that packages + publishes the ZIP):
+Cut a release (triggers the workflow that packages + publishes the ZIP). Before tagging, bump `metadata.version` in SKILL.md's frontmatter and add the matching `## vX.Y.Z - YYYY-MM-DD` entry at the top of CHANGELOG.md — the static check enforces that they agree, and the release workflow refuses a tag that doesn't match:
 ```bash
 git tag v0.3.1 && git push origin v0.3.1
 ```
@@ -72,11 +73,14 @@ Check that all catalogued source endpoints still respond:
 scripts/verifica_fonti.sh
 ```
 
-Run the static checks that CI runs (no network, no credentials):
+Run the static checks and their unit tests as CI does (no network, no credentials):
 ```bash
 python3 scripts/verifica_skill.py
+python3 -m unittest discover -s tests -v
 shellcheck scripts/*.sh
 ```
+
+Working-copy caveat (macOS): don't keep the working clone inside iCloud Drive with "Optimize Mac Storage" on — git objects get evicted from local disk and every git command hangs waiting for downloads. Clone to a plain local folder.
 
 Run the evals headless with a three-tier check — deterministic `checks.must_include`/`must_not_include` on the final response, then (when an eval defines it) `checks.tool_input_must_not_include` against tool_use inputs captured via `--output-format stream-json` — for query-minimization regressions — then an LLM judge (from a normal terminal, NOT inside a Claude Code session: nested sessions are refused outright to prevent crashing the parent; TEMPLATE evals are skipped and need manual interactive testing: submit the prompt to the skill and compare the response against `expected_output`):
 ```bash

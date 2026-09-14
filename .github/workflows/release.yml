@@ -9,6 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Il tag deve coincidere con la versione dichiarata in SKILL.md
+        # metadata.version nel frontmatter, la voce in testa a CHANGELOG.md e il
+        # tag devono essere la stessa versione: un tag messo su una versione
+        # dichiarata stantia non produce una release.
+        run: |
+          python3 scripts/verifica_skill.py
+          versione="$(python3 scripts/verifica_skill.py --versione)"
+          if [ "v${versione}" != "${GITHUB_REF_NAME}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} diverso dalla versione dichiarata in SKILL.md (v${versione}): aggiorna metadata.version e CHANGELOG.md prima di taggare."
+            exit 1
+          fi
       - name: Package skill
         run: |
           mkdir -p dist

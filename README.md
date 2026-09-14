@@ -87,6 +87,7 @@ CONTRIBUTING.md     meccanica di contribuzione (eval, comandi pre-PR)
 evals/evals.json    domande di regressione con risposte attese verificate
 schema/              contratto pubblico dei tool lex_* (JSON Schema)
 scripts/            build dello ZIP, verifiche statiche, esecuzione eval
+tests/              test unitari delle verifiche statiche (solo libreria standard)
 .github/workflows/  release dello ZIP a ogni tag v*; controlli di qualità a ogni push/PR
 ```
 
@@ -102,7 +103,7 @@ Issue e proposte sono benvenute, con una regola: ogni nuova regola di comportame
 
 ## Versioni
 
-Storia in `CHANGELOG.md`. A ogni tag `v*` il workflow pubblica lo ZIP installabile tra gli asset della release.
+Storia in `CHANGELOG.md`. La versione dichiarata nel frontmatter di `SKILL.md` (`metadata.version`) coincide con la voce in testa al changelog e con il tag: a ogni tag `v*` il workflow lo verifica e pubblica lo ZIP installabile tra gli asset della release.
 
 ## Licenza
 

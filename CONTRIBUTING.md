@@ -26,12 +26,17 @@ I prompt che iniziano con `TEMPLATE` descrivono un comportamento senza un caso c
 Esegui in locale, da un terminale normale (non da dentro una sessione Claude Code):
 
 ```bash
-python3 scripts/verifica_skill.py   # controlli statici: evals.json, frontmatter, puntatori, catalogo normativo
-shellcheck scripts/*.sh             # stile degli script di shell
-scripts/esegui_evals.sh <id>        # ripassa le eval toccate dalla modifica
+python3 scripts/verifica_skill.py            # controlli statici: evals.json, frontmatter, changelog, puntatori, cataloghi
+python3 -m unittest discover -s tests -v     # test unitari dei controlli statici
+shellcheck scripts/*.sh                      # stile degli script di shell
+scripts/esegui_evals.sh <id>                 # ripassa le eval toccate dalla modifica
 ```
 
-La CI (`quality.yml`) ripete i primi due in modo bloccante a ogni push/PR; `scripts/verifica_fonti.sh` (raggiungibilità degli endpoint) è solo informativo, perché dipende da rete e anti-bot esterni.
+La CI (`quality.yml`) ripete i primi tre in modo bloccante a ogni push/PR; `scripts/verifica_fonti.sh` (raggiungibilità degli endpoint) è solo informativo, perché dipende da rete e anti-bot esterni.
+
+## Rilasciare una versione
+
+Tre cose devono coincidere: `metadata.version` nel frontmatter di `SKILL.md`, la voce in testa a `CHANGELOG.md` (`## vX.Y.Z - AAAA-MM-GG`) e il tag git. Il controllo statico verifica le prime due; il workflow di release (`release.yml`) rifiuta un tag diverso dalla versione dichiarata, così un tag messo per sbaglio su una versione stantia non produce una release.
 
 ## Cosa NON entra nel repo
 

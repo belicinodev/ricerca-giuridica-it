@@ -2,7 +2,7 @@
 
 Per ogni materia di pratica, il nucleo minimo di fonti ufficiali e liberamente accessibili: normativa, prassi/autorità, giurisprudenza e decisioni. Gli estremi degli atti normativi sono in `fonti_normative.md`; condizioni d'accesso, licenze e regole di riuso trasversali in `fonti_dati_giuridici.md`.
 
-- Data di verifica: 2026-07-06 (tutti gli URL verificati via fetch o curl); voci aggiunte il 2026-07-17 (§§19-21) verificate separatamente alla stessa data.
+- Data di verifica: 2026-07-06 (tutti gli URL verificati via fetch o curl); voci aggiunte il 2026-07-17 (§§19-21) verificate separatamente alla stessa data; domini di § 7 (massime notarili) e § 10 (banca dati UIBM) integrati e verificati raggiungibili il 2026-09-14.
 - Regole: nessuna fonte a pagamento; le fonti con login gratuito riservato a una categoria sono marcate "(per categoria)"; i siti che bloccano l'accesso automatico sono marcati "(anti-bot: fallback con ricerca `site:` o istruzioni all'utente)".
 
 ## Indice
@@ -77,7 +77,7 @@ Due materie non hanno una sezione propria: **contabile-erariale** sta in § 3 (u
 ## 7. Societario [copertura piena]
 
 - Normativa: codice civile libro V, T.U.F., T.U. società a partecipazione pubblica — Normattiva.
-- Orientamenti notarili (contenuto redazionale protetto, libera consultazione, solo citazione con fonte): Massime della Commissione Società del Consiglio Notarile di Milano (~230 massime, indice sistematico); Orientamenti societari del Comitato Triveneto dei Notai.
+- Orientamenti notarili (contenuto redazionale protetto, libera consultazione, solo citazione con fonte): Massime della Commissione Società del Consiglio Notarile di Milano (consiglionotarilemilano.it, sezione Società → Massime; ~230 massime, indice sistematico); Orientamenti societari del Comitato Triveneto dei Notai (notaitriveneto.it, sezione Orientamenti societari). Valore: orientamento, mai fonte del diritto.
 - Bilancio: principi contabili OIC (fondazioneoic.eu) — PDF liberi ma riuso vietato oltre consultazione e citazione (diritti editoriali riservati).
 - Giurisprudenza: Cassazione su SentenzeWeb; merito su BDP e ilcaso.it (livello gratuito).
 
@@ -98,7 +98,7 @@ Due materie non hanno una sezione propria: **contabile-erariale** sta in § 3 (u
 ## 10. Proprietà intellettuale [copertura piena]
 
 - Normativa: Codice della proprietà industriale (D.lgs. 30/2005), L. 633/1941 sul diritto d'autore — Normattiva.
-- Registri: banca dati UIBM (titoli italiani dal 1989); EUIPO eSearch plus (marchi UE, disegni); TMview/DesignView (aggregatore TMDN); EPO European Patent Register + Espacenet (anti-bot: per accesso programmatico usare l'API OPS, gratuita con registrazione); WIPO PATENTSCOPE e Global Brand Database.
+- Registri: banca dati UIBM (uibm.gov.it/bancadati, titoli italiani dal 1989); EUIPO eSearch plus (marchi UE, disegni); TMview/DesignView (aggregatore TMDN); EPO European Patent Register + Espacenet (anti-bot: per accesso programmatico usare l'API OPS, gratuita con registrazione); WIPO PATENTSCOPE e Global Brand Database.
 - Giurisprudenza e decisioni: EUIPO eSearch Case Law (Commissioni di ricorso, sentenze UE su marchi/disegni); EPO Boards of Appeal (decisioni dal 1979, full-text); UPC — Unified Patent Court, decisions and orders (anti-bot: fallback `site:unifiedpatentcourt.org`); sezioni specializzate impresa via BDP (SPID).
 
 ## 11. Diritto dei consumatori e concorrenza [copertura piena]

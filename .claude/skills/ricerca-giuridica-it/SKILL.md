@@ -15,6 +15,10 @@ description: >
   impostare una strategia processuale ("come imposto la causa", "come
   gestiresti questo caso", "conviene agire o transigere"), anche quando la
   fonte non è nominata. Non usare per domande non giuridiche.
+license: MIT
+metadata:
+  version: "0.6.4"
+  author: belicinodev
 argument-hint: "[#ricerca|#documento|#comparata|#strategia|#verifica] [#fast|#approfondito] [#verifica-formulari] quesito"
 ---
 

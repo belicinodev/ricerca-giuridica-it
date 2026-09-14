@@ -1457,6 +1457,72 @@
           "RG4521"
         ]
       }
+    },
+    {
+      "id": 94,
+      "prompt": "Devo verificare se un marchio è già registrato in Italia e nell'Unione europea, e cercare le decisioni delle Commissioni di ricorso EUIPO su un caso simile: dove cerco?",
+      "expected_output": "Routing di Proprietà intellettuale (area [copertura piena], fonti_per_materia.md § 10): titoli italiani nella banca dati UIBM (uibm.gov.it/bancadati); marchi UE su EUIPO eSearch plus, con TMview come aggregatore; decisioni delle Commissioni di ricorso EUIPO in eSearch Case Law; normativa nel Codice della proprietà industriale (D.lgs. 10 febbraio 2005, n. 30) su Normattiva. Nessun rinvio a banche dati commerciali; nessun estremo di decisione inventato: le decisioni si citano solo dopo averle recuperate.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "UIBM",
+          "EUIPO",
+          "Normattiva"
+        ],
+        "must_not_include": [
+          "DeJure",
+          "Pluris",
+          "OneLegale"
+        ]
+      }
+    },
+    {
+      "id": 95,
+      "prompt": "Dove trovo gli orientamenti notarili (massime) sulle clausole statutarie di s.r.l., e che valore posso attribuire loro in un parere?",
+      "expected_output": "Routing di Societario (area [copertura piena], fonti_per_materia.md § 7): Massime della Commissione Società del Consiglio Notarile di Milano (consiglionotarilemilano.it) e Orientamenti societari del Comitato Triveneto dei Notai (notaitriveneto.it), citati come orientamento con indicazione della fonte, mai come fonte del diritto — contenuto redazionale protetto: solo consultazione e citazione, nessuna massima riprodotta per intero. La disciplina resta il codice civile, libro V, su Normattiva; giurisprudenza su SentenzeWeb (Cassazione) e Banca Dati di Merito (SPID).",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Consiglio Notarile di Milano",
+          "Triveneto",
+          "Normattiva"
+        ],
+        "must_not_include": [
+          "DeJure",
+          "Pluris",
+          "OneLegale"
+        ]
+      }
+    },
+    {
+      "id": 96,
+      "prompt": "Devo impugnare il diniego di protezione internazionale di un mio assistito: dove trovo la normativa applicabile, le circolari del Ministero e le informazioni sul paese di origine?",
+      "expected_output": "Routing di Immigrazione e protezione internazionale (area [copertura piena], fonti_per_materia.md § 16): normativa su Normattiva — T.U. immigrazione D.lgs. 286/1998, D.lgs. 251/2007 e D.lgs. 25/2008 (il rito del ricorso è nell'art. 35-bis, v. percorsi_processuali.md); circolari del Dipartimento Libertà Civili e Immigrazione del Ministero dell'Interno (solo filtro data: fallback site:); per il paese di origine EUAA (Country Guidance, Case Law Database) e il portale COI (coi.euaa.europa.eu); giurisprudenza: Cassazione su SentenzeWeb e rassegne del Massimario, CEDU su HUDOC, CGUE su InfoCuria. Il termine per il ricorso si cita per estremi dal testo e resta marcato 'da verificare', mai calcolato a memoria.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "EUAA",
+          "COI",
+          "Normattiva",
+          "da verificare"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 97,
+      "prompt": "Per un contenzioso scolastico su graduatorie e concorsi del personale docente: dove trovo la normativa e le circolari del Ministero, il CCNL del comparto e la giurisprudenza?",
+      "expected_output": "Routing di Diritto scolastico (area [copertura piena], fonti_per_materia.md § 15): normativa su Normattiva — T.U. istruzione D.lgs. 297/1994 e L. 107/2015; circolari, decreti e ordinanze del MIM su mim.gov.it (sezione normativa, senza ricerca full-text: fallback site:mim.gov.it); CCNL Istruzione e Ricerca su ARAN e nell'archivio CNEL; contenzioso su graduatorie, concorsi e dimensionamento su giustizia-amministrativa.it, Cassazione lavoro (SentenzeWeb) per il rapporto d'impiego. La giurisdizione nel caso concreto (giudice amministrativo o del lavoro) si riscontra sulle fonti, non si presume. Nessun estremo inventato.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "MIM",
+          "ARAN",
+          "CNEL",
+          "giustizia-amministrativa.it"
+        ],
+        "must_not_include": []
+      }
     }
   ]
 }
