@@ -12,10 +12,17 @@ Verifica:
   vuote); riporta anche (informativo) quante eval hanno
   tool_input_must_not_include e quante sono TEMPLATE (manuali, mai eseguite in
   automatico)
-- SKILL.md ha frontmatter YAML con `name` conforme alla specifica Agent Skills
-  (minuscole, cifre e trattini singoli, max 64 caratteri, uguale al nome della
-  cartella), `description` non vuota entro 1024 caratteri, `metadata.version`
-  presente nel formato X.Y.Z
+- SKILL.md ha frontmatter YAML con soli campi ammessi dalla specifica Agent
+  Skills (fuori da Claude Code un campo estraneo come `argument-hint` fa fallire
+  il caricamento), `name` conforme (minuscole, cifre e trattini singoli, max 64
+  caratteri, uguale al nome della cartella), `description` non vuota entro 1024
+  caratteri, `metadata.version` presente nel formato X.Y.Z
+- il corpo di SKILL.md resta sotto le 500 righe (errore) e, come avviso, sotto
+  i ~5.000 token che Claude Code ri-attacca dopo una compattazione
+- nessuna eval non-TEMPLATE ha stringhe di must_not_include già presenti nel
+  proprio expected_output (eval insuperabile dalla risposta attesa);
+  `tool_input_must_include` (letture o chiamate che devono avvenire) ha la
+  stessa forma di `tool_input_must_not_include`
 - CHANGELOG.md: intestazioni "## vX.Y.Z - AAAA-MM-GG" ben formate, senza
   versioni duplicate, in ordine decrescente; la versione in testa coincide con
   `metadata.version` di SKILL.md (il workflow di release pretende che il tag
@@ -25,8 +32,8 @@ Verifica:
   rotti), e viceversa ogni file in references/ è nominato da SKILL.md (nessun
   orfano mai caricato), salvo allowlist esplicita
 - ogni URL in references/*.md usa https
-- ogni tool lex_* citato per nome in SKILL.md esiste nel contratto
-  schema/lex_tools_contract.json
+- ogni tool lex_* citato per nome in SKILL.md o in references/ esiste nel
+  contratto schema/lex_tools_contract.json
 - fonti_normative.md: ogni voce di catalogo ha 4 colonne, uno Stato che inizia
   con un valore riconosciuto e un permalink verso una fonte ufficiale nota, e se
   il permalink è su normattiva.it contiene il pattern uri-res/N2Ls
@@ -68,6 +75,26 @@ TOOL_LEX_CITAZIONE_NON_RICHIESTA: frozenset[str] = frozenset()
 
 LIMITE_NAME = 64
 LIMITE_DESCRIPTION = 1024
+# Campi di frontmatter ammessi dalla specifica Agent Skills (agentskills.io).
+# Fuori da Claude Code — upload dello ZIP su claude.ai, Skills API,
+# package_skill.py — qualunque altro campo fa fallire il caricamento con
+# errore, non viene ignorato (code.claude.com/docs/en/skills, confermato con
+# `agentskills validate` il 2026-09-14: `argument-hint` bloccava tutte le
+# release da v0.4.10 a v0.6.4).
+CAMPI_FRONTMATTER_SPEC = frozenset({"name", "description", "license", "compatibility", "metadata", "allowed-tools"})
+# Limite di righe del corpo raccomandato dalla specifica Agent Skills.
+LIMITE_RIGHE_SKILL = 500
+# Claude Code, dopo l'auto-compattazione della conversazione, ri-attacca di
+# ogni skill invocata solo i primi 5.000 token (25.000 complessivi fra tutte):
+# oltre quella soglia la coda di SKILL.md sparisce dal contesto senza avviso.
+TOKEN_BUDGET_RIATTACCO = 5000
+# Soglia di avviso: sotto il budget reale, per lasciare margine a piccole modifiche
+# future prima che la stima (calibrata, non un conteggio diretto) superi 5.000 in
+# silenzio — trovato con margine di 8 token su ricerca-giuridica-it il 2026-09-14.
+SOGLIA_AVVISO_TOKEN = 4500
+# Byte per token per prosa italiana con markdown: misurati con tiktoken o200k
+# sui due SKILL.md del progetto il 2026-09-14 (3,66 e 3,78), arrotondati.
+BYTE_PER_TOKEN_STIMA = 3.7
 # specifica Agent Skills: minuscole, cifre, trattini singoli, né in testa né in
 # coda (qui ristretta ad ASCII: i nomi di questo repo lo sono)
 RE_NOME_SKILL = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -252,11 +279,27 @@ def check_evals(p: Percorsi) -> Esito:
                     e.errore(f"evals.json: eval {ident} — checks.{campo} mancante o non è una lista")
                 elif not _lista_di_stringhe_non_vuote(c[campo]):
                     e.errore(f"evals.json: eval {ident} — checks.{campo} contiene voci vuote o non stringhe")
-            if "tool_input_must_not_include" in c:
-                if not isinstance(c["tool_input_must_not_include"], list):
-                    e.errore(f"evals.json: eval {ident} — checks.tool_input_must_not_include non è una lista")
-                elif not _lista_di_stringhe_non_vuote(c["tool_input_must_not_include"]):
-                    e.errore(f"evals.json: eval {ident} — checks.tool_input_must_not_include contiene voci vuote o non stringhe")
+            for campo in ("tool_input_must_not_include", "tool_input_must_include"):
+                if campo in c:
+                    if not isinstance(c[campo], list):
+                        e.errore(f"evals.json: eval {ident} — checks.{campo} non è una lista")
+                    elif not _lista_di_stringhe_non_vuote(c[campo]):
+                        e.errore(f"evals.json: eval {ident} — checks.{campo} contiene voci vuote o non stringhe")
+            # Una stringa vietata che compare nell'expected_output stesso rende
+            # l'eval insuperabile dalla risposta che la ricalca (caso reale nella
+            # skill gemella: "non l'affidamento diretto" nell'atteso, "affidamento
+            # diretto" vietato). Nelle TEMPLATE l'atteso è narrativo e può
+            # nominare la frase proibita per escluderla: lì è solo una nota.
+            atteso = str(x.get("expected_output", "")).lower()
+            vietati = c.get("must_not_include") if isinstance(c.get("must_not_include"), list) else []
+            nell_atteso = [s for s in vietati if isinstance(s, str) and s and s.lower() in atteso]
+            if nell_atteso:
+                msg = (f"evals.json: eval {ident} — stringhe di must_not_include già presenti nell'expected_output "
+                       f"{nell_atteso}: una risposta che ricalca l'atteso fallirebbe la propria assertion")
+                if str(x.get("prompt", "")).startswith("TEMPLATE"):
+                    e.nota(f"AVVISO (non bloccante): {msg} (TEMPLATE: atteso narrativo, tollerato)")
+                else:
+                    e.errore(msg)
     validi = [x for x in items if isinstance(x, dict)]
     template = sum(1 for x in validi if str(x.get("prompt", "")).startswith("TEMPLATE"))
     minimizzazione = sum(1 for x in validi if "tool_input_must_not_include" in (x.get("checks") or {}))
@@ -279,6 +322,12 @@ def check_frontmatter(p: Percorsi) -> Esito:
     if fm is None:
         e.errore("SKILL.md: frontmatter YAML non trovato o malformato (delimitatori --- mancanti)")
         return e
+    fuori_spec = sorted(k for k in fm if k not in CAMPI_FRONTMATTER_SPEC)
+    if fuori_spec:
+        e.errore(
+            f"SKILL.md: campi di frontmatter fuori dalla specifica Agent Skills: {fuori_spec} — "
+            f"fuori da Claude Code il caricamento fallisce con errore; ammessi solo {sorted(CAMPI_FRONTMATTER_SPEC)}"
+        )
     name = fm.get("name")
     if not isinstance(name, str) or not name:
         e.errore("SKILL.md: frontmatter privo del campo 'name:'")
@@ -303,6 +352,34 @@ def check_frontmatter(p: Percorsi) -> Esito:
         e.errore(f"SKILL.md: metadata.version '{versione}' non nel formato X.Y.Z")
     else:
         e.nota(f"SKILL.md: versione dichiarata {versione}")
+    return e
+
+
+def check_dimensione_skill(p: Percorsi) -> Esito:
+    """Dimensione del corpo di SKILL.md, caricato per intero a ogni attivazione.
+    Le righe sono un limite documentato della specifica (errore oltre 500); i
+    token sono una stima (byte / BYTE_PER_TOKEN_STIMA) confrontata con il
+    budget di ri-attacco post-compattazione di Claude Code: oltre, solo un
+    avviso, ma un avviso che spiega cosa si perde (la coda del file).
+    """
+    e = Esito()
+    if not p.skill_md.exists():
+        return e  # già segnalato da check_frontmatter
+    src = p.skill_md.read_text(encoding="utf-8")
+    m = re.match(r"---\n.*?\n---\n", src, re.S)
+    corpo = src[m.end():] if m else src
+    righe = corpo.count("\n")
+    byte = len(corpo.encode("utf-8"))
+    token_stimati = int(byte / BYTE_PER_TOKEN_STIMA)
+    e.nota(f"SKILL.md: corpo di {righe} righe, {byte} byte, ~{token_stimati} token stimati (budget di ri-attacco dopo compattazione: {TOKEN_BUDGET_RIATTACCO})")
+    if righe > LIMITE_RIGHE_SKILL:
+        e.errore(f"SKILL.md: corpo di {righe} righe, oltre le {LIMITE_RIGHE_SKILL} raccomandate dalla specifica Agent Skills")
+    if token_stimati > SOGLIA_AVVISO_TOKEN:
+        e.nota(
+            f"AVVISO (non bloccante): SKILL.md supera il budget di ri-attacco post-compattazione di Claude Code "
+            f"(~{token_stimati} > {TOKEN_BUDGET_RIATTACCO} token): le regole oltre i primi {TOKEN_BUDGET_RIATTACCO} token non "
+            "sopravvivono a una compattazione. Tieni gli invarianti in testa e le procedure lunghe in references/ (rileggibili)."
+        )
     return e
 
 
@@ -518,15 +595,19 @@ def check_coerenza_tool_lex(p: Percorsi) -> Esito:
         return e  # già segnalato da check_contract_schema
     tools = contratto.get("tools") if isinstance(contratto, dict) else None
     tool_contratto = set(tools.keys()) if isinstance(tools, dict) else set()
-    src = p.skill_md.read_text(encoding="utf-8")
-    citati = set(re.findall(r"lex_[a-z_]+", src))
+    # l'uso dei singoli tool sta in references/corpus_lex.md (caricato a
+    # richiesta quando i tool ci sono): il controllo copre SKILL.md e references/
+    testi = [p.skill_md.read_text(encoding="utf-8")]
+    if p.refs_dir.exists():
+        testi += [f.read_text(encoding="utf-8") for f in sorted(p.refs_dir.glob("*.md"))]
+    citati = set(re.findall(r"lex_[a-z_]+", "\n".join(testi)))
     orfani = citati - tool_contratto - TOOL_LEX_CITAZIONE_NON_RICHIESTA
     if orfani:
-        e.errore(f"SKILL.md cita tool lex_* assenti dal contratto: {sorted(orfani)}")
+        e.errore(f"SKILL.md o references/ citano tool lex_* assenti dal contratto: {sorted(orfani)}")
     non_citati = tool_contratto - citati
     if non_citati:
-        e.nota(f"AVVISO (non bloccante): tool nel contratto mai citati per nome esplicito in SKILL.md: {sorted(non_citati)}")
-    e.nota(f"coerenza tool lex_*: {len(citati)} nomi citati in SKILL.md, {len(tool_contratto)} nel contratto, {len(orfani)} orfani")
+        e.nota(f"AVVISO (non bloccante): tool nel contratto mai citati per nome esplicito in SKILL.md o references/: {sorted(non_citati)}")
+    e.nota(f"coerenza tool lex_*: {len(citati)} nomi citati in SKILL.md e references/, {len(tool_contratto)} nel contratto, {len(orfani)} orfani")
     return e
 
 
@@ -590,6 +671,7 @@ def check_contract_schema(p: Percorsi) -> Esito:
 CONTROLLI: tuple[Callable[[Percorsi], Esito], ...] = (
     check_evals,
     check_frontmatter,
+    check_dimensione_skill,
     check_changelog,
     check_reference_pointers,
     check_catalogo_normativo,

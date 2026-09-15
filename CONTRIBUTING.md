@@ -14,7 +14,8 @@ Ogni voce di `evals/evals.json` ha questa forma:
   "checks": {
     "must_include": ["stringhe che devono comparire nella risposta"],
     "must_not_include": ["stringhe che NON devono comparire"],
-    "tool_input_must_not_include": ["opzionale: stringhe vietate negli input ai tool, non solo nella risposta"]
+    "tool_input_must_not_include": ["opzionale: stringhe vietate negli input ai tool, non solo nella risposta"],
+    "tool_input_must_include": ["opzionale: stringhe che devono comparire negli input ai tool, es. il file di modalità che va letto prima di rispondere"]
   }
 }
 ```
@@ -28,11 +29,12 @@ Esegui in locale, da un terminale normale (non da dentro una sessione Claude Cod
 ```bash
 python3 scripts/verifica_skill.py            # controlli statici: evals.json, frontmatter, changelog, puntatori, cataloghi
 python3 -m unittest discover -s tests -v     # test unitari dei controlli statici
+agentskills validate .claude/skills/ricerca-giuridica-it   # validatore ufficiale della specifica (pip install skills-ref)
 shellcheck scripts/*.sh                      # stile degli script di shell
 scripts/esegui_evals.sh <id>                 # ripassa le eval toccate dalla modifica
 ```
 
-La CI (`quality.yml`) ripete i primi tre in modo bloccante a ogni push/PR; `scripts/verifica_fonti.sh` (raggiungibilità degli endpoint) è solo informativo, perché dipende da rete e anti-bot esterni.
+La CI (`quality.yml`) ripete i primi quattro (incluso shellcheck, nello stesso job: un suo fallimento blocca la CI quanto gli altri) in modo bloccante a ogni push/PR; `scripts/verifica_fonti.sh` (raggiungibilità degli endpoint) è solo informativo, perché dipende da rete e anti-bot esterni.
 
 ## Rilasciare una versione
 

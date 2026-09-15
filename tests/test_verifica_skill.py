@@ -28,7 +28,6 @@ license: MIT
 metadata:
   version: "0.1.0"
   author: test
-argument-hint: "[#ricerca] quesito"
 ---
 
 # Skill di prova
@@ -211,6 +210,29 @@ class TestEvals(Base):
         self.scrivi_evals([e1])
         self.assertErrore(vs.check_evals(self.p), "tool_input_must_not_include non è una lista")
 
+    def test_must_not_include_presente_nell_atteso(self) -> None:
+        e = self.eval_base(1)
+        e["expected_output"] = "Si applica la procedura negoziata, non l'affidamento diretto."
+        e["checks"] = {"must_include": [], "must_not_include": ["affidamento diretto"]}
+        self.scrivi_evals([e])
+        self.assertErrore(vs.check_evals(self.p), "già presenti nell'expected_output")
+
+    def test_must_not_include_presente_nell_atteso_template_solo_nota(self) -> None:
+        e = self.eval_base(1)
+        e["prompt"] = "TEMPLATE fonte non reperita"
+        e["expected_output"] = "Mai concludere che non esiste."
+        e["checks"] = {"must_include": [], "must_not_include": ["non esiste"]}
+        self.scrivi_evals([e])
+        esito = vs.check_evals(self.p)
+        self.assertTrue(esito.ok, esito.errori)
+        self.assertNota(esito, "AVVISO")
+
+    def test_tool_input_must_include_non_lista(self) -> None:
+        e = self.eval_base(1)
+        e["checks"] = {"must_include": [], "must_not_include": [], "tool_input_must_include": "modo_strategia.md"}
+        self.scrivi_evals([e])
+        self.assertErrore(vs.check_evals(self.p), "tool_input_must_include non è una lista")
+
     def test_files_non_lista(self) -> None:
         e1 = self.eval_base(1)
         e1["files"] = "allegato.pdf"
@@ -247,6 +269,10 @@ class TestFrontmatter(Base):
         lungo = "a" * (vs.LIMITE_NAME + 1)
         self.sostituisci(self.p.skill_md, "name: ricerca-giuridica-it", f"name: {lungo}")
         self.assertErrore(vs.check_frontmatter(self.p), "oltre il limite di 64")
+
+    def test_campo_fuori_specifica(self) -> None:
+        self.sostituisci(self.p.skill_md, "license: MIT\n", 'license: MIT\nargument-hint: "[#ricerca] quesito"\n')
+        self.assertErrore(vs.check_frontmatter(self.p), "fuori dalla specifica")
 
     def test_name_mancante(self) -> None:
         self.sostituisci(self.p.skill_md, "name: ricerca-giuridica-it\n", "")
@@ -288,8 +314,27 @@ class TestFrontmatter(Base):
         assert fm is not None
         self.assertEqual(fm["name"], "ricerca-giuridica-it")
         self.assertEqual(fm["license"], "MIT")
-        self.assertEqual(fm["argument-hint"], "[#ricerca] quesito")
+        self.assertEqual(fm["license"], "MIT")
         self.assertEqual(fm["metadata"], {"version": "0.1.0", "author": "test"})
+
+
+class TestDimensione(Base):
+    def test_fixture_entro_i_limiti(self) -> None:
+        esito = vs.check_dimensione_skill(self.p)
+        self.assertTrue(esito.ok, esito.errori)
+        self.assertNota(esito, "token stimati")
+
+    def test_troppe_righe(self) -> None:
+        corpo = "\n".join(f"- riga {i}" for i in range(vs.LIMITE_RIGHE_SKILL + 5))
+        self.p.skill_md.write_text(SKILL_MD + corpo + "\n", encoding="utf-8")
+        self.assertErrore(vs.check_dimensione_skill(self.p), "oltre le 500")
+
+    def test_oltre_il_budget_di_token_e_solo_avviso(self) -> None:
+        corpo = ("parola " * 12) + "\n"
+        self.p.skill_md.write_text(SKILL_MD + corpo * 300, encoding="utf-8")  # ~25 KB su 300 righe
+        esito = vs.check_dimensione_skill(self.p)
+        self.assertTrue(esito.ok, esito.errori)
+        self.assertNota(esito, "AVVISO")
 
 
 class TestChangelog(Base):
@@ -365,7 +410,20 @@ class TestToolLex(Base):
         self.p.contract.write_text(json.dumps({"tools": {"lex_stato_corpus": {}, "lex_cerca_prassi": {}}}), encoding="utf-8")
         esito = vs.check_coerenza_tool_lex(self.p)
         self.assertTrue(esito.ok)
-        self.assertNota(esito, "AVVISO (non bloccante): tool nel contratto mai citati per nome esplicito in SKILL.md: ['lex_cerca_prassi']")
+        self.assertNota(esito, "AVVISO (non bloccante): tool nel contratto mai citati per nome esplicito in SKILL.md o references/: ['lex_cerca_prassi']")
+
+
+class TestToolLexNelleReference(Base):
+    def test_tool_citato_solo_in_una_reference_conta_come_citato(self) -> None:
+        self.p.contract.write_text(json.dumps({"tools": {"lex_stato_corpus": {}, "lex_cerca_norma": {}}}), encoding="utf-8")
+        (self.p.refs_dir / "altro.md").write_text(ALTRO + "\nUsa `lex_cerca_norma` per il normativo.\n", encoding="utf-8")
+        esito = vs.check_coerenza_tool_lex(self.p)
+        self.assertTrue(esito.ok, esito.errori)
+        self.assertFalse(any("mai citati" in n for n in esito.note), esito.note)
+
+    def test_tool_assente_dal_contratto_citato_in_reference(self) -> None:
+        (self.p.refs_dir / "altro.md").write_text(ALTRO + "\nUsa `lex_inesistente`.\n", encoding="utf-8")
+        self.assertErrore(vs.check_coerenza_tool_lex(self.p), "lex_inesistente")
 
 
 class TestCatalogoNormativo(Base):

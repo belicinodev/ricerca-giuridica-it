@@ -14,8 +14,17 @@ jobs:
           # storia completa: serve al controllo (informativo) di crescita di
           # SKILL.md, che confronta la dimensione con quella all'ultimo tag
           fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Verifica skill (frontmatter, eval, changelog, puntatori, cataloghi, contratto tool)
         run: python3 scripts/verifica_skill.py
+      - name: Validatore ufficiale Agent Skills (agentskills.io)
+        # rifiuta i campi di frontmatter fuori specifica, che rompono l'upload
+        # dello ZIP su claude.ai (es. argument-hint, presente fino a v0.6.4)
+        run: |
+          pip install skills-ref
+          agentskills validate .claude/skills/ricerca-giuridica-it
       - name: Test unitari dei controlli statici
         run: python3 -m unittest discover -s tests -v
       - name: Shellcheck sugli script

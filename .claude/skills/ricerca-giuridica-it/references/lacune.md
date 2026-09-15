@@ -4,6 +4,10 @@ Elenco unico delle lacune strutturali già dichiarate nei singoli cataloghi (`fo
 
 - Data di consolidamento delle lacune di fonti (sezioni seguenti fino a "Limiti strutturali trasversali" incluso): 2026-07-21. Le sezioni datate singolarmente sono osservazioni operative successive, non consolidamento.
 
+## Compattazione del contesto (Claude Code)
+
+Dopo l'auto-compattazione di una conversazione lunga, Claude Code ri-attacca di ogni skill invocata solo i primi 5.000 token. SKILL.md v0.7.0 ne conta circa 9.200: gli invarianti stanno nei primi 5.000, ma routing per materia, gerarchia delle fonti, corpus e formato di risposta possono uscire dal contesto in una sessione compattata. Le procedure delle modalità sono in `references/modo_*.md` e si rileggono; il routing si recupera da `fonti_per_materia.md`. Limite dichiarato, non risolto.
+
 ## Maturità per area (`fonti_per_materia.md`)
 
 Ogni sezione porta l'etichetta nel titolo; qui solo l'indice, verificato staticamente da `scripts/verifica_skill.py`.

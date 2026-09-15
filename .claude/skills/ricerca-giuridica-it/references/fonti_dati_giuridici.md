@@ -60,7 +60,7 @@ Gerarchia delle fonti gratuite di massime e orientamenti, dalla più autorevole:
 1. **Massime ufficiali della Corte costituzionale** — cortecostituzionale.it, "Ricerca sulle massime": unico massimario ufficiale italiano integralmente gratuito (dal 1956). La maschera massime ha protezione anti-bot: accesso da browser libero, automatico no.
 2. **Sommari/massime CGUE** — Raccolta su InfoCuria (curia.europa.eu, ricerca avanzata con 20+ campi, operatori `*`, `_`, virgolette, spazio=E, virgola=O, `!`=SALVO) e su EUR-Lex (settore CELEX 6, con note di dottrina; API e bulk gratuiti previa registrazione; il sito blocca i fetch non-browser).
 3. **Rassegne e relazioni dell'Ufficio del Massimario** — cortedicassazione.it (oltre 440 PDF liberi: rassegne mensili civili e penali, annuali, tematiche, relazioni su contrasti e novità normative; citano i numeri Rv) e **Portale del Massimario IPZS** (portaledelmassimario.ipzs.it: rassegne annuali 2010-2024, full-text online). Orientamenti autorevoli ma non massime ufficiali: citare la rassegna e la sentenza sottostante.
-4. **Abstract della Banca Dati di Merito** — quasi-massime automatiche del merito civile (SPID, dal 2016, esclusi famiglia/minori).
+4. **Abstract della Banca Dati di Merito** — quasi-massime automatiche del merito civile (SPID, dal 2016, esclusi famiglia, minori e stato della persona).
 5. **Massime CED con numero Rv** — NON pubbliche: solo ItalgiureWeb (per categoria: avvocati Cassa Forense, magistrati, PA) o banche dati commerciali. Citare un numero Rv solo se presente nel contesto recuperato.
 6. **Massime generate dal full-text** — bozze di lavoro, mai autorità (v. regole della skill).
 
@@ -143,7 +143,7 @@ Nota: questi coprono normativa e Corte Costituzionale. Per la Cassazione restano
 ## 7. Regole operative di acquisizione (cosa non fare)
 
 - Non costruire né eseguire estrattori massivi puntati su banche dati commerciali o su Italgiure.
-- Non riprodurre massime redazionali altrui (Giuffrè, Wolters Kluwer, Ufficio del Massimario): il full-text della sentenza è libero, la massima redazionale è opera protetta. Se serve una massima, generarla dal testo integrale e trattarla come bozza.
+- Non riprodurre massime redazionali altrui (Giuffrè, Wolters Kluwer; le rassegne e relazioni dell'Ufficio del Massimario si citano per estremi e si sintetizzano, il testo massimato e il numero Rv non si riproducono): il full-text della sentenza è libero, la massima redazionale è opera protetta. Se serve una massima, generarla dal testo integrale e trattarla come bozza.
 - Non trattare una massima generata come citabile: citare sempre la sentenza sottostante.
 - Non forzare i siti istituzionali (SentenzeWeb, def.finanze, Banca Dati di Merito) con richieste aggressive o automatizzate oltre i termini d'uso.
 - Non trattare l'accumulo nel tempo di raccolte mirate sulla stessa fonte come un modo lecito per aggirare il divieto di estrazione massiva: la ripetizione sistematica resta vietata anche a piccoli lotti (art. 102-bis L. 633/1941).

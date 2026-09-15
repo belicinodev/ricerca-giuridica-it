@@ -56,11 +56,11 @@ Non un trattato di diritto internazionale privato: un router. Quando il caso ha 
 
 ## 6. Sistema residuale italiano
 
-**L. 31 maggio 1995, n. 218** — riforma del sistema italiano di diritto internazionale privato. **Estremi da verificare puntualmente su Normattiva prima di citare un articolo specifico**: non ancora riscontrati per questo file. Si applica alle materie e ai casi non coperti dai regolamenti UE sopra (es. rapporti con Stati terzi in ambiti non armonizzati, o materie escluse dai regolamenti stessi).
+**L. 31 maggio 1995, n. 218** — riforma del sistema italiano di diritto internazionale privato. Estremi dell'atto e permalink verificati (v. `fonti_normative.md`, voce "Diritto internazionale privato"); i singoli articoli non sono ancora riscontrati per questo file: leggerli su Normattiva prima di citarne uno. Si applica alle materie e ai casi non coperti dai regolamenti UE sopra (es. rapporti con Stati terzi in ambiti non armonizzati, o materie escluse dai regolamenti stessi).
 
 ## 7. Regola d'uso per la skill
 
 1. Se il caso presenta un elemento di estraneità, individua prima lo strumento pertinente (legge applicabile o giurisdizione) usando questo catalogo, poi leggi l'articolo per intero prima di applicarlo — non fermarti al titolo del regolamento.
-2. In Strategia processuale, l'individuazione della legge applicabile e del foro competente è un cancello a tutti gli effetti (v. `percorsi_processuali.md`): trattarla come una condizione preliminare, non come un dettaglio accessorio.
+2. In Strategia processuale vale come cancello preliminare: v. SKILL.md, Flusso di lavoro, punto 1.
 3. Nessun criterio di collegamento va applicato a memoria: se l'articolo pertinente non è stato letto per intero nel turno corrente, dichiaralo come da verificare invece di presumere l'esito.
 4. Le esclusioni di ciascun regolamento sono elencate solo per titolo qui: leggere il testo integrale (art. 1 di ciascun regolamento) prima di escludere o includere un caso di confine.

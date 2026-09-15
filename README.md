@@ -61,7 +61,7 @@ Se la conversazione espone tool MCP con prefisso `lex_`, la skill interroga un c
 ## Installazione
 
 **claude.ai / Claude Desktop / app mobile** (per account, richiede l'esecuzione codice attiva — cerca "esecuzione codice" o "code execution" nelle impostazioni della tua versione, il percorso esatto del menu cambia tra le superfici):
-scarica lo ZIP dall'[ultima release](https://github.com/belicinodev/ricerca-giuridica-it/releases/latest) e caricalo da Personalizza > Skill. Fatto questo sei pronto: scrivi la domanda in chat, nessun comando da digitare, la skill si attiva da sola sulle frasi giuste (v. [GUIDA.md](GUIDA.md)).
+scarica lo ZIP dall'[ultima release](https://github.com/belicinodev/ricerca-giuridica-it/releases/latest) e caricalo da Personalizza > Skill (serve la v0.7.0 o successiva: le release precedenti portavano nel frontmatter un campo estraneo alla specifica che fa fallire il caricamento con errore). Fatto questo sei pronto: scrivi la domanda in chat, nessun comando da digitare, la skill si attiva da sola sulle frasi giuste (v. [GUIDA.md](GUIDA.md)).
 
 **Claude Code** (via più tecnica: richiede git e un terminale — se non li conosci, usa il metodo ZIP sopra: la skill è identica), per il singolo progetto: clona questo repo e apri la cartella, la skill in `.claude/skills/` viene scoperta automaticamente. Per tutti i progetti: `cp -R .claude/skills/ricerca-giuridica-it ~/.claude/skills/`.
 
@@ -71,8 +71,13 @@ scarica lo ZIP dall'[ultima release](https://github.com/belicinodev/ricerca-giur
 
 ```
 .claude/skills/ricerca-giuridica-it/
-  SKILL.md          metodo, regole, modalità, flusso di lavoro
-  references/       cataloghi delle fonti, caricati a richiesta
+  SKILL.md          invarianti, flusso di lavoro, trigger delle modalità, routing
+  references/       procedure delle modalità e cataloghi delle fonti, caricati a richiesta
+    modo_documento.md          procedura completa di Crea documento
+    modo_comparata.md          procedura completa di Analisi comparata
+    modo_strategia.md          procedura completa di Strategia processuale
+    modo_verifica.md           procedura completa di Verifica documento
+    corpus_lex.md              uso dei tool lex_*, quando il corpus è collegato
     fonti_per_materia.md       kit minimo per 23 materie
     fonti_dati_giuridici.md    endpoint, licenze, massime, ADR/CCNL
     fonti_normative.md         estremi di codici, leggi e testi unici

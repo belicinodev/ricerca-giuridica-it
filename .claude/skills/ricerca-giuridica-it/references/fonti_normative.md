@@ -11,9 +11,8 @@ Estremi di codici, leggi, testi unici e regolamenti di uso frequente, organizzat
 ## 0. Avvertenze (da leggere prima dell'uso)
 
 ### 0.1 Copyright e riutilizzo delle fonti giuridiche in rete
-- Il **testo degli atti normativi** (codici, leggi, decreti, regolamenti) non è coperto da diritto d'autore ai sensi dell'art. 5 della L. 633/1941: è liberamente riproducibile.
-- Il **contenuto editoriale dei siti divulgativi e delle banche dati commerciali** (spiegazioni, commenti, note, selezione e massimazione della giurisprudenza, voci di dizionario) è opera protetta: non si riproduce.
-- Le **banche dati in sé** sono protette dal diritto sui generis del costitutore (art. 102-bis L. 633/1941): l'estrazione o il riutilizzo di una parte sostanziale è vietato anche quando i singoli contenuti sono liberi. Niente estrazioni in blocco da siti terzi; per l'acquisizione sistematica si usano solo i canali open data ufficiali (Normattiva, EUR-Lex, CNEL, OpenGA).
+- Il **testo degli atti normativi** non è coperto da diritto d'autore (art. 5, L. 633/1941): liberamente riproducibile. Il **contenuto editoriale** di siti divulgativi e banche dati commerciali (commenti, note, massimazione) è opera protetta.
+- Niente estrazione di una parte sostanziale di una banca dati (diritto sui generis del costitutore, art. 102-bis, L. 633/1941): per l'acquisizione sistematica solo i canali open data ufficiali. Licenze per fonte, divieto di travaso da banche dati commerciali e regole di riuso delle sentenze in `fonti_dati_giuridici.md`, § 6.
 
 ### 0.2 Fonte autorevole
 - **Normattiva** (www.normattiva.it): testo consolidato e multivigente della legislazione statale; open data CC BY 4.0. I permalink di questo catalogo usano il resolver `uri-res/N2Ls?urn:nir:...` (aggiungendo `~artN` si punta al singolo articolo).

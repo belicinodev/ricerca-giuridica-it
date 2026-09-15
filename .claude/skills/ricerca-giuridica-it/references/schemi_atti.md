@@ -7,10 +7,11 @@ Schemi strutturali (sezioni in ordine, mai contenuto normativo) per i tipi di at
 - Questi schemi servono **solo per la struttura** — intestazione, sequenza delle sezioni, elementi tipici. **Mai** per gli estremi normativi: ogni citazione di legge nella bozza resta soggetta alla disciplina di verifica ordinaria di questa skill (corpus `lex_*` o fonti ufficiali), esattamente come per `#verifica-formulari`. Un formulario, anche gratuito e verificato, non è mai fonte di un estremo.
 - La colonna "Fonte" riporta un sito solo quando la dichiarazione di gratuità è stata verificata con **doppio riscontro indipendente** (due tentativi separati di conferma sulla pagina reale). Dove non compare una fonte, lo schema è comunque utilizzabile — è una convenzione processuale generale, non dipende dalla fonte — ma nessun sito specifico è stato confermato gratuito per quel tipo di atto in questo giro di ricerca: se serve consultare un formulario per quel tipo, usa `#verifica-formulari`.
 - **Copertura**: tutte le 10 aree pianificate sono catalogate (25 tipi di atto). Il doppio riscontro è stato superato da **10 tipi su 25**: i 3 atti stragiudiziali, i 4 contratti, il ricorso ex art. 414 c.p.c. e le 2 dichiarazioni successorie (queste ultime da fonte commerciale, non istituzionale). Per gli altri 15 nessuna fonte ha superato la doppia verifica: lo schema resta utilizzabile come convenzione processuale generale (v. sopra), ma non ha una fonte confermata alle spalle.
+- **Cosa copre la verifica**: il doppio riscontro riguarda la sola dichiarazione di gratuità del sito, mai la correttezza dello schema, che nessuna fonte istituzionale ha validato. Dove il contenuto è risalente o la fonte è commerciale, la voce lo indica accanto al link: lo schema resta una convenzione da rileggere alla luce del rito vigente, non una struttura certificata.
 
 ## Indice
 
-Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti). Il segno ✓ indica i tipi con fonte strutturale verificata con doppio riscontro.
+Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti). Il segno ✓ indica i tipi per cui è stata confermata con doppio riscontro la sola gratuità della fonte strutturale, non la correttezza dello schema.
 
 | Area | Tipi di atto |
 |---|---|
@@ -168,7 +169,7 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Procura alle liti | Mandato conferito al difensore, generalmente in calce o a margine dell'atto. |
 | Luogo, data e sottoscrizione | Sottoscrizione del difensore con indicazione di luogo e data di redazione. |
 
-**Fonte strutturale verificata**: Formulario Online — <https://formulario-online.blogspot.com/2011/12/ricorso-ex-art-414-cpc-differenze.html> (dichiarazione di gratuità confermata con doppio riscontro indipendente).
+**Fonte strutturale consultata (solo gratuità verificata)**: Formulario Online — <https://formulario-online.blogspot.com/2011/12/ricorso-ex-art-414-cpc-differenze.html> (dichiarazione di gratuità confermata con doppio riscontro indipendente).
 
 ### Impugnazione stragiudiziale del licenziamento
 
@@ -233,7 +234,7 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Riserva di diritti | Riserva di agire per il risarcimento del danno e per ogni altra tutela spettante. |
 | Sottoscrizione | Luogo, data e firma del mittente o del suo procuratore/difensore. |
 
-**Fonte strutturale verificata**: Studio Cataldi — <https://www.studiocataldi.it/guide_legali/pillole/diffida-ad-adempiere.asp> ("scaricabile gratuitamente anche in pdf e in word", dichiarazione confermata con doppio riscontro indipendente).
+**Fonte strutturale consultata (solo gratuità verificata)**: Studio Cataldi — <https://www.studiocataldi.it/guide_legali/pillole/diffida-ad-adempiere.asp> ("scaricabile gratuitamente anche in pdf e in word", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Messa in mora
 
@@ -247,7 +248,7 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Avvertenza sulle conseguenze | Indicazione delle conseguenze del mancato adempimento (decorrenza interessi moratori, azioni giudiziali, addebito spese). |
 | Sottoscrizione | Luogo, data e firma del mittente o del suo procuratore/difensore. |
 
-**Fonte strutturale verificata**: Avvocato Claudia Lantieri — <https://www.avvocatolantieri.it/modello-gratuito-di-lettera-di-messa-in-mora-pec> ("modello gratuito di lettera di messa in mora via PEC", dichiarazione confermata con doppio riscontro indipendente).
+**Fonte strutturale consultata (solo gratuità verificata)**: Avvocato Claudia Lantieri — <https://www.avvocatolantieri.it/modello-gratuito-di-lettera-di-messa-in-mora-pec> ("modello gratuito di lettera di messa in mora via PEC", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Disdetta di contratto di locazione
 
@@ -262,7 +263,7 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Restituzione del deposito cauzionale | Riferimento alle modalità e tempistiche di restituzione della cauzione dopo la verifica dell'immobile. |
 | Sottoscrizione | Luogo, data e firma del mittente. |
 
-**Fonte strutturale verificata**: TusciaFisco — <https://www.tusciafisco.it/fac-simile-lettera-disdetta-contratto-affitto/> ("scaricare gratuitamente un modello di lettera di disdetta contratto di affitto", dichiarazione confermata con doppio riscontro indipendente).
+**Fonte strutturale consultata (solo gratuità verificata)**: TusciaFisco — <https://www.tusciafisco.it/fac-simile-lettera-disdetta-contratto-affitto/> ("scaricare gratuitamente un modello di lettera di disdetta contratto di affitto", dichiarazione confermata con doppio riscontro indipendente).
 
 ## Contratti
 
@@ -284,7 +285,7 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Clausole finali | Foro competente, rinvio alla normativa vigente sulle locazioni abitative — estremi da verificare sulla fonte ufficiale, non dal formulario |
 | Sottoscrizione e allegati | Firme delle parti ed eventuali allegati (es. verbali di consegna/riconsegna, APE) |
 
-**Fonte strutturale verificata**: ContrattiDiLocazione.net — <https://contrattidilocazione.net/contratto-di-locazione-a-uso-abitativo-modello-e-guida-online> ("Modelli da Scaricare Gratis", dichiarazione confermata con doppio riscontro indipendente).
+**Fonte strutturale consultata (solo gratuità verificata)**: ContrattiDiLocazione.net — <https://contrattidilocazione.net/contratto-di-locazione-a-uso-abitativo-modello-e-guida-online> ("Modelli da Scaricare Gratis", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Contratto di locazione ad uso commerciale
 
@@ -304,7 +305,7 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Clausole finali | Foro competente, allegati (es. APE) e rinvio alla normativa vigente sulle locazioni commerciali — estremi da verificare sulla fonte ufficiale, non dal formulario |
 | Sottoscrizione e registrazione | Firme delle parti e obbligo di registrazione del contratto |
 
-**Fonte strutturale verificata**: Primavera Forense — <https://www.primaveraforense.it/contratto-locazione-commerciale/> ("Scarica gratuitamente il modello di contratto di locazione commerciale", dichiarazione confermata con doppio riscontro indipendente).
+**Fonte strutturale consultata (solo gratuità verificata)**: Primavera Forense — <https://www.primaveraforense.it/contratto-locazione-commerciale/> ("Scarica gratuitamente il modello di contratto di locazione commerciale", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Contratto di compravendita immobiliare
 
@@ -324,7 +325,7 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Foro competente | Individuazione del foro per le controversie |
 | Sottoscrizione | Firme delle parti ed eventuale approvazione specifica delle clausole vessatorie che la richiedono — quali, da verificare sulla fonte ufficiale, mai assunta a memoria da un formulario. |
 
-**Fonte strutturale verificata**: Moduli.it — <https://www.moduli.it/modelli-di-compravendita-immobiliare-gratis> ("Modelli di compravendita immobiliare gratis", dichiarazione confermata con doppio riscontro indipendente).
+**Fonte strutturale consultata (solo gratuità verificata)**: Moduli.it — <https://www.moduli.it/modelli-di-compravendita-immobiliare-gratis> ("Modelli di compravendita immobiliare gratis", dichiarazione confermata con doppio riscontro indipendente).
 
 ### Contratto di appalto privato
 
@@ -344,7 +345,7 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Foro competente | Individuazione del foro per le controversie |
 | Sottoscrizione e registrazione | Firme delle parti ed eventuale registrazione del contratto |
 
-**Fonte strutturale verificata**: CM-Data — <https://www.cmdataweb.it/contratto-appalto-lavori-privati.html> ("documento scaricabile e modificabile gratis", dichiarazione confermata con doppio riscontro indipendente).
+**Fonte strutturale consultata (solo gratuità verificata)**: CM-Data — <https://www.cmdataweb.it/contratto-appalto-lavori-privati.html> ("documento scaricabile e modificabile gratis", dichiarazione confermata con doppio riscontro indipendente).
 
 ## Monitorio ed esecutivo
 
@@ -441,7 +442,7 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Elenco documenti allegati | Elenco generico di allegati richiesti. |
 | Chiusura | Luogo, data, firma del dichiarante. |
 
-**Fonte strutturale verificata**: Moduli.it — <https://www.moduli.it/modello-accettazione-eredita-con-beneficio-d-inventario-5406> (gratuità dichiarata sull'hub "Moduli per eredità e successione editabili gratis", dichiarazione confermata con doppio riscontro indipendente — fonte commerciale, non istituzionale: i portali dei Tribunali offrono modulistica ufficiale ma senza dichiarazione esplicita di gratuità testuale).
+**Fonte strutturale consultata (solo gratuità verificata)**: Moduli.it — <https://www.moduli.it/modello-accettazione-eredita-con-beneficio-d-inventario-5406> (gratuità dichiarata sull'hub "Moduli per eredità e successione editabili gratis", dichiarazione confermata con doppio riscontro indipendente — fonte commerciale, non istituzionale: i portali dei Tribunali offrono modulistica ufficiale ma senza dichiarazione esplicita di gratuità testuale).
 
 ### Rinuncia all'eredità
 
@@ -454,4 +455,4 @@ Leggi la sola sezione pertinente, non il file intero (v. SKILL.md, Riferimenti).
 | Dichiarazione di non possesso di beni ereditari | Dichiarazione generica sulla mancata immissione nel possesso dei beni. |
 | Sottoscrizioni | Firma del comparente e sottoscrizione del cancelliere/pubblico ufficiale ricevente. |
 
-**Fonte strutturale verificata**: Moduli.it — <https://www.moduli.it/modello-rinuncia-eredita-word-12025> (gratuità dichiarata sull'hub "Moduli per eredità e successione editabili gratis", dichiarazione confermata con doppio riscontro indipendente — fonte commerciale, non istituzionale).
+**Fonte strutturale consultata (solo gratuità verificata)**: Moduli.it — <https://www.moduli.it/modello-rinuncia-eredita-word-12025> (gratuità dichiarata sull'hub "Moduli per eredità e successione editabili gratis", dichiarazione confermata con doppio riscontro indipendente — fonte commerciale, non istituzionale).

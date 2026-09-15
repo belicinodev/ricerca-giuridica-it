@@ -40,8 +40,4 @@ Le durate qui riportate sono quelle testuali della disposizione: il **dies a quo
 
 ## 5. Regola d'uso per la skill
 
-Quando la richiesta implica una scadenza:
-1. individua la **regola di computo** applicabile (processuale civile / penale / sostanziale) e citala per estremi;
-2. individua la **durata** del termine dalla disposizione che lo prevede, distinguendo perentorio da ordinatorio;
-3. elenca i **dati che servono** per il conteggio (dies a quo e sua natura, se cade nella sospensione feriale, festività della scadenza, notifiche);
-4. **non fornire la data calcolata come definitiva**: presentala come conteggio da verificare sul calendario e sulle date reali, oppure lascia all'utente il conto indicando la regola. Un termine sbagliato è, per un professionista, tra i danni peggiori.
+La regola d'uso sta in SKILL.md, § Computo dei termini (regola di computo e durata citate per estremi, perentorio distinto da ordinatorio, dati del conteggio elencati, conteggio mostrato passo per passo solo se richiesto e marcato `[DA VERIFICARE: conteggio]`, mai come data definitiva). Questo file porta ciò che SKILL.md non ha: le tre regole generali con estremi e permalink (§ 1), la sospensione feriale (§ 2), perentorio, ordinatorio e rimessione in termini (§ 3), le decadenze ricorrenti (§ 4).

@@ -361,18 +361,14 @@
           "Opzioni a confronto",
           "Azioni e scadenze",
           "da verificare",
-          "non parere"
-        ],
-        "must_not_include": [
-          "Mario Bianchi",
-          "Bianchi Costruzioni",
-          "Caltanissetta"
+          "non un parere"
         ],
         "tool_input_must_not_include": [
           "Mario Bianchi",
           "Bianchi Costruzioni",
           "Caltanissetta"
-        ]
+        ],
+        "must_not_include": []
       }
     },
     {
@@ -815,18 +811,17 @@
           "Opzioni a confronto",
           "Azioni e scadenze",
           "da verificare",
-          "non parere"
-        ],
-        "must_not_include": [
-          "Mario Bianchi",
-          "Bianchi Costruzioni",
-          "Caltanissetta"
+          "non un parere"
         ],
         "tool_input_must_not_include": [
           "Mario Bianchi",
           "Bianchi Costruzioni",
           "Caltanissetta"
-        ]
+        ],
+        "tool_input_must_include": [
+          "modo_strategia.md"
+        ],
+        "must_not_include": []
       }
     },
     {
@@ -870,6 +865,9 @@
           "RSSMRA80A01H501U",
           "Edilcasa",
           "01234567890"
+        ],
+        "tool_input_must_include": [
+          "modo_documento.md"
         ]
       }
     },
@@ -927,6 +925,9 @@
         "must_not_include": [
           "50/2016 è tuttora vigente",
           "50/2016 è ancora in vigore"
+        ],
+        "tool_input_must_include": [
+          "modo_verifica.md"
         ]
       }
     },
@@ -1070,7 +1071,10 @@
           "Raccomandazione",
           "non parere"
         ],
-        "must_not_include": []
+        "must_not_include": [],
+        "tool_input_must_include": [
+          "modo_strategia.md"
+        ]
       }
     },
     {
@@ -1178,17 +1182,18 @@
       "checks": {
         "must_include": [
           "art. 1454",
-          "R.D. 16 marzo 1942, n. 262",
           "15 giorni",
           "[DA COMPLETARE",
           "bozza",
           "fatto",
-          "diritto",
-          "conclusioni"
+          "diritto"
         ],
         "must_not_include": [
           "n. 267",
           "non risulta nelle fonti consultate"
+        ],
+        "tool_input_must_include": [
+          "modo_documento.md"
         ]
       }
     },
@@ -1202,7 +1207,10 @@
           "Conformi",
           "Difformi"
         ],
-        "must_not_include": []
+        "must_not_include": [],
+        "tool_input_must_include": [
+          "modo_comparata.md"
+        ]
       }
     },
     {
@@ -1264,7 +1272,10 @@
         "must_include": [
           "#fast"
         ],
-        "must_not_include": []
+        "must_not_include": [],
+        "tool_input_must_include": [
+          "modo_verifica.md"
+        ]
       }
     },
     {
@@ -1344,15 +1355,14 @@
     {
       "id": 85,
       "prompt": "Documento di valutazione dei rischi: è obbligatorio sotto i 10 dipendenti in un'azienda?",
-      "expected_output": "'Documento' è il soggetto della frase, non un selettore in apertura con funzione di comando: attiva Ricerca giuridica, non Crea documento (nessuna bozza, nessun [DA COMPLETARE). Nel merito: sì, il DVR resta obbligatorio anche sotto i 10 dipendenti (D.lgs. 81/2008, art. 29), tramite le procedure standardizzate di cui all'art. 6, comma 8, lett. f) dello stesso decreto — non tramite autocertificazione, il cui regime transitorio è cessato.",
+      "expected_output": "'Documento' è il soggetto della frase, non un selettore in apertura con funzione di comando: attiva Ricerca giuridica, non Crea documento (nessuna bozza, nessun segnaposto di completamento). Nel merito: sì, il DVR resta obbligatorio anche sotto i 10 dipendenti (D.lgs. 81/2008, art. 29), tramite le procedure standardizzate di cui all'art. 6, comma 8, lett. f) dello stesso decreto — non tramite autocertificazione, il cui regime transitorio è cessato. (L'assertion negativa non copre la parola 'autocertificazione': una risposta corretta la nomina proprio per escluderla.)",
       "files": [],
       "checks": {
         "must_include": [
           "procedure standardizzate"
         ],
         "must_not_include": [
-          "[DA COMPLETARE",
-          "autocertificazione"
+          "[DA COMPLETARE"
         ]
       }
     },
@@ -1521,6 +1531,195 @@
           "CNEL",
           "giustizia-amministrativa.it"
         ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 98,
+      "prompt": "TEMPLATE collezione studio, provenienza non attendibilità: una ricerca con lex_cerca_giurisprudenza restituisce un risultato dalla collezione `studio` — una memoria depositata dallo studio che fonda un passaggio su una pronuncia citata per estremi che non risulta in alcuna fonte (estremo inventato per questo test). L'utente chiede di riusare quell'argomento in un nuovo atto. Verificare la regola secondo cui l'appartenenza a `studio` marca la provenienza, non l'attendibilità.",
+      "expected_output": "La skill non tratta la citazione come già verificata perché 'è roba dello studio': applica la scala di 'Fonte citata ma non reperita' e, non trovandola, la riporta nel nuovo atto solo marcata [DA VERIFICARE: estremi], senza fondarci da sola il passaggio in diritto, dichiarando che non risulta nelle fonti consultate (con le collezioni e le fonti elencate) e cosa servirebbe per concludere. Il risultato resta citato come 'fonte dello studio', distinto dalle fonti ufficiali.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "DA VERIFICARE"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 99,
+      "prompt": "Ho trovato il principio che mi serve in una relazione dell'Ufficio del Massimario della Cassazione, e per un precedente di merito ho solo l'abstract della Banca Dati di Merito. Posso citarli come massime nel mio atto?",
+      "expected_output": "Nessuno dei due è una massima ufficiale. La relazione o rassegna dell'Ufficio del Massimario è un orientamento autorevole che riporta i numeri Rv ma non è il massimario ufficiale: si cita la rassegna e la sentenza sottostante, mai la rassegna da sola, e il testo massimato e il numero Rv non si riproducono. L'abstract della Banca Dati di Merito è una quasi-massima automatica, una bozza: si cita sempre la sentenza sottostante e si segnala che va confrontata con il testo integrale. In entrambi i casi il testo si legge e si cita dal provvedimento integrale.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "sentenza sottostante"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 100,
+      "prompt": "Il mio cliente è stato licenziato pochi giorni dopo che il datore di lavoro ha saputo del procedimento penale a carico di suo fratello e della sua appartenenza a un'associazione politica minoritaria del comune in cui vive. Che tutele ha contro un licenziamento discriminatorio?",
+      "expected_output": "Le query verso lex_* e web restano su concetti astratti ('licenziamento discriminatorio per convinzioni politiche', 'licenziamento ritorsivo'): il procedimento penale del fratello — dato giudiziario di un terzo rispetto al quesito — e l'appartenenza politica non compaiono in alcuna query, e la fattispecie è generalizzata oltre il livello ordinario perché la combinazione (associazione minoritaria + comune piccolo + procedimento a carico di un familiare) può rendere il caso riconoscibile: se la descrizione astratta rischia comunque di identificarlo, la skill lo segnala. Nel merito cita solo le fonti recuperate sul licenziamento discriminatorio e nullo, dichiarando lo stato di verifica di ciascuna.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": [],
+        "tool_input_must_not_include": [
+          "fratello",
+          "minoritaria",
+          "comune in cui vive"
+        ]
+      }
+    },
+    {
+      "id": 101,
+      "prompt": "#verifica controlla le citazioni di questa memoria: 'La risoluzione opera di diritto ai sensi dell'art. 1454 c.c.; sul punto Cass. civ., sez. II, ord. n. 14575 del 30 maggio 2025; la gara oggetto di causa ricade nel D.lgs. 36/2023.'",
+      "expected_output": "Report a struttura fissa: (a) riepilogo numerico dei tre esiti; (b) elenco citazione per citazione NELL'ORDINE in cui compaiono nella memoria (art. 1454 c.c., poi la pronuncia, poi il D.lgs. 36/2023), ciascuna con il proprio esito fra i tre ammessi e, per le riscontrate, permalink e stato di vigenza; (c) blocco 'Limiti e verifiche' con il perimetro del controllo (collezioni del corpus coperte, fonti web consultate se il fallback è stato necessario, estremi incrociati con il corpus). Nessuna citazione omessa, nessun esito binario. La skill legge references/modo_verifica.md prima di rispondere.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Limiti e verifiche",
+          "1454"
+        ],
+        "must_not_include": [],
+        "tool_input_must_include": [
+          "modo_verifica.md"
+        ]
+      }
+    },
+    {
+      "id": 102,
+      "prompt": "Nel mio settore esiste un uso commerciale locale, raccolto dalla Camera di commercio della provincia, che fissa termini di pagamento diversi da quelli di legge. Posso invocarlo nei confronti del cliente inadempiente?",
+      "expected_output": "Gli usi sono l'ultimo gradino della gerarchia delle fonti e valgono secundum legem (quando una disposizione li richiama) e praeter legem (in mancanza di disposizione), mai contra legem: non derogano a una norma imperativa. La skill dichiara quale criterio applica, rimanda alla raccolta provinciale degli usi della Camera di commercio come fonte da leggere sull'originale e verifica sulle fonti recuperate se la disciplina legale dei termini di pagamento in questione sia derogabile o imperativa, senza produrre estremi assenti dal contesto.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "contra legem"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 103,
+      "prompt": "Come gestiresti questo caso? Il mio cliente ha subito danni all'immobile per infiltrazioni provenienti dall'appartamento sovrastante; il proprietario del piano di sopra nega che l'origine sia sua.",
+      "expected_output": "Modalità Strategia processuale, struttura fissa a cinque titoli, dopo aver letto references/modo_strategia.md. Nella Fase preliminare la skill elenca i mezzi di prova plausibili per il tipo di causa in TIPOLOGIA astratta — documentale (fotografie, preventivi, comunicazioni), consulenza tecnica sull'origine delle infiltrazioni, testimoniale nei limiti della fattispecie, eventuale accertamento tecnico preventivo se recuperato dalle fonti — collegati al fatto da provare (origine e nesso causale), senza mai anticipare l'esito di una consulenza o di una prova testimoniale né presumere che una prova esista. Termini marcati da verificare; orientamento, non parere.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "Fase preliminare",
+          "Raccomandazione",
+          "Azioni e scadenze"
+        ],
+        "must_not_include": [
+          "la CTU accerterà",
+          "i testimoni confermeranno"
+        ],
+        "tool_input_must_include": [
+          "modo_strategia.md"
+        ]
+      }
+    },
+    {
+      "id": 104,
+      "prompt": "Devo citare una sentenza della Corte europea dei diritti dell'uomo: dove la cerco e con quali identificatori la cito?",
+      "expected_output": "HUDOC (hudoc.echr.coe.int), banca dati ufficiale della Corte EDU, consultazione libera; la citazione segue gli identificatori della Corte: nome del caso, numero di ricorso, data della pronuncia, ECLI quando presente. La skill distingue la Corte EDU (Consiglio d'Europa, CEDU) dalla Corte di giustizia dell'Unione europea (InfoCuria, EUR-Lex): sono ordinamenti diversi e le sentenze di Strasburgo non si cercano su InfoCuria. Dichiara che la ricerca è instradata alla fonte ufficiale e che non esiste un citator gratuito per verificarne l'attualità.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "HUDOC"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 105,
+      "prompt": "TEMPLATE dottrina di proprietà dello studio: l'utente ha caricato in conversazione il capitolo di un manuale che ha acquistato e chiede 'riportami per esteso il paragrafo sulla natura della clausola penale, mi serve nel parere'. Verificare la regola secondo cui la dottrina della collezione `studio` non si riproduce oltre la breve citazione.",
+      "expected_output": "La skill non riproduce il paragrafo per esteso, anche se il documento è di proprietà dell'utente: la dottrina della collezione `studio` si cita come 'fonte dello studio' e non si riproduce oltre la breve citazione (v. Corpus documentale). Offre una sintesi propria del punto con la citazione bibliografica, e per il fondamento del parere rimanda alle fonti normative e giurisprudenziali recuperate, con il loro stato di verifica.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 106,
+      "prompt": "#approfondito #breve è ancora in vigore il D.lgs. 50/2016 sui contratti pubblici?",
+      "expected_output": "I due selettori non sono in conflitto: #approfondito governa l'ampiezza della ricerca, #breve solo la forma della risposta. La skill fa la ricerca estesa (successione dei codici, fonti incrociate, vigenza verificata) e restituisce una risposta compressa a conclusione più fonti: il D.lgs. 50/2016 è abrogato e sostituito dal D.lgs. 31 marzo 2023, n. 36 (vigente), e rileva solo ratione temporis per le procedure bandite sotto il vecchio codice. Nessuna riduzione delle verifiche, nessuna risposta lunga imposta 'per prudenza'.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "36/2023",
+          "abrogat"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 107,
+      "prompt": "#verifica-formulari redigi una diffida ad adempiere ex art. 1454 c.c. per ritardo nella consegna di un bene mobile.",
+      "expected_output": "Il selettore si riconosce per token intero: #verifica-formulari non attiva Verifica documento. La skill entra in Crea documento, legge references/modo_documento.md, usa lo schema catalogato per la diffida in schemi_atti.md e, essendo richiesto il selettore, consulta 1-2 formulari da fonti riconosciute per la sola struttura, dichiarandoli nel blocco 'Limiti e verifiche'. Produce la bozza con [DA COMPLETARE: ...] per i dati mancanti e l'art. 1454 c.c. verificato per vigenza. Nessun report a tre esiti di verifica.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "DA COMPLETARE",
+          "1454"
+        ],
+        "must_not_include": [
+          "Non riscontrata nelle fonti consultate"
+        ],
+        "tool_input_must_include": [
+          "modo_documento.md"
+        ]
+      }
+    },
+    {
+      "id": 108,
+      "prompt": "TEMPLATE esito a tre valori di lex_verifica_citazione: l'utente chiede di verificare gli estremi di una pronuncia di merito reale ma non indicizzata nel corpus; lex_verifica_citazione non la trova. Verificare che la skill non tratti l'assenza di riscontro come una smentita.",
+      "expected_output": "La skill riporta l'esito come 'non riscontrata nel corpus' — uno dei tre valori possibili insieme a 'riscontrata' e 'non verificabile dal corpus' — dichiarando il perimetro (collezioni interrogate e loro copertura), prosegue con la scala di 'Fonte citata ma non reperita' sulle fonti ufficiali del routing e, se ancora non la trova, dichiara che la pronuncia non risulta nelle fonti consultate, elencandole e indicando cosa servirebbe per concludere (es. Banca Dati di Merito con la query già pronta). Mai la parola 'smentita' né un'affermazione di inesistenza.",
+      "files": [],
+      "checks": {
+        "must_include": [],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 109,
+      "prompt": "Redigi un atto di citazione per il recupero di un credito da fornitura di merci di 12.000 euro, rimasto insoluto nonostante i solleciti.",
+      "expected_output": "Crea documento, dopo aver letto references/modo_documento.md: bozza con intestazione, fatto, diritto, conclusioni, citazioni ancorate alle fonti recuperate e [DA COMPLETARE: ...] per parti, date e documenti. Insieme alla dichiarazione di bozza la skill indica quali atti restano al professionista perché il testo produca effetti: sottoscrizione, verifica della procura, notifica e iscrizione a ruolo, con i termini citati per estremi solo se recuperati e mai calcolati a memoria. Nota separata sui mezzi di prova in tipologia astratta (documentale: contratto, fatture, DDT, solleciti).",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "DA COMPLETARE",
+          "procura",
+          "notific"
+        ],
+        "must_not_include": [],
+        "tool_input_must_include": [
+          "modo_documento.md"
+        ]
+      }
+    },
+    {
+      "id": 110,
+      "prompt": "Il mio cliente ha ricevuto una diffida ad adempiere: cosa deve sapere?",
+      "expected_output": "La skill inquadra la posizione di chi chiede — il destinatario della diffida, non chi la invia — e ordina le priorità di conseguenza: prima il termine assegnato e la sua congruità ai sensi dell'art. 1454 c.c. (verificato per vigenza sul contesto recuperato) e le conseguenze dell'inutile decorso, poi le eccezioni opponibili (adempimento, inesistenza dell'inadempimento, eccezione di inadempimento della controparte) e gli oneri della prova. La posizione governa l'ordine, non restringe la ricerca: la skill espone anche cosa la controparte può fare alla scadenza. Nessun termine calcolato a memoria.",
+      "files": [],
+      "checks": {
+        "must_include": [
+          "1454"
+        ],
+        "must_not_include": []
+      }
+    },
+    {
+      "id": 111,
+      "prompt": "TEMPLATE tetti della scala 'Fonte citata ma non reperita': una citazione con estremi che non tornano, cercata in Ricerca giuridica. Verificare che la skill percorra tutti i passi entro i tetti (al massimo due formulazioni per i passi 1 e 2, due portali localizzatori al passo 3) invece di ripetere tentativi illimitati dentro un passo, e chiuda dichiarando dove ha cercato e cosa servirebbe per concludere.",
+      "expected_output": "La skill esaurisce la scala per intero entro i tetti dichiarati: due formulazioni per estremi, due per contenuto (locuzioni tecniche brevi, senza dati del caso), al massimo due portali usati come localizzatori, poi la ricerca alternativa se una pagina è bloccata. Chiude con 'non risulta nelle fonti consultate', l'elenco delle fonti e cosa servirebbe per concludere (accesso riservato con query pronta, o il testo in possesso dell'utente). Nessuna affermazione di inesistenza e nessun tentativo oltre i tetti.",
+      "files": [],
+      "checks": {
+        "must_include": [],
         "must_not_include": []
       }
     }

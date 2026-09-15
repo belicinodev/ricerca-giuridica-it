@@ -5,7 +5,10 @@
 # nessun giudizio linguistico coinvolto); (2) quando l'eval definisce
 # checks.tool_input_must_not_include, verifica che quelle stringhe non
 # compaiano negli input passati ai tool durante la conversazione — non solo
-# nella risposta finale: livello mirato alla minimizzazione delle query; (3)
+# nella risposta finale: livello mirato alla minimizzazione delle query — e,
+# quando definisce checks.tool_input_must_include, che quelle stringhe vi
+# compaiano (es. il nome di un file di references/ che la modalità impone di
+# leggere prima di rispondere); (3)
 # giudice LLM come ultimo livello, per la qualità comportamentale che una
 # stringa non cattura. Un FAIL su un livello deterministico non arriva al
 # giudice: è già un fatto, non un'opinione.
@@ -38,6 +41,10 @@ STAMP=$(date +%Y%m%d_%H%M)
 OUT="evals/risultati/$STAMP"
 mkdir -p "$OUT"
 TOOLS="Skill,mcp__lex-corpus,mcp__lex-corpus__lex_stato_corpus,mcp__lex-corpus__lex_cerca_norma,mcp__lex-corpus__lex_leggi_articolo,mcp__lex-corpus__lex_cerca_giurisprudenza,mcp__lex-corpus__lex_cerca_prassi,mcp__lex-corpus__lex_verifica_citazione"
+# EVAL_WEB=1 aggiunge ricerca e fetch web: serve alle eval che esercitano il
+# Fallback web (senza corpus, o su temi che il corpus non copre). Dipende dalla
+# rete e dagli anti-bot dei siti, quindi resta opt-in e non è mai un gate.
+[ "${EVAL_WEB:-0}" = "1" ] && TOOLS="$TOOLS,WebSearch,WebFetch"
 
 python3 - "$@" <<'PYEOF' > "$OUT/_lista.tsv"
 import json, sys
@@ -134,25 +141,34 @@ import json, sys
 d = json.load(sys.stdin)
 checks = d.get('checks') or {}
 vietati_tool = checks.get('tool_input_must_not_include') or []
-if not vietati_tool:
-    print('OK\tnessun controllo di minimizzazione definito')
+richiesti_tool = checks.get('tool_input_must_include') or []
+if not vietati_tool and not richiesti_tool:
+    print('OK\tnessun controllo sugli input dei tool definito')
 else:
     tool_input = open('$OUT/$ID.tool_input.txt', encoding='utf-8').read()
     if not tool_input.strip():
-        print('AVVISO\tnessun tool_use rilevato nello stream (formato non riconosciuto o nessun tool chiamato): controllo saltato')
+        if richiesti_tool:
+            # una lettura o chiamata obbligatoria non è avvenuta (o lo stream non è leggibile): fatto, non opinione
+            print('FAIL_MINIMIZZAZIONE\tnessun tool_use rilevato nello stream, ma l\'eval richiede: ' + '; '.join(richiesti_tool))
+        else:
+            print('AVVISO\tnessun tool_use rilevato nello stream (formato non riconosciuto o nessun tool chiamato): controllo saltato')
     else:
         presenti = [s for s in vietati_tool if s.lower() in tool_input.lower()]
-        if presenti:
-            print('FAIL_MINIMIZZAZIONE\tdati identificativi presenti negli input dei tool: ' + '; '.join(presenti))
+        mancanti = [s for s in richiesti_tool if s.lower() not in tool_input.lower()]
+        if presenti or mancanti:
+            dett = []
+            if presenti: dett.append('dati identificativi presenti negli input dei tool: ' + '; '.join(presenti))
+            if mancanti: dett.append('letture o chiamate richieste non avvenute: ' + '; '.join(mancanti))
+            print('FAIL_MINIMIZZAZIONE\t' + ' | '.join(dett))
         else:
-            print('OK\tnessun dato identificativo negli input dei tool')
+            print('OK\tinput dei tool conformi (nessun dato identificativo; letture richieste avvenute)')
 ")
   IFS=$'\t' read -r STATO_MINIM DETT_MINIM <<< "$ESITO_MINIM"
 
   if [ "$STATO_MINIM" = "FAIL_MINIMIZZAZIONE" ]; then
-    echo "FAIL: minimizzazione — $DETT_MINIM" > "$OUT/$ID.giudizio.txt"
+    echo "FAIL: input dei tool — $DETT_MINIM" > "$OUT/$ID.giudizio.txt"
     FAIL=$((FAIL+1))
-    echo "  -> FAIL (minimizzazione: $DETT_MINIM)"
+    echo "  -> FAIL (input dei tool: $DETT_MINIM)"
     continue
   fi
   if [ "$STATO_MINIM" = "AVVISO" ]; then
