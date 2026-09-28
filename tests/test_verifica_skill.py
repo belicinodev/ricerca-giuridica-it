@@ -337,6 +337,28 @@ class TestDimensione(Base):
         self.assertNota(esito, "AVVISO")
 
 
+class TestMappaRiferimenti(Base):
+    def test_fixture_entro_il_budget(self) -> None:
+        esito = vs.check_mappa_riferimenti(self.p)
+        self.assertTrue(esito.ok, esito.errori)
+        self.assertNota(esito, "mappa dei riferimenti completa entro")
+
+    def test_puntatore_in_coda_oltre_il_budget(self) -> None:
+        # sposta il puntatore a altro.md dopo ~25 KB di corpo: oltre i 5.000 token stimati
+        self.sostituisci(self.p.skill_md, "e `references/altro.md` quando servono.", "quando servono.")
+        riempitivo = (("parola " * 12) + "\n") * 300
+        self.p.skill_md.write_text(
+            self.p.skill_md.read_text(encoding="utf-8") + riempitivo + "\nLeggi `references/altro.md`.\n", encoding="utf-8"
+        )
+        esito = vs.check_mappa_riferimenti(self.p)
+        self.assertErrore(esito, "altro.md")
+        self.assertErrore(esito, "oltre il budget di ri-attacco")
+
+    def test_senza_puntatori_non_solleva(self) -> None:
+        self.p.skill_md.write_text(SKILL_MD.split("# Skill di prova")[0] + "# Skill di prova\n", encoding="utf-8")
+        self.assertTrue(vs.check_mappa_riferimenti(self.p).ok)
+
+
 class TestChangelog(Base):
     def test_versione_in_testa_diversa_dal_frontmatter(self) -> None:
         self.sostituisci(self.p.skill_md, 'version: "0.1.0"', 'version: "0.2.0"')

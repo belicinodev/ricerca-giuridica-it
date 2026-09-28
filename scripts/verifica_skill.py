@@ -19,6 +19,10 @@ Verifica:
   caratteri, `metadata.version` presente nel formato X.Y.Z
 - il corpo di SKILL.md resta sotto le 500 righe (errore) e, come avviso, sotto
   i ~5.000 token che Claude Code ri-attacca dopo una compattazione
+- ogni file di references/ è nominato in SKILL.md per la prima volta entro
+  quei ~5.000 token stimati: la mappa dei riferimenti sopravvive alla
+  compattazione, così le procedure delle modalità e i cataloghi restano
+  rintracciabili anche quando la coda del file è sparita (errore)
 - nessuna eval non-TEMPLATE ha stringhe di must_not_include già presenti nel
   proprio expected_output (eval insuperabile dalla risposta attesa);
   `tool_input_must_include` (letture o chiamate che devono avvenire) ha la
@@ -383,6 +387,43 @@ def check_dimensione_skill(p: Percorsi) -> Esito:
     return e
 
 
+def check_mappa_riferimenti(p: Percorsi) -> Esito:
+    """Ogni references/*.md nominato in SKILL.md deve comparire per la prima
+    volta entro TOKEN_BUDGET_RIATTACCO token stimati del corpo: dopo una
+    compattazione Claude Code ri-attacca solo quella parte, e se i puntatori
+    stavano in coda il modello non sa più quali file rileggere. Misurato su
+    v0.7.0 con tiktoken: la sezione "Riferimenti" iniziava a ~9.150 token,
+    ben oltre il taglio (che cadeva a riga 129). L'invariante di progettazione
+    diventa così un vincolo di CI, non una convenzione.
+    """
+    e = Esito()
+    if not p.skill_md.exists():
+        return e  # già segnalato da check_frontmatter
+    src = p.skill_md.read_text(encoding="utf-8")
+    m = re.match(r"---\n.*?\n---\n", src, re.S)
+    corpo = src[m.end():] if m else src
+    prima: dict[str, tuple[int, int]] = {}
+    byte_cumulati = 0
+    for i, riga in enumerate(corpo.splitlines(keepends=True), start=1):
+        token_qui = int(byte_cumulati / BYTE_PER_TOKEN_STIMA)
+        for nome in re.findall(r"references/([a-zA-Z0-9_\-]+\.md)", riga):
+            prima.setdefault(nome, (i, token_qui))
+        byte_cumulati += len(riga.encode("utf-8"))
+    if not prima:
+        return e  # nessun puntatore: è check_reference_pointers a valutarlo
+    tardivi = sorted((nome, riga, tok) for nome, (riga, tok) in prima.items() if tok > TOKEN_BUDGET_RIATTACCO)
+    if tardivi:
+        e.errore(
+            "SKILL.md: file di references/ nominati per la prima volta oltre il budget di ri-attacco "
+            f"({TOKEN_BUDGET_RIATTACCO} token stimati): "
+            + ", ".join(f"{nome} (riga {riga}, ~{tok} token)" for nome, riga, tok in tardivi)
+            + " — la mappa dei riferimenti deve stare in testa al file"
+        )
+    ultimo = max(tok for _, tok in prima.values())
+    e.nota(f"SKILL.md: mappa dei riferimenti completa entro ~{ultimo} token stimati (budget di ri-attacco {TOKEN_BUDGET_RIATTACCO}, {len(prima)} file)")
+    return e
+
+
 def check_changelog(p: Percorsi) -> Esito:
     e = Esito()
     if not p.changelog.exists():
@@ -672,6 +713,7 @@ CONTROLLI: tuple[Callable[[Percorsi], Esito], ...] = (
     check_evals,
     check_frontmatter,
     check_dimensione_skill,
+    check_mappa_riferimenti,
     check_changelog,
     check_reference_pointers,
     check_catalogo_normativo,

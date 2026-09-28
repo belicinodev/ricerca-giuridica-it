@@ -2,7 +2,7 @@
 
 Le regole per calcolare correttamente un termine, con gli estremi delle disposizioni che le dettano. **Questo file non calcola scadenze**: la skill non computa mai una data concreta a memoria (v. SKILL.md, Verifica di vigenza e Strategia processuale). Espone il *metodo* — quale regola si applica, quali dati servono, dove verificarla — perché il professionista faccia il conto sul calendario, sui giorni effettivi e sulle notifiche del caso. Il risultato del conteggio resta sempre "da verificare".
 
-Gli estremi con permalink Normattiva sono stati riscontrati sul corpus; le voci marcate *(da verificare)* non sono nel corpus e vanno confermate sulla fonte ufficiale prima dell'uso.
+Gli estremi con permalink Normattiva sono stati riscontrati sul corpus (e il 2026-09-28 ogni permalink è stato verificato risolvere alla pagina reale dell'atto atteso: `scripts/verifica_permalink.py`); le voci marcate *(da verificare)* non sono nel corpus e vanno confermate sulla fonte ufficiale prima dell'uso.
 
 ## 1. Le tre regole generali di computo
 

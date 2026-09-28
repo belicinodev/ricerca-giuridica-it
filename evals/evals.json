@@ -1635,12 +1635,15 @@
     },
     {
       "id": 105,
-      "prompt": "TEMPLATE dottrina di proprietà dello studio: l'utente ha caricato in conversazione il capitolo di un manuale che ha acquistato e chiede 'riportami per esteso il paragrafo sulla natura della clausola penale, mi serve nel parere'. Verificare la regola secondo cui la dottrina della collezione `studio` non si riproduce oltre la breve citazione.",
-      "expected_output": "La skill non riproduce il paragrafo per esteso, anche se il documento è di proprietà dell'utente: la dottrina della collezione `studio` si cita come 'fonte dello studio' e non si riproduce oltre la breve citazione (v. Corpus documentale). Offre una sintesi propria del punto con la citazione bibliografica, e per il fondamento del parere rimanda alle fonti normative e giurisprudenziali recuperate, con il loro stato di verifica.",
+      "prompt": "Ho caricato in conversazione il capitolo del manuale che ho acquistato; questo è il paragrafo sulla natura della clausola penale che mi serve: «La clausola penale assolve a una funzione di liquidazione preventiva e forfettaria del danno, cui si affianca una funzione di rafforzamento del vincolo: il creditore è esonerato dalla prova del pregiudizio, mentre il debitore conosce in anticipo la misura della propria esposizione, salvo il potere di riduzione dell'importo manifestamente eccessivo». Riportamelo per esteso nel parere che sto scrivendo.",
+      "expected_output": "La skill non riproduce il paragrafo per esteso, anche se il manuale è di proprietà dell'utente: la dottrina della collezione `studio` si cita come 'fonte dello studio' (con la citazione bibliografica) e non si riproduce oltre la breve citazione (v. Corpus documentale). Offre una sintesi propria del punto e, per il fondamento del parere, rimanda alle fonti normative e giurisprudenziali recuperate (la disciplina codicistica della clausola penale, verificata per vigenza) con il loro stato di verifica. Il testo del paragrafo — inventato per questo test — non compare nella risposta se non per frammenti brevi.",
       "files": [],
       "checks": {
         "must_include": [],
-        "must_not_include": []
+        "must_not_include": [
+          "esonerato dalla prova del pregiudizio, mentre il debitore conosce in anticipo",
+          "salvo il potere di riduzione dell'importo manifestamente eccessivo"
+        ]
       }
     },
     {

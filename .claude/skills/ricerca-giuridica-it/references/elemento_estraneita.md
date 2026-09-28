@@ -2,7 +2,7 @@
 
 Non un trattato di diritto internazionale privato: un router. Quando il caso ha un elemento straniero (parte, fatto, bene o rapporto con collegamenti fuori Italia), questo file indica **quale strumento** governa la questione e **dove leggerlo** — mai un criterio di collegamento applicato a memoria. Ogni estremo qui sotto è stato riscontrato sul testo integrale del regolamento su EUR-Lex, non sul solo titolo.
 
-- Data di verifica: 2026-07-21.
+- Data di verifica: 2026-07-21; il 2026-09-28 i cinque CELEX sono stati ri-verificati raggiungibili e corrispondenti all'atto sull'Ufficio delle pubblicazioni (`scripts/verifica_permalink.py`).
 - Regola d'uso: individua prima lo strumento pertinente (legge applicabile o giurisdizione), poi leggi l'articolo indicato per intero prima di applicarlo — ogni norma ha eccezioni e ambiti di esclusione che qui sono solo richiamati, non riprodotti per intero.
 
 ## 1. Legge applicabile alle obbligazioni contrattuali — Regolamento Roma I

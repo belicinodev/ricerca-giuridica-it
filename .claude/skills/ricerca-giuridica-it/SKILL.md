@@ -17,7 +17,7 @@ description: >
   fonte non è nominata. Non usare per domande non giuridiche.
 license: MIT
 metadata:
-  version: "0.7.0"
+  version: "0.7.1"
   author: belicinodev
 ---
 
@@ -35,6 +35,16 @@ Supporta ricerca, inquadramento e stesura di bozze su fonti giuridiche italiane 
 4. Verifica la vigenza prima di dare per applicabile una disposizione (sezione Verifica di vigenza).
 5. Rispondi con citazioni per estremi: ogni affermazione sostanziale è ancorata a una fonte recuperata.
 6. Dichiara i limiti: cosa il corpus non copre, cosa resta da verificare.
+
+## Riferimenti
+
+I file in `references/` si leggono a richiesta e restano rileggibili in qualunque momento, anche dopo una compattazione della conversazione: se una regola richiamata qui non è più nel contesto, rileggi il file. Gli estremi nei cataloghi portano lo stato di verifica dichiarato voce per voce (riscontrato sul corpus / fuori corpus / da verificare): leggilo prima di citarli, non presumerli tutti verificati allo stesso modo. I cataloghi lunghi (`fonti_per_materia.md`, `schemi_atti.md`, `percorsi_processuali.md`) si aprono con un indice: quando l'ambiente consente una lettura parziale, leggi l'intestazione del file — regola d'uso e stato di verifica delle voci — e la sola sezione indicata dall'indice, non il file intero.
+
+- Procedure delle modalità, da leggere per intero prima di rispondere in quella modalità: `references/modo_documento.md` (Crea documento), `references/modo_comparata.md` (Analisi comparata), `references/modo_strategia.md` (Strategia processuale), `references/modo_verifica.md` (Verifica documento).
+- Tool `lex_*`, quando sono disponibili: `references/corpus_lex.md`.
+- Fonti: `references/fonti_per_materia.md` (kit per 23 materie con etichetta di maturità, da leggere prima di instradare una materia non elencata nel Routing), `references/fonti_normative.md` (estremi e permalink degli atti), `references/fonti_dati_giuridici.md` (endpoint, licenze, massime), `references/lacune.md` (quadro di ciò che non è coperto).
+- Metodo: `references/computo_termini.md` (scadenze e decadenze), `references/percorsi_processuali.md` (cancelli e riti), `references/elemento_estraneita.md` (casi con collegamenti fuori Italia).
+- Crea documento: `references/schemi_atti.md` (schemi per tipo di atto, prima di `#verifica-formulari`), `references/cartella_di_lavoro.md` (modelli dello studio).
 
 ## Riservatezza e minimizzazione delle query
 
@@ -102,15 +112,6 @@ La modalità si seleziona con un hashtag in apertura della richiesta — `#ricer
 
 **Le procedure complete di Crea documento, Analisi comparata, Strategia processuale e Verifica documento stanno in un file dedicato in `references/`: leggilo per intero prima di rispondere in quella modalità.** Qui restano il trigger e gli invarianti, che valgono anche se il file non è stato letto.
 
-### Profondità: `#fast` e `#approfondito`
-
-Un secondo hashtag opzionale regola l'ampiezza della ricerca e la lunghezza della risposta — combinabile con qualunque modalità (`#strategia #fast`, `#comparata #approfondito`) o usabile da solo, nel qual caso la modalità resta quella che si desumerebbe dal contenuto:
-
-- **`#fast`** (alias `#veloce`) — riduce tempo e token: primo riscontro solido per fonte invece di corroborazione oltre il minimo; in Analisi comparata 2-3 precedenti per lato, restando bilaterale; in Verifica documento riduce la scala per citazione, mai il numero di esiti; risposta sintetica per costruzione. Riduce solo l'ampiezza — non tocca mai le garanzie stabilite altrove in questa skill (vigenza, verifica delle citazioni, minimizzazione, marcatori `[DA VERIFICARE]`/`[DA COMPLETARE]`, bilateralità, struttura fissa, tre esiti).
-- **`#approfondito`** — aumenta l'ampiezza: incrocia più fonti e collezioni, riporta più precedenti per lato includendo gli orientamenti minoritari, espone passaggi argomentativi e il testo delle disposizioni chiave; estende alla ricerca quanto "approfondisci" fa sulla sola forma della risposta. Quando i recuperi previsti superano indicativamente 25, dichiara in apertura il piano (quante fonti e quante verifiche) e procedi; offri la riduzione solo se l'utente la chiede.
-- Senza selettore di profondità il comportamento è quello bilanciato delle singole modalità. Bilanciato non significa esaustivo per abitudine: un riscontro solido basta, salvo che ricorra uno di questi segnali osservabili sul materiale già recuperato — il primo risultato viene dalle collezioni `studio` o `puntatori`; la disposizione ha versioni multivigenti rilevanti per i fatti; i risultati recuperati divergono fra loro; l'area non è a [copertura piena]. In quei casi corrobora con un secondo riscontro, dichiarandolo; `#approfondito` chiede la corroborazione estesa sempre.
-- Selettori contrastanti nello stesso messaggio non sospendono la prudenza: fra `#fast` e `#approfondito` vince sempre `#approfondito`. `#breve` non è in conflitto con `#approfondito`, perché agisce sulla forma e non sulla verifica (v. Formato di risposta e sintesi): "#approfondito #breve" significa ricerca estesa e risposta compressa, combinazione legittima. Mai risolvere un'ambiguità del comando verso l'opzione meno verificata.
-
 ### Ricerca giuridica (default)
 
 Il flusso di lavoro numerato qui sopra: inquadra, instrada, recupera, verifica, cita, dichiara i limiti.
@@ -135,6 +136,15 @@ Si attiva su richieste come "che strategia mi consigli", "come imposto l'azione/
 ### Verifica documento
 
 Si attiva su richieste come "controlla le citazioni di questo atto", "verifica le fonti di questa memoria", "audita questo documento" — o quando "questa sentenza esiste?" si riferisce a più citazioni in un testo esteso, non a una singola pronuncia isolata (che resta Ricerca giuridica). **Leggi `references/modo_verifica.md` prima di rispondere.** Invarianti: ogni citazione classificata in uno di tre esiti, mai due — **Riscontrata**, **Riscontrata con divergenze**, **Non riscontrata nelle fonti consultate** (con le fonti elencate e cosa servirebbe per concludere; mai "non esiste"); report a struttura fissa nell'ordine del documento; i dati identificativi del fascicolo non entrano nelle query; oltre dieci citazioni si dichiara il piano prima di procedere.
+
+### Profondità: `#fast` e `#approfondito`
+
+Un secondo hashtag opzionale regola l'ampiezza della ricerca e la lunghezza della risposta — combinabile con qualunque modalità (`#strategia #fast`, `#comparata #approfondito`) o usabile da solo, nel qual caso la modalità resta quella che si desumerebbe dal contenuto:
+
+- **`#fast`** (alias `#veloce`) — riduce tempo e token: primo riscontro solido per fonte invece di corroborazione oltre il minimo; in Analisi comparata 2-3 precedenti per lato, restando bilaterale; in Verifica documento riduce la scala per citazione, mai il numero di esiti; risposta sintetica per costruzione. Riduce solo l'ampiezza — non tocca mai le garanzie stabilite altrove in questa skill (vigenza, verifica delle citazioni, minimizzazione, marcatori `[DA VERIFICARE]`/`[DA COMPLETARE]`, bilateralità, struttura fissa, tre esiti).
+- **`#approfondito`** — aumenta l'ampiezza: incrocia più fonti e collezioni, riporta più precedenti per lato includendo gli orientamenti minoritari, espone passaggi argomentativi e il testo delle disposizioni chiave; estende alla ricerca quanto "approfondisci" fa sulla sola forma della risposta. Quando i recuperi previsti superano indicativamente 25, dichiara in apertura il piano (quante fonti e quante verifiche) e procedi; offri la riduzione solo se l'utente la chiede.
+- Senza selettore di profondità il comportamento è quello bilanciato delle singole modalità. Bilanciato non significa esaustivo per abitudine: un riscontro solido basta, salvo che ricorra uno di questi segnali osservabili sul materiale già recuperato — il primo risultato viene dalle collezioni `studio` o `puntatori`; la disposizione ha versioni multivigenti rilevanti per i fatti; i risultati recuperati divergono fra loro; l'area non è a [copertura piena]. In quei casi corrobora con un secondo riscontro, dichiarandolo; `#approfondito` chiede la corroborazione estesa sempre.
+- Selettori contrastanti nello stesso messaggio non sospendono la prudenza: fra `#fast` e `#approfondito` vince sempre `#approfondito`. `#breve` non è in conflitto con `#approfondito`, perché agisce sulla forma e non sulla verifica (v. Formato di risposta e sintesi): "#approfondito #breve" significa ricerca estesa e risposta compressa, combinazione legittima. Mai risolvere un'ambiguità del comando verso l'opzione meno verificata.
 
 ## Routing delle fonti per materia
 
@@ -218,24 +228,3 @@ Regole non delegabili:
 - Su richiesta di sintesi ("in breve", "in sintesi", o il selettore `#breve`) riduci a conclusione + fonti. `#breve` agisce solo sulla forma della risposta; per ridurre anche l'ampiezza della ricerca sottostante usa `#fast` (v. Modalità operative).
 - Elenchi e tabelle solo dove comprimono davvero l'informazione (opzioni a confronto, analisi comparata, passi operativi); per il resto prosa tecnica.
 - Quando la risposta tocca più livelli della gerarchia delle fonti, esponili dall'alto verso il basso: quadro costituzionale/UE, poi legge, poi fonti secondarie e prassi.
-
-## Riferimenti
-
-Gli estremi nei cataloghi portano lo stato di verifica dichiarato voce per voce (riscontrato sul corpus / fuori corpus / da verificare): leggilo prima di citarli, non presumerli tutti verificati allo stesso modo.
-
-I cataloghi lunghi (`fonti_per_materia.md`, `schemi_atti.md`, `percorsi_processuali.md`) si aprono con un indice: quando l'ambiente consente una lettura parziale, leggi l'intestazione del file — dove stanno la regola d'uso e lo stato di verifica delle voci — e la sola sezione indicata dall'indice, non il file intero.
-
-- `references/modo_documento.md` — procedura completa di Crea documento, da leggere per intero prima di redigere.
-- `references/modo_comparata.md` — procedura completa di Analisi comparata.
-- `references/modo_strategia.md` — procedura completa di Strategia processuale.
-- `references/modo_verifica.md` — procedura completa di Verifica documento.
-- `references/corpus_lex.md` — uso dei tool `lex_*`, quando sono disponibili.
-- `references/fonti_per_materia.md` — quando il quesito cade in una materia specialistica (23 aree, con etichetta di maturità e lacune).
-- `references/fonti_dati_giuridici.md` — quando serve dove reperire una fonte, con quale licenza, o come citare una massima.
-- `references/fonti_normative.md` — quando servono gli estremi e il permalink di un atto.
-- `references/computo_termini.md` — quando la richiesta tocca una scadenza o una decadenza.
-- `references/percorsi_processuali.md` — quando la richiesta riguarda come impostare un'azione o una difesa, o i tempi di un percorso giudiziale.
-- `references/lacune.md` — per il quadro d'insieme di cosa non è coperto (non introduce dichiarazioni nuove).
-- `references/elemento_estraneita.md` — prima di entrare nel merito di un caso con collegamenti fuori Italia.
-- `references/schemi_atti.md` — in Crea documento, prima di ricorrere a `#verifica-formulari`.
-- `references/cartella_di_lavoro.md` — in Crea documento, quando serve lo stile o il formato già validato dallo studio.

@@ -3,7 +3,7 @@
 Estremi di codici, leggi, testi unici e regolamenti di uso frequente, organizzato per tipo di atto (non per materia — per il kit di fonti per materia v. `fonti_per_materia.md`), con il permalink alla fonte ufficiale. Serve a trovare rapidamente gli estremi esatti di un atto; il testo autorevole e aggiornato è sempre quello della fonte ufficiale (Normattiva per la legislazione statale, EUR-Lex per il diritto UE).
 
 - Copertura: circa 100 fonti in 7 categorie.
-- Data di aggiornamento del catalogo: 2026-07-07.
+- Data di aggiornamento del catalogo: 2026-07-07. Audit meccanico dei permalink del 2026-09-28 (`scripts/verifica_permalink.py`): per tutte le 99 voci Normattiva l'URN del permalink coincide con gli estremi dichiarati e la pagina reale di Normattiva riporta lo stesso atto nel titolo; la voce EUR-Lex verificata sull'Ufficio delle pubblicazioni (CELEX 32016R0679). Lo stato di vigenza resta quello del 2026-07-07.
 - Gli estremi sono dati di fatto pubblici; lo stato di vigenza riflette la verifica alla data di aggiornamento del catalogo e va riconfermato su Normattiva prima di ogni uso con valore formale.
 
 ---

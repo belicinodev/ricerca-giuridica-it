@@ -23,7 +23,7 @@ jobs:
         # rifiuta i campi di frontmatter fuori specifica, che rompono l'upload
         # dello ZIP su claude.ai (es. argument-hint, presente fino a v0.6.4)
         run: |
-          pip install skills-ref
+          pip install skills-ref==0.1.1
           agentskills validate .claude/skills/ricerca-giuridica-it
       - name: Test unitari dei controlli statici
         run: python3 -m unittest discover -s tests -v

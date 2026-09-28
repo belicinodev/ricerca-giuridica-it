@@ -4,7 +4,7 @@ Indice di collocazione delle regole processuali che condizionano una strategia: 
 
 Stato di verifica delle voci: gli estremi con permalink puntuale (`~artN`) sono stati riscontrati sul corpus; le voci *(fuori corpus)* riguardano atti non indicizzati nel corpus, con estremi riscontrati sulla fonte ufficiale alla data del catalogo — riconfermarli su Normattiva prima dell'uso.
 
-- Data di aggiornamento del catalogo: 2026-07-13; nota sull'elemento di estraneità aggiunta il 2026-07-21.
+- Data di aggiornamento del catalogo: 2026-07-13; nota sull'elemento di estraneità aggiunta il 2026-07-21. Audit meccanico dei permalink del 2026-09-28 (`scripts/verifica_permalink.py`): ogni permalink Normattiva di questo file, incluse le voci ad articolo (`~artN`), risolve a una pagina reale il cui titolo riporta l'atto atteso — verifica del link, non del contenuto, che va sempre riletto.
 
 ## Indice
 

@@ -91,8 +91,8 @@ GUIDA.md            miniguida d'uso delle modalità
 CONTRIBUTING.md     meccanica di contribuzione (eval, comandi pre-PR)
 evals/evals.json    domande di regressione con risposte attese verificate
 schema/              contratto pubblico dei tool lex_* (JSON Schema)
-scripts/            build dello ZIP, verifiche statiche, esecuzione eval
-tests/              test unitari delle verifiche statiche (solo libreria standard)
+scripts/            build dello ZIP, verifiche statiche, audit dei permalink, esecuzione eval
+tests/              test unitari delle verifiche statiche e del runner delle eval (solo libreria standard)
 .github/workflows/  release dello ZIP a ogni tag v*; controlli di qualità a ogni push/PR
 ```
 

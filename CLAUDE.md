@@ -19,8 +19,10 @@ The "source" is prose: `SKILL.md` is a behavioral specification loaded into Clau
 - `evals/evals.json` — regression prompts with manually-verified expected outputs. The gate for all changes (see below). Entries may carry an optional `checks` object (`must_include`/`must_not_include`: short strings, deterministic, checked before the LLM judge runs; optional `tool_input_must_not_include` checked against tool_use inputs captured via stream-json, for query-minimization regressions) alongside the narrative `expected_output`; not every eval has one (behavioral evals with no falsifiable string stay narrative-only).
 - `schema/lex_tools_contract.json` — formal JSON Schema of the `lex_*` tool contract (input/output shapes only, no implementation). Public interface, kept in sync with the design invariant above; useful for external review and for any independent implementation of the corpus server.
 - `scripts/package_skill.sh` — zips the skill folder into `dist/` for manual install.
-- `scripts/verifica_skill.py` — static checks with no network calls and no dependencies. Each check is a pure function `check_*(Percorsi) -> Esito` (blocking `errori` + informational `note`); `main()` composes them, so every check is unit-testable on a fixture repo. Checks: evals.json validity, id sequentiality and `checks` shape (including `tool_input_must_not_include`, non-empty strings); SKILL.md frontmatter (`name` per the Agent Skills spec and equal to the folder, `description` ≤ 1024 chars, `metadata.version` present); CHANGELOG headings well-formed, unique, descending, and top version == `metadata.version`; references/ pointers not broken and no orphans; https-only URLs in references; `lex_*` names cited in SKILL.md exist in the contract; `fonti_normative.md` table schema (4 columns, recognized Stato prefix, permalink to a known official domain); consistent column counts in every references table; maturity labels and 1..N numbering in `fonti_per_materia.md`; contract JSON validity; SKILL.md growth vs. last tag (informational). `--versione` prints the declared version (used by the release workflow). Runs in CI on every push/PR.
+- `scripts/verifica_skill.py` — static checks with no network calls and no dependencies. Each check is a pure function `check_*(Percorsi) -> Esito` (blocking `errori` + informational `note`); `main()` composes them, so every check is unit-testable on a fixture repo. Checks: evals.json validity, id sequentiality and `checks` shape (including `tool_input_must_not_include`, non-empty strings); SKILL.md frontmatter (`name` per the Agent Skills spec and equal to the folder, `description` ≤ 1024 chars, `metadata.version` present); CHANGELOG headings well-formed, unique, descending, and top version == `metadata.version`; references/ pointers not broken and no orphans; https-only URLs in references; `lex_*` names cited in SKILL.md exist in the contract; `fonti_normative.md` table schema (4 columns, recognized Stato prefix, permalink to a known official domain); consistent column counts in every references table; maturity labels and 1..N numbering in `fonti_per_materia.md`; contract JSON validity; SKILL.md growth vs. last tag (informational); body ≤ 500 lines, frontmatter restricted to the spec's six fields, `must_not_include` strings absent from the expected output, and the references map — every `references/*.md` name — within the first 5,000 estimated tokens of SKILL.md so it survives auto-compaction (blocking). `--versione` prints the declared version (used by the release workflow). Runs in CI on every push/PR.
 - `tests/test_verifica_skill.py` — unit tests for every static check (stdlib `unittest`, no dependencies): valid fixture passes, then one element broken at a time. Run with `python3 -m unittest discover -s tests -v`; runs in CI.
+- `scripts/verifica_permalink.py` — repeatable permalink audit (see Commands); pure parsing/comparison functions with unit tests in `tests/test_verifica_permalink.py`.
+- `scripts/esegui_evals.py` — the headless eval runner: three tiers per eval (deterministic `must_include`/`must_not_include` on the final answer; `tool_input_must_not_include`/`tool_input_must_include` on the tool_use inputs captured via `--output-format stream-json`; LLM judge last, only if the deterministic tiers pass). Stream parsing, tiers 1-2 and the orchestration are pure functions with unit tests (`tests/test_esegui_evals.py`, fake executor in place of `claude`); writes `evals/risultati/<stamp>/` with per-eval files plus `_riepilogo.json`. `scripts/esegui_evals.sh` is a thin compatibility wrapper. Refuses to run inside a Claude Code session.
 - `.github/workflows/release.yml` — on any `v*` tag: runs the static checks, refuses the release if the tag differs from `metadata.version` in SKILL.md, then packages the ZIP and publishes a GitHub release. `CHANGELOG.md` is updated by hand and its top entry must carry the same version.
 - `.github/workflows/quality.yml` — on push/PR to main (read-only token): `verifica_skill.py` + unit tests + shellcheck (blocking); source-endpoint reachability (informational, non-blocking, since it depends on external network/anti-bot behavior).
 
@@ -75,6 +77,12 @@ Check that all catalogued source endpoints still respond:
 scripts/verifica_fonti.sh
 ```
 
+Audit the normative permalinks (offline: URN vs. declared estremi in `fonti_normative.md`; online: every Normattiva permalink resolves to a page titled with the expected act, every CELEX served by the Publications Office). Network-dependent, one fetch per second, not a CI gate — run before a release or after touching a catalog:
+```bash
+scripts/verifica_permalink.py            # offline + online
+scripts/verifica_permalink.py --offline  # no network
+```
+
 Run the static checks and their unit tests as CI does (no network, no credentials):
 ```bash
 python3 scripts/verifica_skill.py
@@ -86,8 +94,9 @@ Working-copy caveat (macOS): don't keep the working clone inside iCloud Drive wi
 
 Run the evals headless with a three-tier check — deterministic `checks.must_include`/`must_not_include` on the final response, then (when an eval defines it) `checks.tool_input_must_not_include` against tool_use inputs captured via `--output-format stream-json` — for query-minimization regressions — then an LLM judge (from a normal terminal, NOT inside a Claude Code session: nested sessions are refused outright to prevent crashing the parent; TEMPLATE evals are skipped and need manual interactive testing: submit the prompt to the skill and compare the response against `expected_output`):
 ```bash
-scripts/esegui_evals.sh          # all evals
-scripts/esegui_evals.sh 1 4 5    # a subset by id
+scripts/esegui_evals.py          # all evals (scripts/esegui_evals.sh is an equivalent wrapper)
+scripts/esegui_evals.py 1 4 5    # a subset by id
+EVAL_WEB=1 scripts/esegui_evals.py 26   # also allow WebSearch/WebFetch, for evals that exercise the web fallback
 ```
 
 There is no build/lint/test toolchain beyond this — "tests" are the evals, run by having Claude answer each `prompt` and comparing against `expected_output`.
