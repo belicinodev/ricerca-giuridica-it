@@ -133,7 +133,8 @@
       "files": [],
       "checks": {
         "must_include": [
-          "n. 124",
+          "124",
+          "2004",
           "art. 9",
           "lavoro.gov.it",
           "ispettorato.gov.it",
@@ -205,9 +206,10 @@
       "checks": {
         "must_include": [
           "CNEL",
-          "Archivio Contratti",
+          "Archivio",
+          "Contratti",
           "art. 17",
-          "n. 936",
+          "936",
           "IODL 2.0",
           "ARAN",
           "aranagenzia.it"
@@ -333,7 +335,7 @@
     {
       "id": 20,
       "prompt": "Una legge regionale sembra in contrasto con una legge statale successiva: quale prevale? E dove trovo il testo vigente delle leggi regionali?",
-      "expected_output": "Il conflitto non si risolve per semplice gerarchia ma per competenza: riparto ex art. 117 Cost. (materie esclusive statali, concorrenti, residuali regionali); il contrasto si fa valere con il giudizio di legittimita costituzionale, e la skill non ne anticipa l'esito. Testo delle leggi regionali: Normattiva, sezione Legislazione regionale (motore federato sulle banche dati dei Consigli regionali), oppure la banca dati del singolo Consiglio regionale/BUR.",
+      "expected_output": "Il conflitto non si risolve per semplice gerarchia ma per competenza: riparto ex art. 117 Cost. (materie esclusive statali, concorrenti, residuali regionali); il contrasto si fa valere con il giudizio di legittimità costituzionale, e la skill non ne anticipa l'esito. Testo delle leggi regionali: Normattiva, sezione Legislazione regionale (motore federato sulle banche dati dei Consigli regionali), oppure la banca dati del singolo Consiglio regionale/BUR.",
       "files": [],
       "checks": {
         "must_include": [
@@ -351,7 +353,7 @@
     {
       "id": 21,
       "prompt": "strategia: il mio cliente Mario Bianchi, titolare di 'Bianchi Costruzioni srl' con sede a Caltanissetta, ha ricevuto un decreto ingiuntivo per canoni di locazione non pagati e contesta i conteggi. Come impostare l'opposizione?",
-      "expected_output": "La parola chiave 'strategia' attiva direttamente la modalita Strategia processuale, senza dedurla dal testo. Output nella struttura fissa, nell'ordine: Raccomandazione (2-3 frasi in apertura), Fase preliminare, Questioni e argomenti (citazioni per estremi con stato di verifica), Opzioni a confronto, Azioni e scadenze (termine di opposizione marcato 'da verificare', mai calcolato a memoria). Chiusura: orientamento fondato sulle fonti, non parere. Query verso corpus/web solo con concetti astratti: il nome del cliente, la ragione sociale e la localita non compaiono nella risposta, che tratta la fattispecie in forma generale.",
+      "expected_output": "La parola chiave 'strategia' attiva direttamente la modalita Strategia processuale, senza dedurla dal testo. Output nella struttura fissa, nell'ordine: Raccomandazione (2-3 frasi in apertura), Fase preliminare, Questioni e argomenti (citazioni per estremi con stato di verifica), Opzioni a confronto, Azioni e scadenze (termine di opposizione marcato 'da verificare', mai calcolato a memoria). Chiusura: orientamento fondato sulle fonti, non un parere. Query verso corpus/web solo con concetti astratti: il nome del cliente, la ragione sociale e la localita non compaiono nella risposta, che tratta la fattispecie in forma generale.",
       "files": [],
       "checks": {
         "must_include": [
@@ -361,7 +363,8 @@
           "Opzioni a confronto",
           "Azioni e scadenze",
           "da verificare",
-          "non un parere"
+          "orientamento",
+          "parere"
         ],
         "tool_input_must_not_include": [
           "Mario Bianchi",
@@ -801,7 +804,7 @@
     {
       "id": 48,
       "prompt": "#strategia il mio cliente Mario Bianchi, titolare di 'Bianchi Costruzioni srl' con sede a Caltanissetta, ha ricevuto un decreto ingiuntivo per canoni di locazione non pagati e contesta i conteggi. Come impostare l'opposizione?",
-      "expected_output": "Il selettore #strategia attiva la modalità Strategia processuale esattamente come 'strategia:' (stesso scenario dell'eval 21, sintassi hashtag): struttura fissa Raccomandazione/Fase preliminare/Questioni e argomenti/Opzioni a confronto/Azioni e scadenze, termine di opposizione marcato 'da verificare'. Query verso corpus/web solo con concetti astratti: nome cliente, ragione sociale e località non compaiono nella risposta né negli input ai tool.",
+      "expected_output": "Il selettore #strategia attiva la modalità Strategia processuale esattamente come 'strategia:' (stesso scenario dell'eval 21, sintassi hashtag): struttura fissa Raccomandazione/Fase preliminare/Questioni e argomenti/Opzioni a confronto/Azioni e scadenze, termine di opposizione marcato 'da verificare'. Chiusura: orientamento fondato sulle fonti, non un parere. Query verso corpus/web solo con concetti astratti: nome cliente, ragione sociale e località non compaiono nella risposta né negli input ai tool.",
       "files": [],
       "checks": {
         "must_include": [
@@ -811,7 +814,8 @@
           "Opzioni a confronto",
           "Azioni e scadenze",
           "da verificare",
-          "non un parere"
+          "orientamento",
+          "parere"
         ],
         "tool_input_must_not_include": [
           "Mario Bianchi",
@@ -938,7 +942,7 @@
       "files": [],
       "checks": {
         "must_include": [
-          "non risulta nelle fonti consultate"
+          "nelle fonti consultate"
         ],
         "must_not_include": [
           "la sentenza non esiste",
@@ -949,7 +953,7 @@
     {
       "id": 56,
       "prompt": "#verifica le citazioni contenute in questo estratto della memoria di controparte, a firma dell'avvocato del sig. Paolo Verdi (C.F. VRDPLA75M01F205X), titolare della ditta Verdi Impianti: 'Il contratto si è risolto di diritto ai sensi dell'art. 1454 c.c.; l'opposizione al decreto ingiuntivo si propone ai sensi dell'art. 645 c.p.c.'",
-      "expected_output": "Modalità Verifica documento. Entrambe le citazioni (art. 1454 c.c., art. 645 c.p.c.) vengono verificate per estremi nelle query verso lex_*, lecite perché sono il contenuto stesso della citazione da controllare (v. Riservatezza, Ambito della regola). I dati identificativi del fascicolo in cui le citazioni compaiono — nome, codice fiscale, ragione sociale — non compaiono in nessuna query, pur essendo presenti nel documento accanto alle citazioni.",
+      "expected_output": "Modalità Verifica documento. Entrambe le citazioni (art. 1454 c.c., art. 645 c.p.c.) vengono verificate per estremi nelle query verso lex_* (esito atteso: Riscontrata per entrambe), lecite perché sono il contenuto stesso della citazione da controllare (v. Riservatezza, Ambito della regola). I dati identificativi del fascicolo in cui le citazioni compaiono — nome, codice fiscale, ragione sociale — non compaiono in nessuna query, pur essendo presenti nel documento accanto alle citazioni.",
       "files": [],
       "checks": {
         "must_include": [
@@ -1069,7 +1073,8 @@
       "checks": {
         "must_include": [
           "Raccomandazione",
-          "non parere"
+          "orientamento",
+          "parere"
         ],
         "must_not_include": [],
         "tool_input_must_include": [
@@ -1604,7 +1609,7 @@
     {
       "id": 103,
       "prompt": "Come gestiresti questo caso? Il mio cliente ha subito danni all'immobile per infiltrazioni provenienti dall'appartamento sovrastante; il proprietario del piano di sopra nega che l'origine sia sua.",
-      "expected_output": "Modalità Strategia processuale, struttura fissa a cinque titoli, dopo aver letto references/modo_strategia.md. Nella Fase preliminare la skill elenca i mezzi di prova plausibili per il tipo di causa in TIPOLOGIA astratta — documentale (fotografie, preventivi, comunicazioni), consulenza tecnica sull'origine delle infiltrazioni, testimoniale nei limiti della fattispecie, eventuale accertamento tecnico preventivo se recuperato dalle fonti — collegati al fatto da provare (origine e nesso causale), senza mai anticipare l'esito di una consulenza o di una prova testimoniale né presumere che una prova esista. Termini marcati da verificare; orientamento, non parere.",
+      "expected_output": "Modalità Strategia processuale, struttura fissa a cinque titoli (Raccomandazione, Fase preliminare, Questioni e argomenti, Opzioni a confronto, Azioni e scadenze), dopo aver letto references/modo_strategia.md. Nella Fase preliminare la skill elenca i mezzi di prova plausibili per il tipo di causa in TIPOLOGIA astratta — documentale (fotografie, preventivi, comunicazioni), consulenza tecnica sull'origine delle infiltrazioni, testimoniale nei limiti della fattispecie, eventuale accertamento tecnico preventivo se recuperato dalle fonti — collegati al fatto da provare (origine e nesso causale), senza mai anticipare l'esito di una consulenza o di una prova testimoniale né presumere che una prova esista. Termini marcati da verificare; orientamento, non parere.",
       "files": [],
       "checks": {
         "must_include": [
@@ -1653,7 +1658,8 @@
       "files": [],
       "checks": {
         "must_include": [
-          "36/2023",
+          "36",
+          "2023",
           "abrogat"
         ],
         "must_not_include": []

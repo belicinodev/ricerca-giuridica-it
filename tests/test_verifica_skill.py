@@ -210,6 +210,29 @@ class TestEvals(Base):
         self.scrivi_evals([e1])
         self.assertErrore(vs.check_evals(self.p), "tool_input_must_not_include non è una lista")
 
+    def test_must_include_non_ancorato_ne_all_atteso_ne_al_prompt(self) -> None:
+        e = self.eval_base(1)
+        e["prompt"] = "Quale decreto disciplina gli interpelli?"
+        e["expected_output"] = "Interpelli ex art. 9 D.lgs. 124/2004."
+        e["checks"] = {"must_include": ["n. 124"], "must_not_include": []}
+        self.scrivi_evals([e])
+        self.assertErrore(vs.check_evals(self.p), "must_include assenti sia dall'expected_output sia dal prompt ['n. 124']")
+
+    def test_must_include_ancorato_al_prompt_basta(self) -> None:
+        e = self.eval_base(1)
+        e["prompt"] = "Redigi una diffida per il mio cliente Mario Rossi."
+        e["expected_output"] = "La bozza riporta per esteso i dati forniti."
+        e["checks"] = {"must_include": ["Mario Rossi"], "must_not_include": []}
+        self.scrivi_evals([e])
+        self.assertTrue(vs.check_evals(self.p).ok)
+
+    def test_must_include_non_ancorato_in_template_non_blocca(self) -> None:
+        e = self.eval_base(1)
+        e["prompt"] = "TEMPLATE collaudo manuale"
+        e["checks"] = {"must_include": ["Conformi"], "must_not_include": []}
+        self.scrivi_evals([e])
+        self.assertTrue(vs.check_evals(self.p).ok)
+
     def test_must_not_include_presente_nell_atteso(self) -> None:
         e = self.eval_base(1)
         e["expected_output"] = "Si applica la procedura negoziata, non l'affidamento diretto."

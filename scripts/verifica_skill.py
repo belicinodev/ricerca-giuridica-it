@@ -25,6 +25,8 @@ Verifica:
   rintracciabili anche quando la coda del file è sparita (errore)
 - nessuna eval non-TEMPLATE ha stringhe di must_not_include già presenti nel
   proprio expected_output (eval insuperabile dalla risposta attesa);
+  ogni stringa di must_include di una eval non-TEMPLATE compare nell'expected_output
+  o nel prompt (altrimenti non è ancorata: una risposta corretta potrebbe fallire);
   `tool_input_must_include` (letture o chiamate che devono avvenire) ha la
   stessa forma di `tool_input_must_not_include`
 - CHANGELOG.md: intestazioni "## vX.Y.Z - AAAA-MM-GG" ben formate, senza
@@ -289,6 +291,19 @@ def check_evals(p: Percorsi) -> Esito:
                         e.errore(f"evals.json: eval {ident} — checks.{campo} non è una lista")
                     elif not _lista_di_stringhe_non_vuote(c[campo]):
                         e.errore(f"evals.json: eval {ident} — checks.{campo} contiene voci vuote o non stringhe")
+            # Una stringa richiesta che non compare né nell'expected_output né nel
+            # prompt non è ancorata a nulla: è la classe di falsi FAIL trovata il
+            # 2026-09-28 (es. must_include "n. 124" con atteso "D.lgs. 124/2004",
+            # "36/2023" con atteso "D.lgs. 31 marzo 2023, n. 36", tre varianti di
+            # "non un parere"): una risposta corretta fallirebbe. Nelle eval
+            # concrete è un errore; nelle TEMPLATE (collaudo manuale) solo una nota.
+            if not str(x.get("prompt", "")).startswith("TEMPLATE"):
+                ancora = (str(x.get("expected_output", "")) + " " + str(x.get("prompt", ""))).lower()
+                richiesti = c.get("must_include") if isinstance(c.get("must_include"), list) else []
+                non_ancorati = [s for s in richiesti if isinstance(s, str) and s and s.lower() not in ancora]
+                if non_ancorati:
+                    e.errore(f"evals.json: eval {ident} — stringhe di must_include assenti sia dall'expected_output sia dal prompt "
+                             f"{non_ancorati}: non sono ancorate a nulla e una risposta corretta potrebbe fallire")
             # Una stringa vietata che compare nell'expected_output stesso rende
             # l'eval insuperabile dalla risposta che la ricalca (caso reale nella
             # skill gemella: "non l'affidamento diretto" nell'atteso, "affidamento
