@@ -23,6 +23,7 @@ The "source" is prose: `SKILL.md` is a behavioral specification loaded into Clau
 - `tests/test_verifica_skill.py` — unit tests for every static check (stdlib `unittest`, no dependencies): valid fixture passes, then one element broken at a time. Run with `python3 -m unittest discover -s tests -v`; runs in CI.
 - `scripts/verifica_permalink.py` — repeatable permalink audit (see Commands); pure parsing/comparison functions with unit tests in `tests/test_verifica_permalink.py`.
 - `scripts/esegui_evals.py` — the headless eval runner: three tiers per eval (deterministic `must_include`/`must_not_include` on the final answer; `tool_input_must_not_include`/`tool_input_must_include` on the tool_use inputs captured via `--output-format stream-json`; LLM judge last, only if the deterministic tiers pass). Stream parsing, tiers 1-2 and the orchestration are pure functions with unit tests (`tests/test_esegui_evals.py`, fake executor in place of `claude`); writes `evals/risultati/<stamp>/` with per-eval files plus `_riepilogo.json`. `scripts/esegui_evals.sh` is a thin compatibility wrapper. Refuses to run inside a Claude Code session.
+- `scripts/privacy_gate.py` — Claude Code `PreToolUse` hook (matcher `^(WebSearch|WebFetch|mcp__.*__lex_.*)$`, anchored because hook matchers are unanchored regexes): the model-independent backstop to query minimization. Deterministic detectors on every string of `tool_input` (URLs excluded) at two levels — `blocca` → `deny` (codice fiscale, P.IVA, IBAN with checksum, phone, email, targa, RG number, ID document, polizza, ragione sociale, attached filename) and `chiedi` → `ask` (amounts in euro, which are also statutory thresholds; addresses; birth dates; first-name-recognized full names; long quoted sentences). `PRIVACY_GATE_MODE=redigi` returns `updatedInput` with `[OMISSIS:tipo]` instead of denying. Unreadable payload → exit 0 with no output (a gate defect must never block work). `--misura` is the offline bench: recall on the forbidden strings of the minimization evals, false positives on expected outputs + references + GUIDA + SKILL (the only blocked lines must be the deliberate "da evitare" examples; enforced by `tests/test_privacy_gate.py`). Declared out of scope: places, health/special categories, names without a recognizable first name, identification by combination. Install example: `scripts/privacy_gate.settings.esempio.json`. Only Claude Code: claude.ai/Desktop/Cowork skills cannot run code, so the behavioral rule in SKILL.md stays the primary control.
 - `.github/workflows/release.yml` — on any `v*` tag: runs the static checks, refuses the release if the tag differs from `metadata.version` in SKILL.md, then packages the ZIP and publishes a GitHub release. `CHANGELOG.md` is updated by hand and its top entry must carry the same version.
 - `.github/workflows/quality.yml` — on push/PR to main (read-only token): `verifica_skill.py` + unit tests + shellcheck (blocking); source-endpoint reachability (informational, non-blocking, since it depends on external network/anti-bot behavior).
 
@@ -97,6 +98,13 @@ Run the evals headless with a three-tier check — deterministic `checks.must_in
 scripts/esegui_evals.py          # all evals (scripts/esegui_evals.sh is an equivalent wrapper)
 scripts/esegui_evals.py 1 4 5    # a subset by id
 EVAL_WEB=1 scripts/esegui_evals.py 26   # also allow WebSearch/WebFetch, for evals that exercise the web fallback
+```
+
+Privacy gate bench (offline) and manual probe:
+```bash
+python3 scripts/privacy_gate.py --misura
+python3 scripts/privacy_gate.py --testo "opposizione Rossi Costruzioni srl RG 4521/2025"
+echo '{"tool_name":"WebSearch","tool_input":{"query":"..."}}' | python3 scripts/privacy_gate.py
 ```
 
 There is no build/lint/test toolchain beyond this — "tests" are the evals, run by having Claude answer each `prompt` and comparing against `expected_output`.

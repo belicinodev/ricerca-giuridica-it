@@ -27,6 +27,8 @@ jobs:
           agentskills validate .claude/skills/ricerca-giuridica-it
       - name: Test unitari dei controlli statici
         run: python3 -m unittest discover -s tests -v
+      - name: Banco di misura del privacy gate (informativo)
+        run: python3 scripts/privacy_gate.py --misura
       - name: Shellcheck sugli script
         uses: ludeeus/action-shellcheck@2.0.0
         with:

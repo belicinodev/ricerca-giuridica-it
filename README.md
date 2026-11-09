@@ -67,6 +67,12 @@ scarica lo ZIP dall'[ultima release](https://github.com/belicinodev/ricerca-giur
 
 **ChatGPT** (app desktop, richiede l'accesso alla scheda Skills — su workspace Enterprise/Edu un amministratore deve abilitarla in Permissions & roles): *Plugins → Skills → Create → Upload from your computer*, caricando lo stesso ZIP dell'ultima release. Le skill personali non si sincronizzano automaticamente tra desktop e web/mobile: vanno caricate separatamente su ogni superficie in cui servono. Non testata da questo progetto (v. Compatibilità sopra): se qualcosa non funziona come su Claude, apri una issue.
 
+## Privacy gate (solo Claude Code)
+
+La minimizzazione delle query è una regola della skill: il modello formula le ricerche verso web e corpus con soli concetti giuridici astratti, e le eval lo verificano. In Claude Code si può aggiungere un controllo indipendente dal modello: `scripts/privacy_gate.py` è un hook `PreToolUse` che legge l'input di `WebSearch`, `WebFetch` e dei tool `lex_*` prima che parta e, se contiene identificativi (codice fiscale, partita IVA, IBAN, telefono, email, targa, numero di ruolo, documento d'identità, polizza, ragione sociale, nome di file), nega la chiamata chiedendo di riformulare; su pattern ambigui (importi, indirizzi, date di nascita, nome e cognome, frasi intere tra virgolette) chiede conferma. Gli URL verso le fonti ufficiali non vengono toccati. Con `PRIVACY_GATE_MODE=redigi` sostituisce i dati con `[OMISSIS:tipo]` e lascia passare la query redatta.
+
+Si attiva copiando il blocco `hooks` di `scripts/privacy_gate.settings.esempio.json` in `~/.claude/settings.json` (o nel `.claude/settings.json` del progetto), con il percorso dello script sulla propria macchina; vale per ogni skill e ogni sessione, e va riavviato Claude Code. `python3 scripts/privacy_gate.py --misura` stampa richiamo e falsi positivi misurati sulla suite di eval e sui cataloghi. Non copre località, dati sulla salute e nomi non riconoscibili come tali: lì resta la regola della skill. Non esiste in claude.ai, Desktop e Cowork, dove le skill non eseguono codice.
+
 ## Struttura
 
 ```
@@ -91,8 +97,8 @@ GUIDA.md            miniguida d'uso delle modalità
 CONTRIBUTING.md     meccanica di contribuzione (eval, comandi pre-PR)
 evals/evals.json    domande di regressione con risposte attese verificate
 schema/              contratto pubblico dei tool lex_* (JSON Schema)
-scripts/            build dello ZIP, verifiche statiche, audit dei permalink, esecuzione eval
-tests/              test unitari delle verifiche statiche e del runner delle eval (solo libreria standard)
+scripts/            build dello ZIP, verifiche statiche, audit dei permalink, esecuzione eval, privacy gate (hook Claude Code)
+tests/              test unitari delle verifiche statiche, del runner delle eval e del privacy gate (solo libreria standard)
 .github/workflows/  release dello ZIP a ogni tag v*; controlli di qualità a ogni push/PR
 ```
 

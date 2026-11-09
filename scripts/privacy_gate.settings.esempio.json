@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^(WebSearch|WebFetch|mcp__.*__lex_.*)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /percorso/assoluto/del/clone/ricerca-giuridica-it/scripts/privacy_gate.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

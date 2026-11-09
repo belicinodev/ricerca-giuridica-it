@@ -32,6 +32,7 @@ python3 -m unittest discover -s tests -v     # test unitari dei controlli static
 agentskills validate .claude/skills/ricerca-giuridica-it   # validatore ufficiale della specifica (pip install skills-ref)
 shellcheck scripts/*.sh                      # stile degli script di shell
 scripts/esegui_evals.py <id>                 # ripassa le eval toccate dalla modifica (esegui_evals.sh è un wrapper equivalente)
+python3 scripts/privacy_gate.py --misura     # se tocchi il privacy gate o le eval di minimizzazione: richiamo e falsi positivi
 ```
 
 La CI (`quality.yml`) ripete i primi quattro (incluso shellcheck, nello stesso job: un suo fallimento blocca la CI quanto gli altri) in modo bloccante a ogni push/PR; `scripts/verifica_fonti.sh` (raggiungibilità degli endpoint) e `scripts/verifica_permalink.py` (ogni permalink Normattiva/CELEX dei cataloghi risolve all'atto atteso; `--offline` per la sola coerenza URN/estremi) sono solo informativi, perché dipendono da rete e anti-bot esterni: lanciali a mano dopo aver toccato un catalogo.
