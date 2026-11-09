@@ -215,6 +215,21 @@ class TestUrl(unittest.TestCase):
             self.assertEqual(dec.livello, pg.BLOCCA, url)
             self.assertEqual(dec.rilevamenti[0][1].tipo, "url_con_dati")
 
+    def test_identificativo_nel_nome_di_un_file_dell_url_non_sfugge(self):
+        # regressione: lo span del nome di file inglobava il codice fiscale e il filtro sul tipo lo scartava
+        for url in ("https://example.org/atti/RSSMRA80A01H501U.pdf",
+                    "https://example.org/dl?f=IT60X0542811101000000123456.docx"):
+            self.assertEqual(pg.valuta({"url": url}).livello, pg.BLOCCA, url)
+        self.assertEqual({r.tipo for r in pg.rileva("RSSMRA80A01H501U.pdf", frozenset({"file_allegato"}))},
+                         {"codice_fiscale"})
+
+    def test_identificativo_in_host_o_userinfo_non_sfugge(self):
+        for url in ("https://rssmra80a01h501u.example.org/x",
+                    "https://mario.rossi%40pec.it@example.org/",
+                    "https://q-12345678903.example.org/",
+                    "https://utente:IT60X0542811101000000123456@example.org/x"):
+            self.assertEqual(pg.valuta({"url": url}).livello, pg.BLOCCA, url)
+
     def test_permalink_ufficiali_passano(self):
         for url in ("https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023-03-31;36~art50!vig=",
                     "https://publications.europa.eu/resource/celex/32016R0679",

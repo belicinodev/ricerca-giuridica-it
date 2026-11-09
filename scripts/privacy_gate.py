@@ -234,10 +234,12 @@ def _norm(span: str) -> str:
     return span.strip()
 
 
-def rileva(testo: str) -> list[Rilevamento]:
+def rileva(testo: str, escludi: frozenset = frozenset()) -> list[Rilevamento]:
     """Restituisce gli span sospetti nel testo, ordinati per posizione, senza sovrapposizioni."""
     trovati: list[Rilevamento] = []
     for regola in REGOLE:
+        if regola.tipo in escludi:  # esclusa PRIMA della fusione: un filtro sul tipo dello span fuso
+            continue                # inghiottirebbe un rilevamento piu' grave sovrapposto
         if regola.cerca is not None:
             for inizio, fine in regola.cerca(testo):
                 trovati.append(Rilevamento(regola.tipo, regola.livello, inizio, fine, _norm(testo[inizio:fine])))
@@ -319,6 +321,11 @@ def _senza_url(testo: str) -> str:
     return _URL.sub(lambda m: " " * len(m.group(0)), testo)
 
 
+_ESCLUSI_PERCORSO = frozenset({"file_allegato"})
+_ESCLUSI_AUTORITA = frozenset({"file_allegato", "ragione_sociale", "nome_cognome", "indirizzo", "importo",
+                               "citazione_lunga", "documento_identita", "targa", "telefono"})
+
+
 def _rileva_negli_url(testo: str) -> list[Rilevamento]:
     """Ogni URL si decodifica (percent-encoding, '+') e si scandisce in percorso e query: un dato
     identificativo che viaggia in un URL — verso un motore di ricerca, un servizio qualsiasi o la maschera
@@ -329,9 +336,15 @@ def _rileva_negli_url(testo: str) -> list[Rilevamento]:
     esito = []
     for m in _URL.finditer(testo):
         url = m.group(0)
-        resto = re.sub(r"^https?://[^/?#]+", "", url, flags=re.I)
-        decodificato = re.sub(r"[/?&=#;~!:]", " ", unquote_plus(resto))
-        interni = [r for r in rileva(decodificato) if r.tipo != "file_allegato"]
+        senza_schema = re.sub(r"^https?://", "", url, flags=re.I)
+        autorita, sep, resto = re.match(r"([^/?#]*)(.?)(.*)", senza_schema, re.S).groups()
+        # percorso e query: tutto tranne i nomi di file; autorita' (userinfo, host, porta): i dati possono
+        # viaggiare anche in un sottodominio o nello userinfo, ma li' ragioni sociali e nomi darebbero solo
+        # rumore sui nomi di dominio, quindi si cercano gli identificativi a forma fissa
+        parti = [(re.sub(r"[/?&=#;~!:]", " ", unquote_plus(sep + resto)), _ESCLUSI_PERCORSO),
+                 (re.sub(r"[.:\-_]", " ", unquote_plus(autorita)).upper(), _ESCLUSI_AUTORITA),
+                 (unquote_plus(autorita.rsplit("@", 1)[0]) if "@" in unquote_plus(autorita) else "", _ESCLUSI_PERCORSO)]
+        interni = [r for parte, esclusi in parti for r in rileva(parte, esclusi)]
         if interni:
             livello = BLOCCA if any(r.livello == BLOCCA for r in interni) else CHIEDI
             esito.append(Rilevamento("url_con_dati", livello, m.start(), m.end(), url))

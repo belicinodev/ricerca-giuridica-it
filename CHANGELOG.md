@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.7.5 - 2026-11-09
+Due aggiramenti del privacy gate nella scansione degli URL, emersi da una seconda review del codice di v0.7.4. SKILL.md cambia solo nella versione. Chi ha attivato l'hook deve aggiornare lo script.
+- **Identificativo nel nome di un file dell'URL**: in `…/atti/<codice fiscale>.pdf` lo span del nome di file inglobava quello del codice fiscale, e il filtro che esenta i nomi di file negli URL scartava l'intero span. Ora la regola si esclude prima della fusione degli span (`rileva(testo, escludi=…)`), così gli altri rilevatori lavorano in modo indipendente.
+- **Autorità dell'URL**: sottodominio, userinfo e porta non venivano scanditi. Ora si cercano lì gli identificativi a forma fissa (codice fiscale, partita IVA, IBAN, email); ragioni sociali e nomi restano esclusi sull'host, dove darebbero solo rumore sui nomi di dominio.
+- I 180 URL dei documenti del repository continuano a passare senza segnalazioni. 2 test nuovi; 141 in tutto.
+
 ## v0.7.4 - 2026-11-09
 Irrobustimento del privacy gate dopo una review di sicurezza del codice rilasciato in v0.7.3. SKILL.md cambia solo nella versione. Chi ha attivato l'hook da v0.7.3 deve aggiornare lo script.
 - **Fuga in modalità `redigi` corretta**: una stringa che conteneva un URL passava non redatta con decisione `allow`. Ora la redazione lavora sugli offset della stringa originale, e prima di restituire `allow` il gate verifica che nessun dato rilevato sia ancora presente; altrimenti nega.
