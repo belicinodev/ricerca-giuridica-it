@@ -15,6 +15,13 @@ Due livelli di rilevatori:
   soglie di legge; indirizzi; date di nascita; nome e cognome, riconosciuto dal solo nome proprio).
   Decisione: ask (in esecuzione headless equivale a deny).
 
+Gli URL si decodificano e si scandiscono in percorso e query string, senza domini esenti: un identificativo
+dentro un URL e' un canale di uscita del dato e blocca l'intero URL. I permalink delle fonti ufficiali
+(Normattiva, EUR-Lex, Gazzetta) passano perche' non contengono nulla che i rilevatori riconoscano.
+
+Fail-closed: se il gate incontra un errore interno (payload illeggibile, eccezione, input oltre il limite
+di dimensione) nega la chiamata spiegando il motivo, invece di lasciar passare una query non controllata.
+
 Non copre: localita', patologie e altre categorie particolari, dettagli identificanti per combinazione.
 Per quelli resta la regola comportamentale della skill.
 
@@ -58,8 +65,9 @@ class Rilevamento:
 class Regola:
     tipo: str
     livello: str
-    pattern: re.Pattern
+    pattern: re.Pattern | None
     valida: object = None  # callable(match) -> bool, opzionale
+    cerca: object = None   # callable(testo) -> iterabile di (inizio, fine): scanner lineare al posto del pattern
 
 
 # --- validatori di checksum: riducono i falsi positivi dei pattern numerici ---------------------
@@ -133,6 +141,41 @@ _SUFFISSI_SOCIETA = (
 _TOPONIMO = r"(?:via|viale|v\.le|piazza|p\.zza|piazzale|corso|c\.so|largo|vicolo|vico|contrada|c\.da|strada|lungomare)"
 _NON_STRADE = r"(?!(?:PEC|e-?mail|mail|posta|raccomandata|fax|telematica|telematico|web|internet|SMS|WhatsApp|giudiziale|stragiudiziale|amministrativa|ordinaria|breve|preliminare|incidentale|cautelare|di|del|della|dei|delle|interpretativa|analogica|generale|principale|subordinata|esclusiva|definitiva|provvisoria|transitoria|eccezionale|equitativa)\b)"
 
+_VIRGOLETTE = re.compile(r"[“«]([^“”«»\n]{40,})[”»]")
+_APICI = re.compile(r"(?<![\w)\]])'|'(?!\w)")
+PAROLE_CITAZIONE = 13
+
+
+def cerca_citazioni_lunghe(testo: str):
+    """Segmenti tra virgolette con almeno PAROLE_CITAZIONE parole. Scansione lineare: una regex con
+    quantificatori annidati qui diventa quadratica sugli apostrofi, e un hook che scade lascia passare."""
+    for m in _VIRGOLETTE.finditer(testo):
+        if len(m.group(1).split()) >= PAROLE_CITAZIONE:
+            yield m.start(), m.end()
+    # virgolette dritte: lo stesso carattere apre e chiude, quindi si accoppiano in sequenza riga per riga
+    # (1a-2a, 3a-4a...); altrimenti il testo TRA due citazioni brevi verrebbe letto come una citazione lunga
+    base = 0
+    for riga in testo.split("\n"):
+        posizioni = [i for i, ch in enumerate(riga) if ch == '"']
+        for a, b in zip(posizioni[0::2], posizioni[1::2]):
+            if len(riga[a + 1:b].split()) >= PAROLE_CITAZIONE:
+                yield base + a, base + b + 1
+        base += len(riga) + 1
+    apertura = None
+    for m in _APICI.finditer(testo):
+        pos = m.start()
+        apre = pos == 0 or not (testo[pos - 1].isalnum() or testo[pos - 1] in "_)]")
+        chiude = pos + 1 >= len(testo) or not (testo[pos + 1].isalnum() or testo[pos + 1] == "_")
+        if apertura is not None and "\n" in testo[apertura:pos]:
+            apertura = None
+        if apertura is not None and chiude:
+            if len(testo[apertura + 1:pos].split()) >= PAROLE_CITAZIONE:
+                yield apertura, pos + 1
+            apertura = None
+        elif apre and not chiude:
+            apertura = pos
+
+
 REGOLE: tuple[Regola, ...] = (
     Regola("codice_fiscale", BLOCCA,
            re.compile(r"(?<![A-Z0-9])[A-Z]{6}\d{2}[A-EHLMPRST]\d{2}[A-Z]\d{3}[A-Z](?![A-Z0-9])", re.I)),
@@ -143,7 +186,7 @@ REGOLE: tuple[Regola, ...] = (
            re.compile(r"(?:(?:P\.?\s?IVA|partita\s+IVA|C\.?\s?F\.?|codice\s+fiscale|VAT)\s*(?:n\.?\s*)?[:.]?\s*(?:IT\s?)?)?(?<!\d)(?<!\d[.,/-])\d{11}(?!\d)(?![.,/-]\d)", re.I),
            lambda m: partita_iva_valida(m.group(0)[-11:]) or not m.group(0)[0].isdigit()),
     Regola("email", BLOCCA,
-           re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")),
+           re.compile(r"(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]{1,64}@[A-Za-z0-9-]{1,63}(?:\.[A-Za-z0-9-]{1,63}){1,6}")),
     Regola("telefono", BLOCCA,
            re.compile(r"(?<![\d/.-])(?:\+39[\s.]?)?(?:0\d{1,3}[\s.\-/]\d{5,8}|3\d{2}[\s.\-]?\d{6,7}|0\d{8,9})(?![\d/])")),
     Regola("targa", BLOCCA,
@@ -166,9 +209,7 @@ REGOLE: tuple[Regola, ...] = (
            re.compile(r"\b(?:nat[oa]\s+(?:a\s+[A-Z][\w'’ -]+?\s+)?il|data\s+di\s+nascita[: ]+)\s*\d{1,2}[\s./-](?:\d{1,2}|[a-z]+)[\s./-]\d{2,4}\b", re.I)),
     # frase intera tra virgolette (> 12 parole): e' il frammento di un documento del caso incollato nella
     # query, vietato dalla regola "solo locuzioni tecniche brevi tra virgolette"
-    Regola("citazione_lunga", CHIEDI,
-           re.compile(r"(?<![\w)])(?:[\"“«](?:[^\s\"”»]+[ \t]+){12,}[^\s\"”»]+[\"”»]"
-                      r"|(?<![\w)\]])'(?:(?:[^\s']|'(?=\w))+[ \t]+){12,}(?:[^\s']|'(?=\w))+'(?!\w))")),
+    Regola("citazione_lunga", CHIEDI, None, cerca=cerca_citazioni_lunghe),
     Regola("importo", CHIEDI,
            re.compile(r"(?:€\s?\d[\d.]*(?:,\d{1,2})?|\b\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?\s?(?:€|euro)\b|\b\d+(?:,\d{1,2})?\s?(?:€|euro)\b)", re.I)),
 )
@@ -181,6 +222,7 @@ _SPIEGAZIONE = {
     "nome_cognome": "possibile nome e cognome", "indirizzo": "possibile indirizzo", "data_nascita": "data di nascita",
     "importo": "importo in euro (può essere una soglia di legge: conferma se è astratto)",
     "citazione_lunga": "frase intera tra virgolette (frammento di documento del caso?)",
+    "url_con_dati": "dato identificativo dentro un URL",
 }
 
 # Nomi di eccezione per la regola ragione_sociale: sigle che precedono comunemente "S.p.A."/"s.r.l." in
@@ -196,6 +238,10 @@ def rileva(testo: str) -> list[Rilevamento]:
     """Restituisce gli span sospetti nel testo, ordinati per posizione, senza sovrapposizioni."""
     trovati: list[Rilevamento] = []
     for regola in REGOLE:
+        if regola.cerca is not None:
+            for inizio, fine in regola.cerca(testo):
+                trovati.append(Rilevamento(regola.tipo, regola.livello, inizio, fine, _norm(testo[inizio:fine])))
+            continue
         for m in regola.pattern.finditer(testo):
             if regola.valida is not None and not regola.valida(m):
                 continue
@@ -205,15 +251,19 @@ def rileva(testo: str) -> list[Rilevamento]:
                 if _SOCIETA_ASTRATTE.match(prima):
                     continue
             trovati.append(Rilevamento(regola.tipo, regola.livello, m.start(), m.end(), _norm(span)))
-    # rimuovi sovrapposizioni: prima gli span BLOCCA (il piu' esteso vince), poi i CHIEDI che non si
-    # sovrappongono a nessuno span gia' tenuto — un identificativo dentro una citazione lunga resta BLOCCA
+    # fondi gli span sovrapposti in uno solo (unione degli offset, livello piu' severo): per la redazione
+    # va coperta l'intera regione, e un identificativo dentro una citazione lunga resta BLOCCA
+    trovati.sort(key=lambda r: (r.inizio, -(r.fine - r.inizio)))
     esito: list[Rilevamento] = []
-    for livello in (BLOCCA, CHIEDI):
-        for r in sorted((x for x in trovati if x.livello == livello), key=lambda r: (r.inizio, -(r.fine - r.inizio))):
-            if any(r.inizio < k.fine and k.inizio < r.fine for k in esito):
-                continue
-            esito.append(r)
-    esito.sort(key=lambda r: r.inizio)
+    for r in trovati:
+        if esito and r.inizio < esito[-1].fine:
+            k = esito[-1]
+            fine = max(k.fine, r.fine)
+            livello = BLOCCA if BLOCCA in (k.livello, r.livello) else CHIEDI
+            tipo = k.tipo if k.livello == BLOCCA or r.livello != BLOCCA else r.tipo
+            esito[-1] = Rilevamento(tipo, livello, k.inizio, fine, _norm(testo[k.inizio:fine]))
+            continue
+        esito.append(r)
     return esito
 
 
@@ -238,27 +288,65 @@ def redigi(testo: str, rilevamenti: list[Rilevamento]) -> str:
 
 # --- payload dell'hook -----------------------------------------------------------------------------
 
-def stringhe_in(valore, percorso: str = "") -> list[tuple[str, str]]:
-    """Coppie (percorso, stringa) per ogni stringa nel tool_input, a qualunque profondita'."""
-    if isinstance(valore, str):
-        return [(percorso, valore)]
+def stringhe_in(valore, percorso: str = "", profondita: int = 0) -> list[tuple[str, str]]:
+    """Coppie (percorso, stringa) per ogni foglia del tool_input, a qualunque profondita'. I numeri si
+    scandiscono come stringhe (una partita IVA puo' viaggiare come intero)."""
+    if profondita > LIMITE_PROFONDITA:
+        raise ValueError("tool_input troppo annidato")
+    if isinstance(valore, bool) or valore is None:
+        return []
+    if isinstance(valore, (str, int, float)):
+        return [(percorso, str(valore))]
     if isinstance(valore, dict):
         acc = []
         for k, v in valore.items():
-            acc.extend(stringhe_in(v, f"{percorso}.{k}" if percorso else str(k)))
+            acc.extend(stringhe_in(v, f"{percorso}.{k}" if percorso else str(k), profondita + 1))
         return acc
     if isinstance(valore, list):
         acc = []
         for i, v in enumerate(valore):
-            acc.extend(stringhe_in(v, f"{percorso}[{i}]"))
+            acc.extend(stringhe_in(v, f"{percorso}[{i}]", profondita + 1))
         return acc
     return []
 
 
+_URL = re.compile(r"https?://[^\s<>\"'\)\]]+", re.I)
+
+
 def _senza_url(testo: str) -> str:
-    """Gli URL verso le fonti ufficiali restano fuori dalla scansione: il percorso di un permalink
-    Normattiva o un PDF della Gazzetta non e' un dato personale. Il resto del testo si scandisce."""
-    return re.sub(r"https?://\S+", " ", testo)
+    """Testo con ogni URL sostituito da spazi della stessa lunghezza: gli offset restano quelli
+    dell'originale, cosi' la redazione puo' operare sulla stringa vera."""
+    return _URL.sub(lambda m: " " * len(m.group(0)), testo)
+
+
+def _rileva_negli_url(testo: str) -> list[Rilevamento]:
+    """Ogni URL si decodifica (percent-encoding, '+') e si scandisce in percorso e query: un dato
+    identificativo che viaggia in un URL — verso un motore di ricerca, un servizio qualsiasi o la maschera
+    di ricerca di un sito ufficiale — e' una fuga quanto una query in chiaro. Nessun dominio e' esente;
+    solo la regola sui nomi di file non si applica (il percorso di un PDF ufficiale non e' un allegato).
+    Lo span restituito copre l'intero URL."""
+    from urllib.parse import unquote_plus
+    esito = []
+    for m in _URL.finditer(testo):
+        url = m.group(0)
+        resto = re.sub(r"^https?://[^/?#]+", "", url, flags=re.I)
+        decodificato = re.sub(r"[/?&=#;~!:]", " ", unquote_plus(resto))
+        interni = [r for r in rileva(decodificato) if r.tipo != "file_allegato"]
+        if interni:
+            livello = BLOCCA if any(r.livello == BLOCCA for r in interni) else CHIEDI
+            esito.append(Rilevamento("url_con_dati", livello, m.start(), m.end(), url))
+    return esito
+
+
+def rileva_completo(testo: str) -> list[Rilevamento]:
+    """rileva() sul testo fuori dagli URL + scansione degli URL non ufficiali, offset sull'originale."""
+    spans = rileva(_senza_url(testo)) + _rileva_negli_url(testo)
+    spans.sort(key=lambda r: r.inizio)
+    return spans
+
+
+LIMITE_CARATTERI = 200_000
+LIMITE_PROFONDITA = 32
 
 
 @dataclass
@@ -279,16 +367,25 @@ class Decisione:
 
 def valuta(tool_input) -> Decisione:
     coppie = []
+    totale = 0
     for campo, testo in stringhe_in(tool_input):
-        for r in rileva(_senza_url(testo)):
+        totale += len(testo)
+        if totale > LIMITE_CARATTERI:
+            raise ValueError("tool_input oltre il limite di dimensione scansionabile")
+        for r in rileva_completo(testo):
             coppie.append((campo, r))
     return Decisione(livello_complessivo([r for _, r in coppie]), coppie)
 
 
 def redigi_input(tool_input):
-    """Copia del tool_input con gli span rilevati sostituiti da [OMISSIS:tipo]."""
-    if isinstance(tool_input, str):
-        return redigi(tool_input, rileva(_senza_url(tool_input))) if "http" not in tool_input else tool_input
+    """Copia del tool_input con gli span rilevati sostituiti da [OMISSIS:tipo]; i numeri diventano stringhe
+    redatte."""
+    if isinstance(tool_input, bool) or tool_input is None:
+        return tool_input
+    if isinstance(tool_input, (str, int, float)):
+        testo = str(tool_input)
+        spans = rileva_completo(testo)
+        return redigi(testo, spans) if spans else tool_input
     if isinstance(tool_input, dict):
         return {k: redigi_input(v) for k, v in tool_input.items()}
     if isinstance(tool_input, list):
@@ -296,30 +393,39 @@ def redigi_input(tool_input):
     return tool_input
 
 
+def _nega(motivo: str) -> dict:
+    return {"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny",
+                                   "permissionDecisionReason": motivo}}
+
+
 def esito_hook(payload: dict, modo: str = "nega") -> dict | None:
     """Output JSON per Claude Code, o None se la chiamata passa senza osservazioni."""
-    decisione = valuta(payload.get("tool_input", {}))
+    tool_input = payload.get("tool_input", {})
+    decisione = valuta(tool_input)
     if decisione.livello is None:
         return None
     if modo == "redigi" and decisione.livello == BLOCCA:
-        esito = {
+        if any(r.tipo == "url_con_dati" for _, r in decisione.rilevamenti):
+            return _nega(decisione.motivo() + " Un URL non si può redigere: chiamata negata.")
+        redatto = redigi_input(tool_input)
+        serializzato = json.dumps(redatto, ensure_ascii=False)
+        residui = [r.testo for _, r in decisione.rilevamenti if r.testo and r.testo in serializzato]
+        if residui:
+            return _nega(decisione.motivo() + " La redazione automatica non ha coperto tutti i dati rilevati: "
+                         "chiamata negata per sicurezza.")
+        return {
             "hookSpecificOutput": {
                 "hookEventName": "PreToolUse",
                 "permissionDecision": "allow",
-                "updatedInput": redigi_input(payload.get("tool_input", {})),
+                "updatedInput": redatto,
+                "additionalContext": decisione.motivo() + " La query è stata redatta automaticamente: gli span "
+                                     "sostituiti da [OMISSIS:...] non hanno lasciato la macchina.",
             },
         }
-        esito["hookSpecificOutput"]["additionalContext"] = (
-            decisione.motivo() + " La query è stata redatta automaticamente: gli span sostituiti da "
-            "[OMISSIS:...] non hanno lasciato la macchina.")
-        return esito
-    return {
-        "hookSpecificOutput": {
-            "hookEventName": "PreToolUse",
-            "permissionDecision": "deny" if decisione.livello == BLOCCA else "ask",
-            "permissionDecisionReason": decisione.motivo(),
-        },
-    }
+    if decisione.livello == BLOCCA:
+        return _nega(decisione.motivo())
+    return {"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "ask",
+                                   "permissionDecisionReason": decisione.motivo()}}
 
 
 # --- banco di misura -------------------------------------------------------------------------------
@@ -335,7 +441,7 @@ def misura(evals_path: Path, refs_dir: Path, extra: list[Path]) -> dict:
         if not vietate:
             continue
         prompt = e["prompt"]
-        spans = rileva(_senza_url(prompt))
+        spans = rileva_completo(prompt)
         for s in vietate:
             pos = prompt.find(s)
             colpita = None
@@ -362,7 +468,7 @@ def misura(evals_path: Path, refs_dir: Path, extra: list[Path]) -> dict:
             legittimi.append((f"{p.name}:{i}", riga))
     falsi = []
     for origine, testo in legittimi:
-        for r in rileva(_senza_url(testo)):
+        for r in rileva_completo(testo):
             falsi.append({"origine": origine, "tipo": r.tipo, "livello": r.livello, "testo": r.testo})
 
     rilevate = [x for x in richiamo if x["rilevata"]]
@@ -402,15 +508,18 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if argv and argv[0] == "--testo":
         testo = " ".join(argv[1:]) or sys.stdin.read()
-        for r in rileva(_senza_url(testo)):
+        for r in rileva_completo(testo):
             print(f"{r.livello:6} {r.tipo:18} {r.testo!r}")
         return 0
     try:
         payload = json.loads(sys.stdin.read() or "{}")
-    except json.JSONDecodeError:
-        return 0  # payload illeggibile: non bloccare per un difetto del gate
-    modo = "redigi" if os.environ.get("PRIVACY_GATE_MODE", "").lower() == "redigi" else "nega"
-    esito = esito_hook(payload, modo)
+        if not isinstance(payload, dict):
+            raise ValueError("payload non è un oggetto JSON")
+        modo = "redigi" if os.environ.get("PRIVACY_GATE_MODE", "").lower() == "redigi" else "nega"
+        esito = esito_hook(payload, modo)
+    except Exception as exc:  # fail-closed: un gate guasto non lascia passare query non controllate
+        esito = _nega(f"Privacy gate: controllo non eseguibile ({type(exc).__name__}: {exc}); chiamata negata "
+                      "per sicurezza. Se il difetto è del gate, disattiva l'hook in settings.json.")
     if esito is not None:
         print(json.dumps(esito, ensure_ascii=False))
     return 0

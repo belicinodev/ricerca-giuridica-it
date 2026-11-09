@@ -96,6 +96,10 @@ class TestRilevatoriChiedi(unittest.TestCase):
                  "denunciati tardivamente dal terzo danneggiato'")
         self.assertIn("citazione_lunga", tipi("cerca " + frase))
         self.assertNotIn("citazione_lunga", tipi('"clausola claims made" nullità'))
+        # regressione: il testo tra due citazioni brevi non è una citazione lunga
+        self.assertNotIn("citazione_lunga", tipi('"claims made" e tutte le altre parole che stanno in mezzo a due locuzioni '
+                                                 'brevi senza essere a loro volta citate da nessuno "secondo livello"'))
+        self.assertIn("citazione_lunga", tipi('cerca "' + " ".join(["parola"] * 15) + '" in giurisprudenza'))
         self.assertNotIn("citazione_lunga", tipi("l'art. 1454 c.c. e l'art. 645 c.p.c. del codice"))
 
     def test_identificativo_dentro_citazione_resta_blocca(self):
@@ -125,8 +129,6 @@ class TestQueryLegittime(unittest.TestCase):
     def test_url_fonti_ufficiali_ignorati(self):
         dec = pg.valuta({"url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:regio.decreto:1940-10-28;1443~art645!vig=",
                          "prompt": "estrai il testo dell'art. 645 c.p.c."})
-        self.assertIsNone(dec.livello)
-        dec = pg.valuta({"url": "https://www.gazzettaufficiale.it/do/atto/serie_generale/caricaPdf?x=Decreto_2024.pdf"})
         self.assertIsNone(dec.livello)
 
 
@@ -170,9 +172,108 @@ class TestHook(unittest.TestCase):
                               capture_output=True, text=True, timeout=30)
         self.assertEqual(proc.returncode, 0)
         self.assertEqual(json.loads(proc.stdout)["hookSpecificOutput"]["permissionDecision"], "deny")
-        proc = subprocess.run([sys.executable, str(RADICE / "scripts" / "privacy_gate.py")],
-                              input="non è json", capture_output=True, text=True, timeout=30)
-        self.assertEqual((proc.returncode, proc.stdout), (0, ""))  # un difetto del gate non blocca mai
+
+    def esegui(self, stdin, env=None):
+        return subprocess.run([sys.executable, str(RADICE / "scripts" / "privacy_gate.py")], input=stdin,
+                              capture_output=True, text=True, timeout=30, env={**os.environ, **(env or {})})
+
+    def test_fail_closed_su_payload_illeggibile(self):
+        for stdin in ("non è json", "[1, 2]", '"stringa"'):
+            proc = self.esegui(stdin)
+            self.assertEqual(proc.returncode, 0)
+            out = json.loads(proc.stdout)["hookSpecificOutput"]
+            self.assertEqual(out["permissionDecision"], "deny", stdin)
+            self.assertIn("controllo non eseguibile", out["permissionDecisionReason"])
+
+    def test_stdin_vuoto_o_senza_input_passa(self):
+        self.assertEqual(self.esegui("").stdout, "")
+        self.assertEqual(self.esegui('{"tool_name": "WebSearch"}').stdout, "")
+
+    def test_fail_closed_su_input_enorme_o_troppo_annidato(self):
+        enorme = {"tool_name": "WebSearch", "tool_input": {"query": "a " * (pg.LIMITE_CARATTERI // 2 + 10)}}
+        self.assertEqual(json.loads(self.esegui(json.dumps(enorme)).stdout)["hookSpecificOutput"]["permissionDecision"], "deny")
+        annidato = "x"
+        for _ in range(pg.LIMITE_PROFONDITA + 5):
+            annidato = [annidato]
+        with self.assertRaises(ValueError):
+            pg.valuta({"q": annidato})
+
+    def test_numeri_scanditi_come_stringhe(self):
+        # 12345678903 ha checksum di partita IVA valido e viaggia come intero, non come stringa
+        out = pg.esito_hook(self.payload(query="visura", codice=12345678903))
+        self.assertEqual(out["hookSpecificOutput"]["permissionDecision"], "deny")
+        self.assertIn("codice", out["hookSpecificOutput"]["permissionDecisionReason"])
+
+
+class TestUrl(unittest.TestCase):
+    def test_dato_in_query_string_blocca_qualunque_dominio(self):
+        for url in ("https://www.google.com/search?q=Rossi+Costruzioni+srl+RG+4521%2F2025",
+                    "https://duckduckgo.com/?q=RSSMRA80A01H501U",
+                    "https://www.giustizia.it/ricerca?nome=studio.legale%40pec.it",
+                    "https://example.org/pratiche/RSSMRA80A01H501U/atti"):
+            dec = pg.valuta({"url": url})
+            self.assertEqual(dec.livello, pg.BLOCCA, url)
+            self.assertEqual(dec.rilevamenti[0][1].tipo, "url_con_dati")
+
+    def test_permalink_ufficiali_passano(self):
+        for url in ("https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023-03-31;36~art50!vig=",
+                    "https://publications.europa.eu/resource/celex/32016R0679",
+                    "https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32012R1215",
+                    "https://www.gazzettaufficiale.it/eli/id/2023/03/31/23G00044/sg",
+                    "https://www.cortecostituzionale.it/actionSchedaPronuncia.do?param_ecli=ECLI:IT:COST:2018:194",
+                    "https://www.gazzettaufficiale.it/do/atto/serie_generale/caricaPdf?x=Decreto_2024.pdf"):
+            self.assertIsNone(pg.valuta({"url": url, "prompt": "estrai il testo dell'articolo"}).livello, url)
+
+    def test_testo_accanto_all_url_resta_scandito_con_offset_corretti(self):
+        testo = "vedi https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2004-05-19;124 targa AB123CD"
+        ril = pg.rileva_completo(testo)
+        self.assertEqual([(r.tipo, testo[r.inizio:r.fine]) for r in ril], [("targa", "AB123CD")])
+
+
+class TestRedazione(unittest.TestCase):
+    def test_stringa_con_url_viene_redatta_lo_stesso(self):
+        # regressione: una stringa contenente "http" passava non redatta con decisione allow
+        out = pg.esito_hook({"tool_name": "WebFetch", "tool_input": {
+            "prompt": "cerca https://www.normattiva.it/x per la targa AB123CD"}}, modo="redigi")
+        self.assertEqual(out["hookSpecificOutput"]["permissionDecision"], "allow")
+        self.assertEqual(out["hookSpecificOutput"]["updatedInput"]["prompt"],
+                         "cerca https://www.normattiva.it/x per la targa [OMISSIS:targa]")
+
+    def test_url_con_dati_non_si_redige_si_nega(self):
+        out = pg.esito_hook({"tool_name": "WebFetch", "tool_input": {
+            "url": "https://duckduckgo.com/?q=RSSMRA80A01H501U"}}, modo="redigi")
+        self.assertEqual(out["hookSpecificOutput"]["permissionDecision"], "deny")
+        self.assertNotIn("updatedInput", out["hookSpecificOutput"])
+
+    def test_span_sovrapposti_si_fondono_e_la_redazione_copre_tutto(self):
+        testo = ('cerca "il sig. Rossi, codice fiscale RSSMRA80A01H501U, ha ricevuto in data odierna la diffida '
+                 'ad adempiere entro quindici giorni dalla ricezione della presente" grazie')
+        ril = pg.rileva(testo)
+        self.assertEqual(len(ril), 1)
+        self.assertEqual(ril[0].livello, pg.BLOCCA)
+        redatto = pg.redigi(testo, ril)
+        self.assertNotIn("RSSMRA80A01H501U", redatto)
+        self.assertNotIn("diffida", redatto)
+        self.assertTrue(redatto.startswith("cerca [OMISSIS:") and redatto.endswith(" grazie"))
+
+    def test_mai_allow_se_resta_un_dato(self):
+        originale = pg.redigi_input
+        pg.redigi_input = lambda x: x  # redazione guasta
+        try:
+            out = pg.esito_hook({"tool_name": "WebSearch", "tool_input": {"query": "targa AB123CD"}}, modo="redigi")
+        finally:
+            pg.redigi_input = originale
+        self.assertEqual(out["hookSpecificOutput"]["permissionDecision"], "deny")
+
+
+class TestPrestazioni(unittest.TestCase):
+    def test_input_patologici_restano_lineari(self):
+        import time
+        for unita in ("'parola ", '"parola ', "Mario ", "via Roma ", "a.b@", "0123 "):
+            testo = unita * (60_000 // len(unita))
+            t = time.time()
+            pg.rileva_completo(testo)
+            self.assertLess(time.time() - t, 5, unita)
 
 
 class TestBancoDiMisura(unittest.TestCase):

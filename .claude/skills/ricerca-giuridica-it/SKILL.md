@@ -17,7 +17,7 @@ description: >
   fonte non è nominata. Non usare per domande non giuridiche.
 license: MIT
 metadata:
-  version: "0.7.3"
+  version: "0.7.4"
   author: belicinodev
 ---
 
